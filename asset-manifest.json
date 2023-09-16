@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/project-healthy-hub/static/css/main.af942983.css",
-    "main.js": "/project-healthy-hub/static/js/main.d2559afe.js",
+    "main.js": "/project-healthy-hub/static/js/main.694f68d5.js",
     "index.html": "/project-healthy-hub/index.html",
     "main.af942983.css.map": "/project-healthy-hub/static/css/main.af942983.css.map",
-    "main.d2559afe.js.map": "/project-healthy-hub/static/js/main.d2559afe.js.map"
+    "main.694f68d5.js.map": "/project-healthy-hub/static/js/main.694f68d5.js.map"
   },
   "entrypoints": [
     "static/css/main.af942983.css",
-    "static/js/main.d2559afe.js"
+    "static/js/main.694f68d5.js"
   ]
 }
