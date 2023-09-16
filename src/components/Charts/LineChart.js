@@ -22,7 +22,6 @@ ChartJS.register(
 
 export const options = {
   responsive: true,
-
   scales: {
     x: {
       grid: {
@@ -31,6 +30,7 @@ export const options = {
       },
     },
     y: {
+      beginAtZero: true,
       min: 0,
       max: 3000,
       ticks: {
@@ -40,6 +40,7 @@ export const options = {
         display: true,
         color: '#292928',
       },
+      // offset: 'top',
     },
   },
   plugins: {
@@ -87,12 +88,13 @@ const data = {
   datasets: [
     {
       data: labels.map(() => {
-        const randomNum = 1300 + Math.random() * 1000;
+        const randomNum = 1500 + Math.random() * 100;
         return Math.round(randomNum / 100) * 100;
-      }),  
+      }),
       borderColor: '#E3FFA8',
       borderWidth: 1,
       pointRadius: 0,
+      tension: 0.5,
     },
   ],
 };
