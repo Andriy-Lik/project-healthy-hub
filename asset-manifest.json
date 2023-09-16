@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/react-homework-template/static/css/main.af942983.css",
-    "main.js": "/react-homework-template/static/js/main.4f3de93a.js",
-    "index.html": "/react-homework-template/index.html",
-    "main.af942983.css.map": "/react-homework-template/static/css/main.af942983.css.map",
-    "main.4f3de93a.js.map": "/react-homework-template/static/js/main.4f3de93a.js.map"
+    "main.css": "/project-healthy-hub/static/css/main.af942983.css",
+    "main.js": "/project-healthy-hub/static/js/main.d2559afe.js",
+    "index.html": "/project-healthy-hub/index.html",
+    "main.af942983.css.map": "/project-healthy-hub/static/css/main.af942983.css.map",
+    "main.d2559afe.js.map": "/project-healthy-hub/static/js/main.d2559afe.js.map"
   },
   "entrypoints": [
     "static/css/main.af942983.css",
-    "static/js/main.4f3de93a.js"
+    "static/js/main.d2559afe.js"
   ]
 }
