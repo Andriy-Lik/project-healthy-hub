@@ -26,7 +26,7 @@ export const theme = Object.freeze({
   },
 
   // Ширина шрифта, приклад font-weight: ${p => p.theme.fontWeights.bold};
-  fontWeight: {
+  fontWeights: {
     regular: 400, // нормальний
     medium: 500, // середній
     semiBold: 600, // напівжирний
