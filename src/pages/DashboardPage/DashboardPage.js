@@ -12,7 +12,7 @@ import {
   Charts,
   ScaleBlock,
   Scale,
-} from './dashboard.styled';
+} from './DashboardPage.styled';
 
 import LineChart from 'components/Charts/LineChart';
 
