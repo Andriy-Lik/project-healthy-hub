@@ -14,7 +14,7 @@ export const Container = styled.div`
 export const Title = styled.p`
   color: ${p => p.theme.colors.violet};
   font-size: ${p => p.theme.fontSizes.xxl};
-  font-weight: ${p => p.theme.fontWeight.bold};
+  font-weight: ${p => p.theme.fontWeights.bold};
 
 
   @media screen and (${p => p.theme.mq.tablet}) {
