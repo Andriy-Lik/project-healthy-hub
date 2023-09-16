@@ -21,7 +21,9 @@ width: 270px;
 height: 86px;
 margin-right: 20px;
 margin-bottom: 20px;
-font-size: 12px
+font-size: 12px;
+background-color:${p => p.theme.colors.black2};
+color:${p => p.theme.colors.white}
 `
 export const Container = styled.div`
 display: flex;
@@ -34,6 +36,10 @@ height: 46px;
 export const Parag = styled.p`
 margin-right: 6px;
 `
+export const ParagTwo = styled.p`
+color:${p => p.theme.colors.gray}
+`
+
 export const List = styled.ul`
 display: flex;
 flex-direction: row;

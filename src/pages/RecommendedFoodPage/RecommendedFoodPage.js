@@ -1,5 +1,5 @@
 import img from '../../images/Ketogenic.png'
-import { Title, Img, Item, Container, Svg, Parag, List, ContainerTwo } from './RecommendedFoodPage.styled'
+import { Title, Img, Item, Container, Svg, Parag, List, ContainerTwo, ParagTwo } from './RecommendedFoodPage.styled'
 export function RecommendedFood(){
     return(
         <>
@@ -15,7 +15,7 @@ export function RecommendedFood(){
                 <h2>Avocado</h2>
                 <Container>
                 <Parag>100 g</Parag>
-                <p>200 calories</p>
+                <ParagTwo>200 calories</ParagTwo>
                 </Container>
                 </div>
             </Item>
@@ -27,7 +27,7 @@ export function RecommendedFood(){
                 <h2>Beans</h2>
                 <Container>
                 <Parag>100 g</Parag>
-                <p>123 calories</p>
+                <ParagTwo>123 calories</ParagTwo>
                 </Container>
                 </div>
             </Item>
@@ -39,7 +39,7 @@ export function RecommendedFood(){
                 <h2>Nuts</h2>
                 <Container>
                 <Parag>100 g</Parag>
-                <p>500 calories</p>
+                <ParagTwo>500 calories</ParagTwo>
                 </Container>
                 </div>
             </Item>
@@ -51,7 +51,7 @@ export function RecommendedFood(){
                 <h2>Broccoli</h2>
                 <Container>
                 <Parag>100 g</Parag>
-                <p>28 calories</p>
+                <ParagTwo>28 calories</ParagTwo>
                 </Container>
                 </div>
             </Item>
@@ -63,7 +63,7 @@ export function RecommendedFood(){
                 <h2>Cheese</h2>
                 <Container>
                 <Parag>100 g</Parag>
-                <p>200 calories</p>
+                <ParagTwo>200 calories</ParagTwo>
                 </Container>
                 </div>
             </Item>
@@ -75,7 +75,7 @@ export function RecommendedFood(){
                 <h2>Egg</h2>
                 <Container>
                 <Parag>100 g</Parag>
-                <p>123 calories</p>
+                <ParagTwo>123 calories</ParagTwo>
                 </Container>
                 </div>
             </Item>
@@ -87,7 +87,7 @@ export function RecommendedFood(){
                 <h2>Banana</h2>
                 <Container>
                 <Parag>100 g</Parag>
-                <p>500 calories</p>
+                <ParagTwo>500 calories</ParagTwo>
                 </Container>
                 </div>
             </Item>
@@ -99,7 +99,7 @@ export function RecommendedFood(){
                 <h2>Meat</h2>
                 <Container>
                 <Parag>100 g</Parag>
-                <p>128 calories</p>
+                <ParagTwo>128 calories</ParagTwo>
                 </Container>
                 </div>
             </Item>
@@ -111,7 +111,7 @@ export function RecommendedFood(){
                 <h2>Shrimp</h2>
                 <Container>
                 <Parag>100 g</Parag>
-                <p>100 calories</p>
+                <ParagTwo>100 calories</ParagTwo>
                 </Container>
                 </div>
             </Item>
@@ -123,7 +123,7 @@ export function RecommendedFood(){
                 <h2>Steak</h2>
                 <Container>
                 <Parag>100 g</Parag>
-                <p>150 calories</p>
+                <ParagTwo>150 calories</ParagTwo>
                 </Container>
                 </div>
             </Item>

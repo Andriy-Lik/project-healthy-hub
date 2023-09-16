@@ -5,7 +5,6 @@ export const App = () => {
   return (
     <>
     <Header title={ "Hello World"} />
-    <RecommendedFood/>
     </>
   );
 };
