@@ -1,0 +1,30 @@
+.backgroundContainer {
+    background-color: #050505;
+    display: flex;
+}
+
+.perksContainer {
+    max-width: 444px;
+}
+
+.welcomeHeadline {
+    color: #FFFFFF;
+    font-size: 30px;
+    font-weight: 500;
+    line-height: 36px;
+    font-family: Poppins;
+}
+
+.welcomeText {
+    color: #B6B6B6;
+    font-weight: 400;
+    font-size: 22px;
+}
+
+.signInActivated {
+    background-color: #E3FFA8;
+    border-radius: 12px;
+    width: 192px;
+    font-size: 14px;
+    font-family: Poppins;
+}
