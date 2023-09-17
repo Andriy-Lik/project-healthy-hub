@@ -12,7 +12,7 @@ import edit from '../../images/icons/edit-2.svg'
 
 import ava from '../../images/avatar-7236095.png'
 
-const Header = ({ title }) => {
+const Header = () => {
   // function genderType(gender) {
 
   //   if (gender === 'male') {
@@ -27,7 +27,7 @@ const Header = ({ title }) => {
 
   return (
     <Container>
-      <Title>{title}</Title>
+      <Title>Your health</Title>
       <Info>
         <InfoBlock>
           <IconContainer>
