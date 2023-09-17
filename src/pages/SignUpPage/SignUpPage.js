@@ -1,33 +1,30 @@
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
+import { BackgroundContainer, SignUpLogo, SignUpContainer, SignUpHeadline, SignUpText, SignUpForm, SignUpInput, SignUpButton, SignInSuggestion, SignInLink } from './SignUpPage.styled';
+import welcomeLogoPic from '../../images/WelcomeLogoPic.png';
 
 const SignUpPage = () => {
 
     return (
       <div>
-          <header>
-              <h2>HealthyHub</h2>
-              <Link>Sign in</Link>
-              /
-              <Link>Sign up</Link>
-              {/* <img /> */}
-          </header>
-  
-          <div>
-              {/* <img /> */}
-              <div>
-                <h3>Sign up</h3>
-                <p>You need to register to use the service</p>
-                <form>
-                    <input placeholder="Name"/>
-                    <input placeholder="E-mail"/>
-                    <input placeholder="Password"/>
-                    <button>Sign in</button>
-                </form>
+          <BackgroundContainer>
+            <SignUpLogo src={welcomeLogoPic} alt='Logo' />
+              <SignUpContainer>
+                <SignUpHeadline>Sign up</SignUpHeadline>
+                <SignUpText>You need to register to use the service</SignUpText>
+                <SignUpForm>
+                    <SignUpInput placeholder="  Name"/>
+                    <br />
+                    <SignUpInput placeholder="  E-mail"/>
+                    <br />
+                    <SignUpInput placeholder="  Password"/>
+                    <br />
+                    <SignUpButton>Sign Up</SignUpButton>
+                </SignUpForm>
 
-                <p>Do you already have an account?</p>
-                <Link>Sign in</Link>
-              </div>
-          </div>
+                <SignInSuggestion>Do you already have an account?</SignInSuggestion>
+                <SignInLink>Sign in</SignInLink>
+              </SignUpContainer>
+          </BackgroundContainer>
       </div>
     )
   };
