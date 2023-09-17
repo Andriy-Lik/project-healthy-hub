@@ -1,10 +1,10 @@
 import {
-  DushboardContainer,
+  DashboardContainer,
   HeaderBlock,
   MainHeader,
   SecondHeader,
   ChartsBlock,
-  Li,
+  ChartsList,
   ChartsContainer,
   ChartsHeader,
   ChartsTitle,
@@ -15,19 +15,20 @@ import {
 } from './DashboardPage.styled';
 
 import LineChart from 'components/Charts/LineChart';
+// import ScaleChart from 'components/Charts/ScaleChart';
 
 const Dashboard = () => {
   const calories = 1700;
   const water = 1600;
   const weight = 68;
   return (
-    <DushboardContainer>
+    <DashboardContainer>
       <HeaderBlock>
         <MainHeader>Last month</MainHeader>
         <SecondHeader>November</SecondHeader>
       </HeaderBlock>
       <ChartsBlock>
-        <Li>
+        <ChartsList>
           <ChartsContainer>
             <ChartsHeader>Calories</ChartsHeader>
             <ChartsContainer>
@@ -38,8 +39,8 @@ const Dashboard = () => {
           <Charts>
             <LineChart />
           </Charts>
-        </Li>
-        <Li>
+        </ChartsList>
+        <ChartsList>
           <ChartsContainer>
             <ChartsHeader>Water</ChartsHeader>
             <ChartsContainer>
@@ -50,7 +51,7 @@ const Dashboard = () => {
           <Charts>
             <LineChart />
           </Charts>
-        </Li>
+        </ChartsList>
       </ChartsBlock>
       <ScaleBlock>
         <ChartsContainer>
@@ -60,9 +61,9 @@ const Dashboard = () => {
             <ChartsSubtitle>{weight} kg</ChartsSubtitle>
           </ChartsContainer>
         </ChartsContainer>
-        <Scale />
+        <Scale>{/* <ScaleChart /> */}</Scale>
       </ScaleBlock>
-    </DushboardContainer>
+    </DashboardContainer>
   );
 };
 
