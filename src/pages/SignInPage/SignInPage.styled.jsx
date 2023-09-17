@@ -5,19 +5,19 @@ export const BackgroundContainer = styled.div `
     display: flex;
 `;
 
-export const SignUpLogo = styled.img `
+export const SignInLogo = styled.img `
     margin-left: 150px;
     margin-top: 40px;
 `;
 
-export const SignUpContainer = styled.div ` 
+export const SignInContainer = styled.div ` 
     max-width: 444px;
     margin-top: 120px;
     margin-left: 104px;
     display: block;
 `;
 
-export const SignUpHeadline = styled.h1 ` 
+export const SignInHeadline = styled.h1 ` 
     color: #FFFFFF;
     font-size: 30px;
     font-weight: 500;
@@ -25,7 +25,7 @@ export const SignUpHeadline = styled.h1 `
     font-family: Poppins;
 `;
 
-export const SignUpText = styled.p ` 
+export const SignInText = styled.p ` 
     color: #B6B6B6;
     font-weight: 400;
     font-size: 22px;
@@ -33,12 +33,12 @@ export const SignUpText = styled.p `
     line-height: 32px;
 `;
 
-export const SignUpForm = styled.form `
+export const SignInForm = styled.form `
     display: block;
     margin-top: 8px;
 `;
 
-export const SignUpInput = styled.input `
+export const SignInInput = styled.input `
     border: 1px solid #E3FFA8;
     border-radius: 12px;
     background-color: #0F0F0F;
@@ -52,7 +52,7 @@ export const SignUpInput = styled.input `
     margin-top: 16px;
 `
 
-export const SignUpButton = styled.button ` 
+export const SignInButton = styled.button ` 
     background-color: #E3FFA8;
     margin-top: 16px;
     border-radius: 12px;
@@ -60,13 +60,29 @@ export const SignUpButton = styled.button `
     padding: 8px;
     font-size: 14px;
     font-family: Poppins;
+    font-weight: 500;
+    text-align: center;
 `;
 
-export const SignInSuggestion = styled.p `
+export const ForgotYourPassword = styled.button `
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #B6B6B6;
+    background-color: #050505;
+    border: none;
+    margin-top: 20px;
+    margin-left: 25px;
+`
+
+export const SignUpSuggestion = styled.p `
     color: #B6B6B6;
 `;
 
-export const SignInLink = styled.button `
+export const SignUpLink = styled.button `
+    margin-left: 16px;
+    line-height: 20px;
+    font-weight: 500;
     background-color: #050505;
     color: #FFFFFF;
     border: none;

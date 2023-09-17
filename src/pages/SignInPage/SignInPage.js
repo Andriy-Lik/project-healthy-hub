@@ -1,34 +1,43 @@
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
+import {
+  BackgroundContainer,
+  SignInLogo,
+  SignInContainer,
+  SignInHeadline,
+  SignInText,
+  SignInForm,
+  SignInInput,
+  SignInButton,
+  ForgotYourPassword,
+  SignUpSuggestion,
+  SignUpLink,
+} from './SignInPage.styled';
+import welcomeLogoPic from '../../images/WelcomeLogoPic.png';
 
 const SignInPage = () => {
-
-    return (
-      <div>
-          <header>
-              <h2>HealthyHub</h2>
-              <Link>Sign in</Link>
-              /
-              <Link>Sign up</Link>
-              {/* <img /> */}
-          </header>
-  
-          <div>
-              {/* <img /> */}
-              <div>
-                <h3>Sign ip</h3>
-                <p>You need to login to use the service</p>
-                <form>
-                    <input placeholder="E-mail"/>
-                    <input placeholder="Password"/>
-                    <button>Sign in</button>
-                </form>
-                <Link>Forgot your password?</Link>
-
-                <p>Do you already have an account?</p>
-                <Link>Sign up</Link>
-              </div>
+  return (
+    <div>
+      <BackgroundContainer>
+        <SignInLogo src={welcomeLogoPic} alt="Logo" />
+        <SignInContainer style={{ display: 'block' }}>
+          <SignInHeadline>Sign in</SignInHeadline>
+          <SignInText>You need to login to use the service</SignInText>
+          <div style={{width: 212}}>
+            <SignInForm>
+              <SignInInput placeholder="E-mail" />
+              <SignInInput placeholder="Password" />
+              <SignInButton>Sign in</SignInButton>
+              <ForgotYourPassword>Forgot your password?</ForgotYourPassword>
+            </SignInForm>
           </div>
-      </div>
-    )
-  };
-  export default SignInPage;
+
+          <div style={{ display: 'flex', marginTop: 212}}>
+            <SignUpSuggestion>If you don't have an account yet</SignUpSuggestion>
+            <SignUpLink>Sign up</SignUpLink>
+          </div>
+        </SignInContainer>
+      </BackgroundContainer>
+    </div>
+  );
+};
+export default SignInPage;
