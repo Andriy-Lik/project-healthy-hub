@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const DashboardSection = styled.section`
@@ -45,19 +46,27 @@ export const MainHeaderBlock = styled.div`
   display: flex;
 `;
 
-export const ArrowReturn = styled.img`
+export const BackLink = styled(NavLink)`
+  display: flex;
   @media screen and (${props => props.theme.mq.mobile}) {
-    width: 16px;
     margin-right: 8px;
   }
   @media screen and (${props => props.theme.mq.tablet}) {
-    width: 24px;
     margin-right: 12px;
   }
 `;
 
+export const ArrowReturn = styled.img`
+  @media screen and (${props => props.theme.mq.mobile}) {
+    width: 16px;
+  }
+  @media screen and (${props => props.theme.mq.tablet}) {
+    width: 24px;
+  }
+`;
+
 export const Header = styled.h1`
-  font-weight: ${p => p.theme.fontWeights.medium};
+  font-weight: ${props => props.theme.fontWeights.medium};
 
   @media screen and (${props => props.theme.mq.mobile}) {
     font-size: 24px;
@@ -69,10 +78,50 @@ export const Header = styled.h1`
   }
 `;
 
+export const Button = styled.button`
+  margin-left: 12px;
+  padding: 0;
+  border: ${props => props.theme.borders.none};
+  background-color: inherit;
+`;
+
 export const ArrowDown = styled.img`
   width: 16px;
-  margin-left: 12px;
-  /* transform: rotate(180deg); */
+`;
+
+export const ArrowTop = styled.img`
+  width: 16px;
+  transform: rotate(180deg);
+`;
+
+export const ModalButton = styled.button`
+  position: absolute;
+  background-color: ${props => props.theme.colors.black2};
+  border: ${props => props.theme.borders.none};
+  color: white;
+  padding: 16px 0 16px 12px;
+  border-radius: ${p => p.theme.radii.normal};
+  box-shadow: 0px 4px 14px 0px #e3ffa833;
+  font-family: ${props => props.theme.fontFamily.poppins};
+  font-weight: ${props => props.theme.fontWeights.regular};
+  text-align: left;
+
+  @media screen and (${props => props.theme.mq.mobile}) {
+    display: none;
+  }
+  @media screen and (${props => props.theme.mq.tablet}) {
+    display: inline-block;
+    top: 164px;
+    left: 63px;
+    width: 212px;
+    height: 64px;
+    font-size: ${props => props.theme.fontSizes.l};
+    line-height: 1.45;
+  }
+  @media screen and (${props => props.theme.mq.desktop}) {
+    top: 160px;
+    left: 70px;
+  }
 `;
 
 export const SecondHeader = styled.h3`
@@ -115,7 +164,7 @@ export const ChartsSubtitle = styled.p`
   margin-right: 8px;
 `;
 
-export const ChartsCaption = styled.p`
+export const ChartsCaption = styled.span`
   font-weight: ${p => p.theme.fontWeights.medium};
   font-size: ${props => props.theme.fontSizes.xs};
   line-height: 1.43;
