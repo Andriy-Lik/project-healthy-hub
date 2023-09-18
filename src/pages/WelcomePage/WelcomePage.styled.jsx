@@ -56,11 +56,6 @@ export const WelcomePagePerksList = styled.ul `
 
 export const Perks = styled.li ` 
     color: #FFFFFF;
-    margin-bottom: 22px;
-
-    ::before {
-        content: '\2022';
-        color: #E3FFA8;
-        margin-right: 5px;
-    }
+    margin-bottom: 42px;
+    margin-left: 10px;
 `
