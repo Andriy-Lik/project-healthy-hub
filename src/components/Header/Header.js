@@ -1,4 +1,4 @@
-import { Container, Title, Info, InfoBlock, UserBlock, IconContainer, TextContainer, InfoBlockName, InfoBlockText, WeightKg, ArrowSvg, EditSvg, AvaImg } from './Header.styled';
+import { Container, Title, Info, InfoBlock, UserBlock, IconContainer, TextContainer, InfoBlockName, InfoBlockText, WeightKg, ArrowSvg, EditSvg, AvaImg, MenuSvg } from './Header.styled';
 
 import waight from '../../images/icons/Waight-image.svg'
 // import muscle from '../../images/icons/Gain-muscle.svg'
@@ -9,6 +9,8 @@ import loseFatMen from '../../images/icons/Lose-fat-image-men.svg'
 
 import arrowDown from '../../images/icons/arrow-down.svg'
 import edit from '../../images/icons/edit-2.svg'
+
+import menu from '../../images/icons/menu.svg'
 
 import ava from '../../images/avatar-7236095.png'
 
@@ -27,7 +29,10 @@ const Header = () => {
 
   return (
     <Container>
-      <Title>Your health</Title>
+      <Title>
+        HealthyHub
+        <MenuSvg src={menu} alt="menu" />
+      </Title>
       <Info>
         <InfoBlock>
           <IconContainer>
@@ -52,7 +57,7 @@ const Header = () => {
               {/* user.weight */}
               65
               <WeightKg>kg</WeightKg>
-              <EditSvg src={edit} alt="edit" width={16} />
+              <EditSvg src={edit} alt="edit" />
             </InfoBlockText>
           </TextContainer>
         </InfoBlock>

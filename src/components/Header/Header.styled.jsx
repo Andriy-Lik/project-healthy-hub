@@ -3,9 +3,20 @@ import styled from 'styled-components';
 export const Container = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
   background-color: ${div => div.theme.colors.black2};
   padding: 0;
   margin: 0;
+
+  @media screen and (${props => props.theme.mq.mobile}) {
+    height: 60px;
+  }
+  @media screen and (${props => props.theme.mq.tablet}) {
+    height: 100px;
+  }
+  @media screen and (${props => props.theme.mq.desktop}) {
+    height: 100px;
+  }
 `;
 
 export const Title = styled.p`
@@ -13,26 +24,54 @@ export const Title = styled.p`
   font-size: ${p => p.theme.fontSizes.l};
   font-weight: ${p => p.theme.fontWeights.bold};
 
-
-  @media screen and (${p => p.theme.mq.tablet}) {
-    font-size: ${p => p.theme.fontSizes.xxl};
+  @media screen and (${props => props.theme.mq.mobile}) {
+    margin-left: 10px;
+    font-size: ${p => p.theme.fontSizes.s};
+    display: flex;
+    align-items: center;
   }
 
-  @media screen and (${p => p.theme.mq.desktop}) {
-    padding: 34px;
-    font-size: ${p => p.theme.fontSizes.xxl};
+  @media screen and (${props => props.theme.mq.tablet}) {
+    margin-left: 27px;
+  }
+
+  @media screen and (${props => props.theme.mq.desktop}) {
+    margin-left: 34px;
+  }
+`;
+
+export const MenuSvg = styled.img`
+  width: 16px;
+  margin-left: 8px;
+  @media screen and (${props => props.theme.mq.tablet}) {
+    display: none;
   }
 `;
 
 export const Info = styled.div`
   margin: 0;
-  padding: 26px 0 26px 0;
   display: flex;
 `;
 
 export const InfoBlock = styled.div`
-  margin-right: 80px;
+
+  @media screen and (${props => props.theme.mq.mobile}) {
+    display: none;
+  }
+
+  @media screen and (${props => props.theme.mq.tablet}) {
   display: flex;
+    &:nth-child(1) {
+      margin-right: 40px;
+    }
+  }
+
+  @media screen and (${props => props.theme.mq.desktop}) {
+  display: flex;
+    &:nth-child(1) {
+      margin-right: 80px;
+    }
+  }
 `;
 
 export const IconContainer = styled.div`
@@ -90,13 +129,29 @@ export const UserBlock = styled.div`
   font-weight: ${p => p.theme.fontWeights.regular};
   display: flex;
   align-items: center;
-  margin-right: 36px;
-  margin-left: 44px;
+  @media screen and (${props => props.theme.mq.mobile}) {
+    font-size: 12px;
+    margin-right: 10px;
+  }
+  @media screen and (${props => props.theme.mq.tablet}) {
+    margin-left: 73px;
+    margin-right: 27px;
+  }
+  @media screen and (${props => props.theme.mq.desktop}) {
+    margin-left: 124px;
+    margin-right: 36px;
+  }
 `;
 
 export const AvaImg = styled.img`
-width: 28px;
-border-radius: 50%;
-margin-left: 6px;
-margin-right: -8px;
+  width: 28px;
+  border-radius: 50%;
+  margin-left: 6px;
+  margin-right: -8px;
+  @media screen and (${props => props.theme.mq.mobile}) {
+    width: 24px;
+  }
+  @media screen and (${props => props.theme.mq.tablet}) {
+    width: 28px;
+  }
 `;
