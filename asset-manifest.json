@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/project-healthy-hub/static/css/main.af942983.css",
-    "main.js": "/project-healthy-hub/static/js/main.a0d43f21.js",
+    "main.js": "/project-healthy-hub/static/js/main.08e6fcad.js",
     "static/js/562.35aaf92a.chunk.js": "/project-healthy-hub/static/js/562.35aaf92a.chunk.js",
     "static/js/205.ca1f05e1.chunk.js": "/project-healthy-hub/static/js/205.ca1f05e1.chunk.js",
     "static/js/257.5e1fcd2c.chunk.js": "/project-healthy-hub/static/js/257.5e1fcd2c.chunk.js",
@@ -10,11 +10,12 @@
     "static/media/WelcomeLogoPic.png": "/project-healthy-hub/static/media/WelcomeLogoPic.a616831fd2b34ff13567.png",
     "static/media/Waight-image.svg": "/project-healthy-hub/static/media/Waight-image.77cd4e76c2c3f67e31c01416852989e1.svg",
     "static/media/Lose-fat-image-men.svg": "/project-healthy-hub/static/media/Lose-fat-image-men.27ea6ae36b6531076d2ab8ec1c8b39f1.svg",
+    "static/media/menu.svg": "/project-healthy-hub/static/media/menu.9e56ac36387055e21a8971872b994615.svg",
     "index.html": "/project-healthy-hub/index.html",
     "static/media/edit-2.svg": "/project-healthy-hub/static/media/edit-2.9b966bb2899c1ade6c6ce14e12270a08.svg",
     "static/media/arrow-down.svg": "/project-healthy-hub/static/media/arrow-down.8cf3438f3dbcde251e8bc48b07aab667.svg",
     "main.af942983.css.map": "/project-healthy-hub/static/css/main.af942983.css.map",
-    "main.a0d43f21.js.map": "/project-healthy-hub/static/js/main.a0d43f21.js.map",
+    "main.08e6fcad.js.map": "/project-healthy-hub/static/js/main.08e6fcad.js.map",
     "562.35aaf92a.chunk.js.map": "/project-healthy-hub/static/js/562.35aaf92a.chunk.js.map",
     "205.ca1f05e1.chunk.js.map": "/project-healthy-hub/static/js/205.ca1f05e1.chunk.js.map",
     "257.5e1fcd2c.chunk.js.map": "/project-healthy-hub/static/js/257.5e1fcd2c.chunk.js.map",
@@ -22,6 +23,6 @@
   },
   "entrypoints": [
     "static/css/main.af942983.css",
-    "static/js/main.a0d43f21.js"
+    "static/js/main.08e6fcad.js"
   ]
 }
