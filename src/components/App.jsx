@@ -18,5 +18,5 @@ export const App = () => {
         <Route path='/forgot-password' element={<ForgotPasswordPage />} />
       </Route>
     </Routes>
-  );
+  ); 
 };
