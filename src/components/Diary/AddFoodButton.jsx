@@ -1,12 +1,12 @@
-const AddFoodButton = (toggleFoodButton) => {
-    const [addFoodButton, setAddFoodButton] = useState(true);
-    const toggleFoodButton = () => {
-        setAddFoodButton(!addFoodButton);
-       };
+// const AddFoodButton = (toggleFoodButton) => {
+//     const [addFoodButton, setAddFoodButton] = useState(true);
+//     const toggleFoodButton = () => {
+//         setAddFoodButton(!addFoodButton);
+//        };
 
-    return(
-        <button onClick={toggleFoodButton}>+ Record your meal</button>
-    )
-}
+//     return(
+//         <button onClick={toggleFoodButton}>+ Record your meal</button>
+//     )
+// }
 
-export default AddFoodButton;
+// export default AddFoodButton;
