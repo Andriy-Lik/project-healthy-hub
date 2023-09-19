@@ -1,13 +1,12 @@
 import { lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
-import SharedLayout from './Layout';
+import SharedLayout from './SharedLayout';
 
-const WelcomePage = lazy(() => import('../pages/WellcomPage/WellcomPage'));
-const SignUpPage = lazy(() => import('../pages/SignUpPage/SignUpPage'));
-const SignInPage = lazy(() => import('../pages/SignInPage/SignInPage'));
-const ForgotPasswordPage = lazy(() => import('../pages/ForgotPasswordPage/ForgotPasswordPage'));
-const DiaryPage = lazy(() => import('../pages/DiaryPage/DiaryPage'));
+const WelcomePage = lazy(() => import('../pages/WelcomePage'));
+const SignUpPage = lazy(() => import('../pages/SignUpPage'));
+const SignInPage = lazy(() => import('../pages/SignInPage'));
+const ForgotPasswordPage = lazy(() => import('../pages/ForgotPasswordPage'));
 
 export const App = () => {
   return (
@@ -17,7 +16,6 @@ export const App = () => {
         <Route path='/signup' element={<SignUpPage />} />
         <Route path='/signin' element={<SignInPage />} />
         <Route path='/forgot-password' element={<ForgotPasswordPage />} />
-        <Route path='/diary' element={<DiaryPage />} />
       </Route>
     </Routes>
   );
