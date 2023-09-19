@@ -22,11 +22,11 @@ import {
     List,
     Img,
     AddFoodButton,
-  } from './DiaryPage.styled';
+} from './DiaryPage.styled';
 
 
 
-const Diary = () => {
+const DiaryPage = () => {
   const [carbonohidrates, setCarbonohidrates] = useState({
     breakfast: 0,
     dinner: 0,
@@ -179,7 +179,7 @@ const Diary = () => {
   );
 };
 
-export default Diary;
+export default DiaryPage;
 
 
 
