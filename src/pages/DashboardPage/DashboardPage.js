@@ -29,7 +29,7 @@ import Modal from '../../components/Modals/DashboardModal';
 import arrowDown from '../../images/icons/arrow-down.svg';
 import arrowRight from '../../images/icons/arrow-right.svg';
 import LineChart from 'components/Charts/LineChart';
-// import ScaleChart from 'components/Charts/ScaleChart';
+import ScaleChart from 'components/Charts/ScaleChart';
 
 const DashboardPage = () => {
   const [showModal, setShowModal] = useState(false);
@@ -102,7 +102,9 @@ const DashboardPage = () => {
               Average value: <ChartsCaption>{weight} kg</ChartsCaption>
             </ChartsSubtitle>
           </TitleContainer>
-          <Scale>jgjgjggjgjgjgjgjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj</Scale>
+          <Scale>
+            <ScaleChart />
+          </Scale>
         </ScaleChartBlock>
       </DashboardContainer>
     </DashboardSection>
