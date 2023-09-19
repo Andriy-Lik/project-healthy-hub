@@ -22,12 +22,6 @@ export const MainHeader = styled.h1`
   line-height: 36px;
 `;
 
-export const SecondHeader = styled.h3`
-  margin: 0;
-  padding-top: 24px;
-  font-weight: 500;
-  font-size: 18px;
-`;
 
 export const Li = styled.li`
   list-style: none;
@@ -38,10 +32,12 @@ export const Li = styled.li`
 
 export const ChartsContainer = styled.div`
   display: flex;
-  align-items: baseline;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const ChartsHeader = styled.h2`
+  width: 270px;
   font-size: 22px;
   font-weight: 400;
   line-height: 32px;
@@ -50,6 +46,7 @@ export const ChartsHeader = styled.h2`
 `;
 
 export const ChartsTitle = styled.p`
+  width: 60px;
   font-weight: 400;
   font-size: 14px;
   line-height: 20px;
@@ -57,17 +54,21 @@ export const ChartsTitle = styled.p`
   margin: 0 8px 0 0;
 `;
 
-export const ChartsSubtitle = styled.p`
-  font-weight: 500;
+export const ChartsTitle1 = styled.p`
+  width: 130px;
+  font-weight: 400;
   font-size: 14px;
   line-height: 20px;
-  color: #b6b6b6;
-  margin: 0;
+  color: #ffffff;
+  margin: 0 8px 0 0;
 `;
 
-export const ChartsBlock = styled.div`
+
+export const ChartsBlock = styled.ul`
   display: flex;
   justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
   margin-bottom: 20px;
 `;
 
@@ -80,26 +81,31 @@ export const Charts = styled.div`
   margin-top: 6px;
 `;
 
-export const ScaleBlock = styled.div`
-  width: 100%;
-`;
-
-export const Scale = styled.div`
-  width: 1372px;
-  height: 110px;
-  background-color: #0f0f0f;
-  border-radius: 12px;
-  padding: 24px 24px 36px;
-  margin-top: 6px;
+export const List = styled.div`
+  display: flex;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #ffffff;
+  margin: 0 8px 0 0;
 `;
 
 export const AddFoodButton = styled.button`
   border: none;
-  font: Poppins;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 20px;
   background-color: #0f0f0f;
-  color: #E3FFA8;
+  color: #ffffff;
   cursor: pointer;
+`;
+
+export const GoBack = styled.button`
+  border: none;
+  background-color: #0f0f0f;
+  color: #ffffff;
+  cursor: pointer;
+`;
+
+export const Img = styled.img`
+  display: block;
+  width: 30px;
+  margin-right: 8px;
 `;
