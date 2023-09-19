@@ -75,12 +75,12 @@ const DiaryPage = () => {
       setProtein({ ...protein, dinner: proteinNumber});
       setFat({ ...fat, dinner: fatNumber});
 
-    } else if (type="lunch") {
+    } else if (type==="lunch") {
       setCarbonohidrates({ ...carbonohidrates, lunch: carbon});
       setProtein({ ...protein, lunch: proteinNumber});
       setFat({ ...fat, lunch: fatNumber});
 
-    } else if (type="snack") {
+    } else if (type==="snack") {
       setCarbonohidrates({ ...carbonohidrates, snack: carbon});
       setProtein({ ...protein, snack: proteinNumber});
       setFat({ ...fat, snack: fatNumber});
