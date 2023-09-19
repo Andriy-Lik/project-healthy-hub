@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Form from '../../components/Diary/DiaryForm';
 import breakfast from './images/Breakfast image.png';
@@ -21,7 +20,6 @@ import {
     ChartsTitle1,
     Charts,
     List,
-    GoBack,
     Img,
     AddFoodButton,
   } from './DiaryPage.styled';
@@ -50,7 +48,6 @@ const Diary = () => {
 
   
   const [food, setFood] = useState([]);
-  const [showButton1, setShowButton1] = useState(true);
   const [count, setCount] = useState(1);
   const [addFoodButton, setAddFoodButton] = useState(true);
 
@@ -91,9 +88,9 @@ const Diary = () => {
   };
 
 
-  const handleCount = () => {
-    setCount(count => count + 1);
-  };
+//   const handleCount = () => {
+//     setCount(count => count + 1);
+//   };
 
   const toggleFoodButton = () => {
     setAddFoodButton(!addFoodButton);
