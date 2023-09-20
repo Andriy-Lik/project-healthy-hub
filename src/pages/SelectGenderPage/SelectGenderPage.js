@@ -1,5 +1,7 @@
 import React from 'react';
+import { useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import {
   BackgroundContainer,
   SelectGenderLogo,
@@ -7,13 +9,17 @@ import {
   SelectGenderHeadline,
   SelectGenderText,
   SelectGenderForm,
-  SelectGenderButton,
-  SelectGenderBackButton,
+  // SelectGenderButton,
+  // SelectGenderBackButton,
   SelectGenderInput,
 } from './SelectGenderPage.styled';
+import SelectGenderBackButton from 'components/BackButtons/SelectGenderBackButton/SelectGenderBackButton';
 import SelectGenderLogoPic from '../../images/SelectGenderLogoPic.png';
 
 const SelectGenderPage = () => {
+  const location = useLocation();
+  const locationRef = useRef(location);
+
   return (
     <div>
       <BackgroundContainer>
@@ -58,7 +64,7 @@ const SelectGenderPage = () => {
                 <SelectGenderInput />
               </label>
               <Link style={{backgroundColor: '#E3FFA8', borderRadius: 12, width: 192, padding: 8, fontSize: 14, fontFamily: 'Poppins'}} to={'/body-parameters'}>Next</Link>
-              <SelectGenderBackButton>Back</SelectGenderBackButton>
+              <SelectGenderBackButton location={locationRef.current} />
             </SelectGenderForm>
           </div>
         </SelectGenderContainer>
