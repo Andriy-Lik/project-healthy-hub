@@ -33,6 +33,8 @@ import ScaleChart from 'components/Charts/ScaleChart';
 
 const DashboardPage = () => {
   const [showModal, setShowModal] = useState(false);
+  const [showYear, setShowYear] = useState(false);
+
   const location = useLocation();
   const backLinkLocationRef = useRef(location.state?.from ?? '');
 
@@ -42,6 +44,7 @@ const DashboardPage = () => {
 
   const clickHandler = () => {
     toggleModal();
+    setShowYear(showYear => !showYear);
   };
 
   const calories = 1700;
@@ -55,8 +58,8 @@ const DashboardPage = () => {
             <BackLink to={backLinkLocationRef.current}>
               <ArrowReturn src={arrowRight} alt="arrow right" />
             </BackLink>
-            <Header>Last month</Header>
-            <Button onClick={clickHandler}>
+            <Header>{showYear ? 'Last year' : 'Last month'}</Header>
+            <Button onClick={toggleModal}>
               {showModal ? (
                 <ArrowTop src={arrowDown} alt="arrow top" />
               ) : (
@@ -65,7 +68,9 @@ const DashboardPage = () => {
             </Button>
             {showModal && (
               <Modal onCloseModal={toggleModal}>
-                <ModalButton onClick={clickHandler}>Last year</ModalButton>
+                <ModalButton onClick={clickHandler}>
+                  {showYear ? 'Last month' : 'Last year'}
+                </ModalButton>
               </Modal>
             )}
           </MainHeaderBlock>
@@ -80,7 +85,7 @@ const DashboardPage = () => {
               </ChartsSubtitle>
             </TitleContainer>
             <Chart>
-              <LineChart />
+              <LineChart dataFormat={showYear} type={'calories'} />
             </Chart>
           </ChartGrid>
           <ChartGrid>
@@ -91,7 +96,7 @@ const DashboardPage = () => {
               </ChartsSubtitle>
             </TitleContainer>
             <Chart>
-              <LineChart />
+              <LineChart dataFormat={showYear} type={'water'} />
             </Chart>
           </ChartGrid>
         </LineChartBlock>
@@ -103,7 +108,7 @@ const DashboardPage = () => {
             </ChartsSubtitle>
           </TitleContainer>
           <Scale>
-            <ScaleChart />
+            <ScaleChart dataFormat={showYear} />
           </Scale>
         </ScaleChartBlock>
       </DashboardContainer>
