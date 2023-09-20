@@ -1,14 +1,15 @@
+import PropTypes from "prop-types";
 import { useEffect } from 'react';
-
 import { createPortal } from 'react-dom';
 
-import { Form, Formik } from 'formik';
+import { Formik } from 'formik';
 import * as yup from 'yup';
 
 import {
   Backdrop,
   Modal,
   Title,
+  FormFormic,
   Label,
   Button,
   ButtonTwo,
@@ -59,19 +60,23 @@ const AddWater = ({ onClose }) => {
           onSubmit={handleSubmit}
           validationSchema={schema}
         >
-          <Form autoComplete="off">
+          <FormFormic autoComplete="off">
             <Label htmlFor="water">How much water</Label>
-            <Input name="water" type="text" />
+            <Input name="water" type="text" placeholder="Enter milliliters"/>
             <ErrorMes name="water" component="div" />
 
             <Button type="submit">Confirm</Button>
             <ButtonTwo type="button" onClick={onClose}>Cancel</ButtonTwo>
-          </Form>
+          </FormFormic>
         </Formik>
       </Modal>
     </Backdrop>,
     modalRoot    
   );
 };
+
+AddWater.propTypes = {
+  onClose: PropTypes.func.isRequired,
+}
 
 export default AddWater;
