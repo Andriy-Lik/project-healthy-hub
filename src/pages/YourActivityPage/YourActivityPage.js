@@ -1,4 +1,6 @@
 import React from 'react';
+import { useRef } from 'react';
+import { useLocation } from 'react-router-dom';
 import {
   BackgroundContainer,
   YourActivityLogo,
@@ -7,12 +9,15 @@ import {
   YourActivityText,
   YourActivityForm,
   YourActivityButton,
-  YourActivityBackButton,
+  // YourActivityBackButton,
   YourActivityInput,
 } from './YourActivityPage.styled';
+import YourActivityBackButton from 'components/BackButtons/YourActivityBackButton/YourActivityBackButton';
 import SelectGenderLogoPic from '../../images/YourActivityLogoPic.png';
 
 const YourActivityPage = () => {
+  const location = useLocation();
+  const locationRef = useRef(location);
   return (
     <div>
       <BackgroundContainer>
@@ -55,7 +60,7 @@ const YourActivityPage = () => {
               <br />
               <YourActivityButton>Next</YourActivityButton>
               <br />
-              <YourActivityBackButton>Back</YourActivityBackButton>
+              <YourActivityBackButton location={locationRef.current}/>
             </YourActivityForm>
           </div>
         </YourActivityContainer>

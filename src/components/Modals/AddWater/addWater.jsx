@@ -1,9 +1,15 @@
-import { Form, Formik } from 'formik';
+import PropTypes from "prop-types";
+import { useEffect } from 'react';
+import { createPortal } from 'react-dom';
+
+import { Formik } from 'formik';
 import * as yup from 'yup';
+
 import {
   Backdrop,
   Modal,
   Title,
+  FormFormic,
   Label,
   Button,
   ButtonTwo,
@@ -19,24 +25,34 @@ const initialValues = {
   water: '',
 };
 
-export function AddWater() {
-  //     const [isModalOpen, setModalOpen] = useState(false);
+const modalRoot = document.querySelector('#modal-root');
 
-  //   const openModal = () => {
-  //     setModalOpen(true);
-  //   };
+const AddWater = ({ onClose }) => {
+  
+  const handleKeyDown = (event) => {
+    if (event.code === "Escape") {      
+      onClose();      
+    };
+  };
 
-  //   const closeModal = () => {
-  //     setModalOpen(false);
-  //   };
-
+  const handleBackdropClick = (event) => {
+    if (event.currentTarget === event.target) {
+      onClose();
+    };
+  };
+  
   const handleSubmit = (values, { resetForm }) => {
     console.log(values);
     resetForm();
   };
+  
+  useEffect(() => {
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  });
 
-  return (
-    <Backdrop>
+  return createPortal(
+    <Backdrop onClick={handleBackdropClick}>
       <Modal>
         <Title>Add water intake</Title>
         <Formik
@@ -44,16 +60,23 @@ export function AddWater() {
           onSubmit={handleSubmit}
           validationSchema={schema}
         >
-          <Form autoComplete="off">
+          <FormFormic autoComplete="off">
             <Label htmlFor="water">How much water</Label>
-            <Input name="water" type="text" />
+            <Input name="water" type="text" placeholder="Enter milliliters"/>
             <ErrorMes name="water" component="div" />
 
             <Button type="submit">Confirm</Button>
-            <ButtonTwo type="button">Cancel</ButtonTwo>
-          </Form>
+            <ButtonTwo type="button" onClick={onClose}>Cancel</ButtonTwo>
+          </FormFormic>
         </Formik>
       </Modal>
-    </Backdrop>
+    </Backdrop>,
+    modalRoot    
   );
+};
+
+AddWater.propTypes = {
+  onClose: PropTypes.func.isRequired,
 }
+
+export default AddWater;

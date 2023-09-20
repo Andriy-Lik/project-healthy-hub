@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import { useRef } from 'react';
+import { useLocation } from 'react-router-dom';
 import {
   BackgroundContainer,
   BodyParametersLogo,
@@ -8,11 +10,14 @@ import {
   BodyParametersForm,
   BodyParametersInput,
   BodyParametersButton,
-  BodyParametersBackButton,
+  // BodyParametersBackButton,
 } from './BodyParametersPage.styled';
+import BodyParametersBackButton from "components/BackButtons/SelectGenderBackButton/BodyParametersBackButton/BodyParametersBackButton";
 import BodyParametersLogoPic from '../../images/BodyParametersLogoPic.png';
 
 const BodyParametersPage = () => {
+  const location = useLocation();
+  const locationRef = useRef(location);
   return (
     <div>
       <BackgroundContainer>
@@ -38,7 +43,7 @@ const BodyParametersPage = () => {
           </div>
 
           <div>
-            <BodyParametersBackButton>Back</BodyParametersBackButton>
+            <BodyParametersBackButton  location={locationRef.current}/>
           </div>
         </BodyParametersContainer>
       </BackgroundContainer>
