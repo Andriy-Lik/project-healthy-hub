@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import {
   Wrapper,
   Title,
@@ -14,10 +16,17 @@ import {
   Btn
 } from "./Water.styled";
 
+import AddWater from "components/Modals/AddWater/addWater";
+
 import img1 from "../../images/add.png";
 import img2 from "../../images/add@2x.png";
 
 const Water = () => {
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const toggleModal = () => setIsModalOpen(!isModalOpen);
+
   let counter = "70%"; // має прийти з бекенду
   
   return (
@@ -42,7 +51,8 @@ const Water = () => {
                 <span>left:</span> 450 ml
               </CounterOfWaterLeftToDrinkInMl>
             </CounterList>
-            <Btn>
+            {/* кнопка, що відкриває модальне вікно додати воду */}
+            <Btn type="button" onClick={toggleModal}>
               <img
                 // loading="lazy"
                 srcSet={`${img1} 1x, ${img2} 2x`}
@@ -56,6 +66,11 @@ const Water = () => {
           </CardText>
         </Card>
       </InfoBox>
+      
+      {isModalOpen && (
+        <AddWater onClose={toggleModal} />
+      )}
+      
     </Wrapper>
   );
 };

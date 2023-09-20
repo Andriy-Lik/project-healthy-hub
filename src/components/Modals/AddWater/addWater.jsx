@@ -1,5 +1,10 @@
+import { useEffect } from 'react';
+
+import { createPortal } from 'react-dom';
+
 import { Form, Formik } from 'formik';
 import * as yup from 'yup';
+
 import {
   Backdrop,
   Modal,
@@ -19,24 +24,34 @@ const initialValues = {
   water: '',
 };
 
-export function AddWater() {
-  //     const [isModalOpen, setModalOpen] = useState(false);
+const modalRoot = document.querySelector('#modal-root');
 
-  //   const openModal = () => {
-  //     setModalOpen(true);
-  //   };
+const AddWater = ({ onClose }) => {
+  
+  const handleKeyDown = (event) => {
+    if (event.code === "Escape") {      
+      onClose();      
+    };
+  };
 
-  //   const closeModal = () => {
-  //     setModalOpen(false);
-  //   };
-
+  const handleBackdropClick = (event) => {
+    if (event.currentTarget === event.target) {
+      onClose();
+    };
+  };
+  
   const handleSubmit = (values, { resetForm }) => {
     console.log(values);
     resetForm();
   };
+  
+  useEffect(() => {
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  });
 
-  return (
-    <Backdrop>
+  return createPortal(
+    <Backdrop onClick={handleBackdropClick}>
       <Modal>
         <Title>Add water intake</Title>
         <Formik
@@ -50,10 +65,13 @@ export function AddWater() {
             <ErrorMes name="water" component="div" />
 
             <Button type="submit">Confirm</Button>
-            <ButtonTwo type="button">Cancel</ButtonTwo>
+            <ButtonTwo type="button" onClick={onClose}>Cancel</ButtonTwo>
           </Form>
         </Formik>
       </Modal>
-    </Backdrop>
+    </Backdrop>,
+    modalRoot    
   );
-}
+};
+
+export default AddWater;
