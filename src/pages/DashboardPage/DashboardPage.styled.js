@@ -242,14 +242,3 @@ export const Scale = styled.div`
     padding: 24px 24px 36px;
   }
 `;
-
-export const AddFoodButton = styled.button`
-  border: none;
-  font: Poppins;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 20px;
-  background-color: #0f0f0f;
-  color: #E3FFA8;
-  cursor: pointer;
-`;

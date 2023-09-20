@@ -1,6 +1,8 @@
+import { useState, useEffect } from 'react';
+
 import { List, Item, WeightTitle, DataTitle } from './ScaleChart.styled';
 
-const beckendArray = [
+const beckendArrayMonth = [
   { data: '01.02.2023', weight: '65' },
   { data: '02.02.2023', weight: '69' },
   { data: '03.02.2023', weight: '65' },
@@ -18,7 +20,6 @@ const beckendArray = [
   { data: '15.02.2023', weight: '65' },
   { data: '16.02.2023', weight: '70.5' },
   { data: '17.02.2023', weight: '65' },
-  { data: '03.02.2023', weight: '65' },
   { data: '18.02.2023', weight: '65' },
   { data: '19.02.2023', weight: '65' },
   { data: '20.02.2023', weight: '65' },
@@ -35,10 +36,36 @@ const beckendArray = [
   { data: '31.02.2023', weight: '65' },
 ];
 
-const ScaleChart = () => {
+const beckendArrayYear = [
+  { data: 'January', weight: '65' },
+  { data: 'February', weight: '69' },
+  { data: 'March', weight: '65' },
+  { data: 'April', weight: '70' },
+  { data: 'May', weight: '69' },
+  { data: 'June', weight: '69' },
+  { data: 'July', weight: '71.5' },
+  { data: 'August', weight: '67' },
+  { data: 'September', weight: '65' },
+  { data: 'October', weight: '65' },
+  { data: 'November', weight: '68' },
+  { data: 'December', weight: '65' },
+];
+
+const ScaleChart = ({ dataFormat }) => {
+  const [weight, setWeight] = useState([]);
+
+  useEffect(() => {
+    if (dataFormat) {
+      setWeight(beckendArrayYear);
+    }
+    if (!dataFormat) {
+      setWeight(beckendArrayMonth);
+    }
+  }, [dataFormat]);
+
   return (
     <List>
-      {beckendArray.map(({ data, weight }) => {
+      {weight.map(({ data, weight }) => {
         const number = data.split('.').slice(0, 1);
         return (
           <Item key={data}>
