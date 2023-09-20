@@ -23,11 +23,11 @@ export const App = () => {
     <Routes>
       <Route path='/' element={<SharedLayout />}>
         <Route index element={<WelcomePage />} />
-        <Route path='/signup' element={<RestrictedRoute redirectTo='/main' component={<SignUpPage />} />} />
-        <Route path='/signup/your-goal' element={<RestrictedRoute redirectTo='/main' component={<YourGoalPage />} />} />
-        <Route path='/signup/select-gender' element={<RestrictedRoute redirectTo='/main' component={<ForgotPasswordPage />} />} />
-        <Route path='/signup/body-parameters' element={<RestrictedRoute redirectTo='/main' component={<BodyParametersPage />} />} />
-        <Route path='/signup/your-activity' element={<RestrictedRoute redirectTo='/main' component={<YourActivityPage />} />} />
+        <Route path='/signup' element={<RestrictedRoute redirectTo='/main' component={<SignUpPage />} />}></Route>
+        <Route path='/your-goal' element={<RestrictedRoute redirectTo='/main' component={<YourGoalPage />} />} />
+        <Route path='/select-gender' element={<RestrictedRoute redirectTo='/main' component={<SelectGenderPage />} />} />
+        <Route path='/body-parameters' element={<RestrictedRoute redirectTo='/main' component={<BodyParametersPage />} />} />
+        <Route path='/your-activity' element={<RestrictedRoute redirectTo='/main' component={<YourActivityPage />} />} />
         <Route path='/signin' element={<RestrictedRoute redirectTo='/main' component={<SignInPage />} />} />
         <Route path='/forgot-password' element={<RestrictedRoute redirectTo='/signin' component={<ForgotPasswordPage />} />} />
         
