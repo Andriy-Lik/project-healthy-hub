@@ -1,0 +1,1 @@
+export { RecommendedFoodOnMain } from './RecommendedFoodOnMain';
