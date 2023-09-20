@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-axios.defaults.baseURL = 'https://connections-api.herokuapp.com/';
+axios.defaults.baseURL = 'https://healthyhub-z4y1.onrender.com';
 
 const setAuthHeader = token => {
     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -13,7 +13,7 @@ const clearAuthHeader = () => {
 
 export const register = createAsyncThunk('auth/register', async (credentials, thunkAPI) => {
     try {
-        const response = await axios.post('/api/users/register', credentials);
+        const response = await axios.post('/users/register', credentials);
         setAuthHeader(response.data.token);
         return response.data;
     } catch (e) {

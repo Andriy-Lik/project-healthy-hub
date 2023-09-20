@@ -1,7 +1,7 @@
 import image from '../../images/Ketogenic.png'
 import { Title, Img, Item, Container, Svg, Parag, List, ContainerTwo, ParagTwo } from './RecommendedFoodPage.styled'
 
-export function RecommendedFood({img,name,amount, calories}){
+export default function RecommendedFood({img,name,amount, calories}){
     return(
         <>
         <Title>Recommented food</Title>
