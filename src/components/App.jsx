@@ -21,7 +21,7 @@ const SettingsPage = lazy(() => import('../pages/SettingsPage'));
 export const App = () => {
   return (
     <Routes>
-      <Route path="/" element={<SharedLayout />}>
+      <Route path='/' element={<SharedLayout />}>
         <Route index element={<WelcomePage />} />
         <Route path='/signup' element={<RestrictedRoute redirectTo='/main' component={<SignUpPage />} />}></Route>
         <Route path='/your-goal' element={<RestrictedRoute redirectTo='/main' component={<YourGoalPage />} />} />
