@@ -11,6 +11,9 @@ import DailyGoal from 'components/DailyGoal';
 import Water from 'components/Water';
 import Food from 'components/Food';
 
+import { DiaryOnMain } from 'components/DiaryOnMain';
+import { RecommendedFoodOnMain } from 'components/RecommendedFoodOnMain';
+
 import img1 from '../../images/arrow-right.png';
 import img2 from '../../images/arrow-right@2x.png';
 
@@ -47,17 +50,8 @@ const MainPage = () => {
         </Tarker>
       </TrackerList>
 
-      <div></div>
-      {/* блок Щоденник Diary */}
-      <div>
-        <h3>Diary</h3>
-        <button>See more</button>
-      </div>
-
-      {/* блок Рекомендована їжа RecommentedFood */}
-      <div>
-        <h3>Recommented food</h3>
-      </div>
+      <DiaryOnMain />
+      <RecommendedFoodOnMain />
     </Container>
   );
 };
