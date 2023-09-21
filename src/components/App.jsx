@@ -18,6 +18,7 @@ const DiaryPage = lazy(() => import('../pages/DiaryPage'));
 const RecommendedFoodPage = lazy(() => import('../pages/RecommendedFoodPage'));
 const SettingsPage = lazy(() => import('../pages/SettingsPage'));
 
+// import MainPage from "pages/MainPage";
 export const App = () => {
   return (
     <Routes>
@@ -38,5 +39,6 @@ export const App = () => {
         <Route path='/settings' element={<PrivateRoute redirectTo='/signin' component={<SettingsPage />} />} />
       </Route>
     </Routes>
+    // <MainPage/>
   ); 
 };

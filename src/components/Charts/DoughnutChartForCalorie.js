@@ -5,9 +5,11 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 const DoughnutForCalorie = () => {
   const data = {
+    labels: ['Consumed:', 'Left:'],
     datasets: [
       {
         data: [1360, 340], // 1360 - спожито калорій, 340 - залишилось спожити
+        lables: ['cunsumed', 'left:'],
         backgroundColor: ['#45FFBC', '#292928'],
         // borderRadius: 12,
         borderWidth: 0,
@@ -16,7 +18,13 @@ const DoughnutForCalorie = () => {
     ],
   };
 
-  const options = {};
+  const options = {
+    plugins: {
+      legend: {
+        display: false,
+      },
+    },
+  };
 
   const textCenter = {
     id: 'textCenter',

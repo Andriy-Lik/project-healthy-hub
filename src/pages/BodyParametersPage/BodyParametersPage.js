@@ -9,7 +9,7 @@ import {
   BodyParametersText,
   BodyParametersForm,
   BodyParametersInput,
-  BodyParametersButton,
+  // BodyParametersButton,
   // BodyParametersBackButton,
 } from './BodyParametersPage.styled';
 import BodyParametersBackButton from "components/BackButtons/SelectGenderBackButton/BodyParametersBackButton/BodyParametersBackButton";
