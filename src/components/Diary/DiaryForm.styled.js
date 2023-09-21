@@ -1,8 +1,18 @@
 import styled from 'styled-components';
 
+export const Input = styled.input`
+  width: 30px;
+  border: none;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #ffffff;
+  margin: 0 8px 0 0;
+  background-color: #0f0f0f;
+`;
 
 export const Input1 = styled.input`
-  width: 270px;
+  width: 300px;
   border: none;
   font-weight: 400;
   font-size: 14px;
