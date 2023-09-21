@@ -7,7 +7,7 @@ export const Wrapper = styled.div`
   height: 100%;
 `;
 
-export const Title = styled.h3`  
+export const Title = styled.h2`  
   font-family: ${props => props.theme.fontFamily.poppins};
   font-size: ${props => props.theme.fontSizes.m};
   font-weight: ${props => props.theme.fontWeights.regular};
