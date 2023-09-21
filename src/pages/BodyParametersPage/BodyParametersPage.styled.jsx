@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export const BackgroundContainer = styled.div `
     background-color: #050505;
@@ -54,7 +55,7 @@ export const BodyParametersInput = styled.input `
     margin-bottom: 24px;
 `
 
-export const BodyParametersButton = styled.button ` 
+export const BodyParametersButton = styled(Link) ` 
     background-color: #E3FFA8;
     border-radius: 12px;
     width: 212px;

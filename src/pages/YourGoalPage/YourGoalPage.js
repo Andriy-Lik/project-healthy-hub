@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import {
   BackgroundContainer,
   GoalLogo,
@@ -12,6 +11,7 @@ import {
   GoalButton,
   GoalInput,
 } from './YourGoalPage.styled';
+import CustomRadioButton from 'pages/SettingsPage/components/CustomRadioButton';
 import GoalLogoPic from '../../images/YourGoalLogo.png';
 
 const YourGoalPage = () => {
@@ -26,40 +26,28 @@ const YourGoalPage = () => {
             <GoalForm>
               <GoalList>
                 <div>
-                  <GoalOption style={{color: '#FFFF', marginBottom: 20}}>
-                    <GoalInput type="radio" name="goal" value="Lose Fat" />
+                  <GoalOption style={{ color: '#FFFF', marginBottom: 20 }}>
+                    <CustomRadioButton />
                     Lose Fat
                   </GoalOption>
                 </div>
 
                 <div>
-                  <GoalOption style={{color: '#FFFF', marginBottom: 20}}>
-                    <GoalInput type="radio" name="goal" value="Maintain" />
+                  <GoalOption style={{ color: '#FFFF', marginBottom: 20 }}>
+                    <CustomRadioButton />
                     Maintain
                   </GoalOption>
                 </div>
 
                 <div>
-                  <GoalOption style={{color: '#FFFF', marginBottom: 20}}>
-                    <GoalInput type="radio" name="goal" value="Gain Muscle" />
+                  <GoalOption style={{ color: '#FFFF', marginBottom: 20 }}>
+                    <CustomRadioButton />
                     Gain Muscles
                   </GoalOption>
                 </div>
               </GoalList>
 
-              <Link
-                style={{
-                  backgroundColor: '#E3FFA8',
-                  borderRadius: 12,
-                  width: 192,
-                  padding: 8,
-                  fontSize: 14,
-                  fontFamily: 'Poppins',
-                }}
-                to={'/select-gender'}
-              >
-                Next
-              </Link>
+              <GoalButton to={'/select-gender'}>Next</GoalButton>
             </GoalForm>
           </div>
         </GoalContainer>
