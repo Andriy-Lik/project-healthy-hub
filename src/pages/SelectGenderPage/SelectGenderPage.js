@@ -13,7 +13,7 @@ import {
   SelectGenderInput,
 } from './SelectGenderPage.styled';
 import SelectGenderBackButton from 'components/BackButtons/SelectGenderBackButton/SelectGenderBackButton';
-import CustomRadioButton from 'pages/SettingsPage/components/CustomRadioButton';
+import CustomRadioButton from 'components/CustomRadioButton/CustomRadioButton';
 import SelectGenderLogoPic from '../../images/SelectGenderLogoPic.png';
 
 const SelectGenderPage = () => {

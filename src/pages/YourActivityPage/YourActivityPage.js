@@ -13,7 +13,7 @@ import {
   YourActivityInput,
 } from './YourActivityPage.styled';
 import YourActivityBackButton from 'components/BackButtons/YourActivityBackButton/YourActivityBackButton';
-import CustomRadioButton from 'pages/SettingsPage/components/CustomRadioButton';
+import CustomRadioButton from 'components/CustomRadioButton/CustomRadioButton';
 import SelectGenderLogoPic from '../../images/YourActivityLogoPic.png';
 
 const YourActivityPage = () => {

@@ -11,7 +11,7 @@ import {
   GoalButton,
   GoalInput,
 } from './YourGoalPage.styled';
-import CustomRadioButton from 'pages/SettingsPage/components/CustomRadioButton';
+import CustomRadioButton from 'components/CustomRadioButton/CustomRadioButton';
 import GoalLogoPic from '../../images/YourGoalLogo.png';
 
 const YourGoalPage = () => {
