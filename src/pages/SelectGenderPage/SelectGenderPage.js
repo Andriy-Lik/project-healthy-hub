@@ -30,40 +30,42 @@ const SelectGenderPage = () => {
             Choose a goal so that we can help you effectively
           </SelectGenderText>
 
-          <div style={{ width: 254 }}>
+          <div>
             <SelectGenderForm>
-              <label
+              <ul>
+                <li style={{color: '#FFFF', marginTop: 24, marginBottom: 12}}>
+                  Gender
+                </li>
+                <li style={{ color: '#FFFF'}}>
+                  <SelectGenderInput type="radio" name="gender" value="Male" style={{marginRight: 8}} />
+                  Male
+                </li>
+                <li style={{color: '#FFFF'}}>
+                  <SelectGenderInput
+                    type="radio"
+                    name="gender"
+                    value="Female"
+                    style={{marginRight: 8}} 
+                  />
+                  Female
+                </li>
+                <li style={{color: '#FFFF', marginBottom: 12}}>Your age</li>
+                <SelectGenderInput  style={{height:  36, width: 212, color: '#B6B6B6', fontSize: 14, fontWeight: 400, lineHeight: 20, paddingLeft: 10}} placeholder='Enter your age'/>
+              </ul>
+
+              <Link
                 style={{
-                  color: '#FFFFFF',
+                  backgroundColor: '#E3FFA8',
+                  borderRadius: 12,
+                  width: 192,
+                  padding: 8,
                   fontSize: 14,
-                  fontWeight: 400,
-                  lineHeight: 20,
                   fontFamily: 'Poppins',
                 }}
+                to={'/body-parameters'}
               >
-                <SelectGenderInput type="radio" name="goal" value="Lose Fat" />
-                Male
-              </label>
-
-              <label
-                style={{
-                  color: '#FFFFFF',
-                  fontSize: 14,
-                  fontWeight: 400,
-                  lineHeight: 20,
-                  fontFamily: 'Poppins',
-                }}
-              >
-                <SelectGenderInput type="radio" name="goal" value="Maintain" />
-                Female
-              </label>
-
-              <label style={{ color: 'white' }}>
-                {' '}
-                Your age
-                <SelectGenderInput />
-              </label>
-              <Link style={{backgroundColor: '#E3FFA8', borderRadius: 12, width: 192, padding: 8, fontSize: 14, fontFamily: 'Poppins'}} to={'/body-parameters'}>Next</Link>
+                Next
+              </Link>
               <SelectGenderBackButton location={locationRef.current} />
             </SelectGenderForm>
           </div>

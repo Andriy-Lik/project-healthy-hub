@@ -31,6 +31,7 @@ export const YourActivityText = styled.p `
     font-size: 22px;
     margin-top: 16px;
     line-height: 32px;
+    margin-bottom: 24px;
 `;
 
 export const YourActivityButton = styled.button ` 
@@ -51,7 +52,6 @@ export const YourActivityForm = styled.form `
 export const YourActivityInput = styled.input ` 
     color: #FFFFFF;
     margin-bottom: 16px;
-    margin-left: 10px;
 `
 
 export const YourActivityBackButton = styled.button ` 

@@ -11,10 +11,8 @@ export const GoalLogo = styled.img `
 `;
 
 export const GoalContainer = styled.div ` 
-    max-width: 444px;
     margin-top: 120px;
     margin-left: 104px;
-    display: block;
 `;
 
 export const GoalHeadline = styled.h1 ` 
@@ -30,6 +28,7 @@ export const GoalText = styled.p `
     font-weight: 400;
     font-size: 22px;
     margin-top: 16px;
+    margin-bottom: 20px;
     line-height: 32px;
 `;
 
@@ -42,6 +41,14 @@ export const GoalButton = styled.button `
     font-family: Poppins;
 `;
 
+export const GoalList = styled.ul `
+    width: 254px;
+`
+
+export const GoalOption = styled.li `
+    color: 'white';
+`;
+
 
 
 export const GoalForm = styled.form ` 
@@ -51,6 +58,6 @@ export const GoalForm = styled.form `
 export const GoalInput = styled.input ` 
     color: #FFFFFF;
     margin-bottom: 16px;
-    margin-left: 10px;
     background-color: #E3FFA8;
+    margin-right: 8px;
 `
