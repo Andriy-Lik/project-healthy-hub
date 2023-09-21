@@ -50,8 +50,10 @@ export const SelectGenderForm = styled.form `
 
 export const SelectGenderInput = styled.input ` 
     color: #FFFFFF;
-    margin-bottom: 16px;
-    margin-left: 10px;
+    border: 1px solid #E3FFA8;
+    background-color: #0F0F0F;
+    border-radius: 12px;
+    margin-bottom: 24px;
 `
 
 export const SelectGenderBackButton = styled.button ` 

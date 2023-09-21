@@ -7,6 +7,8 @@ import {
   GoalHeadline,
   GoalText,
   GoalForm,
+  GoalList,
+  GoalOption,
   GoalButton,
   GoalInput,
 } from './YourGoalPage.styled';
@@ -20,48 +22,44 @@ const YourGoalPage = () => {
         <GoalContainer>
           <GoalHeadline>Your goal</GoalHeadline>
           <GoalText>Choose a goal so that we can help you effectively</GoalText>
-          <div style={{ width: 254 }}>
+          <div>
             <GoalForm>
-              <label
+              <GoalList>
+                <div>
+                  <GoalOption style={{color: '#FFFF', marginBottom: 20}}>
+                    <GoalInput type="radio" name="goal" value="Lose Fat" />
+                    Lose Fat
+                  </GoalOption>
+                </div>
+
+                <div>
+                  <GoalOption style={{color: '#FFFF', marginBottom: 20}}>
+                    <GoalInput type="radio" name="goal" value="Maintain" />
+                    Maintain
+                  </GoalOption>
+                </div>
+
+                <div>
+                  <GoalOption style={{color: '#FFFF', marginBottom: 20}}>
+                    <GoalInput type="radio" name="goal" value="Gain Muscle" />
+                    Gain Muscles
+                  </GoalOption>
+                </div>
+              </GoalList>
+
+              <Link
                 style={{
-                  color: '#FFFFFF',
+                  backgroundColor: '#E3FFA8',
+                  borderRadius: 12,
+                  width: 192,
+                  padding: 8,
                   fontSize: 14,
-                  fontWeight: 400,
-                  lineHeight: 20,
                   fontFamily: 'Poppins',
                 }}
+                to={'/select-gender'}
               >
-                <GoalInput type="radio" name="goal" value="Lose Fat" />
-                Lose Fat
-              </label>
-
-              <label
-                style={{
-                  color: '#FFFFFF',
-                  fontSize: 14,
-                  fontWeight: 400,
-                  lineHeight: 20,
-                  fontFamily: 'Poppins',
-                }}
-              >
-                <GoalInput type="radio" name="goal" value="Maintain" />
-                Maintain
-              </label>
-
-              <label
-                style={{
-                  color: '#FFFFFF',
-                  fontSize: 14,
-                  fontWeight: 400,
-                  lineHeight: 20,
-                  fontFamily: 'Poppins',
-                }}
-              >
-                <GoalInput type="radio" name="goal" value="Gain Muscle" />
-                Gain Muscle
-              </label>
-
-              <Link style={{backgroundColor: '#E3FFA8', borderRadius: 12, width: 192, padding: 8, fontSize: 14, fontFamily: 'Poppins'}} to={'/select-gender'}>Next</Link>
+                Next
+              </Link>
             </GoalForm>
           </div>
         </GoalContainer>
