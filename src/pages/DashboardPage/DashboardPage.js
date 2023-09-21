@@ -74,7 +74,7 @@ const DashboardPage = () => {
               </Modal>
             )}
           </MainHeaderBlock>
-          <SecondHeader>November</SecondHeader>
+          <SecondHeader>{showYear ? '2023' : 'November'}</SecondHeader>
         </HeaderBlock>
         <LineChartBlock>
           <ChartGrid>

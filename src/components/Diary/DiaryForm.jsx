@@ -1,7 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import edit from '../../pages/DiaryPage/images/edit-2.svg'
 
 import {
+    Input,
     Input1,
     Input2,
     SubmitButton,
@@ -9,36 +10,14 @@ import {
     EditButton,
   } from './DiaryForm.styled';
 
-// const useLocalStorage = (key, defaultValue) => {
-//   const [state, setState] = useState(() => {
-//     return JSON.parse(window.localStorage.getItem(key)) ?? defaultValue;
-//   });
 
-//   useEffect(() => {
-//     window.localStorage.setItem(key, JSON.stringify(state));
-//   }, [key, state]);
-
-//   return [state, setState]
-// }
-
-export default function Form({onSubmit, type}) {
-   const [name, setName] = useState('');
-   const [carbon, setCarbon] = useState(0);
-   const [protein, setProtein] = useState(0);
-   const [fat, setFat] = useState(0);
-   const [showButton, setShowButton] = useState(true);
-
-
-  //  useEffect(() => {
-  //   const food = localStorage.getItem('food');
-  //   const parsedFood = JSON.parse(food);
-
-  //   parsedFood ? setFood(parsedFood) : setFood([]);
-  // }, []);
-
-  useEffect(() => {
-    localStorage.setItem('name', JSON.stringify(name));
-  }, [name]);
+export default function Form({onSubmit, type, value, onAddElement}) {
+   const [id] = useState(value?.id)
+   const [name, setName] = useState(value?.name)
+   const [carbon, setCarbon] = useState(value?.carbon)
+   const [protein, setProtein] = useState(value?.protein)
+   const [fat, setFat] = useState(value?.fat)
+   const [isFormActive, setFormActive] = useState(value?.isEditable);
 
 
   const handleName = e => {
@@ -60,17 +39,54 @@ export default function Form({onSubmit, type}) {
   const handleSubmit = e => {
     e.preventDefault();
     onSubmit(name, carbon, protein, fat, type);
-    setShowButton(!showButton);
+    setFormActive(!isFormActive);
+    onAddElement(true);
+
+    const food = {
+      id: value.id,
+      name: name,
+      carbon: carbon,
+      protein: protein,
+      fat: fat,
+      isEditable: false,
+    }
+
+    const foodTypeItem = window.localStorage.getItem(type);
+    if (foodTypeItem) {
+       const foodType = JSON.parse(foodTypeItem);
+
+       let foundFood = foodType.find((foodItem) => foodItem.id === food.id);
+       if (foundFood) {
+        foundFood.name = food.name;
+        foundFood.carbon = food.carbon;
+        foundFood.protein = food.protein;
+        foundFood.fat = food.fat;
+
+       } else {
+        foodType.push(food);
+       }
+       window.localStorage.setItem(type, JSON.stringify(foodType));
+    } else {
+      const foodType = [food];
+      window.localStorage.setItem(type, JSON.stringify(foodType));
+    };
   };
 
    return (
     <form >
+    <label>
+      <Input
+        type="number"
+        value={id}
+        disabled={true}/>
+    </label>  
     <label>
       <Input1
         onChange={handleName}
         type="text"
         name="name"
         value={name}
+        disabled={!isFormActive}
       />
     </label>
     <label>
@@ -78,6 +94,7 @@ export default function Form({onSubmit, type}) {
         onChange={handleCurbon}
         type="number"
         value={carbon}
+        disabled={!isFormActive}
       />
     </label>
     <label>
@@ -85,6 +102,7 @@ export default function Form({onSubmit, type}) {
         onChange={handleProtein}
         type="number"
         value={protein}
+        disabled={!isFormActive}
       />
     </label>
     <label>
@@ -92,10 +110,10 @@ export default function Form({onSubmit, type}) {
         onChange={handleFat}
         type="number"
         value={fat}
-      />
+        disabled={!isFormActive}/>
     </label>
-    {showButton && <SubmitButton type="submit" onClick={handleSubmit}>✅</SubmitButton>}
-    {!showButton && <EditButton><Img src={edit} alt="Edit" />Edit</EditButton>}
+    {isFormActive && <SubmitButton type="submit" onClick={handleSubmit}>✅</SubmitButton>}
+    {!isFormActive && <EditButton  onClick={() => setFormActive(true)}><Img src={edit} alt="Edit"/>Edit</EditButton>}
   </form>
    )
 }

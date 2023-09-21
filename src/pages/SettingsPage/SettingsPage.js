@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import {
   SettingsPageSection,
   SettingsPageContainer,
-  TopProfileSetting,
+  // TopProfileSetting,
   H1,
   ButtonContainer,
   CancelButton,
