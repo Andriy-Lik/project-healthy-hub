@@ -1,39 +1,141 @@
 import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
 
-export const DushboardContainer = styled.div`
-  width: 0 auto;
-  padding: 0 34px;
-  background-color: #050505;
+export const DashboardSection = styled.section`
+  background-color: ${props => props.theme.colors.black};
+  color: ${props => props.theme.colors.white};
+  font-family: ${props => props.theme.fontFamily.poppins};
+
+  @media screen and (${props => props.theme.mq.mobile}) {
+    padding-top: 16px;
+    padding-bottom: 60px;
+  }
+  @media screen and (${props => props.theme.mq.tablet}) {
+    padding-top: 24px;
+  }
+  @media screen and (${props => props.theme.mq.desktop}) {
+    padding-top: 20px;
+    padding-bottom: 40px;
+  }
 `;
 
-export const HeaderBlock = styled.div`
-  width: auto;
+export const DashboardContainer = styled.div`
+  margin: 0 auto;
+  @media screen and (${props => props.theme.mq.mobile}) {
+    width: 320px;
+    padding: 0 10px;
+  }
+  @media screen and (${props => props.theme.mq.tablet}) {
+    width: 834px;
+    padding: 0 27px;
+  }
+  @media screen and (${props => props.theme.mq.desktop}) {
+    width: 1440px;
+    padding: 0 34px;
+  }
+`;
+
+export const BackLink = styled(NavLink)`
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: #ffffff;
+  @media screen and (${props => props.theme.mq.mobile}) {
+    margin-right: 8px;
+  }
+  @media screen and (${props => props.theme.mq.tablet}) {
+    margin-right: 12px;
+  }
+`;
+
+export const ArrowReturn = styled.img`
+  @media screen and (${props => props.theme.mq.mobile}) {
+    width: 16px;
+  }
+  @media screen and (${props => props.theme.mq.tablet}) {
+    width: 24px;
+  }
+`;
+
+export const MainHeaderBlock = styled.div`
+  display: flex;
+  flex-direction: row;
 `;
 
 export const MainHeader = styled.h1`
-  margin: 0;
-  padding-top: 20px;
-  font-weight: 500;
-  font-size: 30px;
-  line-height: 36px;
+  font-weight: ${props => props.theme.fontWeights.medium};
+
+  @media screen and (${props => props.theme.mq.mobile}) {
+    font-size: 24px;
+    line-height: 1.25;
+  }
+  @media screen and (${props => props.theme.mq.tablet}) {
+    font-size: ${props => props.theme.fontSizes.xl};
+    line-height: 1.2;
+  }
+`;
+
+export const ChartsTitle = styled.h2`
+  font-weight: ${p => p.theme.fontWeights.regular};
+  @media screen and (${props => props.theme.mq.mobile}) {
+    font-size: ${props => props.theme.fontSizes.xs};
+    line-height: 1.44;
+    margin-right: 58px;
+  }
+  @media screen and (${props => props.theme.mq.tablet}) {
+    font-size: ${props => props.theme.fontSizes.xs};
+    line-height: 1.45;
+    margin-right: 40px;
+  }
+`;
+
+export const ChartsBlock = styled.ul`
+  margin-top: 20px;
+  display: flex;
+  @media screen and (${props => props.theme.mq.mobile}) {
+    flex-direction: column;
+  }
+  @media screen and (${props => props.theme.mq.tablet}) {
+  }
+  @media screen and (${props => props.theme.mq.desktop}) {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+`;
+
+export const Charts = styled.div`
+  background-color: ${props => props.theme.colors.black2};
+  border-radius: ${props => props.theme.radii.normal};
+  height: 382px;
+  @media screen and (${props => props.theme.mq.mobile}) {
+  }
+  @media screen and (${props => props.theme.mq.tablet}) {
+    width: 780px;
+    padding: 25px 31px 24px 14px;
+  }
+  @media screen and (${props => props.theme.mq.desktop}) {
+    width: 676px;
+    padding: 25px 20px 24px 14px;
+  }
 `;
 
 
 export const Li = styled.li`
-  list-style: none;
+  ${'' /* list-style: none;
   &:not(:last-child) {
     margin-right: 20px;
-  }
+  } */}
 `;
 
 export const ChartsContainer = styled.div`
   display: flex;
+  @media screen and (${props => props.theme.mq.mobile}) {
+  }
+  @media screen and (${props => props.theme.mq.tablet}) {
+  justify-content: space-around;
+  align-items: center;
+  }
+  @media screen and (${props => props.theme.mq.desktop}) {
   justify-content: center;
   align-items: center;
+  }
 `;
 
 export const ChartsHeader = styled.h2`
@@ -45,55 +147,28 @@ export const ChartsHeader = styled.h2`
   margin: 0 40px 0 0;
 `;
 
-export const ChartsTitle = styled.p`
-  width: 60px;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 20px;
-  color: #ffffff;
-  margin: 0 8px 0 0;
-`;
 
-export const ChartsTitle1 = styled.p`
-  width: 130px;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 20px;
-  color: #ffffff;
-  margin: 0 8px 0 0;
-`;
-
-
-export const ChartsBlock = styled.ul`
-  display: flex;
-  justify-content: center;
-  flex-direction: row;
-  flex-wrap: wrap;
-  margin-bottom: 20px;
-`;
-
-export const Charts = styled.div`
-  width: 676px;
-  height: 382px;
-  padding: 25px 20px 24px 14px;
-  background-color: #0f0f0f;
-  border-radius: 12px;
-  margin-top: 6px;
-`;
 
 export const List = styled.div`
   display: flex;
+  flex-direction: column;
+  align-items: center;
   font-weight: 400;
   font-size: 14px;
   line-height: 20px;
   color: #ffffff;
-  margin: 0 8px 0 0;
+  margin: 0;
+  padding: 0;
 `;
 
 export const AddFoodButton = styled.button`
   border: none;
+  font: Poppins;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
   background-color: #0f0f0f;
-  color: #ffffff;
+  color: #E3FFA8;
   cursor: pointer;
 `;
 

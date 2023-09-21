@@ -47,9 +47,20 @@ export const TopProfileSetting = styled.div`
 `;
 
 export const H1 = styled.h1`
-  font-size: ${props => props.theme.fontSizes.xl};
   font-weight: ${props => props.theme.fontWeights.medium};
-  line-height: 36px;
+
+  @media screen and (${props => props.theme.mq.mobile}) {
+    font-size: ${props => props.theme.fontSizes.l};
+    line-height: 30px;
+  }
+  @media screen and (${props => props.theme.mq.tablet}) {
+    font-size: ${props => props.theme.fontSizes.xl};
+    line-height: 36px;
+  }
+  @media screen and (${props => props.theme.mq.desktop}) {
+    font-size: ${props => props.theme.fontSizes.xl};
+    line-height: 36px;
+  }
 `;
 
 export const ButtonContainer = styled.div`
@@ -71,9 +82,11 @@ export const CancelButton = styled.button`
   font-size: ${props => props.theme.fontSizes.xs};
   font-weight: ${props => props.theme.fontWeights.regular};
   line-height: 20px;
+
   width: 192px;
   padding: 8px 12px 8px 0;
   border: none;
+  cursor: pointer;
 `;
 
 export const SaveButton = styled.button`
@@ -82,9 +95,11 @@ export const SaveButton = styled.button`
   font-size: ${props => props.theme.fontSizes.xs};
   font-weight: ${props => props.theme.fontWeights.medium};
   line-height: 20px;
+
   width: 212px;
   border-radius: ${props => props.theme.radii.normal};
   padding: 8px;
+  cursor: pointer;
 `;
 
 export const MiddleProfileSetting = styled.div`
@@ -100,7 +115,6 @@ export const MiddleProfileSetting = styled.div`
   }
   @media screen and (${props => props.theme.mq.desktop}) {
     flex-direction: row;
-    /* padding-left: 150px; */
     order: 3;
   }
 `;
@@ -130,6 +144,7 @@ export const Forms = styled.div`
     margin: 0 auto;
   }
   @media screen and (${props => props.theme.mq.tablet}) {
+    width: 491px;
     margin: 0 auto;
   }
   @media screen and (${props => props.theme.mq.desktop}) {
@@ -175,15 +190,15 @@ export const Input = styled.input`
   font-size: ${props => props.theme.fontSizes.xs};
   font-weight: ${props => props.theme.fontWeights.regular};
   line-height: 20px;
-  background-color: #050505;
-  color: #ffffff;
+  background-color: ${props => props.theme.colors.black};
+  color: ${props => props.theme.colors.white};
 
   padding: 8px 10px 8px 10px;
   border-radius: ${props => props.theme.radii.normal};
   border: 1px solid rgba(182, 182, 182, 1);
 
   &:hover {
-    border-color: #e3ffa8;
+    border-color: ${props => props.theme.colors.greenLite};
   }
 
   @media screen and (${props => props.theme.mq.mobile}) {
@@ -202,97 +217,9 @@ export const GenderLabelRadio = styled.div`
   gap: 16px;
 `;
 
-export const LabelWithRadio = styled.label`
-  display: flex;
-  align-items: center;
-`;
-
-export const RadioInput = styled.input`
-  display: none;
-  margin-right: 8px;
-
-  &:checked + span::after {
-    background-color: #e3ffa8; /* Змініть колір, як вам потрібно */
-  }
-`;
-
-export const RadioMark = styled.span`
-  min-width: 12px;
-  height: 12px;
-  border: 1px solid rgba(182, 182, 182, 1);
-  border-radius: 50%;
-  margin-right: 10px;
-  position: relative;
-
-  &:hover {
-    border-color: #e3ffa8;
-  }
-
-  &::after {
-    content: '';
-    width: 6px;
-    height: 6px;
-    background-color: rgba(227, 255, 168, 1);
-    border-radius: 50%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-`;
-
-// export const LabelWithRadio = styled.label`
-//   display: flex;
-//   align-items: center;
-// `;
-
-// export const RadioInput = styled.input`
-//   display: none;
-//   margin-right: 8px;
-// `;
-
-// export const RadioMark = styled.span`
-//   width: 12px;
-//   height: 12px;
-//   border: 1px solid rgba(182, 182, 182, 1);
-//   border-radius: 50%;
-//   margin-right: 10px;
-//   position: relative;
-
-//   &:hover {
-//     border-color: #e3ffa8;
-//   }
-
-//   &::after {
-//     content: '';
-//     width: 6px;
-//     height: 6px;
-//     background-color: rgba(227, 255, 168, 1);
-//     border-radius: 50%;
-//     position: absolute;
-//     top: 50%;
-//     left: 50%;
-//     transform: translate(-50%, -50%);
-//   }
-// `;
-
-// export const CheckedRadioMark = styled(RadioMark)`
-//   &:after {
-//     content: '';
-//     width: 6px;
-//     height: 6px;
-//     background-color: rgba(227, 255, 168, 1);
-//     border-radius: 50%;
-//     position: absolute;
-//     top: 50%;
-//     left: 50%;
-//     transform: translate(-50%, -50%);
-//   }
-// `;
-
 export const H2 = styled.h2`
-  font-size: 14px;
-  font-weight: 500;
+  font-size: ${props => props.theme.fontSizes.xs};
+  font-weight: ${props => props.theme.fontWeights.medium};
   line-height: 20px;
   margin-bottom: 12px;
 `;
