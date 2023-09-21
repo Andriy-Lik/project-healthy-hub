@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import edit from '../../pages/DiaryPage/images/edit-2.svg'
 
 import {
@@ -9,11 +9,10 @@ import {
     Img,
     EditButton,
   } from './DiaryForm.styled';
-import { isEditable } from '@testing-library/user-event/dist/utils';
 
 
 export default function Form({onSubmit, type, value, onAddElement}) {
-   const [id, setId] = useState(value?.id)
+   const [id] = useState(value?.id)
    const [name, setName] = useState(value?.name)
    const [carbon, setCarbon] = useState(value?.carbon)
    const [protein, setProtein] = useState(value?.protein)

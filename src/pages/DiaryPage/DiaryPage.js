@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect, useRef } from 'react';
+import { useState, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import Form from '../../components/Diary/DiaryForm';
 import breakfast from './images/Breakfast image.png';
@@ -34,10 +34,10 @@ const DiaryPage = () => {
   const dinnerItem = window.localStorage.getItem('dinner') ?? '[]';
   const lunchItem = window.localStorage.getItem('lunch') ?? '[]';
   const snackItem = window.localStorage.getItem('snack') ?? '[]';
-  const [breakfastFood, setBreakfastFood] = useState(JSON.parse(breakfastItem));
-  const [dinnerFood, setDinnerFood] = useState(JSON.parse(dinnerItem));
-  const [lunchFood, setLunchFood] = useState(JSON.parse(lunchItem));
-  const [snackFood, setSnackFood] = useState(JSON.parse(snackItem));
+  const [breakfastFood] = useState(JSON.parse(breakfastItem));
+  const [dinnerFood] = useState(JSON.parse(dinnerItem));
+  const [lunchFood] = useState(JSON.parse(lunchItem));
+  const [snackFood] = useState(JSON.parse(snackItem));
   const [addFoodButton, setAddFoodButton] = useState(true);
   const [addFoodButtonDinner, setAddFoodButtonDinner] = useState(true);
   const [addFoodButtonLunch, setAddFoodButtonLunch] = useState(true);
