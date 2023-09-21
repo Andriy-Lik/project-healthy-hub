@@ -6,14 +6,14 @@ import {
   PerksContainer,
   WelcomeHeadline,
   WelcomeText,
-  SignInActivated,
-  SignUpInactive,
+  // SignInActivated,
+  // SignUpInactive,
   WelcomePagePerksList,
   Perks,
 } from './WelcomePage.styled';
 import welcomeLogoPic from '../../images/WelcomeLogoPic.png';
 import bullets from '../../images/welcome-page-perks-bullets.png';
-import SignInPage from 'pages/SignInPage';
+// import SignInPage from 'pages/SignInPage';
 
 const WelcomePage = () => {
   return (

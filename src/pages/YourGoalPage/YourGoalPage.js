@@ -7,7 +7,7 @@ import {
   GoalHeadline,
   GoalText,
   GoalForm,
-  GoalButton,
+  // GoalButton,
   GoalInput,
 } from './YourGoalPage.styled';
 import GoalLogoPic from '../../images/YourGoalLogo.png';

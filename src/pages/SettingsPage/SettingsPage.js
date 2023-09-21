@@ -3,7 +3,7 @@ import React from 'react';
 import {
   SettingsPageSection,
   SettingsPageContainer,
-  TopProfileSetting,
+  // TopProfileSetting,
   H1,
   ButtonContainer,
   CancelButton,
@@ -19,7 +19,7 @@ import {
   LabelWithRadio,
   RadioInput,
   RadioMark,
-  CheckedRadioMark,
+  // CheckedRadioMark,
   H2,
 } from './SettingsPage.style';
 
