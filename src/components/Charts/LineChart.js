@@ -70,39 +70,51 @@ const beckendArrayYear = [
   { data: 'December', water: '1900', calories: '1650' },
 ];
 
-export const options = {
-  responsive: true,
-  scales: {
-    x: {
-      grid: {
-        display: true,
-        color: '#292928',
-      },
-    },
-    y: {
-      beginAtZero: true,
-      min: 0,
-      max: 3000,
-      ticks: {
-        stepSize: 1000,
-      },
-      grid: {
-        display: true,
-        color: '#292928',
-      },
-    },
-  },
-  plugins: {
-    legend: {
-      display: false,
-    },
-  },
-};
+// export const options = {
+//   responsive: true,
+//   scales: {
+//     x: {
+//       ticks: {
+//         align: 'center',
+//       },
+//       // position: 'right',
+//       grid: {
+//         display: true,
+//         color: '#292928',
+//       },
+//     },
+//     y: {
+//       beginAtZero: true,
+//       min: 0,
+//       max: 3000,
+//       ticks: {
+//         stepSize: 1000,
+//         callback: function (value, index, ticks) {
+//           return String(value).slice(0, 1) + 'L';
+//         },
+//       },
+//       grid: {
+//         display: true,
+//         color: '#292928',
+//       },
+//     },
+//   },
+//   plugins: {
+//     legend: {
+//       display: false,
+//     },
+//   },
+// };
 
 const LineChart = ({ dataFormat, type }) => {
   const [waterData, setWaterData] = useState([]);
   const [calData, setCalData] = useState([]);
   const [time, setTime] = useState([]);
+
+  let caption = 'K';
+  if (type === 'water') {
+    caption = 'L';
+  }
 
   useEffect(() => {
     if (dataFormat) {
@@ -125,27 +137,81 @@ const LineChart = ({ dataFormat, type }) => {
     }
   }, [dataFormat, type]);
 
+  const options = {
+    responsive: true,
+    // layout: {
+    //   autoPadding: false,
+    // },
+    scales: {
+      x: {
+        ticks: {
+          color: '#B6B6B6',
+        },
+        grid: {
+          display: true,
+          color: '#292928',
+          offset: true,
+        },
+      },
+      y: {
+        beginAtZero: true,
+        min: 0,
+        max: 3000,
+        ticks: {
+          major: {
+            enabled: true,
+          },
+          color: '#B6B6B6',
+          stepSize: 1000,
+          callback: function (value, index, ticks) {
+            if (String(value).length === 1) {
+              return value;
+            }
+            return String(value).slice(0, 1) + `${caption}`;
+          },
+        },
+        border: {
+          display: false,
+        },
+        grid: {
+          display: true,
+          color: '#292928',
+        },
+      },
+    },
+    plugins: {
+      legend: {
+        display: false,
+      },
+    },
+  };
+
   const water = {
     labels: time,
     datasets: [
       {
         data: waterData,
+        label: 'mililiters',
         borderColor: '#E3FFA8',
         borderWidth: 1,
         pointRadius: 0,
         tension: 0.5,
+        drawActiveElementsOnTop: true,
       },
     ],
   };
+
   const cal = {
     labels: time,
     datasets: [
       {
         data: calData,
+        label: 'calories',
         borderColor: '#E3FFA8',
         borderWidth: 1,
         pointRadius: 0,
         tension: 0.5,
+        drawActiveElementsOnTop: true,
       },
     ],
   };

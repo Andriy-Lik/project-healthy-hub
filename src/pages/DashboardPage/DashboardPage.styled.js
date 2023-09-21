@@ -187,11 +187,16 @@ export const LineChartBlock = styled.div`
 
 export const ChartGrid = styled.div`
   @media screen and (${props => props.theme.mq.mobile}) {
+    display: flex;
+    flex-direction: column;
+    overflow-x: scroll;
     &:not(:last-child) {
       margin-bottom: 27px;
     }
   }
   @media screen and (${props => props.theme.mq.tablet}) {
+    display: imline-block;
+    overflow-x: hidden;
     &:not(:last-child) {
       margin-bottom: 40px;
     }
@@ -202,24 +207,41 @@ export const Chart = styled.div`
   background-color: ${props => props.theme.colors.black2};
   border-radius: ${props => props.theme.radii.normal};
   height: 382px;
+
   @media screen and (${props => props.theme.mq.mobile}) {
+    width: 676px;
+    padding: 25px 20px 24px 14px;
   }
   @media screen and (${props => props.theme.mq.tablet}) {
     width: 780px;
     padding: 25px 31px 24px 14px;
+
+    & canvas {
+      min-width: 750px;
+      min-height: auto;
+      margin: 0 auto;
+    }
   }
   @media screen and (${props => props.theme.mq.desktop}) {
     width: 676px;
     padding: 25px 20px 24px 14px;
+    & canvas {
+      min-width: 640px;
+      min-height: auto;
+    }
   }
 `;
 
 export const ScaleChartBlock = styled.div`
   @media screen and (${props => props.theme.mq.mobile}) {
+    display: flex;
+    flex-direction: column;
+    overflow-x: scroll;
     margin-top: 27px;
   }
   @media screen and (${props => props.theme.mq.tablet}) {
     margin-top: 40px;
+    overflow-x: hidden;
   }
   @media screen and (${props => props.theme.mq.desktop}) {
     margin-top: 20px;
@@ -232,6 +254,8 @@ export const Scale = styled.div`
   height: 110px;
 
   @media screen and (${props => props.theme.mq.mobile}) {
+    width: 1372px;
+    padding: 24px 24px 36px;
   }
   @media screen and (${props => props.theme.mq.tablet}) {
     width: 780px;
