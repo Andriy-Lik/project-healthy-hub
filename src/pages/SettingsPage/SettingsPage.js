@@ -40,7 +40,7 @@ const SettingsPage = () => {
 
   useEffect(() => {
     setPrevFormData(formData);
-  }, []);
+  }, [formData]);
 
   const handleRadioChange = (name, value) => {
     setFormData({
