@@ -2,9 +2,10 @@ import {
   Container,
   HeaderMainPage,
   TitlePage,
-  Link,
+  LinkToDashboard,
   TrackerList,
   Tarker,
+  Wrapper,
 } from './MainPage.styled';
 
 import DailyGoal from 'components/DailyGoal';
@@ -23,7 +24,7 @@ const MainPage = () => {
       {/* Заговолок */}
       <HeaderMainPage>
         <TitlePage>Today</TitlePage>
-        <Link>
+        <LinkToDashboard to="/dashboard">
           <p>On the way to the goal</p>
           <img
             srcSet={`${img1} 1x, ${img2} 2x`}
@@ -32,7 +33,7 @@ const MainPage = () => {
             src={img1}
             alt="Arrow right"
           />
-        </Link>
+        </LinkToDashboard>
       </HeaderMainPage>
       {/* Блоки, що показують трекери прийому їжі та води (Daily Goal, Water, Food)  */}
       <TrackerList>
@@ -50,8 +51,12 @@ const MainPage = () => {
         </Tarker>
       </TrackerList>
 
-      <DiaryOnMain />
-      <RecommendedFoodOnMain />
+      <Wrapper>
+        {/* блок щоденник */}
+        <DiaryOnMain />
+        {/* болк рекомендована їжа */}
+        <RecommendedFoodOnMain />
+      </Wrapper>
     </Container>
   );
 };

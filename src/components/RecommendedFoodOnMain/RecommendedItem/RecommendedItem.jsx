@@ -11,7 +11,7 @@ export const RecommendedItem = ({ info }) => {
 
   return (
     <Card>
-      <img src={image} alt="name" />
+      <img src={image} alt="name" width={46} height={46} />
       <InfoWrap>
         <Title>{name}</Title>
         <ValueWrap>

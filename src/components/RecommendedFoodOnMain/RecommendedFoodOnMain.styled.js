@@ -6,14 +6,13 @@ export const RecommendedFoodSection = styled.div`
 
   @media screen and (min-width: 834px) {
     display: block;
-    width: 780px;
-    margin-top: 20px;
+    width: 100%;
+    /* margin-top: 20px; */
   }
 
   @media screen and (min-width: 1440px) {
     display: inline-flex;
     flex-direction: column;
-    width: 676px;
   }
 `;
 
@@ -29,13 +28,9 @@ export const Title = styled.h2`
 
 export const FoodCardsWrap = styled.div`
   display: flex;
-  flex-direction: column;
   gap: 20px;
-
-  @media screen and (min-width: 834px) {
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
+  flex-direction: row;
+  flex-wrap: wrap;
 `;
 
 export const SeeMoreButton = styled(Link)`

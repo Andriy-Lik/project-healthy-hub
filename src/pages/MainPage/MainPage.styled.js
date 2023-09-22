@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const Container = styled.main`
   background-color: ${props => props.theme.colors.black};
@@ -41,7 +42,7 @@ export const TitlePage = styled.h1`
   }
 `;
 
-export const Link = styled.div`
+export const LinkToDashboard = styled(Link)`
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -64,6 +65,7 @@ export const TrackerList = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 20px;
+  margin-bottom: 20px;
 
   @media screen and (${props => props.theme.mq.tablet}) {
     flex-wrap: wrap;
@@ -86,5 +88,16 @@ export const Tarker = styled.li`
     @media screen and (${props => props.theme.mq.desktop}) {
       flex-basis: calc((100% - 40px) / 3);
     }
+  }
+`;
+
+export const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  @media screen and (${props => props.theme.mq.desktop}) {
+    flex-direction: row;
+    flex-basis: calc((100% - 20px) / 2);
   }
 `;
