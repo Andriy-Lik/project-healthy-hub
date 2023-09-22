@@ -67,7 +67,7 @@ export default function Header() {
 
   // const isLoggedIn = useSelector(selectIsLoggedIn)
   // console.log(isLoggedIn)
-  const isLoggedIn = true
+  const isLoggedIn = false
 
 
   return isLoggedIn ? (
