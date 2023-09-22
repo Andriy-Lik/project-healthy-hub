@@ -1,4 +1,8 @@
 import { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+
+import { selectStatsInfo } from '../../redux/Statistics/statisticsSelectors';
+import { getStats } from '../../redux/Statistics/statisticsOperations';
 
 import {
   Chart as ChartJS,
@@ -70,51 +74,24 @@ const beckendArrayYear = [
   { data: 'December', water: '1900', calories: '1650' },
 ];
 
-// export const options = {
-//   responsive: true,
-//   scales: {
-//     x: {
-//       ticks: {
-//         align: 'center',
-//       },
-//       // position: 'right',
-//       grid: {
-//         display: true,
-//         color: '#292928',
-//       },
-//     },
-//     y: {
-//       beginAtZero: true,
-//       min: 0,
-//       max: 3000,
-//       ticks: {
-//         stepSize: 1000,
-//         callback: function (value, index, ticks) {
-//           return String(value).slice(0, 1) + 'L';
-//         },
-//       },
-//       grid: {
-//         display: true,
-//         color: '#292928',
-//       },
-//     },
-//   },
-//   plugins: {
-//     legend: {
-//       display: false,
-//     },
-//   },
-// };
-
 const LineChart = ({ dataFormat, type }) => {
   const [waterData, setWaterData] = useState([]);
   const [calData, setCalData] = useState([]);
   const [time, setTime] = useState([]);
 
-  let caption = 'K';
-  if (type === 'water') {
-    caption = 'L';
-  }
+  const dispatch = useDispatch();
+  const info = useSelector(selectStatsInfo);
+  const waterInfo = info.water;
+
+  let date = new Date();
+  const currentMonth = date.getMonth() + 1;
+
+  useEffect(() => {
+    dispatch(getStats());
+  }, [dispatch]);
+
+  const datesInCurrentMonth = [];
+  const waterConsumptionInCurrentMonth = [];
 
   useEffect(() => {
     if (dataFormat) {
@@ -137,11 +114,23 @@ const LineChart = ({ dataFormat, type }) => {
     }
   }, [dataFormat, type]);
 
+  if (!waterInfo) {
+    return console.log('думаємо');
+  }
+
+  for (const entry of waterInfo) {
+    const entryDate = new Date(entry.createdAt);
+    const entryMonth = entryDate.getMonth() + 1;
+
+    if (entryMonth === currentMonth) {
+      datesInCurrentMonth.push(entryDate.getDate());
+      waterConsumptionInCurrentMonth.push(entry.water);
+    }
+  }
+
+  let caption = type === 'water' ? 'L' : 'K';
   const options = {
     responsive: true,
-    // layout: {
-    //   autoPadding: false,
-    // },
     scales: {
       x: {
         ticks: {
@@ -186,11 +175,15 @@ const LineChart = ({ dataFormat, type }) => {
     },
   };
 
+  console.log(waterData);
+
   const water = {
-    labels: time,
+    labels: datesInCurrentMonth,
+    // labels: time,
     datasets: [
       {
-        data: waterData,
+        data: waterConsumptionInCurrentMonth,
+        // data: waterData,
         label: 'mililiters',
         borderColor: '#E3FFA8',
         borderWidth: 1,
