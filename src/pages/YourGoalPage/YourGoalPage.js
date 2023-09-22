@@ -9,7 +9,7 @@ import {
   GoalList,
   GoalOption,
   GoalButton,
-  GoalInput,
+  // GoalInput,
 } from './YourGoalPage.styled';
 import CustomRadioButton from 'components/CustomRadioButton/CustomRadioButton';
 import GoalLogoPic from '../../images/YourGoalLogo.png';
