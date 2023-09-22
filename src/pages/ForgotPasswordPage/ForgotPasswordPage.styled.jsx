@@ -1,13 +1,27 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export const BackgroundContainer = styled.div `
     background-color: #050505;
     display: flex;
+
+    @media (min-width: 320px) and (max-width: 833px)  {
+        display: block;
+      }
+    @media (min-width: 834px) and (max-width: 1439px)  {
+        display: block;
+      }
 `;
 
 export const ForgotPasswordLogo = styled.img `
     margin-left: 150px;
     margin-top: 40px;
+    @media (min-width: 320px) and (max-width: 833px)  {
+        width: 300px;
+      }
+    @media (min-width: 834px) and (max-width: 1439px)  {
+        width: 380px;
+      }
 `;
 
 export const ForgotPasswordContainer = styled.div ` 
@@ -79,7 +93,7 @@ export const SignInSuggestion = styled.p `
     color: #B6B6B6;
 `;
 
-export const SignInLink = styled.button `
+export const SignInLink = styled(Link) `
     margin-left: 16px;
     line-height: 20px;
     font-weight: 500;

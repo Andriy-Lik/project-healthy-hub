@@ -23,6 +23,10 @@ const SelectGenderPage = () => {
   return (
     <div>
       <BackgroundContainer>
+      <style>
+          @import
+          url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Roboto&display=swap');
+        </style>
         <SelectGenderLogo src={SelectGenderLogoPic} alt="Select Gender Logo" />
         <SelectGenderContainer>
           <SelectGenderHeadline>Select gender, Age</SelectGenderHeadline>
@@ -36,11 +40,11 @@ const SelectGenderPage = () => {
                 <li style={{ color: '#FFFF', marginTop: 24, marginBottom: 12 }}>
                   Gender
                 </li>
-                <li style={{ color: '#FFFF' }}>
+                <li style={{ color: '#FFFF', display: 'flex', marginBottom: 16 }}>
                   <CustomRadioButton />
                   Male
                 </li>
-                <li style={{ color: '#FFFF' }}>
+                <li style={{ color: '#FFFF', display: 'flex', marginBottom: 24 }}>
                   <CustomRadioButton />
                   Female
                 </li>

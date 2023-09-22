@@ -3,11 +3,28 @@ import styled from "styled-components";
 export const BackgroundContainer = styled.div `
     background-color: #050505;
     display: flex;
+
+    @media (min-width: 320px) and (max-width: 833px)  {
+        display: block;
+      };
+
+    @media (min-width: 834px) and (max-width: 1439px)  {
+        display: block;
+      }
 `;
 
 export const YourActivityLogo = styled.img `
     margin-left: 150px;
     margin-top: 40px;
+
+    @media (min-width: 320px) and (max-width: 833px)  {
+        width: 300px;
+        margin: auto;
+      }
+
+    @media (min-width: 834px) and (max-width: 1439px)  {
+        width: 380px;
+      }
 `;
 
 export const YourActivityContainer = styled.div ` 
@@ -15,6 +32,14 @@ export const YourActivityContainer = styled.div `
     margin-top: 120px;
     margin-left: 104px;
     display: inline-block;
+
+    @media (min-width: 320px) and (max-width: 833px)  {
+        margin: auto;
+      }
+
+    @media (min-width: 834px) and (max-width: 1439px)  {
+        margin: auto;
+      }
 `;
 
 export const YourActivityHeadline = styled.h1 ` 

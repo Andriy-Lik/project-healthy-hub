@@ -1,13 +1,30 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export const BackgroundContainer = styled.div `
     background-color: #050505;
     display: flex;
+
+    @media (min-width: 320px) and (max-width: 833px)  {
+        display: block;
+      };
+
+    @media (min-width: 834px) and (max-width: 1439px)  {
+        display: block;
+      }
 `;
 
 export const SignInLogo = styled.img `
     margin-left: 150px;
     margin-top: 40px;
+
+    @media (min-width: 320px) and (max-width: 833px)  {
+        width: 300px;
+      };
+
+    @media (min-width: 834px) and (max-width: 1439px)  {
+        width: 380px;
+      }
 `;
 
 export const SignInContainer = styled.div ` 
@@ -15,6 +32,10 @@ export const SignInContainer = styled.div `
     margin-top: 120px;
     margin-left: 104px;
     display: block;
+
+    @media (min-width: 834px) and (max-width: 1439px)  {
+        margin: auto;
+      }
 `;
 
 export const SignInHeadline = styled.h1 ` 
@@ -64,7 +85,7 @@ export const SignInButton = styled.button `
     text-align: center;
 `;
 
-export const ForgotYourPassword = styled.button `
+export const ForgotYourPassword = styled(Link) `
     font-weight: 400;
     font-size: 14px;
     line-height: 20px;
@@ -79,7 +100,7 @@ export const SignUpSuggestion = styled.p `
     color: #B6B6B6;
 `;
 
-export const SignUpLink = styled.button `
+export const SignUpLink = styled(Link) `
     margin-left: 16px;
     line-height: 20px;
     font-weight: 500;

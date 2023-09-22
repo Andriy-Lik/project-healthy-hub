@@ -4,16 +4,41 @@ import { Link } from "react-router-dom";
 export const BackgroundContainer = styled.div `
     background-color: #050505;
     display: flex;
+
+    @media (min-width: 320px) and (max-width: 833px)  {
+        display: block;
+      };
+    
+    @media (min-width: 834px) and (max-width: 1439px)  {
+        display: block;
+      }
 `;
 
 export const GoalLogo = styled.img `
     margin-left: 150px;
     margin-top: 40px;
+    @media (min-width: 320px) and (max-width: 833px)  {
+        width: 300px;
+        margin: auto;
+      };
+
+    @media (min-width: 834px) and (max-width: 1439px)  {
+        width: 380px;
+        margin: auto;
+      }
 `;
 
 export const GoalContainer = styled.div ` 
     margin-top: 120px;
     margin-left: 104px;
+
+    @media (min-width: 320px) and (max-width: 833px)  {
+        margin: auto;
+      };
+
+    @media (min-width: 834px) and (max-width: 1439px)  {
+        margin: auto;
+      }
 `;
 
 export const GoalHeadline = styled.h1 ` 
@@ -44,6 +69,10 @@ export const GoalButton = styled(Link) `
 
 export const GoalList = styled.ul `
     width: 254px;
+    @media (min-width: 834px) and (max-width: 1439px)  {
+        display: flex;
+        width: 400px;
+      }
 `
 
 export const GoalOption = styled.li `

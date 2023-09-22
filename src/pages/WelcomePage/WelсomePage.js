@@ -17,8 +17,11 @@ import bullets from '../../images/welcome-page-perks-bullets.png';
 
 const WelcomePage = () => {
   return (
-    <div>
       <BackgroundContainer>
+      <style>
+          @import
+          url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Roboto&display=swap');
+        </style>
         <WelcomeLogo src={welcomeLogoPic} alt="Reg Logo" />
         <PerksContainer>
           <WelcomeHeadline>Set goals and achieve them</WelcomeHeadline>
@@ -51,7 +54,6 @@ const WelcomePage = () => {
           </WelcomePagePerksList>
         </PerksContainer>
       </BackgroundContainer>
-    </div>
   );
 };
 
