@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import {
@@ -9,7 +8,7 @@ import {
   BodyParametersText,
   BodyParametersForm,
   BodyParametersInput,
-  // BodyParametersButton,
+  BodyParametersButton,
   // BodyParametersBackButton,
 } from './BodyParametersPage.styled';
 import BodyParametersBackButton from "components/BackButtons/SelectGenderBackButton/BodyParametersBackButton/BodyParametersBackButton";
@@ -38,7 +37,7 @@ const BodyParametersPage = () => {
               <label style={{color: '#FFFF'}}>Weight
                 <BodyParametersInput placeholder="Enter your weight" />
               </label>
-              <Link style={{backgroundColor: '#E3FFA8', borderRadius: 12, width: 212, padding: 8, fontSize: 14, fontFamily: 'Poppins'}} to={'/your-activity'}>Next</Link>
+              <BodyParametersButton to={'/your-activity'}>Next</BodyParametersButton>
             </BodyParametersForm>
           </div>
 

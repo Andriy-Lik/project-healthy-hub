@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export const BackgroundContainer = styled.div `
     background-color: #050505;
@@ -32,7 +33,7 @@ export const GoalText = styled.p `
     line-height: 32px;
 `;
 
-export const GoalButton = styled.button ` 
+export const GoalButton = styled(Link) ` 
     background-color: #E3FFA8;
     border-radius: 12px;
     width: 192px;
