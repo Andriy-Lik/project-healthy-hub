@@ -5,10 +5,12 @@ import {
   SignInContainer,
   SignInHeadline,
   SignInText,
+  SignInFormWrapper,
   SignInForm,
   SignInInput,
   SignInButton,
   ForgotYourPassword,
+  SignUpSuggestionButtonWrapper,
   SignUpSuggestion,
   SignUpLink,
 } from './SignInPage.styled';
@@ -22,11 +24,12 @@ const SignInPage = () => {
           @import
           url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Roboto&display=swap');
         </style>
-        <SignInLogo src={welcomeLogoPic} alt="Logo" />
-        <SignInContainer style={{ display: 'block' }}>
+
+        <SignInContainer>
+          <SignInLogo src={welcomeLogoPic} alt="Logo" />
           <SignInHeadline>Sign in</SignInHeadline>
           <SignInText>You need to login to use the service</SignInText>
-          <div style={{ width: 212 }}>
+          <SignInFormWrapper>
             <SignInForm>
               <SignInInput placeholder="E-mail" />
               <SignInInput placeholder="Password" />
@@ -35,14 +38,14 @@ const SignInPage = () => {
                 Forgot your password?
               </ForgotYourPassword>
             </SignInForm>
-          </div>
+          </SignInFormWrapper>
 
-          <div style={{ display: 'flex', marginTop: 212, marginBottom: 60 }}>
+          <SignUpSuggestionButtonWrapper>
             <SignUpSuggestion>
               If you don't have an account yet
             </SignUpSuggestion>
             <SignUpLink to={'/signup'}>Sign up</SignUpLink>
-          </div>
+          </SignUpSuggestionButtonWrapper>
         </SignInContainer>
       </BackgroundContainer>
     </div>

@@ -7,7 +7,11 @@ import {
   YourActivityContainer,
   YourActivityHeadline,
   YourActivityText,
+  YourActivityFormWrapper,
   YourActivityForm,
+  YourActivityFormList,
+  YourActivityFormListWrapper,
+  YourActivityFormListOption,
   YourActivityButton,
   // YourActivityBackButton,
   YourActivityInput,
@@ -22,65 +26,68 @@ const YourActivityPage = () => {
   return (
     <div>
       <BackgroundContainer>
-      <style>
+        <style>
           @import
           url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Roboto&display=swap');
         </style>
-        <YourActivityLogo src={SelectGenderLogoPic} alt="Select Gender Logo" />
         <YourActivityContainer>
+          <YourActivityLogo
+            src={SelectGenderLogoPic}
+            alt="Select Gender Logo"
+          />
           <YourActivityHeadline>Your Activity</YourActivityHeadline>
           <YourActivityText>
             To correctly calculate calorie and water intake
           </YourActivityText>
-          <div style={{ width: 328 }}>
+          <YourActivityFormWrapper>
             <YourActivityForm>
-              <ul>
-                <div style={{ display: 'flex', marginBottom: 16 }}>
-<CustomRadioButton />
-                  <li style={{ color: '#FFFF', fontSize: 14 }}>
+              <YourActivityFormList>
+                <YourActivityFormListWrapper>
+                  <CustomRadioButton />
+                  <YourActivityFormListOption style={{ color: '#FFFF', fontSize: 14 }}>
                     1.2 - if you do not have physical activity and sedentary
                     work
-                  </li>
-                </div>
+                  </YourActivityFormListOption>
+                </YourActivityFormListWrapper>
 
-                <div style={{ display: 'flex', marginBottom: 16 }}>
-                <CustomRadioButton />
-                  <li style={{ color: '#FFFF', fontSize: 14  }}>
+                <YourActivityFormListWrapper>
+                  <CustomRadioButton />
+                  <YourActivityFormListOption style={{ color: '#FFFF', fontSize: 14 }}>
                     1,375 - if you do short runs or light gymnastics 1-3 times a
                     week
-                  </li>
-                </div>
+                  </YourActivityFormListOption>
+                </YourActivityFormListWrapper>
 
-                <div style={{ display: 'flex', marginBottom: 16 }}>
-                <CustomRadioButton />
-                  <li style={{ color: '#FFFF', fontSize: 14  }}>
+                <YourActivityFormListWrapper>
+                  <CustomRadioButton />
+                  <YourActivityFormListOption style={{ color: '#FFFF', fontSize: 14 }}>
                     1.55 - if you play sports with average loads 3-5 times a
                     week
-                  </li>
-                </div>
+                  </YourActivityFormListOption>
+                </YourActivityFormListWrapper>
 
-                <div style={{ display: 'flex', marginBottom: 16 }}>
-                <CustomRadioButton />
-                  <li style={{ color: '#FFFF', fontSize: 14  }}>
+                <YourActivityFormListWrapper>
+                  <CustomRadioButton />
+                  <YourActivityFormListOption style={{ color: '#FFFF', fontSize: 14 }}>
                     1,725 ​​- if you train fully 6-7 times a week
-                  </li>
-                </div>
+                  </YourActivityFormListOption>
+                </YourActivityFormListWrapper>
 
-                <div style={{ display: 'flex', marginBottom: 16 }}>
-                <CustomRadioButton />
-                  <li style={{ color: '#FFFF', fontSize: 14  }}>
+                <YourActivityFormListWrapper>
+                  <CustomRadioButton />
+                  <YourActivityFormListOption style={{ color: '#FFFF', fontSize: 14 }}>
                     1.9 - if your work is related to physical labor, you train 2
                     times a day and include strength exercises in your training
                     program
-                  </li>
-                </div>
-              </ul>
+                  </YourActivityFormListOption>
+                </YourActivityFormListWrapper>
+              </YourActivityFormList>
 
               <YourActivityButton>Next</YourActivityButton>
               <br />
               <YourActivityBackButton location={locationRef.current} />
             </YourActivityForm>
-          </div>
+          </YourActivityFormWrapper>
         </YourActivityContainer>
       </BackgroundContainer>
     </div>

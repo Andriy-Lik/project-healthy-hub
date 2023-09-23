@@ -5,9 +5,11 @@ import {
   SignUpContainer,
   SignUpHeadline,
   SignUpText,
+  SignUpFormWrapper,
   SignUpForm,
   SignUpInput,
   SignUpButton,
+  SignInSuggestionButtonWrapper,
   SignInSuggestion,
   SignInLink,
 } from './SignUpPage.styled';
@@ -17,27 +19,27 @@ const SignUpPage = () => {
   return (
     <div>
       <BackgroundContainer>
-      <style>
+        <style>
           @import
           url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Roboto&display=swap');
         </style>
-        <SignUpLogo src={welcomeLogoPic} alt="Logo" />
-        <SignUpContainer style={{ display: 'block' }}>
+        <SignUpContainer>
+          <SignUpLogo src={welcomeLogoPic} alt="Logo" />
           <SignUpHeadline>Sign up</SignUpHeadline>
           <SignUpText>You need to register to use the service</SignUpText>
-          <div style={{width: 212}}>
+          <SignUpFormWrapper>
             <SignUpForm>
               <SignUpInput placeholder="Name" />
               <SignUpInput placeholder="E-mail" />
               <SignUpInput placeholder="Password" />
               <SignUpButton>Sign Up</SignUpButton>
             </SignUpForm>
-          </div>
+          </SignUpFormWrapper>
 
-          <div style={{ display: 'flex', marginTop: 200}}>
+          <SignInSuggestionButtonWrapper>
             <SignInSuggestion>Do you already have an account?</SignInSuggestion>
             <SignInLink to={'/signin'}>Sign in</SignInLink>
-          </div>
+          </SignInSuggestionButtonWrapper>
         </SignUpContainer>
       </BackgroundContainer>
     </div>

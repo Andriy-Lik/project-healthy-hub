@@ -69,6 +69,11 @@ export const GoalButton = styled(Link) `
 
 export const GoalList = styled.ul `
     width: 254px;
+
+    @media (min-width: 320px) and (max-width: 833px)  {
+        width: 250px;
+      }
+
     @media (min-width: 834px) and (max-width: 1439px)  {
         display: flex;
         width: 400px;

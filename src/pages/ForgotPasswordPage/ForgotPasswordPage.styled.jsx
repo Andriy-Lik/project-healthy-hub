@@ -18,6 +18,7 @@ export const ForgotPasswordLogo = styled.img `
     margin-top: 40px;
     @media (min-width: 320px) and (max-width: 833px)  {
         width: 300px;
+        margin: auto;
       }
     @media (min-width: 834px) and (max-width: 1439px)  {
         width: 380px;
@@ -29,6 +30,14 @@ export const ForgotPasswordContainer = styled.div `
     margin-top: 120px;
     margin-left: 104px;
     display: block;
+
+    @media (min-width: 320px) and (max-width: 833px)  {
+        margin: auto;
+      }
+    
+      @media (min-width: 834px) and (max-width: 1439px)  {
+        width: 380px;
+      }
 `;
 
 export const ForgotPasswordHeadline = styled.h1 ` 
@@ -46,6 +55,10 @@ export const ForgotPasswordText = styled.p `
     margin-top: 16px;
     line-height: 32px;
 `;
+
+export const ForgotPasswordFormWrapper = styled.div `
+    width: 212px; 
+`
 
 export const ForgotPasswordForm = styled.form `
     display: block;
@@ -87,6 +100,11 @@ export const ForgotYourPassword = styled.button `
     border: none;
     margin-top: 20px;
     margin-left: 25px;
+`;
+
+export const ForgotPasswordButtonWrapper = styled.div `
+    display: 'flex';
+    marginTop: 272px;
 `
 
 export const SignInSuggestion = styled.p `

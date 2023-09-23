@@ -27,8 +27,9 @@ const SelectGenderPage = () => {
           @import
           url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Roboto&display=swap');
         </style>
-        <SelectGenderLogo src={SelectGenderLogoPic} alt="Select Gender Logo" />
+        
         <SelectGenderContainer>
+          <SelectGenderLogo src={SelectGenderLogoPic} alt="Select Gender Logo" />
           <SelectGenderHeadline>Select gender, Age</SelectGenderHeadline>
           <SelectGenderText>
             Choose a goal so that we can help you effectively
