@@ -1,9 +1,8 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-// import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
-// import { selectStatsInfo } from '../../redux/Statistics/statisticsSelectors';
-// import { getStats } from '../../redux/Statistics/statisticsOperations';
+import { getStats } from '../../redux/Statistics/statisticsOperations';
 
 import {
   DashboardSection,
@@ -34,13 +33,17 @@ import LineChart from 'components/Charts/LineChart';
 import ScaleChart from 'components/Charts/ScaleChart';
 
 const DashboardPage = () => {
-  const location = useLocation();
-  const backLinkLocationRef = useRef(location.state?.from ?? '');
-  // const dispatch = useDispatch();
-  // const info = useSelector(selectStatsInfo);
-
   const [showYear, setShowYear] = useState(false);
   const [timeToggleBtn, setTimeToggleBtn] = useState(false);
+
+  const location = useLocation();
+  const backLinkLocationRef = useRef(location.state?.from ?? '');
+
+  const dispatch = useDispatch();  
+
+  useEffect(() => {
+    dispatch(getStats());
+  }, [dispatch]);
 
   const toggleBtn = () => {
     setTimeToggleBtn(timeToggleBtn => !timeToggleBtn);
@@ -89,7 +92,7 @@ const DashboardPage = () => {
               </ChartsSubtitle>
             </TitleContainer>
             <Chart>
-              <LineChart dataFormat={showYear} type={'calories'} />
+              <LineChart dataFormat={showYear} type={'water'} />
             </Chart>
           </ChartGrid>
           <ChartGrid>
