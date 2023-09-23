@@ -1,4 +1,12 @@
-import { Container, Title, Info, InfoOptions, InfoBlock, UserBlock, IconContainer, TextContainer, InfoBlockName, InfoBlockText, WeightKg, ArrowSvg, EditSvg, AvaImg, Menu, MenuSvg, Unauthorized } from './Header.styled';
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { selectIsLoggedIn } from "../../redux/Auth/authSelectors";
+
+import { Container, Title, Info, InfoOptions, InfoBlock, UserBlock, 
+  IconContainer, TextContainer, InfoBlockName, InfoBlockText, WeightKg,
+  ArrowSvg, EditSvg, AvaImg, Menu, MenuSvg, Unauthorized 
+} from './Header.styled';
 
 import waight from '../../images/icons/Waight-image.svg'
 import loseFatMen from '../../images/icons/Lose-fat-image-men.svg'
@@ -7,26 +15,17 @@ import loseFatMen from '../../images/icons/Lose-fat-image-men.svg'
 // import maintakeGirl from '../../images/icons/Maintake-image-girl.svg'
 // import muscle from '../../images/icons/Gain-muscle.svg'
 
-import arrowDown from '../../images/icons/arrow-down.svg'
-import edit from '../../images/icons/edit-2.svg'
-
-import menu from '../../images/icons/menu.svg'
-import menuOpened from '../../images/icons/menu-opened.svg'
-
-import avatar from '../../images/icons/profile-circle.svg'
+import arrowDown from '../../images/icons/arrow-down.svg';
+import edit from '../../images/icons/edit-2.svg';
+import menu from '../../images/icons/menu.svg';
+import menuOpened from '../../images/icons/menu-opened.svg';
+import avatar from '../../images/icons/profile-circle.svg';
 
 import TargetModal from './HeaderModals/TargetModal';
 import WeightModal from './HeaderModals/WeightModal';
 import ProfileModal from './HeaderModals/ProfileModal';
 import MenuModal from './HeaderModals//MenuModal';
 
-import {
-  useState,
-  // useSelector
-} from 'react';
-import { Link } from 'react-router-dom';
-
-// import { selectIsLoggedIn } from "../../redux/Auth/authSelectors";
 
 export default function Header() {
   // function genderType(gender) {
@@ -65,10 +64,7 @@ export default function Header() {
     setShowModalMenu(showModalMenu => !showModalMenu);
   };
 
-  // const isLoggedIn = useSelector(selectIsLoggedIn)
-  // console.log(isLoggedIn)
-  const isLoggedIn = false
-
+  const isLoggedIn = useSelector(selectIsLoggedIn);
 
   return isLoggedIn ? (
     <Container>
@@ -141,5 +137,5 @@ export default function Header() {
         <img src={avatar} alt="weight" width={28} />
       </Unauthorized>
     </Container>
-  )
+  );
 };
