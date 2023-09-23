@@ -1,5 +1,9 @@
 import { useState, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
+// import { useSelector, useDispatch } from 'react-redux';
+
+// import { selectStatsInfo } from '../../redux/Statistics/statisticsSelectors';
+// import { getStats } from '../../redux/Statistics/statisticsOperations';
 
 import {
   DashboardSection,
@@ -32,6 +36,8 @@ import ScaleChart from 'components/Charts/ScaleChart';
 const DashboardPage = () => {
   const location = useLocation();
   const backLinkLocationRef = useRef(location.state?.from ?? '');
+  // const dispatch = useDispatch();
+  // const info = useSelector(selectStatsInfo);
 
   const [showYear, setShowYear] = useState(false);
   const [timeToggleBtn, setTimeToggleBtn] = useState(false);
@@ -58,11 +64,13 @@ const DashboardPage = () => {
             </BackLink>
             <Header>{showYear ? 'Last year' : 'Last month'}</Header>
             <Button onClick={toggleBtn}>
-              <Arrow src={arrowDown} alt="arrow top" style={{
-                    transform: timeToggleBtn
-                      ? 'rotate(180deg)'
-                      : 'rotate(0deg)',
-                  }} />          
+              <Arrow
+                src={arrowDown}
+                alt="arrow"
+                style={{
+                  transform: timeToggleBtn ? 'rotate(180deg)' : 'rotate(0deg)',
+                }}
+              />
             </Button>
             {timeToggleBtn && (
               <ToggleButton onClick={handleChange}>
