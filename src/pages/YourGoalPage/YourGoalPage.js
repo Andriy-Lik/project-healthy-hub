@@ -18,6 +18,10 @@ const YourGoalPage = () => {
   return (
     <div>
       <BackgroundContainer>
+        <style>
+          @import
+          url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Roboto&display=swap');
+        </style>
         <GoalLogo src={GoalLogoPic} alt="Goal Logo" />
         <GoalContainer>
           <GoalHeadline>Your goal</GoalHeadline>
@@ -26,22 +30,41 @@ const YourGoalPage = () => {
             <GoalForm>
               <GoalList>
                 <div>
-                  <GoalOption style={{ color: '#FFFF', marginBottom: 20 }}>
+                  <GoalOption
+                    style={{
+                      color: '#FFFF',
+                      marginBottom: 20,
+                      display: 'flex',
+                    }}
+                  >
                     <CustomRadioButton />
                     Lose Fat
                   </GoalOption>
                 </div>
 
                 <div>
-                  <GoalOption style={{ color: '#FFFF', marginBottom: 20 }}>
+                  <GoalOption
+                    style={{
+                      color: '#FFFF',
+                      marginBottom: 20,
+                      display: 'flex',
+                    }}
+                  >
                     <CustomRadioButton />
                     Maintain
                   </GoalOption>
                 </div>
 
                 <div>
-                  <GoalOption style={{ color: '#FFFF', marginBottom: 20 }}>
-                    <CustomRadioButton />
+
+                  <GoalOption
+                    style={{
+                      color: '#FFFF',
+                      marginBottom: 20,
+                      display: 'flex',
+                    }}
+                  >
+                  <CustomRadioButton />
                     Gain Muscles
                   </GoalOption>
                 </div>

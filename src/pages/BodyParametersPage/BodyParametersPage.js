@@ -20,6 +20,10 @@ const BodyParametersPage = () => {
   return (
     <div>
       <BackgroundContainer>
+      <style>
+          @import
+          url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Roboto&display=swap');
+        </style>
         <BodyParametersLogo
           src={BodyParametersLogoPic}
           alt="BodyParametersLogoPic"
