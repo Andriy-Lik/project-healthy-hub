@@ -1,0 +1,1 @@
+export { DiaryOnMain } from './DiaryOnMain';

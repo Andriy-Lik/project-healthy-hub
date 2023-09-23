@@ -1,30 +1,35 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import {
   BackgroundContainer,
   WelcomeLogo,
   PerksContainer,
   WelcomeHeadline,
   WelcomeText,
-  SignInActivated,
-  SignUpInactive,
+  // SignInActivated,
+  // SignUpInactive,
   WelcomePagePerksList,
   Perks,
 } from './WelcomePage.styled';
 import welcomeLogoPic from '../../images/WelcomeLogoPic.png';
 import bullets from '../../images/welcome-page-perks-bullets.png';
+// import SignInPage from 'pages/SignInPage';
 
 const WelcomePage = () => {
   return (
-    <div>
       <BackgroundContainer>
+      <style>
+          @import
+          url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Roboto&display=swap');
+        </style>
         <WelcomeLogo src={welcomeLogoPic} alt="Reg Logo" />
         <PerksContainer>
           <WelcomeHeadline>Set goals and achieve them</WelcomeHeadline>
           <WelcomeText>
             The service will help you set goals and follow them.
           </WelcomeText>
-          <SignInActivated>Sign in</SignInActivated>
-          <SignUpInactive>Sign up</SignUpInactive>
+          <Link style={{backgroundColor: '#E3FFA8', marginTop: 24, borderRadius: 12, width: 192, padding: 8, fontSize: 14, fontFamily: 'Poppins'}} to={'/signin'}>Sign in</Link>
+          <Link style={{backgroundColor: '#050505', border: 'none', fontSize: 14, color: '#FFFFFF', marginLeft: 16}} to={'/signup'}>Sign up</Link>
 
           <WelcomePagePerksList>
             <div style={{ display: 'flex' }}>
@@ -49,7 +54,6 @@ const WelcomePage = () => {
           </WelcomePagePerksList>
         </PerksContainer>
       </BackgroundContainer>
-    </div>
   );
 };
 

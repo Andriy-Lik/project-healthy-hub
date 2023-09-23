@@ -1,5 +1,9 @@
 import { useState, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
+// import { useSelector, useDispatch } from 'react-redux';
+
+// import { selectStatsInfo } from '../../redux/Statistics/statisticsSelectors';
+// import { getStats } from '../../redux/Statistics/statisticsOperations';
 
 import {
   DashboardSection,
@@ -10,9 +14,8 @@ import {
   ArrowReturn,
   Header,
   Button,
-  ModalButton,
-  ArrowDown,
-  ArrowTop,
+  ToggleButton,
+  Arrow,
   SecondHeader,
   TitleContainer,
   ChartsTitle,
@@ -25,23 +28,27 @@ import {
   Scale,
 } from './DashboardPage.styled';
 
-import Modal from '../../components/Modals/DashboardModal';
 import arrowDown from '../../images/icons/arrow-down.svg';
 import arrowRight from '../../images/icons/arrow-right.svg';
 import LineChart from 'components/Charts/LineChart';
 import ScaleChart from 'components/Charts/ScaleChart';
 
 const DashboardPage = () => {
-  const [showModal, setShowModal] = useState(false);
   const location = useLocation();
   const backLinkLocationRef = useRef(location.state?.from ?? '');
+  // const dispatch = useDispatch();
+  // const info = useSelector(selectStatsInfo);
 
-  const toggleModal = () => {
-    setShowModal(showModal => !showModal);
+  const [showYear, setShowYear] = useState(false);
+  const [timeToggleBtn, setTimeToggleBtn] = useState(false);
+
+  const toggleBtn = () => {
+    setTimeToggleBtn(timeToggleBtn => !timeToggleBtn);
   };
 
-  const clickHandler = () => {
-    toggleModal();
+  const handleChange = () => {
+    setShowYear(showYear => !showYear);
+    toggleBtn();
   };
 
   const calories = 1700;
@@ -55,21 +62,23 @@ const DashboardPage = () => {
             <BackLink to={backLinkLocationRef.current}>
               <ArrowReturn src={arrowRight} alt="arrow right" />
             </BackLink>
-            <Header>Last month</Header>
-            <Button onClick={clickHandler}>
-              {showModal ? (
-                <ArrowTop src={arrowDown} alt="arrow top" />
-              ) : (
-                <ArrowDown src={arrowDown} alt="arrow down" />
-              )}
+            <Header>{showYear ? 'Last year' : 'Last month'}</Header>
+            <Button onClick={toggleBtn}>
+              <Arrow
+                src={arrowDown}
+                alt="arrow"
+                style={{
+                  transform: timeToggleBtn ? 'rotate(180deg)' : 'rotate(0deg)',
+                }}
+              />
             </Button>
-            {showModal && (
-              <Modal onCloseModal={toggleModal}>
-                <ModalButton onClick={clickHandler}>Last year</ModalButton>
-              </Modal>
+            {timeToggleBtn && (
+              <ToggleButton onClick={handleChange}>
+                {showYear ? 'Last month' : 'Last year'}
+              </ToggleButton>
             )}
           </MainHeaderBlock>
-          <SecondHeader>November</SecondHeader>
+          <SecondHeader>{showYear ? '2023' : 'November'}</SecondHeader>
         </HeaderBlock>
         <LineChartBlock>
           <ChartGrid>
@@ -80,7 +89,7 @@ const DashboardPage = () => {
               </ChartsSubtitle>
             </TitleContainer>
             <Chart>
-              <LineChart />
+              <LineChart dataFormat={showYear} type={'calories'} />
             </Chart>
           </ChartGrid>
           <ChartGrid>
@@ -91,7 +100,7 @@ const DashboardPage = () => {
               </ChartsSubtitle>
             </TitleContainer>
             <Chart>
-              <LineChart />
+              <LineChart dataFormat={showYear} type={'water'} />
             </Chart>
           </ChartGrid>
         </LineChartBlock>
@@ -103,7 +112,7 @@ const DashboardPage = () => {
             </ChartsSubtitle>
           </TitleContainer>
           <Scale>
-            <ScaleChart />
+            <ScaleChart dataFormat={showYear} />
           </Scale>
         </ScaleChartBlock>
       </DashboardContainer>
