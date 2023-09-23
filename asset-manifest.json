@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/project-healthy-hub/static/css/main.af942983.css",
-    "main.js": "/project-healthy-hub/static/js/main.a844c82c.js",
+    "main.js": "/project-healthy-hub/static/js/main.d96c5933.js",
     "static/js/974.7d4e5de8.chunk.js": "/project-healthy-hub/static/js/974.7d4e5de8.chunk.js",
     "static/js/735.40965267.chunk.js": "/project-healthy-hub/static/js/735.40965267.chunk.js",
     "static/js/565.f0ae9563.chunk.js": "/project-healthy-hub/static/js/565.f0ae9563.chunk.js",
@@ -26,19 +26,26 @@
     "static/media/YourGoalLogo.png": "/project-healthy-hub/static/media/YourGoalLogo.487152541279e1774b58.png",
     "static/media/SelectGenderLogoPic.png": "/project-healthy-hub/static/media/SelectGenderLogoPic.9a15f72a29b163ea6fa4.png",
     "static/media/YourActivityLogoPic.png": "/project-healthy-hub/static/media/YourActivityLogoPic.9d9c2463eab2cc533c90.png",
-    "static/media/avatar-7236095.png": "/project-healthy-hub/static/media/avatar-7236095.9a880847bdcdce84dbf4.png",
     "static/media/BodyParametersLogoPic.png": "/project-healthy-hub/static/media/BodyParametersLogoPic.a4695cbcc6e7b4b29d00.png",
+    "static/media/Maintake-image-men.svg": "/project-healthy-hub/static/media/Maintake-image-men.64580161467e1bbedd7fb75f04700f00.svg",
     "static/media/WelcomeLogoPic.png": "/project-healthy-hub/static/media/WelcomeLogoPic.a616831fd2b34ff13567.png",
     "static/media/Waight-image.svg": "/project-healthy-hub/static/media/Waight-image.77cd4e76c2c3f67e31c01416852989e1.svg",
-    "static/media/Lose-fat-image-men.svg": "/project-healthy-hub/static/media/Lose-fat-image-men.27ea6ae36b6531076d2ab8ec1c8b39f1.svg",
+    "static/media/Gain-muscle.svg": "/project-healthy-hub/static/media/Gain-muscle.daf75679ec5f2ff3c9094ee065db4fd7.svg",
+    "static/media/Lose-fat-image-men.svg": "/project-healthy-hub/static/media/Lose-fat-image-men.2cde9eb7d237396c08892b2c25268000.svg",
+    "static/media/setting-2.svg": "/project-healthy-hub/static/media/setting-2.27fa27c0276fc5e012f79a3144e557d9.svg",
     "static/media/menu.svg": "/project-healthy-hub/static/media/menu.9e56ac36387055e21a8971872b994615.svg",
+    "static/media/menu-opened.svg": "/project-healthy-hub/static/media/menu-opened.1d5e57b16745415a5f5f898c9730a50e.svg",
     "index.html": "/project-healthy-hub/index.html",
+    "static/media/profile-circle.svg": "/project-healthy-hub/static/media/profile-circle.9e57febe1477df0f67e1362708390d54.svg",
     "static/media/download-new-photo.svg": "/project-healthy-hub/static/media/download-new-photo.9ca8a34221a8f13c50c4d1a19f3a88fa.svg",
     "static/media/edit-2.svg": "/project-healthy-hub/static/media/edit-2.6258c17e73bd1ca92ae8c419a94a3d31.svg",
+    "static/media/logout.svg": "/project-healthy-hub/static/media/logout.f869290d7a92a63f24c001d2639ae203.svg",
+    "static/media/close-circle.svg": "/project-healthy-hub/static/media/close-circle.f1100f3502da2fe479f6661ac1507a7f.svg",
+    "static/media/arrow-right-open.svg": "/project-healthy-hub/static/media/arrow-right-open.4b79b540b4210b099c8be8dfec113119.svg",
     "static/media/arrow-right.svg": "/project-healthy-hub/static/media/arrow-right.be9bceed642802b11548c5b22d986ea8.svg",
     "static/media/arrow-down.svg": "/project-healthy-hub/static/media/arrow-down.8cf3438f3dbcde251e8bc48b07aab667.svg",
     "main.af942983.css.map": "/project-healthy-hub/static/css/main.af942983.css.map",
-    "main.a844c82c.js.map": "/project-healthy-hub/static/js/main.a844c82c.js.map",
+    "main.d96c5933.js.map": "/project-healthy-hub/static/js/main.d96c5933.js.map",
     "974.7d4e5de8.chunk.js.map": "/project-healthy-hub/static/js/974.7d4e5de8.chunk.js.map",
     "735.40965267.chunk.js.map": "/project-healthy-hub/static/js/735.40965267.chunk.js.map",
     "565.f0ae9563.chunk.js.map": "/project-healthy-hub/static/js/565.f0ae9563.chunk.js.map",
@@ -57,6 +64,6 @@
   },
   "entrypoints": [
     "static/css/main.af942983.css",
-    "static/js/main.a844c82c.js"
+    "static/js/main.d96c5933.js"
   ]
 }
