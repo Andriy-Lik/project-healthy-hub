@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { getStats } from './statisticsOperations';
 
 const statsInitialState = {
-  info: [],
+  info: {},
 };
 
 const statsSlice = createSlice({
