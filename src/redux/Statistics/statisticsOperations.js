@@ -9,7 +9,7 @@ export const getStats = createAsyncThunk(
     // const state = thunkAPI.getState();
     // const userToken = state.auth.token;
     const userToken =
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MDg1MmVhOWQyNzgwZTQ4MGE4NjRjZiIsImlhdCI6MTY5NTQ4NDc4NiwiZXhwIjoxNjk1NTY3NTg2fQ.p803XzSjYjGv26uhxeWV1CPRv9ZSA2j6pRnQ_m1BSZE';
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MDg1MmVhOWQyNzgwZTQ4MGE4NjRjZiIsImlhdCI6MTY5NTU3MTExNywiZXhwIjoxNjk1NjUzOTE3fQ.4AqzjNsKTCN7Xz0rlmgnARj9kbcJflx-mEdjmk4377Q';
 
     if (userToken === null) {
       return thunkAPI.rejectWithValue('Failed to get information');

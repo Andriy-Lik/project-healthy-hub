@@ -11,7 +11,7 @@ import {
   GoalButton,
   // GoalInput,
 } from './YourGoalPage.styled';
-import CustomRadioButton from 'components/CustomRadioButton/CustomRadioButton';
+import CustomRadioRegistrationButton from 'components/CustomRadioRegistrationButton/CustomRadioRegistrationButton';
 import GoalLogoPic from '../../images/YourGoalLogo.png';
 
 const YourGoalPage = () => {
@@ -22,8 +22,9 @@ const YourGoalPage = () => {
           @import
           url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Roboto&display=swap');
         </style>
-        <GoalLogo src={GoalLogoPic} alt="Goal Logo" />
+
         <GoalContainer>
+          <GoalLogo src={GoalLogoPic} alt="Goal Logo" />
           <GoalHeadline>Your goal</GoalHeadline>
           <GoalText>Choose a goal so that we can help you effectively</GoalText>
           <div>
@@ -37,7 +38,7 @@ const YourGoalPage = () => {
                       display: 'flex',
                     }}
                   >
-                    <CustomRadioButton />
+                    <CustomRadioRegistrationButton />
                     Lose Fat
                   </GoalOption>
                 </div>
@@ -50,13 +51,12 @@ const YourGoalPage = () => {
                       display: 'flex',
                     }}
                   >
-                    <CustomRadioButton />
+                  <CustomRadioRegistrationButton />
                     Maintain
                   </GoalOption>
                 </div>
 
                 <div>
-
                   <GoalOption
                     style={{
                       color: '#FFFF',
@@ -64,7 +64,7 @@ const YourGoalPage = () => {
                       display: 'flex',
                     }}
                   >
-                  <CustomRadioButton />
+                    <CustomRadioRegistrationButton />
                     Gain Muscles
                   </GoalOption>
                 </div>
