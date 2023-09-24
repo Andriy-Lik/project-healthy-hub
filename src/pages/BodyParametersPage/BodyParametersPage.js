@@ -6,12 +6,14 @@ import {
   BodyParametersContainer,
   BodyParametersHeadline,
   BodyParametersText,
+  BodyParametersWrapper,
   BodyParametersForm,
+  BodyParametersLabel,
   BodyParametersInput,
   BodyParametersButton,
   // BodyParametersBackButton,
 } from './BodyParametersPage.styled';
-import BodyParametersBackButton from "components/BackButtons/SelectGenderBackButton/BodyParametersBackButton/BodyParametersBackButton";
+import BodyParametersBackButton from 'components/BackButtons/SelectGenderBackButton/BodyParametersBackButton/BodyParametersBackButton';
 import BodyParametersLogoPic from '../../images/BodyParametersLogoPic.png';
 
 const BodyParametersPage = () => {
@@ -20,33 +22,38 @@ const BodyParametersPage = () => {
   return (
     <div>
       <BackgroundContainer>
-      <style>
+        <style>
           @import
           url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Roboto&display=swap');
         </style>
-        <BodyParametersLogo
-          src={BodyParametersLogoPic}
-          alt="BodyParametersLogoPic"
-        />
-        <BodyParametersContainer style={{ display: 'block' }}>
+
+        <BodyParametersContainer>
+          <BodyParametersLogo
+            src={BodyParametersLogoPic}
+            alt="BodyParametersLogoPic"
+          />
           <BodyParametersHeadline>Body parameters</BodyParametersHeadline>
           <BodyParametersText>
             Enter your parameters for correct performance tracking
           </BodyParametersText>
-          <div style={{ width: 212 }}>
+          <BodyParametersWrapper>
             <BodyParametersForm>
-              <label style={{color: '#FFFF'}}>Height
+              <BodyParametersLabel>
+                Height
                 <BodyParametersInput placeholder="Enter your height" />
-              </label>
-              <label style={{color: '#FFFF'}}>Weight
+              </BodyParametersLabel>
+              <BodyParametersLabel>
+                Weight
                 <BodyParametersInput placeholder="Enter your weight" />
-              </label>
-              <BodyParametersButton to={'/your-activity'}>Next</BodyParametersButton>
+              </BodyParametersLabel>
+              <BodyParametersButton to={'/your-activity'}>
+                Next
+              </BodyParametersButton>
             </BodyParametersForm>
-          </div>
+          </BodyParametersWrapper>
 
           <div>
-            <BodyParametersBackButton  location={locationRef.current}/>
+            <BodyParametersBackButton location={locationRef.current} />
           </div>
         </BodyParametersContainer>
       </BackgroundContainer>

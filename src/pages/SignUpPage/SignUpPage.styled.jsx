@@ -20,10 +20,12 @@ export const SignUpLogo = styled.img `
 
     @media (min-width: 320px) and (max-width: 833px)  {
         width: 300px;
-      };
+        margin: auto;
+    };
 
     @media (min-width: 834px) and (max-width: 1439px)  {
         width: 380px;
+        margin: auto;
       }
 `;
 
@@ -32,6 +34,10 @@ export const SignUpContainer = styled.div `
     margin-top: 120px;
     margin-left: 104px;
     display: block;
+
+    @media (min-width: 320px) and (max-width: 833px)  {
+        margin: auto;
+    }; 
 
     @media (min-width: 834px) and (max-width: 1439px)  {
         margin: auto;
@@ -53,6 +59,10 @@ export const SignUpText = styled.p `
     margin-top: 16px;
     line-height: 32px;
 `;
+
+export const SignUpFormWrapper = styled.div `
+    width: 212px;
+`
 
 export const SignUpForm = styled.form `
     display: block;
@@ -81,6 +91,11 @@ export const SignUpButton = styled.button `
     padding: 8px;
     font-size: 14px;
     font-family: Poppins;
+`;
+
+export const SignInSuggestionButtonWrapper = styled.div `
+    display: flex; 
+    margin-top: 200px;
 `;
 
 export const SignInSuggestion = styled.p `
