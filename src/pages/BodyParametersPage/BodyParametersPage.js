@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import {
@@ -21,6 +20,10 @@ const BodyParametersPage = () => {
   return (
     <div>
       <BackgroundContainer>
+      <style>
+          @import
+          url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Roboto&display=swap');
+        </style>
         <BodyParametersLogo
           src={BodyParametersLogoPic}
           alt="BodyParametersLogoPic"
@@ -38,7 +41,7 @@ const BodyParametersPage = () => {
               <label style={{color: '#FFFF'}}>Weight
                 <BodyParametersInput placeholder="Enter your weight" />
               </label>
-              <Link style={{backgroundColor: '#E3FFA8', borderRadius: 12, width: 212, padding: 8, fontSize: 14, fontFamily: 'Poppins'}} to={'/your-activity'}>Next</Link>
+              <BodyParametersButton to={'/your-activity'}>Next</BodyParametersButton>
             </BodyParametersForm>
           </div>
 

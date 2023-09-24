@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import {
   BackgroundContainer,
   GoalLogo,
@@ -7,61 +6,71 @@ import {
   GoalHeadline,
   GoalText,
   GoalForm,
+  GoalList,
+  GoalOption,
   GoalButton,
-  GoalInput,
+  // GoalInput,
 } from './YourGoalPage.styled';
+import CustomRadioButton from 'components/CustomRadioButton/CustomRadioButton';
 import GoalLogoPic from '../../images/YourGoalLogo.png';
 
 const YourGoalPage = () => {
   return (
     <div>
       <BackgroundContainer>
+        <style>
+          @import
+          url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Roboto&display=swap');
+        </style>
         <GoalLogo src={GoalLogoPic} alt="Goal Logo" />
         <GoalContainer>
           <GoalHeadline>Your goal</GoalHeadline>
           <GoalText>Choose a goal so that we can help you effectively</GoalText>
-          <div style={{ width: 254 }}>
+          <div>
             <GoalForm>
-              <label
-                style={{
-                  color: '#FFFFFF',
-                  fontSize: 14,
-                  fontWeight: 400,
-                  lineHeight: 20,
-                  fontFamily: 'Poppins',
-                }}
-              >
-                <GoalInput type="radio" name="goal" value="Lose Fat" />
-                Lose Fat
-              </label>
+              <GoalList>
+                <div>
+                  <GoalOption
+                    style={{
+                      color: '#FFFF',
+                      marginBottom: 20,
+                      display: 'flex',
+                    }}
+                  >
+                    <CustomRadioButton />
+                    Lose Fat
+                  </GoalOption>
+                </div>
 
-              <label
-                style={{
-                  color: '#FFFFFF',
-                  fontSize: 14,
-                  fontWeight: 400,
-                  lineHeight: 20,
-                  fontFamily: 'Poppins',
-                }}
-              >
-                <GoalInput type="radio" name="goal" value="Maintain" />
-                Maintain
-              </label>
+                <div>
+                  <GoalOption
+                    style={{
+                      color: '#FFFF',
+                      marginBottom: 20,
+                      display: 'flex',
+                    }}
+                  >
+                    <CustomRadioButton />
+                    Maintain
+                  </GoalOption>
+                </div>
 
-              <label
-                style={{
-                  color: '#FFFFFF',
-                  fontSize: 14,
-                  fontWeight: 400,
-                  lineHeight: 20,
-                  fontFamily: 'Poppins',
-                }}
-              >
-                <GoalInput type="radio" name="goal" value="Gain Muscle" />
-                Gain Muscle
-              </label>
+                <div>
 
-              <Link style={{backgroundColor: '#E3FFA8', borderRadius: 12, width: 192, padding: 8, fontSize: 14, fontFamily: 'Poppins'}} to={'/select-gender'}>Next</Link>
+                  <GoalOption
+                    style={{
+                      color: '#FFFF',
+                      marginBottom: 20,
+                      display: 'flex',
+                    }}
+                  >
+                  <CustomRadioButton />
+                    Gain Muscles
+                  </GoalOption>
+                </div>
+              </GoalList>
+
+              <GoalButton to={'/select-gender'}>Next</GoalButton>
             </GoalForm>
           </div>
         </GoalContainer>

@@ -6,19 +6,22 @@ import {
   PerksContainer,
   WelcomeHeadline,
   WelcomeText,
-  SignInActivated,
-  SignUpInactive,
+  // SignInActivated,
+  // SignUpInactive,
   WelcomePagePerksList,
   Perks,
 } from './WelcomePage.styled';
 import welcomeLogoPic from '../../images/WelcomeLogoPic.png';
 import bullets from '../../images/welcome-page-perks-bullets.png';
-import SignInPage from 'pages/SignInPage';
+// import SignInPage from 'pages/SignInPage';
 
 const WelcomePage = () => {
   return (
-    <div>
       <BackgroundContainer>
+      <style>
+          @import
+          url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Roboto&display=swap');
+        </style>
         <WelcomeLogo src={welcomeLogoPic} alt="Reg Logo" />
         <PerksContainer>
           <WelcomeHeadline>Set goals and achieve them</WelcomeHeadline>
@@ -51,7 +54,6 @@ const WelcomePage = () => {
           </WelcomePagePerksList>
         </PerksContainer>
       </BackgroundContainer>
-    </div>
   );
 };
 

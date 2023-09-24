@@ -1,6 +1,5 @@
 import React from 'react';
 import { useRef } from 'react';
-import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import {
   BackgroundContainer,
@@ -9,11 +8,12 @@ import {
   SelectGenderHeadline,
   SelectGenderText,
   SelectGenderForm,
-  // SelectGenderButton,
+  SelectGenderButton,
   // SelectGenderBackButton,
   SelectGenderInput,
 } from './SelectGenderPage.styled';
 import SelectGenderBackButton from 'components/BackButtons/SelectGenderBackButton/SelectGenderBackButton';
+import CustomRadioButton from 'components/CustomRadioButton/CustomRadioButton';
 import SelectGenderLogoPic from '../../images/SelectGenderLogoPic.png';
 
 const SelectGenderPage = () => {
@@ -23,6 +23,10 @@ const SelectGenderPage = () => {
   return (
     <div>
       <BackgroundContainer>
+      <style>
+          @import
+          url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Roboto&display=swap');
+        </style>
         <SelectGenderLogo src={SelectGenderLogoPic} alt="Select Gender Logo" />
         <SelectGenderContainer>
           <SelectGenderHeadline>Select gender, Age</SelectGenderHeadline>
@@ -30,40 +34,38 @@ const SelectGenderPage = () => {
             Choose a goal so that we can help you effectively
           </SelectGenderText>
 
-          <div style={{ width: 254 }}>
+          <div>
             <SelectGenderForm>
-              <label
-                style={{
-                  color: '#FFFFFF',
-                  fontSize: 14,
-                  fontWeight: 400,
-                  lineHeight: 20,
-                  fontFamily: 'Poppins',
-                }}
-              >
-                <SelectGenderInput type="radio" name="goal" value="Lose Fat" />
-                Male
-              </label>
+              <ul>
+                <li style={{ color: '#FFFF', marginTop: 24, marginBottom: 12 }}>
+                  Gender
+                </li>
+                <li style={{ color: '#FFFF', display: 'flex', marginBottom: 16 }}>
+                  <CustomRadioButton />
+                  Male
+                </li>
+                <li style={{ color: '#FFFF', display: 'flex', marginBottom: 24 }}>
+                  <CustomRadioButton />
+                  Female
+                </li>
+                <li style={{ color: '#FFFF', marginBottom: 12 }}>Your age</li>
+                <SelectGenderInput
+                  style={{
+                    height: 36,
+                    width: 212,
+                    color: '#B6B6B6',
+                    fontSize: 14,
+                    fontWeight: 400,
+                    lineHeight: 20,
+                    paddingLeft: 10,
+                  }}
+                  placeholder="Enter your age"
+                />
+              </ul>
 
-              <label
-                style={{
-                  color: '#FFFFFF',
-                  fontSize: 14,
-                  fontWeight: 400,
-                  lineHeight: 20,
-                  fontFamily: 'Poppins',
-                }}
-              >
-                <SelectGenderInput type="radio" name="goal" value="Maintain" />
-                Female
-              </label>
-
-              <label style={{ color: 'white' }}>
-                {' '}
-                Your age
-                <SelectGenderInput />
-              </label>
-              <Link style={{backgroundColor: '#E3FFA8', borderRadius: 12, width: 192, padding: 8, fontSize: 14, fontFamily: 'Poppins'}} to={'/body-parameters'}>Next</Link>
+              <SelectGenderButton to={'/body-parameters'}>
+                Next
+              </SelectGenderButton>
               <SelectGenderBackButton location={locationRef.current} />
             </SelectGenderForm>
           </div>

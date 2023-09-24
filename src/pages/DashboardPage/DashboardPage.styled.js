@@ -43,6 +43,7 @@ export const HeaderBlock = styled.div`
 `;
 
 export const MainHeaderBlock = styled.div`
+  position: relative;
   display: flex;
 `;
 
@@ -83,45 +84,43 @@ export const Button = styled.button`
   padding: 0;
   border: ${props => props.theme.borders.none};
   background-color: inherit;
+  color: inherit;
 `;
 
-export const ArrowDown = styled.img`
-  width: 16px;
-`;
-
-export const ArrowTop = styled.img`
-  width: 16px;
-  transform: rotate(180deg);
-`;
-
-export const ModalButton = styled.button`
+export const ToggleButton = styled.button`
   position: absolute;
   background-color: ${props => props.theme.colors.black2};
   border: ${props => props.theme.borders.none};
-  color: white;
   padding: 16px 0 16px 12px;
   border-radius: ${p => p.theme.radii.normal};
   box-shadow: 0px 4px 14px 0px #e3ffa833;
   font-family: ${props => props.theme.fontFamily.poppins};
   font-weight: ${props => props.theme.fontWeights.regular};
   text-align: left;
+  color: inherit;
+  z-index: 1200;
 
   @media screen and (${props => props.theme.mq.mobile}) {
-    display: none;
+    top: 32px;
+    left: 24px;
+    width: 188px;
+    height: 52px;
+    font-size: ${p => p.theme.fontSizes.s};
+    line-height: 1.38;
   }
   @media screen and (${props => props.theme.mq.tablet}) {
-    display: inline-block;
-    top: 164px;
-    left: 63px;
+    top: 40px;
+    left: 36px;
     width: 212px;
     height: 64px;
     font-size: ${props => props.theme.fontSizes.l};
     line-height: 1.45;
   }
-  @media screen and (${props => props.theme.mq.desktop}) {
-    top: 160px;
-    left: 70px;
-  }
+`;
+
+export const Arrow = styled.img`
+  width: 16px;
+  height: 16px;
 `;
 
 export const SecondHeader = styled.h3`
@@ -187,11 +186,16 @@ export const LineChartBlock = styled.div`
 
 export const ChartGrid = styled.div`
   @media screen and (${props => props.theme.mq.mobile}) {
+    display: flex;
+    flex-direction: column;
+    overflow-x: scroll;
     &:not(:last-child) {
       margin-bottom: 27px;
     }
   }
   @media screen and (${props => props.theme.mq.tablet}) {
+    display: imline-block;
+    overflow-x: hidden;
     &:not(:last-child) {
       margin-bottom: 40px;
     }
@@ -202,24 +206,41 @@ export const Chart = styled.div`
   background-color: ${props => props.theme.colors.black2};
   border-radius: ${props => props.theme.radii.normal};
   height: 382px;
+
   @media screen and (${props => props.theme.mq.mobile}) {
+    width: 676px;
+    padding: 25px 20px 24px 14px;
   }
   @media screen and (${props => props.theme.mq.tablet}) {
     width: 780px;
     padding: 25px 31px 24px 14px;
+
+    & canvas {
+      min-width: 750px;
+      min-height: auto;
+      margin: 0 auto;
+    }
   }
   @media screen and (${props => props.theme.mq.desktop}) {
     width: 676px;
     padding: 25px 20px 24px 14px;
+    & canvas {
+      min-width: 640px;
+      min-height: auto;
+    }
   }
 `;
 
 export const ScaleChartBlock = styled.div`
   @media screen and (${props => props.theme.mq.mobile}) {
+    display: flex;
+    flex-direction: column;
+    overflow-x: scroll;
     margin-top: 27px;
   }
   @media screen and (${props => props.theme.mq.tablet}) {
     margin-top: 40px;
+    overflow-x: hidden;
   }
   @media screen and (${props => props.theme.mq.desktop}) {
     margin-top: 20px;
@@ -232,6 +253,8 @@ export const Scale = styled.div`
   height: 110px;
 
   @media screen and (${props => props.theme.mq.mobile}) {
+    width: 1372px;
+    padding: 24px 24px 36px;
   }
   @media screen and (${props => props.theme.mq.tablet}) {
     width: 780px;
