@@ -1,11 +1,12 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { selectIsLoggedIn } from "../../redux/Auth/authSelectors";
+import { Link, useLocation } from 'react-router-dom';
+import { selectIsLoggedIn, selectUser } from "../../redux/Auth/authSelectors";
 
-import { Container, Title, Info, InfoOptions, InfoBlock, UserBlock, 
+import {
+  Container, Title, Info, InfoOptions, InfoBlock, UserBlock,
   IconContainer, TextContainer, InfoBlockName, InfoBlockText, WeightKg,
-  ArrowSvg, EditSvg, AvaImg, Menu, MenuSvg, Unauthorized 
+  ArrowSvg, EditSvg, AvaImg, Menu, MenuSvg, Unauthorized, DefaultLink, ActiveLink
 } from './Header.styled';
 
 import waight from '../../images/icons/Waight-image.svg'
@@ -66,10 +67,20 @@ export default function Header() {
 
   const isLoggedIn = useSelector(selectIsLoggedIn);
 
+  const user = useSelector(selectUser);
+
+  const location = useLocation();
+  const [currentURL, setCurrentURL] = useState(location.pathname);
+
+  useEffect(() => {
+    // Update currentURL when the URL changes
+    setCurrentURL(location.pathname);
+  }, [location]);
+
   return isLoggedIn ? (
     <Container>
       <Title>
-        <Link to={'/'}>HealthyHub</Link>
+        <Link to={'/main'}>HealthyHub</Link>
         <Menu onClick={toggleModalMenu}>
           {showModalMenu ? <MenuSvg src={menuOpened} alt="menu" />
             : <MenuSvg src={menu} alt="menu" />}
@@ -115,7 +126,7 @@ export default function Header() {
           </InfoBlock>
         </InfoOptions>
         <UserBlock onClick={toggleModalProfile}>
-          Konstantin
+          {user.name}
           {/* ava = user.avatarURL */}
           <AvaImg src={avatar} alt="avatar" />
           <ArrowSvg src={arrowDown} alt="arrow down" />
@@ -130,12 +141,28 @@ export default function Header() {
       <Title>
         <Link to={'/'}>HealthyHub</Link>
       </Title>
-      <Unauthorized>
-        <Link to={'/signin'}>Sign in</Link>
-        <p> / </p>
-        <Link to={'/signup'}>Sign up</Link>
-        <img src={avatar} alt="weight" width={28} />
-      </Unauthorized>
+      {currentURL.endsWith("/signin") ? (
+        <Unauthorized>
+          <ActiveLink to={'/signin'}>Sign in</ActiveLink>
+          <p> / </p>
+          <DefaultLink to={'/signup'}>Sign up</DefaultLink>
+          <img src={avatar} alt="weight" width={28} />
+        </Unauthorized>
+      ) : currentURL.endsWith("/signup") ? (
+        <Unauthorized>
+          <DefaultLink to={'/signin'}>Sign in</DefaultLink>
+          <p> / </p>
+          <ActiveLink to={'/signup'}>Sign up</ActiveLink>
+          <img src={avatar} alt="weight" width={28} />
+        </Unauthorized>
+      ) : (
+        <Unauthorized>
+          <DefaultLink to={'/signin'}>Sign in</DefaultLink>
+          <p> / </p>
+          <DefaultLink to={'/signup'}>Sign up</DefaultLink>
+          <img src={avatar} alt="weight" width={28} />
+        </Unauthorized>
+      )}
     </Container>
   );
 };
