@@ -14,7 +14,7 @@ import {
   YourActivityFormListOption,
   YourActivityButton,
   // YourActivityBackButton,
-  YourActivityInput,
+  // YourActivityInput,
 } from './YourActivityPage.styled';
 import YourActivityBackButton from 'components/BackButtons/YourActivityBackButton/YourActivityBackButton';
 import CustomRadioButton from 'components/CustomRadioButton/CustomRadioButton';
@@ -45,6 +45,7 @@ const YourActivityPage = () => {
                 <YourActivityFormListWrapper>
                   <CustomRadioButton />
                   <YourActivityFormListOption style={{ color: '#FFFF', fontSize: 14 }}>
+
                     1.2 - if you do not have physical activity and sedentary
                     work
                   </YourActivityFormListOption>
@@ -58,13 +59,16 @@ const YourActivityPage = () => {
                   </YourActivityFormListOption>
                 </YourActivityFormListWrapper>
 
+
                 <YourActivityFormListWrapper>
                   <CustomRadioButton />
                   <YourActivityFormListOption style={{ color: '#FFFF', fontSize: 14 }}>
+                
                     1.55 - if you play sports with average loads 3-5 times a
                     week
                   </YourActivityFormListOption>
                 </YourActivityFormListWrapper>
+
 
                 <YourActivityFormListWrapper>
                   <CustomRadioButton />

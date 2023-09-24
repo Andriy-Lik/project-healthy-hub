@@ -88,6 +88,7 @@ export const AddButton = styled.button`
   border: none;
   outline: none;
   padding: 0;
+  cursor: pointer;
 `;
 
 // export const AddIcon = styled(Icon)`

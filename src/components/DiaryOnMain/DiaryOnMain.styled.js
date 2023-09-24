@@ -4,9 +4,7 @@ import { Link } from 'react-router-dom';
 export const Container = styled.div`
   display: inline-flex;
   flex-direction: column;
-  width: 518px;
-  margin-right: 178px;
-  margin-top: 20px;
+  width: 100%;
 `;
 
 export const TitleWrapper = styled.div`
@@ -48,5 +46,6 @@ export const CardsWrap = styled.div`
   display: flex;
   flex-direction: column;
   row-gap: 28px;
-  width: 518px;
+  width: 100%;
+  /* width: 518px; */
 `;

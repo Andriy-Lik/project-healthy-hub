@@ -5,7 +5,7 @@ const settingsSlice = createSlice({
     name: "settings",
 
     initialState: {
-        userProfile: [],
+        userProfile: null,
     },
 
     extraReducers: (builder) => {
