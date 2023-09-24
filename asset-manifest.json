@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/project-healthy-hub/static/css/main.af942983.css",
-    "main.js": "/project-healthy-hub/static/js/main.70debdcf.js",
+    "main.js": "/project-healthy-hub/static/js/main.0e8a015b.js",
     "static/js/974.7d4e5de8.chunk.js": "/project-healthy-hub/static/js/974.7d4e5de8.chunk.js",
     "static/js/735.40965267.chunk.js": "/project-healthy-hub/static/js/735.40965267.chunk.js",
     "static/js/565.f0ae9563.chunk.js": "/project-healthy-hub/static/js/565.f0ae9563.chunk.js",
@@ -10,13 +10,13 @@
     "static/js/503.1fd7f994.chunk.js": "/project-healthy-hub/static/js/503.1fd7f994.chunk.js",
     "static/js/383.43545308.chunk.js": "/project-healthy-hub/static/js/383.43545308.chunk.js",
     "static/js/407.6507b211.chunk.js": "/project-healthy-hub/static/js/407.6507b211.chunk.js",
-    "static/js/540.59e9df62.chunk.js": "/project-healthy-hub/static/js/540.59e9df62.chunk.js",
+    "static/js/352.9b8a73cd.chunk.js": "/project-healthy-hub/static/js/352.9b8a73cd.chunk.js",
     "static/js/350.c872154a.chunk.js": "/project-healthy-hub/static/js/350.c872154a.chunk.js",
     "static/js/931.4dd9db83.chunk.js": "/project-healthy-hub/static/js/931.4dd9db83.chunk.js",
     "static/js/208.6b74963a.chunk.js": "/project-healthy-hub/static/js/208.6b74963a.chunk.js",
     "static/js/364.38628827.chunk.js": "/project-healthy-hub/static/js/364.38628827.chunk.js",
     "static/js/77.f2165312.chunk.js": "/project-healthy-hub/static/js/77.f2165312.chunk.js",
-    "static/js/306.172cf76b.chunk.js": "/project-healthy-hub/static/js/306.172cf76b.chunk.js",
+    "static/js/306.d5d012c3.chunk.js": "/project-healthy-hub/static/js/306.d5d012c3.chunk.js",
     "static/media/breakfast-image.svg": "/project-healthy-hub/static/media/breakfast-image.757cefa61c13942dffbdf20f2c19304b.svg",
     "static/media/snack-image.svg": "/project-healthy-hub/static/media/snack-image.a52f73890dfdeaafbe54a211e6abbca9.svg",
     "static/media/dinner-image.svg": "/project-healthy-hub/static/media/dinner-image.0b21c33b6a6f661fb4cc5d906b4b820f.svg",
@@ -45,7 +45,7 @@
     "static/media/arrow-right.svg": "/project-healthy-hub/static/media/arrow-right.be9bceed642802b11548c5b22d986ea8.svg",
     "static/media/arrow-down.svg": "/project-healthy-hub/static/media/arrow-down.8cf3438f3dbcde251e8bc48b07aab667.svg",
     "main.af942983.css.map": "/project-healthy-hub/static/css/main.af942983.css.map",
-    "main.70debdcf.js.map": "/project-healthy-hub/static/js/main.70debdcf.js.map",
+    "main.0e8a015b.js.map": "/project-healthy-hub/static/js/main.0e8a015b.js.map",
     "974.7d4e5de8.chunk.js.map": "/project-healthy-hub/static/js/974.7d4e5de8.chunk.js.map",
     "735.40965267.chunk.js.map": "/project-healthy-hub/static/js/735.40965267.chunk.js.map",
     "565.f0ae9563.chunk.js.map": "/project-healthy-hub/static/js/565.f0ae9563.chunk.js.map",
@@ -54,16 +54,16 @@
     "503.1fd7f994.chunk.js.map": "/project-healthy-hub/static/js/503.1fd7f994.chunk.js.map",
     "383.43545308.chunk.js.map": "/project-healthy-hub/static/js/383.43545308.chunk.js.map",
     "407.6507b211.chunk.js.map": "/project-healthy-hub/static/js/407.6507b211.chunk.js.map",
-    "540.59e9df62.chunk.js.map": "/project-healthy-hub/static/js/540.59e9df62.chunk.js.map",
+    "352.9b8a73cd.chunk.js.map": "/project-healthy-hub/static/js/352.9b8a73cd.chunk.js.map",
     "350.c872154a.chunk.js.map": "/project-healthy-hub/static/js/350.c872154a.chunk.js.map",
     "931.4dd9db83.chunk.js.map": "/project-healthy-hub/static/js/931.4dd9db83.chunk.js.map",
     "208.6b74963a.chunk.js.map": "/project-healthy-hub/static/js/208.6b74963a.chunk.js.map",
     "364.38628827.chunk.js.map": "/project-healthy-hub/static/js/364.38628827.chunk.js.map",
     "77.f2165312.chunk.js.map": "/project-healthy-hub/static/js/77.f2165312.chunk.js.map",
-    "306.172cf76b.chunk.js.map": "/project-healthy-hub/static/js/306.172cf76b.chunk.js.map"
+    "306.d5d012c3.chunk.js.map": "/project-healthy-hub/static/js/306.d5d012c3.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.af942983.css",
-    "static/js/main.70debdcf.js"
+    "static/js/main.0e8a015b.js"
   ]
 }
