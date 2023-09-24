@@ -83,8 +83,9 @@ export const SignUpInput = styled.input `
     margin-top: 16px;
 `
 
-export const SignUpButton = styled.button ` 
+export const SignUpButton = styled.p ` 
     background-color: #E3FFA8;
+    text-align: center;
     margin-top: 16px;
     border-radius: 12px;
     width: 212px;

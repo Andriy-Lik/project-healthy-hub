@@ -1,5 +1,8 @@
 import { useRef } from 'react';
 import { useLocation } from 'react-router-dom';
+import { useDispatch } from "react-redux";
+import { useState } from "react";
+import { setNewUserHeight, setNewUserWeight } from 'redux/Auth/authSlice';
 import {
   BackgroundContainer,
   BodyParametersLogo,
@@ -17,6 +20,29 @@ import BodyParametersBackButton from 'components/BackButtons/SelectGenderBackBut
 import BodyParametersLogoPic from '../../images/BodyParametersLogoPic.png';
 
 const BodyParametersPage = () => {
+  const dispatch = useDispatch();
+  const [height, setHeight] = useState('');
+  const [weight, setWeight] = useState('');
+
+  const handleNewUserHeightWeightData = event => {
+    event.preventDefault();
+    console.log(`height: ${height}, weight: ${weight}`);
+    dispatch(setNewUserHeight(height));
+    dispatch(setNewUserWeight(weight));
+  };
+
+  const handleInputChange = event => {
+    const { name, value } = event.target;
+    if (name === 'height') {
+      setHeight(value);
+    }
+    else {
+      setWeight(value);
+    }
+  }
+
+
+
   const location = useLocation();
   const locationRef = useRef(location);
   return (
@@ -26,26 +52,27 @@ const BodyParametersPage = () => {
           @import
           url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Roboto&display=swap');
         </style>
-
-        <BodyParametersContainer>
           <BodyParametersLogo
             src={BodyParametersLogoPic}
             alt="BodyParametersLogoPic"
           />
+        <BodyParametersContainer>
+
           <BodyParametersHeadline>Body parameters</BodyParametersHeadline>
           <BodyParametersText>
             Enter your parameters for correct performance tracking
           </BodyParametersText>
           <BodyParametersWrapper>
-            <BodyParametersForm>
+            <BodyParametersForm onSubmit={handleNewUserHeightWeightData}>
               <BodyParametersLabel>
                 Height
-                <BodyParametersInput placeholder="Enter your height" />
+                <BodyParametersInput placeholder="Enter your height" name='height' onChange={handleInputChange} />
               </BodyParametersLabel>
               <BodyParametersLabel>
                 Weight
-                <BodyParametersInput placeholder="Enter your weight" />
+                <BodyParametersInput placeholder="Enter your weight" name='weight' onChange={handleInputChange} />
               </BodyParametersLabel>
+              <button type='submit'>Next</button>
               <BodyParametersButton to={'/your-activity'}>
                 Next
               </BodyParametersButton>
