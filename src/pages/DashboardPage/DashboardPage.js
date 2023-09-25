@@ -16,15 +16,9 @@ import {
   ToggleButton,
   Arrow,
   SecondHeader,
-  TitleContainer,
-  ChartsTitle,
-  ChartsSubtitle,
-  ChartsCaption,
   LineChartBlock,
   ChartGrid,
-  Chart,
   ScaleChartBlock,
-  Scale,
 } from './DashboardPage.styled';
 
 import arrowDown from '../../images/icons/arrow-down.svg';
@@ -35,15 +29,16 @@ import ScaleChart from 'components/Charts/ScaleChart';
 const DashboardPage = () => {
   const [showYear, setShowYear] = useState(false);
   const [timeToggleBtn, setTimeToggleBtn] = useState(false);
+  const [period, setPeriod] = useState('month');
 
   const location = useLocation();
   const backLinkLocationRef = useRef(location.state?.from ?? '');
 
-  const dispatch = useDispatch();  
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getStats());
-  }, [dispatch]);
+    dispatch(getStats(period));
+  }, [dispatch, period]);
 
   const toggleBtn = () => {
     setTimeToggleBtn(timeToggleBtn => !timeToggleBtn);
@@ -51,12 +46,10 @@ const DashboardPage = () => {
 
   const handleChange = () => {
     setShowYear(showYear => !showYear);
+    setPeriod(prevTime => (prevTime === 'month' ? 'year' : 'month'));
     toggleBtn();
   };
 
-  const calories = 1700;
-  const water = 1600;
-  const weight = 68;
   return (
     <DashboardSection>
       <DashboardContainer>
@@ -85,38 +78,14 @@ const DashboardPage = () => {
         </HeaderBlock>
         <LineChartBlock>
           <ChartGrid>
-            <TitleContainer>
-              <ChartsTitle>Calories</ChartsTitle>
-              <ChartsSubtitle>
-                Average value: <ChartsCaption>{calories} kg</ChartsCaption>
-              </ChartsSubtitle>
-            </TitleContainer>
-            <Chart>
-              <LineChart dataFormat={showYear} type={'water'} />
-            </Chart>
+            <LineChart dataFormat={showYear} type={'calories'} />
           </ChartGrid>
           <ChartGrid>
-            <TitleContainer>
-              <ChartsTitle>Water</ChartsTitle>
-              <ChartsSubtitle>
-                Average value: <ChartsCaption>{water} ml</ChartsCaption>
-              </ChartsSubtitle>
-            </TitleContainer>
-            <Chart>
-              <LineChart dataFormat={showYear} type={'water'} />
-            </Chart>
+            <LineChart dataFormat={showYear} type={'water'} />
           </ChartGrid>
         </LineChartBlock>
         <ScaleChartBlock>
-          <TitleContainer>
-            <ChartsTitle>Weight</ChartsTitle>
-            <ChartsSubtitle>
-              Average value: <ChartsCaption>{weight} kg</ChartsCaption>
-            </ChartsSubtitle>
-          </TitleContainer>
-          <Scale>
-            <ScaleChart dataFormat={showYear} />
-          </Scale>
+          <ScaleChart dataFormat={showYear} />
         </ScaleChartBlock>
       </DashboardContainer>
     </DashboardSection>
