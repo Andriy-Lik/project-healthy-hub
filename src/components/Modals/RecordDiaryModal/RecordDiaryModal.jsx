@@ -16,22 +16,45 @@ import {
   ContentWrapper,
   ProductList,
   Product,
+  WrapperInput,
   Input,
-  BtnAddNewProduct,
-  
-  ErrorMes,
+  BtnAddNewProduct,  
+  ErrorMsg,
   ContainerForBtns,
   BtnConfirm,
   BtnCancel
 } from './RecordDiaryModal.styled';
 
-// написати схему
 const schema = yup.object({
-  // productName: yup.string().required(),
-  // carbonohidrates: yup.number().required(),
-  // protein: yup.number().required(),
-  // fat: yup.number().required(),
-  // calories: yup.number().required(),
+  productList: yup.array().of(yup.object().shape({
+    productName:
+      yup.string()
+        .required("Name is a required field")
+        .trim('Name cannot include leading and trailing spaces')
+        .strict(true),
+    carbonohidrates:
+      yup.number()
+        .required("Carbonohidrates is a required field")
+        .typeError('Carbonohidrates must be a number')
+        .moreThan(-1, "Carbonohidrates must a positive number")
+        .integer("Carbonohidrates must be an integer"),
+    protein:
+      yup.number()
+        .required("Protein is a required field")
+        .typeError('Protein must be a number')
+        .moreThan(-1, "Protein must a positive number"),
+    fat:
+      yup.number()
+        .required("Fat is a required field")
+        .typeError('Fat must be a number')
+        .moreThan(-1, "Protein must a positive number"),
+    calories:
+      yup.number()
+        .required("Calories is a required field")
+        .typeError('Calories must be a number')
+        .moreThan(-1, "Calories must a positive number")
+        .integer("Calories must be an integer"),
+  })),
 });
 
 const initialValues = {
@@ -90,55 +113,71 @@ const RecordDiaryModal = ({ onClose, image, title }) => {
 
             <FormFormic autoComplete="off">
 
-              <FieldArray name="productList" render={({ insert }) => {
+              <FieldArray name="productList" render={({ insert, remove }) => {
                   
                 return (
                   <ContentWrapper>
-                    <ProductList>{values.productList.map((product, index) => {
+                    <ProductList>
+                      {values.productList.map((product, index) => {
 
-                      return (
-                        <Product key={index}>
-                          <Input
-                            type="text"
-                            id={`productList.${index}.productName`}
-                            name={`productList.${index}.productName`}
-                            placeholder="The name of the product or dish"
-                          />
-                          <ErrorMes name={`productList.${index}.productName`} component="div" />
+                        return (
+                          <Product key={index}>
+                            <WrapperInput>
+                              <Input
+                                type="text"
+                                id={`productList.${index}.productName`}
+                                name={`productList.${index}.productName`}
+                                placeholder="The name of the product or dish"
+                              />
+                              <ErrorMsg name={`productList.${index}.productName`} component="div" />
+                            </WrapperInput>
 
-                          <Input
-                            type="text"
-                            id={`productList.${index}.carbonohidrates`}
-                            name={`productList.${index}.carbonohidrates`}
-                            placeholder="Carbonoh."
-                          />
+                            <WrapperInput>
+                              <Input
+                                type="text"
+                                id={`productList.${index}.carbonohidrates`}
+                                name={`productList.${index}.carbonohidrates`}
+                                placeholder="Carbonoh."
+                              />
+                              <ErrorMsg name={`productList.${index}.carbonohidrates`} component="div" />
+                            </WrapperInput>
+                          
+                            <WrapperInput>
+                              <Input
+                                type="text"
+                                id={`productList.${index}.protein`}
+                                name={`productList.${index}.protein`}
+                                placeholder="Protein"
+                              />
+                              <ErrorMsg name={`productList.${index}.protein`} component="div" />
+                            </WrapperInput>
+                          
+                            <WrapperInput>
+                              <Input
+                                type="text"
+                                id={`productList.${index}.fat`}
+                                name={`productList.${index}.fat`}
+                                placeholder="Fat"
+                              />
+                              <ErrorMsg name={`productList.${index}.fat`} component="div" />
+                            </WrapperInput>
+                          
+                            <WrapperInput>
+                              <Input
+                                type="text"
+                                id={`productList.${index}.calories`}
+                                name={`productList.${index}.calories`}
+                                placeholder="Calories"
+                              />
+                              <ErrorMsg name={`productList.${index}.calories`} component="div" />
+                            </WrapperInput>
 
-                          <Input
-                            type="text"
-                            id={`productList.${index}.protein`}
-                            name={`productList.${index}.protein`}
-                            placeholder="Protein"
-                          />
-
-                          <Input
-                            type="text"
-                            id={`productList.${index}.fat`}
-                            name={`productList.${index}.fat`}
-                            placeholder="Fat"
-                          />
-
-                          <Input
-                            type="text"
-                            id={`productList.${index}.calories`}
-                            name={`productList.${index}.calories`}
-                            placeholder="Calories"
-                          />
-                        </Product>
-                      )
-
-                    })}
+                          </Product>
+                        )
+                      })}
+                      
                     </ProductList>
-
+                   
                     <BtnAddNewProduct
                       type="button"
                       onClick={() => {
@@ -156,17 +195,15 @@ const RecordDiaryModal = ({ onClose, image, title }) => {
                     >
                       + Add more
                     </BtnAddNewProduct>
-
                   </ContentWrapper>
                 )
-                  
               }} />
-
 
               <ContainerForBtns>
                 <BtnConfirm type="submit">Confirm</BtnConfirm>
                 <BtnCancel type="button" onClick={onClose}>Cancel</BtnCancel>
               </ContainerForBtns>
+              
             </FormFormic>
           )}
         </Formik>
