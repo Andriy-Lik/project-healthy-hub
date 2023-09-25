@@ -19,13 +19,42 @@ const initialState = {
     avatarURL: null,
   },
   token: null,
-  isLoggedIn: true,
+  isLoggedIn: false,
   isRefreshing: false,
 };
 
 const authSlice = createSlice({
   name: 'auth',
   initialState,
+  reducers: {
+    setNewUserName: (state, action) => {
+      state.user.name = action.payload;
+    },
+    setNewUserEmail: (state, action) => {
+      state.user.email = action.payload;
+    },
+    setNewUserPassword: (state, action) => {
+      state.user.password = action.payload;
+    },
+    setNewUserGoal: (state, action) => {
+      state.user.goal = action.payload;
+    },
+    setNewUserAge: (state, action) => {
+      state.user.age = action.payload;
+    },
+    setNewUserGender: (state, action) => {
+      state.user.gender = action.payload;
+    },
+    setNewUserHeight: (state, action) => {
+      state.user.height = action.payload;
+    },
+    setNewUserWeight: (state, action) => {
+      state.user.weight = action.payload;
+    },
+    setNewUserActivity: (state, action) => {
+      state.user.activity = action.payload;
+    },
+  },
   extraReducers: builder => {
     builder
       .addCase(register.fulfilled, (state, action) => {
@@ -57,4 +86,5 @@ const authSlice = createSlice({
   },
 });
 
+export const { setNewUserName, setNewUserEmail, setNewUserPassword, setNewUserGoal, setNewUserAge, setNewUserGender, setNewUserHeight, setNewUserWeight, setNewUserActivity } = authSlice.actions;
 export const authReducer = authSlice.reducer;

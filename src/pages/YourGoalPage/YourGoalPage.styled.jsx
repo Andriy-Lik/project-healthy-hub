@@ -58,8 +58,9 @@ export const GoalText = styled.p `
     line-height: 32px;
 `;
 
-export const GoalButton = styled(Link) ` 
+export const GoalButton = styled.p ` 
     background-color: #E3FFA8;
+    text-align: center;
     border-radius: 12px;
     width: 192px;
     padding: 8px;
@@ -69,6 +70,11 @@ export const GoalButton = styled(Link) `
 
 export const GoalList = styled.ul `
     width: 254px;
+
+    @media (min-width: 320px) and (max-width: 833px)  {
+        width: 250px;
+      }
+
     @media (min-width: 834px) and (max-width: 1439px)  {
         display: flex;
         width: 400px;

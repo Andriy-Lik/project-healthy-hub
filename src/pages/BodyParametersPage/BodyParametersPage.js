@@ -1,52 +1,86 @@
 import { useRef } from 'react';
 import { useLocation } from 'react-router-dom';
+import { useDispatch } from "react-redux";
+import { useState } from "react";
+import { setNewUserHeight, setNewUserWeight } from 'redux/Auth/authSlice';
 import {
   BackgroundContainer,
   BodyParametersLogo,
   BodyParametersContainer,
   BodyParametersHeadline,
   BodyParametersText,
+  BodyParametersWrapper,
   BodyParametersForm,
+  BodyParametersLabel,
   BodyParametersInput,
   BodyParametersButton,
   // BodyParametersBackButton,
 } from './BodyParametersPage.styled';
-import BodyParametersBackButton from "components/BackButtons/SelectGenderBackButton/BodyParametersBackButton/BodyParametersBackButton";
+import BodyParametersBackButton from 'components/BackButtons/SelectGenderBackButton/BodyParametersBackButton/BodyParametersBackButton';
 import BodyParametersLogoPic from '../../images/BodyParametersLogoPic.png';
 
 const BodyParametersPage = () => {
+  const dispatch = useDispatch();
+  const [height, setHeight] = useState('');
+  const [weight, setWeight] = useState('');
+
+  const handleNewUserHeightWeightData = event => {
+    event.preventDefault();
+    console.log(`height: ${height}, weight: ${weight}`);
+    dispatch(setNewUserHeight(height));
+    dispatch(setNewUserWeight(weight));
+  };
+
+  const handleInputChange = event => {
+    const { name, value } = event.target;
+    if (name === 'height') {
+      setHeight(value);
+    }
+    else {
+      setWeight(value);
+    }
+  }
+
+
+
   const location = useLocation();
   const locationRef = useRef(location);
   return (
     <div>
       <BackgroundContainer>
-      <style>
+        <style>
           @import
           url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Roboto&display=swap');
         </style>
-        <BodyParametersLogo
-          src={BodyParametersLogoPic}
-          alt="BodyParametersLogoPic"
-        />
-        <BodyParametersContainer style={{ display: 'block' }}>
+          <BodyParametersLogo
+            src={BodyParametersLogoPic}
+            alt="BodyParametersLogoPic"
+          />
+        <BodyParametersContainer>
+
           <BodyParametersHeadline>Body parameters</BodyParametersHeadline>
           <BodyParametersText>
             Enter your parameters for correct performance tracking
           </BodyParametersText>
-          <div style={{ width: 212 }}>
-            <BodyParametersForm>
-              <label style={{color: '#FFFF'}}>Height
-                <BodyParametersInput placeholder="Enter your height" />
-              </label>
-              <label style={{color: '#FFFF'}}>Weight
-                <BodyParametersInput placeholder="Enter your weight" />
-              </label>
-              <BodyParametersButton to={'/your-activity'}>Next</BodyParametersButton>
+          <BodyParametersWrapper>
+            <BodyParametersForm onSubmit={handleNewUserHeightWeightData}>
+              <BodyParametersLabel>
+                Height
+                <BodyParametersInput placeholder="Enter your height" name='height' onChange={handleInputChange} />
+              </BodyParametersLabel>
+              <BodyParametersLabel>
+                Weight
+                <BodyParametersInput placeholder="Enter your weight" name='weight' onChange={handleInputChange} />
+              </BodyParametersLabel>
+              <button type='submit'>Next</button>
+              <BodyParametersButton to={'/your-activity'}>
+                Next
+              </BodyParametersButton>
             </BodyParametersForm>
-          </div>
+          </BodyParametersWrapper>
 
           <div>
-            <BodyParametersBackButton  location={locationRef.current}/>
+            <BodyParametersBackButton location={locationRef.current} />
           </div>
         </BodyParametersContainer>
       </BackgroundContainer>

@@ -1,14 +1,18 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import {
   BackgroundContainer,
   WelcomeLogo,
   PerksContainer,
   WelcomeHeadline,
   WelcomeText,
+  WelcomeNavigationsButtonList,
+  WelcomeNavigationsButtonSignUp,
+  WelcomeNavigationsButtonSignIn,
   // SignInActivated,
   // SignUpInactive,
   WelcomePagePerksList,
+  WelcomePagePerksWrapper,
+  WelcomePagePerksListBullets,
   Perks,
 } from './WelcomePage.styled';
 import welcomeLogoPic from '../../images/WelcomeLogoPic.png';
@@ -17,43 +21,67 @@ import bullets from '../../images/welcome-page-perks-bullets.png';
 
 const WelcomePage = () => {
   return (
-      <BackgroundContainer>
+    <BackgroundContainer>
       <style>
-          @import
-          url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Roboto&display=swap');
-        </style>
+        @import
+        url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Roboto&display=swap');
+      </style>
         <WelcomeLogo src={welcomeLogoPic} alt="Reg Logo" />
-        <PerksContainer>
-          <WelcomeHeadline>Set goals and achieve them</WelcomeHeadline>
-          <WelcomeText>
-            The service will help you set goals and follow them.
-          </WelcomeText>
-          <Link style={{backgroundColor: '#E3FFA8', marginTop: 24, borderRadius: 12, width: 192, padding: 8, fontSize: 14, fontFamily: 'Poppins'}} to={'/signin'}>Sign in</Link>
-          <Link style={{backgroundColor: '#050505', border: 'none', fontSize: 14, color: '#FFFFFF', marginLeft: 16}} to={'/signup'}>Sign up</Link>
+      <PerksContainer>
 
-          <WelcomePagePerksList>
-            <div style={{ display: 'flex' }}>
-              <img src={bullets} alt="bullets for list" style={{height: 10, marginTop: 5}} />
-              <Perks>Set goals</Perks>
-            </div>
+        <WelcomeHeadline>Set goals and achieve them</WelcomeHeadline>
+        <WelcomeText>
+          The service will help you set goals and follow them.
+        </WelcomeText>
 
-            <div style={{ display: 'flex' }}>
-              <img src={bullets} alt="bullets for list" style={{height: 10, marginTop: 5}}/>
-              <Perks>Watch your calories</Perks>
-            </div>
+        <WelcomeNavigationsButtonList>
+          <WelcomeNavigationsButtonSignUp
+            to={'/signin'}
+          >
+            Sign in
+          </WelcomeNavigationsButtonSignUp>
+          <WelcomeNavigationsButtonSignIn
+            to={'/signup'}
+          >
+            Sign up
+          </WelcomeNavigationsButtonSignIn>
+        </WelcomeNavigationsButtonList>
 
-            <div style={{ display: 'flex' }}>
-              <img src={bullets} alt="bullets for list" style={{height: 10, marginTop: 5}}/>
-              <Perks>Keep track of your water intake</Perks>
-            </div>
+        <WelcomePagePerksList>
+          <WelcomePagePerksWrapper>
+            <WelcomePagePerksListBullets
+              src={bullets}
+              alt="bullets for list"
+            />
+            <Perks>Set goals</Perks>
+          </WelcomePagePerksWrapper>
 
-            <div style={{ display: 'flex' }}>
-              <img src={bullets} alt="bullets for list"  style={{height: 10, marginTop: 5}}/>
-              <Perks>Control your weight</Perks>
-            </div>
-          </WelcomePagePerksList>
-        </PerksContainer>
-      </BackgroundContainer>
+          <WelcomePagePerksWrapper>
+            <WelcomePagePerksListBullets
+              src={bullets}
+              alt="bullets for list"
+            />
+            <Perks>Watch your calories</Perks>
+          </WelcomePagePerksWrapper>
+
+          <WelcomePagePerksWrapper>
+            <WelcomePagePerksListBullets
+              src={bullets}
+              alt="bullets for list"
+            />
+            <Perks>Keep track of your water intake</Perks>
+          </WelcomePagePerksWrapper>
+
+          <WelcomePagePerksWrapper>
+            <WelcomePagePerksListBullets
+              src={bullets}
+              alt="bullets for list"
+            />
+            <Perks>Control your weight</Perks>
+          </WelcomePagePerksWrapper>
+        </WelcomePagePerksList>
+      </PerksContainer>
+    </BackgroundContainer>
   );
 };
 
