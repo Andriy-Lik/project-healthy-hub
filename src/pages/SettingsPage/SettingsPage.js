@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react';
+// import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
+
+// import { updateUserProfile } from '../../redux/Settings/settingsOperations';
+import { selectUserProfile } from '../../redux/Settings/settingsSelectors';
 
 import {
   SettingsPageSection,
   SettingsPageContainer,
-  // TopProfileSetting,
   H1,
   ButtonContainer,
   CancelButton,
@@ -24,7 +28,12 @@ import downloadPhoto from '../../images/icons/download-new-photo.svg';
 import CustomRadioButton from '../../components/CustomRadioButton/CustomRadioButton';
 
 const SettingsPage = () => {
-  const initialFormData = {
+  // const dispatch = useDispatch();
+  const userProfile = useSelector(selectUserProfile);
+
+  console.log(userProfile);
+
+  const [initialFormData, setInitialFormData] = useState({
     name: '',
     photo: null,
     age: '',
@@ -32,7 +41,21 @@ const SettingsPage = () => {
     height: '',
     weight: '',
     activity: 'activity1',
-  };
+  });
+
+  useEffect(() => {
+    if (userProfile) {
+      setInitialFormData({
+        name: userProfile.name || '',
+        photo: null,
+        age: userProfile.age || '',
+        gender: userProfile.gender || 'male',
+        height: userProfile.height || '',
+        weight: userProfile.weight || '',
+        activity: userProfile.activity || 'activity1',
+      });
+    }
+  }, [userProfile]);
 
   const [formData, setFormData] = useState(initialFormData);
   // const [formErrors, setFormErrors] = useState({});
@@ -50,7 +73,6 @@ const SettingsPage = () => {
   };
 
   const validateForm = () => {
-    // const errors = {};
     let hasErrors = false;
 
     if (
@@ -61,28 +83,6 @@ const SettingsPage = () => {
     ) {
       hasErrors = true;
     }
-
-    // if (!formData.name.trim()) {
-    //   errors.name = 'Please enter your name';
-    //   hasErrors = true;
-    // }
-
-    // if (!formData.age.trim()) {
-    //   errors.age = 'Please enter your age';
-    //   hasErrors = true;
-    // }
-
-    // if (!formData.height.trim()) {
-    //   errors.height = 'Please enter your height';
-    //   hasErrors = true;
-    // }
-
-    // if (!formData.weight.trim()) {
-    //   errors.weight = 'Please enter your weight';
-    //   hasErrors = true;
-    // }
-
-    // setFormErrors(errors);
 
     return !hasErrors;
   };
@@ -113,13 +113,11 @@ const SettingsPage = () => {
     <>
       <SettingsPageSection>
         <SettingsPageContainer>
-          {/* <TopProfileSetting> */}
           <H1>Profile setting</H1>
           <ButtonContainer>
             <CancelButton onClick={handleCancelClick}>Cancel</CancelButton>
             <SaveButton onClick={handleSaveClick}>Save</SaveButton>
           </ButtonContainer>
-          {/* </TopProfileSetting> */}
 
           <MiddleProfileSetting>
             <Img src={setingsPage} alt="setings-page-png" width="536" />
