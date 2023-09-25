@@ -19,7 +19,7 @@ const initialState = {
     avatarURL: null,
   },
   token: null,
-  isLoggedIn: false,
+  isLoggedIn: true,
   isRefreshing: false,
 };
 
@@ -86,5 +86,15 @@ const authSlice = createSlice({
   },
 });
 
-export const { setNewUserName, setNewUserEmail, setNewUserPassword, setNewUserGoal, setNewUserAge, setNewUserGender, setNewUserHeight, setNewUserWeight, setNewUserActivity } = authSlice.actions;
+export const {
+  setNewUserName,
+  setNewUserEmail,
+  setNewUserPassword,
+  setNewUserGoal,
+  setNewUserAge,
+  setNewUserGender,
+  setNewUserHeight,
+  setNewUserWeight,
+  setNewUserActivity,
+} = authSlice.actions;
 export const authReducer = authSlice.reducer;

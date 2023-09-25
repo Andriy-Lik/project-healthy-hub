@@ -158,7 +158,13 @@ export const Input = styled(Field)`
   font-weight: ${props => props.theme.fontWeights.regular};
   line-height: 20px;
   letter-spacing: 0em;
-  color: ${p => p.theme.colors.white};  
+  color: ${p => p.theme.colors.white};
+  
+  &[type="number"]::-webkit-outer-spin-button,
+  &[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  };       
 
   &::placeholder {
     color: ${p => p.theme.colors.gray};

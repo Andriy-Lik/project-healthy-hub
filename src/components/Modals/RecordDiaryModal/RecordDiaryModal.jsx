@@ -27,7 +27,7 @@ import {
 
 const schema = yup.object({
   productList: yup.array().of(yup.object().shape({
-    productName:
+    mealName:
       yup.string()
         .required("Name is a required field")
         .trim('Name cannot include leading and trailing spaces')
@@ -36,23 +36,23 @@ const schema = yup.object({
       yup.number()
         .required("Carbonohidrates is a required field")
         .typeError('Carbonohidrates must be a number')
-        .moreThan(-1, "Carbonohidrates must a positive number")
+        .min(0, "Carbonohidrates must a positive number")
         .integer("Carbonohidrates must be an integer"),
     protein:
       yup.number()
         .required("Protein is a required field")
-        .typeError('Protein must be a number')
-        .moreThan(-1, "Protein must a positive number"),
+        .typeError('Protein must be a number')        
+        .min(0, "Protein must a positive number"),
     fat:
       yup.number()
         .required("Fat is a required field")
         .typeError('Fat must be a number')
-        .moreThan(-1, "Protein must a positive number"),
+        .min(0, "Protein must a positive number"),
     calories:
       yup.number()
         .required("Calories is a required field")
         .typeError('Calories must be a number')
-        .moreThan(-1, "Calories must a positive number")
+        .min(0, "Calories must a positive number")
         .integer("Calories must be an integer"),
   })),
 });
@@ -60,7 +60,7 @@ const schema = yup.object({
 const initialValues = {
   productList: [
     {
-      productName: '',
+      mealName: '',
       carbonohidrates: '',
       protein: '',
       fat: '',
@@ -125,16 +125,16 @@ const RecordDiaryModal = ({ onClose, image, title }) => {
                             <WrapperInput>
                               <Input
                                 type="text"
-                                id={`productList.${index}.productName`}
-                                name={`productList.${index}.productName`}
+                                id={`productList.${index}.mealName`}
+                                name={`productList.${index}.mealName`}
                                 placeholder="The name of the product or dish"
                               />
-                              <ErrorMsg name={`productList.${index}.productName`} component="div" />
+                              <ErrorMsg name={`productList.${index}.mealName`} component="div" />
                             </WrapperInput>
 
                             <WrapperInput>
                               <Input
-                                type="text"
+                                type="number"
                                 id={`productList.${index}.carbonohidrates`}
                                 name={`productList.${index}.carbonohidrates`}
                                 placeholder="Carbonoh."
@@ -144,7 +144,7 @@ const RecordDiaryModal = ({ onClose, image, title }) => {
                           
                             <WrapperInput>
                               <Input
-                                type="text"
+                                type="number"
                                 id={`productList.${index}.protein`}
                                 name={`productList.${index}.protein`}
                                 placeholder="Protein"
@@ -154,7 +154,7 @@ const RecordDiaryModal = ({ onClose, image, title }) => {
                           
                             <WrapperInput>
                               <Input
-                                type="text"
+                                type="number"
                                 id={`productList.${index}.fat`}
                                 name={`productList.${index}.fat`}
                                 placeholder="Fat"
@@ -164,7 +164,7 @@ const RecordDiaryModal = ({ onClose, image, title }) => {
                           
                             <WrapperInput>
                               <Input
-                                type="text"
+                                type="number"
                                 id={`productList.${index}.calories`}
                                 name={`productList.${index}.calories`}
                                 placeholder="Calories"
@@ -184,7 +184,7 @@ const RecordDiaryModal = ({ onClose, image, title }) => {
                         insert(
                           values.productList.length + 1,
                           {
-                            productName: '',
+                            mealName: '',
                             carbonohidrates: '',
                             protein: '',
                             fat: '',
