@@ -26,9 +26,9 @@ const WelcomePage = () => {
         @import
         url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Roboto&display=swap');
       </style>
-
-      <PerksContainer>
         <WelcomeLogo src={welcomeLogoPic} alt="Reg Logo" />
+      <PerksContainer>
+
         <WelcomeHeadline>Set goals and achieve them</WelcomeHeadline>
         <WelcomeText>
           The service will help you set goals and follow them.

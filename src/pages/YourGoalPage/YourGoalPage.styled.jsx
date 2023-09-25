@@ -58,8 +58,9 @@ export const GoalText = styled.p `
     line-height: 32px;
 `;
 
-export const GoalButton = styled(Link) ` 
+export const GoalButton = styled.p ` 
     background-color: #E3FFA8;
+    text-align: center;
     border-radius: 12px;
     width: 192px;
     padding: 8px;

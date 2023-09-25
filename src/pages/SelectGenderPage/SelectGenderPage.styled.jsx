@@ -56,7 +56,7 @@ export const SelectGenderText = styled.p `
     line-height: 32px;
 `;
 
-export const SelectGenderButton = styled(Link) ` 
+export const SelectGenderButton = styled.p ` 
     background-color: #E3FFA8;
     border-radius: 12px;
     width: 192px;

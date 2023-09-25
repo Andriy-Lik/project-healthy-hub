@@ -24,8 +24,9 @@ const ForgotPasswordPage = () => {
           url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Roboto&display=swap');
         </style>
 
-        <ForgotPasswordContainer>
           <ForgotPasswordLogo src={welcomeLogoPic} alt="Logo" />
+        <ForgotPasswordContainer>
+
           <ForgotPasswordHeadline>Forgot your password</ForgotPasswordHeadline>
           <ForgotPasswordText>
             We will send you an email with recovery instructions
