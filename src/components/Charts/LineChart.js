@@ -1,8 +1,15 @@
 import { useState, useEffect } from 'react';
-// import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
-// import { selectStatsInfo } from '../../redux/Statistics/statisticsSelectors';
-// import { getStats } from '../../redux/Statistics/statisticsOperations';
+import { selectStatsInfo } from '../../redux/Statistics/statisticsSelectors';
+
+import {
+  TitleContainer,
+  ChartsTitle,
+  ChartsSubtitle,
+  ChartsCaption,
+  Chart,
+} from './LineChart.styled';
 
 import {
   Chart as ChartJS,
@@ -29,190 +36,33 @@ ChartJS.register(
 const LineChart = ({ dataFormat, type }) => {
   const [time, setTime] = useState([]);
   const [information, setInformation] = useState([]);
-  // const [average, setAverage] = useState([]);
+  const [average, setAverage] = useState([]);
 
-  // const info = useSelector(selectStatsInfo);
+  const info = useSelector(selectStatsInfo);
 
-  useEffect(() => {
-    const info = {
-      water: [
-        {
-          water: 2000,
-          createdAt: '2021-07-18T10:40:39.412Z',
-        },
-        {
-          water: 2200,
-          createdAt: '2021-07-18T10:40:39.412Z',
-        },
-        {
-          water: 2000,
-          createdAt: '2022-07-18T10:40:39.412Z',
-        },
-        {
-          water: 2300,
-          createdAt: '2022-07-18T10:40:39.412Z',
-        },
-        {
-          water: 1100,
-          createdAt: '2023-07-18T10:40:39.412Z',
-        },
-        {
-          water: 1400,
-          createdAt: '2023-07-19T10:45:31.168Z',
-        },
-        {
-          water: 1200,
-          createdAt: '2023-07-20T10:45:36.891Z',
-        },
-        {
-          water: 1800,
-          createdAt: '2023-07-21T10:45:45.298Z',
-        },
-        {
-          water: 1600,
-          createdAt: '2023-07-22T10:45:52.200Z',
-        },
-        {
-          water: 1500,
-          createdAt: '2023-08-18T10:40:39.412Z',
-        },
-        {
-          water: 1450,
-          createdAt: '2023-08-19T10:45:31.168Z',
-        },
-        {
-          water: 1415,
-          createdAt: '2023-08-20T10:45:36.891Z',
-        },
-        {
-          water: 2100,
-          createdAt: '2023-08-21T10:45:45.298Z',
-        },
-        {
-          water: 2100,
-          createdAt: '2023-08-22T10:45:52.200Z',
-        },
-        {
-          water: 2300,
-          createdAt: '2023-09-01T10:31:44.390Z',
-        },
-        {
-          water: 1200,
-          createdAt: '2023-09-02T10:32:14.271Z',
-        },
-        {
-          water: 1400,
-          createdAt: '2023-09-03T10:37:49.924Z',
-        },
-        {
-          water: 1450,
-          createdAt: '2023-09-04T10:38:00.932Z',
-        },
-        {
-          water: 1500,
-          createdAt: '2023-09-05T10:38:05.314Z',
-        },
-        {
-          water: 1900,
-          createdAt: '2023-09-06T10:38:07.292Z',
-        },
-        {
-          water: 1800,
-          createdAt: '2023-09-07T10:38:14.494Z',
-        },
-        {
-          water: 1400,
-          createdAt: '2023-09-08T10:38:24.320Z',
-        },
-        {
-          water: 1375,
-          createdAt: '2023-09-09T10:38:30.660Z',
-        },
-        {
-          water: 1350,
-          createdAt: '2023-09-10T10:39:57.559Z',
-        },
-        {
-          water: 1400,
-          createdAt: '2023-09-11T10:40:02.360Z',
-        },
-        {
-          water: 1250,
-          createdAt: '2023-09-12T10:40:10.729Z',
-        },
-        {
-          water: 1300,
-          createdAt: '2023-09-13T10:40:15.384Z',
-        },
-        {
-          water: 1350,
-          createdAt: '2023-09-14T10:40:19.389Z',
-        },
-        {
-          water: 1400,
-          createdAt: '2023-09-15T10:40:25.729Z',
-        },
-        {
-          water: 1425,
-          createdAt: '2023-09-16T10:40:30.223Z',
-        },
-        {
-          water: 1450,
-          createdAt: '2023-09-17T10:40:35.055Z',
-        },
-        {
-          water: 1475,
-          createdAt: '2023-09-18T10:40:39.412Z',
-        },
-        {
-          water: 1450,
-          createdAt: '2023-09-19T10:45:31.168Z',
-        },
-        {
-          water: 1415,
-          createdAt: '2023-09-20T10:45:36.891Z',
-        },
-        {
-          water: 1475,
-          createdAt: '2023-09-21T10:45:45.298Z',
-        },
-        {
-          water: 1500,
-          createdAt: '2023-09-22T10:45:52.200Z',
-        },
-      ],
-    };
+  useEffect(() => {  
 
-    if (Object.keys(info).length === 0) {      
+    if (Object.keys(info).length === 0) {
       return;
     }
 
-    const currentMonth = new Date().getMonth() + 1;
-    const currentYear = new Date().getFullYear();
-
     const infoArray = [];
     const timesArray = [];
-    const averageValue = [];   
+    const averageValue = [];
 
     if (Object.keys(info).length !== 0) {
       const keys = Object.keys(info);
 
       for (const key of keys) {
-        if (key === 'water') {
+        if (key === type) {
           if (!dataFormat) {
-            for (const entry of info[key]) {
-              const entryDate = new Date(entry.createdAt);
-              const entryMonth = entryDate.getMonth() + 1;
-
-              if (entryMonth === currentMonth) {
-                timesArray.push(entryDate.getDate());
-                infoArray.push(entry.water);
-              }
+            for (const entry of info[key]) { 
+              timesArray.push(entry._id);
+              infoArray.push(entry.amount);
             }
           }
 
-          if (dataFormat) {
-            const groupedData = {};
+          if (dataFormat) {        
             const monthShortName = {
               1: 'Jan',
               2: 'Feb',
@@ -228,33 +78,13 @@ const LineChart = ({ dataFormat, type }) => {
               12: 'Dec',
             };
 
-            for (const entry of info[key]) {
-              const entryDate = new Date(entry.createdAt);
-              const entryMonth = entryDate.getMonth() + 1;
-              const entryYear = entryDate.getFullYear();
+            for (const entry of info[key]) { 
+              const entryMonth = new Date(entry._id).getMonth() + 1;      
 
-              if (entryYear === currentYear) {
-                if (!groupedData[entryMonth]) {
-                  groupedData[entryMonth] = {
-                    totalConsumption: 0,
-                    count: 0,
-                  };
-                }
+              const average = entry.amount / entry.count;
 
-                groupedData[entryMonth].totalConsumption += entry.water;
-                groupedData[entryMonth].count++;
-              }
-            }
-
-            for (const month in groupedData) {
-              const totalConsumption =
-                groupedData[month].totalConsumption;
-              const count = groupedData[month].count;
-              const average = totalConsumption / count;
-
-              // timesArray.push(parseInt(month));
-              timesArray.push(monthShortName[month]);              
-              infoArray.push(Math.round(average));
+              timesArray.push(monthShortName[entryMonth]);
+              infoArray.push(Math.round(average));            
             }
           }
         }
@@ -269,11 +99,12 @@ const LineChart = ({ dataFormat, type }) => {
 
     setInformation(infoArray);
     setTime(timesArray);
-    // setAverage(averageValue);
-  }, [dataFormat, type]);
+    setAverage(averageValue);
+  }, [info, dataFormat, type]);
 
-
+  let datasetsLabel = type === 'water' ? 'milliliters' : 'calories';
   let caption = type === 'water' ? 'L' : 'K';
+  
   const options = {
     responsive: true,
     scales: {
@@ -325,7 +156,7 @@ const LineChart = ({ dataFormat, type }) => {
     datasets: [
       {
         data: information,
-        label: 'calories',
+        label: `${datasetsLabel}`,
         borderColor: '#E3FFA8',
         borderWidth: 1,
         pointRadius: 0,
@@ -337,7 +168,18 @@ const LineChart = ({ dataFormat, type }) => {
 
   return (
     <>
-      <Line options={options} data={data} />
+      <TitleContainer>
+        <ChartsTitle>{type === 'water' ? 'Water' : 'Calories'}</ChartsTitle>
+        <ChartsSubtitle>
+          Average value:{' '}
+          <ChartsCaption>
+            {average} {type === 'water' ? 'ml' : 'cal'}
+          </ChartsCaption>
+        </ChartsSubtitle>
+      </TitleContainer>
+      <Chart>
+        <Line options={options} data={data} />
+      </Chart>
     </>
   );
 };
