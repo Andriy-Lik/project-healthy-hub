@@ -2,14 +2,18 @@ import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 
 import { selectStatsInfo } from '../../redux/Statistics/statisticsSelectors';
-import { List, Item, WeightTitle, DataTitle } from './ScaleChart.styled';
+import { monthName } from '../../constants/monthName';
 import {
+  List,
+  Item,
+  WeightTitle,
+  DataTitle,
   TitleContainer,
   ChartsTitle,
   ChartsSubtitle,
   ChartsCaption,
   Scale,
-} from './LineChart.styled';
+} from './ScaleLineCharts.styled';
 
 const ScaleChart = ({ dataFormat }) => {
   const [weight, setWeight] = useState([]);
@@ -35,31 +39,10 @@ const ScaleChart = ({ dataFormat }) => {
             for (const entry of info[key]) {
               value.push(entry.amount);
             }
-
-            const total = value.reduce((previousValue, number) => {
-              return previousValue + number;
-            }, 0);
-            let totalAverageValue = Math.round(total / value.length);
-            averageValue.push(totalAverageValue);
             setWeight(info[key]);
           }
 
           if (dataFormat) {
-            const monthShortName = {
-              1: 'January',
-              2: 'February',
-              3: 'March',
-              4: 'April',
-              5: 'May',
-              6: 'June',
-              7: 'July',
-              8: 'August',
-              9: 'September',
-              10: 'October',
-              11: 'November',
-              12: 'December',
-            };
-
             for (const entry of info[key]) {
               const entryMonth = new Date(entry._id).getMonth() + 1;
 
@@ -67,26 +50,26 @@ const ScaleChart = ({ dataFormat }) => {
                 return;
               }
 
-              const average = (entry.amount / entry.count).toFixed(2);
+              const average = (entry.amount / entry.count).toFixed(1);
 
               if (average) {
                 const newInfo = {
-                  _id: monthShortName[entryMonth],
+                  _id: monthName.full[entryMonth],
                   amount: average,
                 };
                 infoArray.push(newInfo);
+                value.push(Number(average));
               }
-              value.push(entry.average);
             }
-
-            const total = value.reduce((previousValue, number) => {
-              return previousValue + number;
-            }, 0);
-            let totalAverageValue = Math.round(total / value.length);
-            averageValue.push(totalAverageValue);
-
             setWeight(infoArray);
           }
+
+          const total = Math.round(
+            value.reduce((previousValue, number) => {
+              return previousValue + number;
+            }, 0) / value.length
+          );
+          averageValue.push(total);
         }
       }
     }

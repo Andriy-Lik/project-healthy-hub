@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 
 import { selectStatsInfo } from '../../redux/Statistics/statisticsSelectors';
+import { monthName } from '../../constants/monthName';
 
 import {
   TitleContainer,
@@ -9,7 +10,7 @@ import {
   ChartsSubtitle,
   ChartsCaption,
   Chart,
-} from './LineChart.styled';
+} from './ScaleLineCharts.styled.js';
 
 import {
   Chart as ChartJS,
@@ -40,8 +41,7 @@ const LineChart = ({ dataFormat, type }) => {
 
   const info = useSelector(selectStatsInfo);
 
-  useEffect(() => {  
-
+  useEffect(() => {
     if (Object.keys(info).length === 0) {
       return;
     }
@@ -56,46 +56,31 @@ const LineChart = ({ dataFormat, type }) => {
       for (const key of keys) {
         if (key === type) {
           if (!dataFormat) {
-            for (const entry of info[key]) { 
+            for (const entry of info[key]) {
               timesArray.push(entry._id);
               infoArray.push(entry.amount);
             }
           }
 
-          if (dataFormat) {        
-            const monthShortName = {
-              1: 'Jan',
-              2: 'Feb',
-              3: 'Mar',
-              4: 'Apr',
-              5: 'May',
-              6: 'June',
-              7: 'July',
-              8: 'Aug',
-              9: 'Sep',
-              10: 'Oct',
-              11: 'Nov',
-              12: 'Dec',
-            };
-
-            for (const entry of info[key]) { 
-              const entryMonth = new Date(entry._id).getMonth() + 1;      
+          if (dataFormat) {
+            for (const entry of info[key]) {
+              const entryMonth = new Date(entry._id).getMonth() + 1;
 
               const average = entry.amount / entry.count;
 
-              timesArray.push(monthShortName[entryMonth]);
-              infoArray.push(Math.round(average));            
+              timesArray.push(monthName.short[entryMonth]);
+              infoArray.push(Math.round(average));
             }
           }
         }
       }
     }
-
-    const total = infoArray.reduce((previousValue, number) => {
-      return previousValue + number;
-    }, 0);
-    let totalAverageValue = Math.round(total / timesArray.length);
-    averageValue.push(totalAverageValue);
+    const total = Math.round(
+      infoArray.reduce((previousValue, number) => {
+        return previousValue + number;
+      }, 0) / timesArray.length
+    );
+    averageValue.push(total);
 
     setInformation(infoArray);
     setTime(timesArray);
@@ -104,7 +89,7 @@ const LineChart = ({ dataFormat, type }) => {
 
   let datasetsLabel = type === 'water' ? 'milliliters' : 'calories';
   let caption = type === 'water' ? 'L' : 'K';
-  
+
   const options = {
     responsive: true,
     scales: {
