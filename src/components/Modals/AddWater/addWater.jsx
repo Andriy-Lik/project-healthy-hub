@@ -1,6 +1,9 @@
 import PropTypes from "prop-types";
 import { useEffect } from 'react';
+import { useDispatch, useSelector } from "react-redux";
 import { createPortal } from 'react-dom';
+
+import { addWater } from "../../../redux/Water/waterOperations";
 
 import { Formik } from 'formik';
 import * as yup from 'yup';
@@ -28,6 +31,8 @@ const initialValues = {
 const modalRoot = document.querySelector('#modal-root');
 
 const AddWater = ({ onClose }) => {
+
+  const dispatch = useDispatch(); 
   
   const handleKeyDown = (event) => {
     if (event.code === "Escape") {      
@@ -41,8 +46,9 @@ const AddWater = ({ onClose }) => {
     };
   };
   
-  const handleSubmit = (values, { resetForm }) => {
-    console.log(values);
+  const handleSubmit = ({water}, { resetForm }) => {
+    dispatch(addWater(water));
+    console.log(water)
     resetForm();
   };
   
