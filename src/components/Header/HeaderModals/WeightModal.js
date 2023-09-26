@@ -1,6 +1,10 @@
 import React from "react";
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
+import { useDispatch } from "react-redux";
+import { useState } from "react";
+
+import { setNewUserWeight } from '../../../redux/Auth/authSlice'
 
 import { Overlay, ModalWrapper, Modal, ModalTitle, ModalText, CloseBtn, DateContainer, DateText, DateDay, WeightForm, WeightFormInput, WeightFormBtn, CancelBtn } from "./HeaderModalWeight.styled";
 
@@ -9,6 +13,21 @@ import close from '../../../images/icons/close-circle.svg'
 const modalRoot = document.querySelector('#header-modal-weight')
 
 export default function WeightModal({ onCloseModal }) {
+
+    const dispatch = useDispatch();
+    const [newWeight, setNewWeight] = useState('')
+
+    const handleNewUserWeight = event => {
+        event.preventDefault();
+        dispatch(setNewUserWeight(newWeight));
+        onCloseModal();
+    };
+
+    const handleInputChange = event => {
+        const { value } = event.target;
+        setNewWeight(value);
+    }
+
     useEffect(() => {
         const escKeyHandler = event => {
             if (event.code === 'Escape') {
@@ -46,8 +65,8 @@ export default function WeightModal({ onCloseModal }) {
                         <DateText>Today</DateText>
                         <DateDay>{formattedDate}</DateDay>
                     </DateContainer>
-                    <WeightForm>
-                        <WeightFormInput type="number" name="weight" placeholder="Enter your weight" autoComplete="off" />
+                    <WeightForm onSubmit={handleNewUserWeight}>
+                        <WeightFormInput type="number" name="weight" placeholder="Enter your weight" autoComplete="off" onChange={handleInputChange} required autoFocus />
                         <WeightFormBtn type="submit">Confirm</WeightFormBtn>
                     </WeightForm>
                 </Modal>

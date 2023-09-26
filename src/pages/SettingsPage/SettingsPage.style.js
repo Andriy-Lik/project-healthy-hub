@@ -21,6 +21,7 @@ export const SettingsPageSection = styled.section`
 export const SettingsPageContainer = styled.div`
   display: flex;
   margin: 0 auto;
+
   @media screen and (${props => props.theme.mq.mobile}) {
     width: 320px;
     padding: 0 10px;
@@ -29,20 +30,14 @@ export const SettingsPageContainer = styled.div`
   @media screen and (${props => props.theme.mq.tablet}) {
     width: 834px;
     padding: 0 27px;
+
+    position: relative;
   }
   @media screen and (${props => props.theme.mq.desktop}) {
     width: 1440px;
     padding: 0 34px;
-  }
-`;
 
-export const TopProfileSetting = styled.div`
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 24px;
-  order: 1;
-  @media screen and (${props => props.theme.mq.mobile}) {
-    order: 1;
+    position: relative;
   }
 `;
 
@@ -64,14 +59,22 @@ export const H1 = styled.h1`
 `;
 
 export const ButtonContainer = styled.div`
-  @media screen and (${props => props.theme.mq.mobile}) {
+  @media screen and (max-width: 833px) {
+    display: flex;
+    flex-direction: column-reverse;
+
     order: 3;
+    margin-top: 40px;
   }
   @media screen and (${props => props.theme.mq.tablet}) {
-    order: 2;
+    position: absolute;
+    top: 0;
+    right: 0;
   }
   @media screen and (${props => props.theme.mq.desktop}) {
-    order: 2;
+    position: absolute;
+    top: 0;
+    right: 0;
   }
 `;
 
@@ -84,9 +87,13 @@ export const CancelButton = styled.button`
   line-height: 20px;
 
   width: 192px;
-  padding: 8px 12px 8px 0;
+  padding: 8px 12px 8px 12px;
   border: none;
   cursor: pointer;
+
+  @media screen and (max-width: 833px) {
+    width: 100%;
+  }
 `;
 
 export const SaveButton = styled.button`
@@ -100,6 +107,10 @@ export const SaveButton = styled.button`
   border-radius: ${props => props.theme.radii.normal};
   padding: 8px;
   cursor: pointer;
+
+  @media screen and (max-width: 833px) {
+    width: 100%;
+  }
 `;
 
 export const MiddleProfileSetting = styled.div`
@@ -112,10 +123,12 @@ export const MiddleProfileSetting = styled.div`
   @media screen and (${props => props.theme.mq.tablet}) {
     flex-direction: column;
     order: 3;
+    margin-top: 20px;
   }
   @media screen and (${props => props.theme.mq.desktop}) {
     flex-direction: row;
     order: 3;
+    margin-top: 16px;
   }
 `;
 
@@ -195,7 +208,7 @@ export const Input = styled.input`
 
   padding: 8px 10px 8px 10px;
   border-radius: ${props => props.theme.radii.normal};
-  border: 1px solid rgba(182, 182, 182, 1);
+  border: 1px solid ${props => props.theme.colors.gray};
 
   &:hover {
     border-color: ${props => props.theme.colors.greenLite};

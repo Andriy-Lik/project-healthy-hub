@@ -2,6 +2,10 @@ import styled from 'styled-components';
 
 import LoseFatMen from '../../../images/icons/Lose-fat-image-men.svg';
 import MaintakeMen from '../../../images/icons/Maintake-image-men.svg';
+
+import LoseFatGirl from '../../../images/icons/Lose-fat-image-girl.svg';
+import MaintakeGirl from '../../../images/icons/Maintake-image-girl.svg';
+
 import muscle from '../../../images/icons/Gain-muscle.svg';
 
 export const Overlay = styled.div`
@@ -129,7 +133,7 @@ export const ModalFormContainer = styled.div`
   align-items: center;
 `;
 
-export const ModalLabel1 = styled.label`
+export const ModalLabel1Men = styled.label`
   color: ${props => props.theme.colors.white};
   font-size: ${props => props.theme.fontSizes.xs};
   font-weight: ${props => props.theme.fontWeights.regular};
@@ -153,7 +157,18 @@ export const ModalLabel1 = styled.label`
   }
 `;
 
-export const ModalLabel2 = styled.label`
+export const ModalInput1Men = styled.input`
+  display: none;
+  &:checked + ${ModalLabel1Men} {
+    color: ${props => props.theme.colors.violet};
+    /* font-weight: bold; */
+  }
+  &:checked + ${ModalLabel1Men}:before {
+    border-color: ${props => props.theme.colors.violet};
+  }
+`;
+
+export const ModalLabel2Men = styled.label`
   color: ${props => props.theme.colors.white};
   font-size: ${props => props.theme.fontSizes.xs};
   font-weight: ${props => props.theme.fontWeights.regular};
@@ -174,6 +189,87 @@ export const ModalLabel2 = styled.label`
     background-size: 20px;
     background-repeat: no-repeat;
     background-position: center center;
+  }
+`;
+
+export const ModalInput2Men = styled.input`
+  display: none;
+  &:checked + ${ModalLabel2Men} {
+    color: ${props => props.theme.colors.violet};
+    /* font-weight: bold; */
+  }
+  &:checked + ${ModalLabel2Men}:before {
+    border-color: ${props => props.theme.colors.violet};
+  }
+`;
+
+export const ModalLabel1Girl = styled.label`
+  color: ${props => props.theme.colors.white};
+  font-size: ${props => props.theme.fontSizes.xs};
+  font-weight: ${props => props.theme.fontWeights.regular};
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+  &:before {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    content: '';
+    width: 40px;
+    height: 40px;
+    border: 1px solid ${props => props.theme.colors.gray1};
+    border-radius: ${props => props.theme.radii.normal};
+    margin-right: 12px;
+    background-image: url(${LoseFatGirl});
+    background-size: 20px;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+`;
+
+export const ModalInput1Girl = styled.input`
+  display: none;
+  &:checked + ${ModalLabel1Girl} {
+    color: ${props => props.theme.colors.violet};
+    /* font-weight: bold; */
+  }
+  &:checked + ${ModalLabel1Girl}:before {
+    border-color: ${props => props.theme.colors.violet};
+  }
+`;
+
+export const ModalLabel2Girl = styled.label`
+  color: ${props => props.theme.colors.white};
+  font-size: ${props => props.theme.fontSizes.xs};
+  font-weight: ${props => props.theme.fontWeights.regular};
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+  &:before {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    content: '';
+    width: 40px;
+    height: 40px;
+    border: 1px solid ${props => props.theme.colors.gray1};
+    border-radius: ${props => props.theme.radii.normal};
+    margin-right: 12px;
+    background-image: url(${MaintakeGirl});
+    background-size: 20px;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+`;
+
+export const ModalInput2Girl = styled.input`
+  display: none;
+  &:checked + ${ModalLabel2Girl} {
+    color: ${props => props.theme.colors.violet};
+    /* font-weight: bold; */
+  }
+  &:checked + ${ModalLabel2Girl}:before {
+    border-color: ${props => props.theme.colors.violet};
   }
 `;
 
@@ -198,28 +294,6 @@ export const ModalLabel3 = styled.label`
     background-size: 20px;
     background-repeat: no-repeat;
     background-position: center center;
-  }
-`;
-
-export const ModalInput1 = styled.input`
-  display: none;
-  &:checked + ${ModalLabel1} {
-    color: ${props => props.theme.colors.violet};
-    /* font-weight: bold; */
-  }
-  &:checked + ${ModalLabel1}:before {
-    border-color: ${props => props.theme.colors.violet};
-  }
-`;
-
-export const ModalInput2 = styled.input`
-  display: none;
-  &:checked + ${ModalLabel2} {
-    color: ${props => props.theme.colors.violet};
-    /* font-weight: bold; */
-  }
-  &:checked + ${ModalLabel2}:before {
-    border-color: ${props => props.theme.colors.violet};
   }
 `;
 
