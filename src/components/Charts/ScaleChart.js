@@ -16,6 +16,7 @@ const ScaleChart = ({ dataFormat }) => {
   // const [average, setAverage] = useState([]);
 
   const info = useSelector(selectStatsInfo);
+  console.log('INFO: ', info);
 
   useEffect(() => {
     if (Object.keys(info).length === 0) {
@@ -32,19 +33,19 @@ const ScaleChart = ({ dataFormat }) => {
           const value = [];
 
           if (!dataFormat) {
-            for (const entry of info[key]) {            
-              value.push(entry.amount);            
-            }          
+            for (const entry of info[key]) {
+              value.push(entry.amount);
+            }
 
             const total = value.reduce((previousValue, number) => {
               return previousValue + number;
             }, 0);
             let totalAverageValue = Math.round(total / value.length);
-            averageValue.push(totalAverageValue); 
+            averageValue.push(totalAverageValue);
             setWeight(info[key]);
           }
 
-          if (dataFormat) {         
+          if (dataFormat) {
             const monthShortName = {
               1: 'January',
               2: 'February',
