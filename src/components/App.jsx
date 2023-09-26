@@ -14,6 +14,7 @@ const BodyParametersPage = lazy(() => import('../pages/BodyParametersPage'));
 const YourActivityPage = lazy(() => import('../pages/YourActivityPage'));
 const MainPage = lazy(() => import('../pages/MainPage'));
 const DashboardPage = lazy(() => import('../pages/DashboardPage'));
+// const DiaryPage = lazy(() => import('../pages/DiaryPage'));
 const DiaryPage = lazy(() => import('../pages/DiaryPage'));
 const RecommendedFoodPage = lazy(() => import('../pages/RecommendedFoodPage'));
 const SettingsPage = lazy(() => import('../pages/SettingsPage'));

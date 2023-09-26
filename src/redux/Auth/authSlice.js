@@ -19,7 +19,7 @@ const initialState = {
     avatarURL: null,
   },
   token: null,
-  isLoggedIn: true,
+  isLoggedIn: false,
   isRefreshing: false,
 };
 

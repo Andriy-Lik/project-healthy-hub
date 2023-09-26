@@ -2,12 +2,11 @@ import React from "react";
 import { useState, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import Form from '../../components/Diary/DiaryForm';
-import breakfast from './images/Breakfast image.png';
-import dinner from './images/Dinner image.png';
-import lunch from './images/Lunch image.png';
-import snack from './images/Snack image.png';
-import arrowRight from './images/arrow-right.svg';
-// import AddFoodButton from "components/Diary/AddFoodButton";
+import breakfast from '../../images/diaryPageImages/breakfast.png';
+import dinner from '../../images/diaryPageImages/dinner.png';
+import lunch from '../../images/diaryPageImages/lunch.png';
+import snack from '../../images/diaryPageImages/snack.png';
+import arrowRight from '../../images/diaryPageImages/arrow-right.svg';
 
 import {
   DashboardSection,
@@ -130,82 +129,80 @@ const DiaryPage = () => {
 
   return (
     <DashboardSection>
-     <DashboardContainer>
-      <MainHeaderBlock>
-      <BackLink to={backLink.current}>
+      <DashboardContainer>
+        <MainHeaderBlock>
+          <BackLink to={backLink.current}>
             <ArrowReturn src={arrowRight} alt="arrow right" />
-        </BackLink>
-        <MainHeader>
-        Diary</MainHeader>
+          </BackLink>
+          <MainHeader>
+            Diary
+          </MainHeader>
         </MainHeaderBlock>
-      <ChartsBlock>
-        <Li>
+        <ChartsBlock>
+          <Li>
+            <ChartsContainer>
+            <Img src={breakfast} alt="Breakfast" />
+              <ChartsHeader>Breakfast</ChartsHeader>
+                <ChartsTitle>Carbonohidrates: {carbonohidrates.breakfast}</ChartsTitle>
+                <ChartsTitle>Protein: {protein.breakfast} </ChartsTitle>
+                <ChartsTitle>Fat: {fat.breakfast}</ChartsTitle>
+            </ChartsContainer>
+            <Charts>
+            <List>
+            {breakfastFood.map(food => <Form onSubmit={addFoodForm} type="breakfast" value={food} onAddElement={setAddFoodButton}/>)}
+            {addFoodButton && <AddFoodButton onClick={() => toggleFoodButton('breakfast')}>+ Record your meal</AddFoodButton>}     
+            </List>
+            </Charts>
+          </Li>
+          <Li>
           <ChartsContainer>
-          <Img src={breakfast} alt="Breakfast" />
-            <ChartsHeader>Breakfast</ChartsHeader>
-              <ChartsTitle>Carbonohidrates: {carbonohidrates.breakfast}</ChartsTitle>
-              <ChartsTitle>Protein: {protein.breakfast} </ChartsTitle>
-              <ChartsTitle>Fat: {fat.breakfast}</ChartsTitle>
-          </ChartsContainer>
-          <Charts>
-          <List>
-          {breakfastFood.map(food => <Form onSubmit={addFoodForm} type="breakfast" value={food} onAddElement={setAddFoodButton}/>)}
-          {addFoodButton && <AddFoodButton onClick={() => toggleFoodButton('breakfast')}>+ Record your meal</AddFoodButton>}     
-          </List>
-          </Charts>
-        </Li>
-        <Li>
-        <ChartsContainer>
-        <Img src={dinner} alt="Dinner" />
-            <ChartsHeader>Dinner</ChartsHeader>
-            <ChartsTitle>Carbonohidrates: {carbonohidrates.dinner} </ChartsTitle>
-              <ChartsTitle>Protein: {protein.dinner} </ChartsTitle>
-              <ChartsTitle>Fat: {fat.dinner} </ChartsTitle>
-          </ChartsContainer>
-          <Charts>
-          <List>
-          {dinnerFood.map(food => <Form onSubmit={addFoodForm} type="dinner" value={food} onAddElement={setAddFoodButtonDinner}/>)}
-          {addFoodButtonDinner && <AddFoodButton onClick={() => toggleFoodButton('dinner')}>+ Record your meal</AddFoodButton>}     
-          </List>
-          </Charts>
-        </Li>
-        <Li>
-        <ChartsContainer>
-        <Img src={lunch} alt="Lunch" />
-            <ChartsHeader>Lunch</ChartsHeader>
-            <ChartsTitle>Carbonohidrates: {carbonohidrates.lunch} </ChartsTitle>
-              <ChartsTitle>Protein: {protein.lunch}</ChartsTitle>
-              <ChartsTitle>Fat: {fat.lunch} </ChartsTitle>
-          </ChartsContainer>
-          <Charts>
-          <List>
-          {lunchFood.map(food => <Form onSubmit={addFoodForm} type="lunch" value={food} onAddElement={setAddFoodButtonLunch}/>)}
-          {addFoodButtonLunch && <AddFoodButton onClick={() => toggleFoodButton('lunch')}>+ Record your meal</AddFoodButton>}     
-          </List>
-          </Charts>
-        </Li>
-        <Li>
-        <ChartsContainer>
-        <Img src={snack} alt="Snack" />
-            <ChartsHeader>Snack</ChartsHeader>
-            <ChartsTitle>Carbonohidrates: {carbonohidrates.snack} </ChartsTitle>
-              <ChartsTitle>Protein: {protein.snack}</ChartsTitle>
-              <ChartsTitle>Fat: {fat.snack} </ChartsTitle>
-          </ChartsContainer>
-          <Charts>
-          <List>
-          {snackFood.map(food => <Form onSubmit={addFoodForm} type="snack" value={food} onAddElement={setAddFoodButtonSnack}/>)}
-          {addFoodButtonSnack && <AddFoodButton onClick={() => toggleFoodButton('snack')}>+ Record your meal</AddFoodButton>}     
-          </List>
-          </Charts>
-        </Li>
-      </ChartsBlock>
-
-    </DashboardContainer>
+          <Img src={dinner} alt="Dinner" />
+              <ChartsHeader>Dinner</ChartsHeader>
+              <ChartsTitle>Carbonohidrates: {carbonohidrates.dinner} </ChartsTitle>
+                <ChartsTitle>Protein: {protein.dinner} </ChartsTitle>
+                <ChartsTitle>Fat: {fat.dinner} </ChartsTitle>
+            </ChartsContainer>
+            <Charts>
+            <List>
+            {dinnerFood.map(food => <Form onSubmit={addFoodForm} type="dinner" value={food} onAddElement={setAddFoodButtonDinner}/>)}
+            {addFoodButtonDinner && <AddFoodButton onClick={() => toggleFoodButton('dinner')}>+ Record your meal</AddFoodButton>}     
+            </List>
+            </Charts>
+          </Li>
+          <Li>
+          <ChartsContainer>
+          <Img src={lunch} alt="Lunch" />
+              <ChartsHeader>Lunch</ChartsHeader>
+              <ChartsTitle>Carbonohidrates: {carbonohidrates.lunch} </ChartsTitle>
+                <ChartsTitle>Protein: {protein.lunch}</ChartsTitle>
+                <ChartsTitle>Fat: {fat.lunch} </ChartsTitle>
+            </ChartsContainer>
+            <Charts>
+            <List>
+            {lunchFood.map(food => <Form onSubmit={addFoodForm} type="lunch" value={food} onAddElement={setAddFoodButtonLunch}/>)}
+            {addFoodButtonLunch && <AddFoodButton onClick={() => toggleFoodButton('lunch')}>+ Record your meal</AddFoodButton>}     
+            </List>
+            </Charts>
+          </Li>
+          <Li>
+          <ChartsContainer>
+          <Img src={snack} alt="Snack" />
+              <ChartsHeader>Snack</ChartsHeader>
+              <ChartsTitle>Carbonohidrates: {carbonohidrates.snack} </ChartsTitle>
+                <ChartsTitle>Protein: {protein.snack}</ChartsTitle>
+                <ChartsTitle>Fat: {fat.snack} </ChartsTitle>
+            </ChartsContainer>
+            <Charts>
+            <List>
+            {snackFood.map(food => <Form onSubmit={addFoodForm} type="snack" value={food} onAddElement={setAddFoodButtonSnack}/>)}
+            {addFoodButtonSnack && <AddFoodButton onClick={() => toggleFoodButton('snack')}>+ Record your meal</AddFoodButton>}     
+            </List>
+            </Charts>
+          </Li>
+        </ChartsBlock>
+      </DashboardContainer>
     </DashboardSection>
   );
 };
 
 export default DiaryPage;
-
-//test
