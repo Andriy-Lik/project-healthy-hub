@@ -1,3 +1,9 @@
+// import { useEffect } from "react";
+// import { useDispatch, useSelector } from "react-redux";
+// import { selectStatsInfo } from "../../redux/Statistics/statisticsSelectors"
+
+// import { getStats } from "../../redux//Statistics/statisticsOperations";
+
 import { Wrapper, Title, InfoBox, Card, CardText, CardTitle, Counter } from "./DailyGoal.styled";
 
 import img1 from "../../images/bubble.png";
@@ -5,7 +11,21 @@ import img2 from "../../images/bubble@2x.png";
 import img3 from "../../images/bottle.png";
 import img4 from "../../images/bottle@2x.png";
 
+
+const calories = 1700;
+const water = 1500;
+
 const DailyGoal = () => {
+  
+  // const dispatch = useDispatch();
+  // const info = useSelector(selectStatsInfo);
+  
+  // useEffect(() => {
+  //   dispatch(getStats('today')); 
+  // }, [dispatch]);
+
+
+
   return (
     <Wrapper>
       <Title>Daily goal</Title>
@@ -22,7 +42,7 @@ const DailyGoal = () => {
           <CardText>
             <CardTitle>Calories</CardTitle>
             <Counter>
-              1700
+              {calories}
             </Counter>
           </CardText>
         </Card>        
@@ -38,7 +58,8 @@ const DailyGoal = () => {
           <CardText>
             <CardTitle>Water</CardTitle>
             <Counter>
-              1500<span>ml</span>
+              {water}
+              <span>ml</span>
             </Counter>
           </CardText>
         </Card>
