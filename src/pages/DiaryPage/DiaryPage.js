@@ -141,17 +141,17 @@ const DiaryPage = () => {
         <ChartsBlock>
           <Li>
             <ChartsContainer>
-            <Img src={breakfast} alt="Breakfast" />
+              <Img src={breakfast} alt="Breakfast" />
               <ChartsHeader>Breakfast</ChartsHeader>
-                <ChartsTitle>Carbonohidrates: {carbonohidrates.breakfast}</ChartsTitle>
-                <ChartsTitle>Protein: {protein.breakfast} </ChartsTitle>
-                <ChartsTitle>Fat: {fat.breakfast}</ChartsTitle>
+              <ChartsTitle>Carbonohidrates: {carbonohidrates.breakfast}</ChartsTitle>
+              <ChartsTitle>Protein: {protein.breakfast} </ChartsTitle>
+              <ChartsTitle>Fat: {fat.breakfast}</ChartsTitle>
             </ChartsContainer>
             <Charts>
-            <List>
-            {breakfastFood.map(food => <Form onSubmit={addFoodForm} type="breakfast" value={food} onAddElement={setAddFoodButton}/>)}
-            {addFoodButton && <AddFoodButton onClick={() => toggleFoodButton('breakfast')}>+ Record your meal</AddFoodButton>}     
-            </List>
+              <List>
+                {breakfastFood.map(food => <Form onSubmit={addFoodForm} type="breakfast" value={food} onAddElement={setAddFoodButton}/>)}
+                {addFoodButton && <AddFoodButton onClick={() => toggleFoodButton('breakfast')}>+ Record your meal</AddFoodButton>}     
+              </List>
             </Charts>
           </Li>
           <Li>
