@@ -4,29 +4,44 @@ import { Link } from 'react-router-dom';
 export const BackgroundContainer = styled.div`
   background-color: #050505;
   display: flex;
+  flex-direction: column;
 
   @media (min-width: 320px) and (max-width: 833px) {
-    display: block;
+    display: flex;
+    flex-direction: column;
     margin: auto;
   }
 
   @media (min-width: 834px) and (max-width: 1439px) {
-    display: block;
+    display: flex;
+    flex-direction: center;
+    margin: auto;
+  }
+  @media (min-width: 1439px) {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
     margin: auto;
   }
 `;
 
 export const WelcomeLogo = styled.img`
-  margin-left: 150px;
+  margin-right: auto;
+  margin-left: auto;
   margin-top: 40px;
+  margin-bottom: 40px;
 
   @media (min-width: 320px) and (max-width: 833px) {
     width: 300px;
-    margin: auto;
   }
 
   @media (min-width: 834px) and (max-width: 1439px) {
     width: 380px;
+  }
+
+  @media (min-width: 1439px) {
+    margin-right: 80px;
+    margin-left: 0;
   }
 `;
 
@@ -41,6 +56,14 @@ export const PerksContainer = styled.div`
 
   @media (min-width: 834px) and (max-width: 1439px) {
     margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  @media (min-width: 1439px) {
+    width: 444px;
+  margin-left: 0;
+  margin-right: 120px;
   }
 `;
 
@@ -51,7 +74,9 @@ export const WelcomeHeadline = styled.h1`
   line-height: 36px;
   font-family: Poppins;
   @media (min-width: 834px) and (max-width: 1439px) {
+    width: 100%;
     text-align: center;
+    align-self: center;
   }
 `;
 
@@ -61,6 +86,14 @@ export const WelcomeText = styled.p`
   font-size: 22px;
   margin-top: 16px;
   line-height: 32px;
+  @media (min-width: 834px) and (max-width: 1439px) {
+    width: 360px;
+    text-align: center;
+    align-self: center;
+  }
+  @media (min-width: 1439px) {
+    width: 360px;
+  }
 `;
 
 export const SignInActivated = styled.button`
@@ -108,14 +141,17 @@ marginLeft: 16,
 
 export const WelcomePagePerksList = styled.ul`
   margin-top: 80px;
+  margin-bottom: 40px;
   @media (min-width: 834px) and (max-width: 1439px) {
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
   }
 `;
 
 export const WelcomePagePerksWrapper = styled.div`
   display: flex;
+  height: 40px;
 `;
 
 export const WelcomePagePerksListBullets = styled.img`
