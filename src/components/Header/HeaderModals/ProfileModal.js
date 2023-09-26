@@ -8,10 +8,25 @@ import setting from '../../../images/icons/setting-2.svg'
 import logout from '../../../images/icons/logout.svg'
 
 import { Link } from 'react-router-dom';
+import { logOut } from '../../../redux/Auth/authOperations';
+import { useDispatch } from "react-redux";
 
 const modalRoot = document.querySelector('#header-modal-profile')
 
 export default function ProfileModal({ onCloseModal }) {
+
+    const dispatch = useDispatch();
+
+    const handleLogOut = async event => {
+        event.preventDefault();
+
+        try {
+            await dispatch(logOut());
+        } catch (error) {
+            console.log("Something went wrong")
+        }
+    };
+
     useEffect(() => {
         const escKeyHandler = event => {
             if (event.code === 'Escape') {
@@ -35,7 +50,7 @@ export default function ProfileModal({ onCloseModal }) {
                         </Option>
                     </Link>
                     <Link to={'/'}>
-                        <Option>
+                        <Option onClick={handleLogOut}>
                             <img src={logout} alt="log out" width={16} />
                             Log out
                         </Option>

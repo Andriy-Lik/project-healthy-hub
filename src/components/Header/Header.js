@@ -10,11 +10,12 @@ import {
 } from './Header.styled';
 
 import waight from '../../images/icons/Waight-image.svg'
+
 import loseFatMen from '../../images/icons/Lose-fat-image-men.svg'
-// import loseFatGirl from '../../images/icons/Lose-fat-image-girl.svg'
-// import maintakeMen from '../../images/icons/Maintake-image-men.svg'
-// import maintakeGirl from '../../images/icons/Maintake-image-girl.svg'
-// import muscle from '../../images/icons/Gain-muscle.svg'
+import loseFatGirl from '../../images/icons/Lose-fat-image-girl.svg'
+import maintakeMen from '../../images/icons/Maintake-image-men.svg'
+import maintakeGirl from '../../images/icons/Maintake-image-girl.svg'
+import muscle from '../../images/icons/Gain-muscle.svg'
 
 import arrowDown from '../../images/icons/arrow-down.svg';
 import edit from '../../images/icons/edit-2.svg';
@@ -29,17 +30,34 @@ import MenuModal from './HeaderModals//MenuModal';
 
 
 export default function Header() {
-  // function genderType(gender) {
 
-  //   if (gender === 'male') {
-  //     const loseFat = loseFatMen
-  //     const maintake = maintakeMen
-  //   } else if (gender === 'female') {
-  //     const loseFat = loseFatGirl
-  //     const maintake = maintakeGirl
-  //   }
+  const user = useSelector(selectUser);
 
-  // }
+  let goalIcon
+
+  if (user.goal) {
+    if (user.goal === "Lose fat") {
+      if (user.gender === "female") {
+        goalIcon = loseFatGirl;
+      } else {
+        goalIcon = loseFatMen;
+      }
+    } else if (user.goal === "Maintain") {
+      if (user.gender === "female") {
+        goalIcon = maintakeGirl;
+      } else {
+        goalIcon = maintakeMen;
+      }
+    } else if (user.goal === "Gain Muscle") {
+      goalIcon = muscle;
+    } else {
+      goalIcon = loseFatMen;
+    }
+  } else if (user.gender === "female") {
+    goalIcon = loseFatGirl;
+  } else {
+    goalIcon = loseFatMen
+  }
 
   const [showModalTarget, setShowModalTarget] = useState(false);
 
@@ -67,8 +85,6 @@ export default function Header() {
 
   const isLoggedIn = useSelector(selectIsLoggedIn);
 
-  const user = useSelector(selectUser);
-
   const location = useLocation();
   const [currentURL, setCurrentURL] = useState(location.pathname);
 
@@ -93,13 +109,12 @@ export default function Header() {
         <InfoOptions>
           <InfoBlock onClick={toggleModalTarget}>
             <IconContainer>
-              <img src={loseFatMen} alt="current goal" width={28} />
+              <img src={goalIcon} alt="current goal" width={28} />
             </IconContainer>
             <TextContainer>
               <InfoBlockName>Goal</InfoBlockName>
               <InfoBlockText>
-                {/* user.goal */}
-                Lose fat
+                {user.goal || "No goal yet"}
                 <ArrowSvg src={arrowDown} alt="arrow down" />
               </InfoBlockText>
             </TextContainer>
@@ -114,8 +129,7 @@ export default function Header() {
             <TextContainer>
               <InfoBlockName>Weight</InfoBlockName>
               <InfoBlockText>
-                {/* user.weight */}
-                65
+                {user.weight || 0}
                 <WeightKg>kg</WeightKg>
                 <EditSvg src={edit} alt="edit" />
               </InfoBlockText>
@@ -126,9 +140,8 @@ export default function Header() {
           </InfoBlock>
         </InfoOptions>
         <UserBlock onClick={toggleModalProfile}>
-          {user.name}
-          {/* ava = user.avatarURL */}
-          <AvaImg src={avatar} alt="avatar" />
+          {user.name || "User"}
+          <AvaImg src={user.avatarURL || avatar} alt="avatar" />
           <ArrowSvg src={arrowDown} alt="arrow down" />
           {showModalProfile && (
             <ProfileModal onCloseModal={toggleModalProfile} />
