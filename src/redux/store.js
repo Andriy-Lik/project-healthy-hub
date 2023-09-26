@@ -10,7 +10,6 @@ import {
   REGISTER,
 } from 'redux-persist';
 import { authReducer } from './Auth/authSlice';
-import { settingsReducer } from './Settings/settingsSlice';
 import { statsReducer } from './Statistics/statisticsSlice';
 import { waterReducer } from './Water/waterSlice';
 import { foodsReducer } from './Foods/foodsSlice';
@@ -26,10 +25,9 @@ const persistedReducer = persistReducer(persistConfig, authReducer);
 export const store = configureStore({
   reducer: {
     auth: persistedReducer,
-    settings: settingsReducer,
     stats: statsReducer,
     water: waterReducer,
-    food: foodsReducer,
+    foods: foodsReducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
