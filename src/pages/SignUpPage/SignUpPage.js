@@ -64,9 +64,9 @@ const SignUpPage = () => {
               <SignUpInput placeholder="password"  id="password" type="password" name="password" value={password} onChange={handleInputChange}/>
               <button type="submit">Sign Up</button>
               <SignUpButton>
-              <Link to={'/your-goal'}>
-                Sign Up
-              </Link>  
+                <Link to={'/your-goal'}>
+                  Sign Up
+                </Link>  
               </SignUpButton>
             </SignUpForm>
           </SignUpFormWrapper>
@@ -74,8 +74,8 @@ const SignUpPage = () => {
           <SignInSuggestionButtonWrapper>
             <SignInSuggestion>Do you already have an account?</SignInSuggestion>
             <SignInLink to={'/signin'}>
-              
-              Sign in</SignInLink>
+              Sign in
+            </SignInLink>
           </SignInSuggestionButtonWrapper>
         </SignUpContainer>
       </BackgroundContainer>
