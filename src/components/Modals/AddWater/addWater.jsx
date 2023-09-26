@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { createPortal } from 'react-dom';
 
 import { addWater } from "../../../redux/Water/waterOperations";
