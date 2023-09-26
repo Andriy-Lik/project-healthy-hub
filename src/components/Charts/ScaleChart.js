@@ -13,7 +13,7 @@ import {
 
 const ScaleChart = ({ dataFormat }) => {
   const [weight, setWeight] = useState([]);
-  // const [average, setAverage] = useState([]);
+  const [average, setAverage] = useState([]);
 
   const info = useSelector(selectStatsInfo);
 
@@ -32,19 +32,19 @@ const ScaleChart = ({ dataFormat }) => {
           const value = [];
 
           if (!dataFormat) {
-            for (const entry of info[key]) {            
-              value.push(entry.amount);            
-            }          
+            for (const entry of info[key]) {
+              value.push(entry.amount);
+            }
 
             const total = value.reduce((previousValue, number) => {
               return previousValue + number;
             }, 0);
             let totalAverageValue = Math.round(total / value.length);
-            averageValue.push(totalAverageValue); 
+            averageValue.push(totalAverageValue);
             setWeight(info[key]);
           }
 
-          if (dataFormat) {         
+          if (dataFormat) {
             const monthShortName = {
               1: 'January',
               2: 'February',
@@ -61,29 +61,22 @@ const ScaleChart = ({ dataFormat }) => {
             };
 
             for (const entry of info[key]) {
-              console.log(entry);
               const entryMonth = new Date(entry._id).getMonth() + 1;
-              // if (!entry.amount) {
-              //   console.log('ffffffff');
-              //   return;
-              // }
+
+              if (!entry.count) {
+                return;
+              }
 
               const average = (entry.amount / entry.count).toFixed(2);
 
-              if (!average) {
-                return console.log('NaN');
+              if (average) {
+                const newInfo = {
+                  _id: monthShortName[entryMonth],
+                  amount: average,
+                };
+                infoArray.push(newInfo);
               }
-
-              const newInfo = {
-                _id: monthShortName[entryMonth],
-                amount: average,
-              };
-
-              console.log(newInfo);
               value.push(entry.average);
-              infoArray.push(newInfo);
-
-              return;
             }
 
             const total = value.reduce((previousValue, number) => {
@@ -97,6 +90,7 @@ const ScaleChart = ({ dataFormat }) => {
         }
       }
     }
+    setAverage(averageValue);
   }, [dataFormat, info]);
 
   return (
@@ -104,7 +98,7 @@ const ScaleChart = ({ dataFormat }) => {
       <TitleContainer>
         <ChartsTitle>Weight</ChartsTitle>
         <ChartsSubtitle>
-          Average value: <ChartsCaption>68 kg</ChartsCaption>
+          Average value: <ChartsCaption>{average} kg</ChartsCaption>
         </ChartsSubtitle>
       </TitleContainer>
       <Scale>
