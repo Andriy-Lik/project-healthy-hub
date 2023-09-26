@@ -16,7 +16,6 @@ const ScaleChart = ({ dataFormat }) => {
   // const [average, setAverage] = useState([]);
 
   const info = useSelector(selectStatsInfo);
-  console.log('INFO: ', info);
 
   useEffect(() => {
     if (Object.keys(info).length === 0) {
