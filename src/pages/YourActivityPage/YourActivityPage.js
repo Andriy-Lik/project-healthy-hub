@@ -31,6 +31,7 @@ const YourActivityPage = () => {
 
   const dispatch = useDispatch();
   const [activity, setActivity] = useState('');
+<<<<<<< Updated upstream
   // const UserFinalData = {
   //   name: user.name,
   //   email: user.email,
@@ -55,6 +56,44 @@ const YourActivityPage = () => {
     event.preventDefault();
     dispatch(setNewUserActivity(activity));
     dispatch(register({name, email, password, goal, gender, height, weight, activity}));
+=======
+  const UserFinalData = {
+    name: user.name,
+    email: user.email,
+    password: user.password,
+    goal: user.goal,
+    gender: user.gender,
+    height: user.height,
+    weight: user.weight,
+    activity: user.activity,
+  };
+
+  // const name = user.name;
+  // const email = user.email;
+  // const password = user.password;
+  // const goal = user.goal;
+  // const gender = user.gender;
+  // const height = user.height;
+  // const weight = user.weight;
+
+
+
+
+  const handleActivityResults = async (event) => {
+    event.preventDefault({user});
+
+    // if (!name || !email || !password || !goal || !gender || !height || !weight || !activity) {
+    //   alert("Please, ingress the necessary data!")
+    //   return;
+    // }
+    // dispatch(setNewUserActivity(activity));
+    try {
+      dispatch(register({}));
+    }
+    catch (error) {
+      console.log(error);
+    }
+>>>>>>> Stashed changes
   };
 
 
