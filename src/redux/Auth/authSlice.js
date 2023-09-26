@@ -90,6 +90,7 @@ const authSlice = createSlice({
         state.user.height = payload.user.height;
         state.user.weight = payload.user.weight;
         state.user.activity = payload.user.activity;
+        state.user.avatarURL = payload.user.avatarURL;
         state.token = payload.token;
         state.isLoggedIn = true;
       })
