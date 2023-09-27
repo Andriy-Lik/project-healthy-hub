@@ -30,7 +30,8 @@ const YourActivityPage = () => {
   const user = useSelector(selectUser);
 
   const dispatch = useDispatch();
-  const [activity, setActivity] = useState('');
+  const [activity0, setActivity] = useState('');
+  const activity = parseFloat(activity0);
   // const UserFinalData = {
   //   name: user.name,
   //   email: user.email,
@@ -46,15 +47,17 @@ const YourActivityPage = () => {
   const password = user.password;
   const goal = user.goal;
   const gender = user.gender;
+  const age = user.age;
   const height = user.height;
   const weight = user.weight;
+  
 
 
 
   const handleActivityResults = async event => {
     event.preventDefault();
     dispatch(setNewUserActivity(activity));
-    dispatch(register({name, email, password, goal, gender, height, weight, activity}));
+    dispatch(register({name, email, password, goal, age, gender, height, weight, activity}));
   };
 
 
@@ -92,7 +95,7 @@ const YourActivityPage = () => {
                 </YourActivityFormListWrapper>
 
                 <YourActivityFormListWrapper>
-                <input  type="radio" name="answer" value="1.375" checked={activity === "1.375"} onChange={() => setActivity("1.375")}/>
+                <input  type="radio" name="answer" value="1.375" checked={activity0 === "1.375"} onChange={() => setActivity("1.375")}/>
                   <CustomRadioRegistrationButton />
                   <YourActivityFormListOption style={{ color: '#FFFF', fontSize: 14 }}>
                     1,375
@@ -101,7 +104,7 @@ const YourActivityPage = () => {
 
 
                 <YourActivityFormListWrapper>
-                <input  type="radio" name="answer" value="1.55" checked={activity === "1.55"} onChange={() => setActivity("1.55")}/>
+                <input  type="radio" name="answer" value="1.55" checked={activity0 === "1.55"} onChange={() => setActivity("1.55")}/>
                   <CustomRadioRegistrationButton />
                   <YourActivityFormListOption style={{ color: '#FFFF', fontSize: 14 }}>
                 
@@ -111,7 +114,7 @@ const YourActivityPage = () => {
 
 
                 <YourActivityFormListWrapper>
-                <input  type="radio" name="answer" value="1.725" checked={activity === "1.725"} onChange={() => setActivity("1.725")}/>
+                <input  type="radio" name="answer" value="1.725" checked={activity0 === "1.725"} onChange={() => setActivity("1.725")}/>
                   <CustomRadioRegistrationButton />
                   <YourActivityFormListOption style={{ color: '#FFFF', fontSize: 14 }}>
                     1,725 ​​- if you train fully 6-7 times a week
@@ -119,7 +122,15 @@ const YourActivityPage = () => {
                 </YourActivityFormListWrapper>
 
                 <YourActivityFormListWrapper>
-                <input  type="radio" name="answer" value="1.9" checked={activity === "1.9"} onChange={() => setActivity("1.9")}/>
+                <input  type="radio" name="answer" value="1.9" checked={activity0 === "1.9"} onChange={() => setActivity("1.9")}/>
+
+
+
+
+
+
+
+
                   <CustomRadioRegistrationButton />
                   <YourActivityFormListOption style={{ color: '#FFFF', fontSize: 14 }}>
                     1.9 - if your work is related to physical labor, you train 2
