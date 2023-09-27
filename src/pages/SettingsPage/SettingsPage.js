@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import { updateUser } from '../../redux/Auth/authOperations';
 import { selectUser } from '../../redux/Auth/authSelectors';
@@ -41,10 +43,29 @@ const SettingsPage = () => {
         weight: userProfile.weight || '',
         activity: userProfile.activity || '1.2',
       });
+
+      setInitialFormData({
+        name: userProfile.name || '',
+        age: userProfile.age || '',
+        gender: userProfile.gender || 'Male',
+        height: userProfile.height || '',
+        weight: userProfile.weight || '',
+        activity: userProfile.activity || '1.2',
+      });
     }
   }, [userProfile]);
 
   const [formData, setFormData] = useState({
+    name: '',
+    avatarURL: null,
+    age: '',
+    gender: '',
+    height: '',
+    weight: '',
+    activity: '',
+  });
+
+  const [initialFormData, setInitialFormData] = useState({
     name: '',
     avatarURL: null,
     age: '',
@@ -76,11 +97,14 @@ const SettingsPage = () => {
 
     if (
       !formData.name.trim() ||
-      !formData.age ||
-      !formData.height ||
-      !formData.weight
+      isNaN(formData.age) ||
+      isNaN(formData.height) ||
+      isNaN(formData.weight)
     ) {
       hasErrors = true;
+      notifyError(
+        'Please enter valid numeric values for age, height, and weight.'
+      );
     }
 
     return !hasErrors;
@@ -89,22 +113,44 @@ const SettingsPage = () => {
   const handleSaveClick = () => {
     if (validateForm()) {
       dispatch(updateUser(formData));
+      notifySuccess('Profile saved successfully!');
     } else {
-      console.log('Form has validation errors');
+      notifyError('Form has validation errors');
     }
   };
 
-  // const handleCancelClick = () => {
-  //   setFormData(prevFormData);
-  // };
+  const handleCancelClick = () => {
+    setFormData({ ...initialFormData });
+    try {
+      notifySuccess('Profile successfully reset to previous data!');
+      dispatch(updateUser(initialFormData));
+    } catch (error) {
+      console.error('Error sending data to the server:', error);
+    }
+  };
+
+  const notifySuccess = message => {
+    toast.success(message, {
+      position: toast.POSITION.TOP_CENTER,
+      autoClose: 3000,
+    });
+  };
+
+  const notifyError = message => {
+    toast.error(message, {
+      position: toast.POSITION.TOP_CENTER,
+      autoClose: 3000,
+    });
+  };
 
   return (
     <>
       <SettingsPageSection>
+        <ToastContainer />
         <SettingsPageContainer>
           <H1>Profile setting</H1>
           <ButtonContainer>
-            <CancelButton>Cancel</CancelButton>
+            <CancelButton onClick={handleCancelClick}>Cancel</CancelButton>
             <SaveButton onClick={handleSaveClick}>Save</SaveButton>
           </ButtonContainer>
 
