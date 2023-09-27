@@ -1,5 +1,5 @@
-import { selectUser } from "../../redux/Auth/authSelectors";
 import { useSelector } from 'react-redux';
+import { selectUser } from "../../redux/Auth/authSelectors";
 
 import { WATER_GOAL } from "constants/constants";
 
@@ -12,8 +12,8 @@ import img4 from "../../images/bottle@2x.png";
 
 const DailyGoal = () => {
   
-  const userInfo = useSelector(selectUser); 
-
+  const userInfo = useSelector(selectUser);
+  
   const caloriesGoal = userInfo.bmr;
 
   return (

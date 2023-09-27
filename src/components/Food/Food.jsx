@@ -1,3 +1,4 @@
+import { useSelector } from 'react-redux';
 
 import {
   Wrapper,
@@ -17,9 +18,15 @@ import DoughnutForCalorie from 'components/Charts/DoughnutChartForCalorie';
 import DoughnutChartForCarbonohidrates from 'components/Charts/DoughnutChartForCarbonohidrates';
 import DoughnutChartForProtein from 'components/Charts/DoughnutChartForProtein';
 import DoughnutChartForFat from 'components/Charts/DoughnutChartForFat';
+import { selectUser } from 'redux/Auth/authSelectors';
 
 
 const Food = () => {
+
+  const userInfo = useSelector(selectUser);
+  
+  console.log("food_userInfo: ", userInfo)
+
   
   return (
     <Wrapper>

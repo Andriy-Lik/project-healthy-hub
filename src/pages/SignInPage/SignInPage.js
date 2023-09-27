@@ -16,12 +16,11 @@ import {
 } from './SignInPage.styled';
 import { logIn } from '../../redux/Auth/authOperations';
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import welcomeLogoPic from '../../images/WelcomeLogoPic.png';
 import { selectToken } from 'redux/Auth/authSelectors';
 
 const SignInPage = () => {
-  const token = useSelector(selectToken);
   const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
