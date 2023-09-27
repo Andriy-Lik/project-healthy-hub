@@ -1,9 +1,9 @@
 import React from 'react';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useRef } from 'react';
 import { useLocation } from 'react-router-dom';
-import { useDispatch } from "react-redux";
-import { useState } from "react";
+import { useDispatch } from 'react-redux';
+import { useState } from 'react';
 import { setNewUserAge, setNewUserGender } from 'redux/Auth/authSlice';
 import {
   BackgroundContainer,
@@ -16,8 +16,8 @@ import {
   // SelectGenderBackButton,
   SelectGenderInput,
 } from './SelectGenderPage.styled';
+import { LabelWithRadio, RadioMark, RadioInput } from 'components/CustomRadioButton/CustomRadioButton.style';
 import SelectGenderBackButton from 'components/BackButtons/SelectGenderBackButton/SelectGenderBackButton';
-import CustomRadioRegistrationButton from 'components/CustomRadioRegistrationButton/CustomRadioRegistrationButton';
 import SelectGenderLogoPic from '../../images/SelectGenderLogoPic.png';
 
 const SelectGenderPage = () => {
@@ -39,7 +39,7 @@ const SelectGenderPage = () => {
     if (name === 'age') {
       setAge(value);
     }
-  }
+  };
   const location = useLocation();
   const locationRef = useRef(location);
 
@@ -58,7 +58,10 @@ const SelectGenderPage = () => {
           </SelectGenderText>
 
           <div>
-            <SelectGenderForm onSubmit={handleNewUserGenderAgeData} autoComplete='off'>
+            <SelectGenderForm
+              onSubmit={handleNewUserGenderAgeData}
+              autoComplete="off"
+            >
               <ul>
                 <li style={{ color: '#FFFF', marginTop: 24, marginBottom: 12 }}>
                   Gender
@@ -66,15 +69,31 @@ const SelectGenderPage = () => {
                 <li
                   style={{ color: '#FFFF', display: 'flex', marginBottom: 16 }}
                 >
-                  <input  type="radio" name="answer" value="Male" checked={gender === "Male"} onChange={() => setGender("Male")}/>
-                  <CustomRadioRegistrationButton />
+                  <LabelWithRadio>
+                    <RadioInput
+                      type="radio"
+                      name="answer"
+                      value="Male"
+                      checked={gender === 'Male'}
+                      onChange={() => setGender('Male')}
+                    />
+                    <RadioMark></RadioMark>
+                  </LabelWithRadio>
                   Male
                 </li>
                 <li
                   style={{ color: '#FFFF', display: 'flex', marginBottom: 24 }}
                 >
-                  <input  type="radio" name="answer" value="Female" checked={gender === "Female"} onChange={() => setGender("Female")}/>
-                  <CustomRadioRegistrationButton />
+                  <LabelWithRadio>
+                    <RadioInput
+                      type="radio"
+                      name="answer"
+                      value="Female"
+                      checked={gender === 'Female'}
+                      onChange={() => setGender('Female')}
+                    />
+                    <RadioMark></RadioMark>
+                  </LabelWithRadio>
                   Female
                 </li>
                 <li style={{ color: '#FFFF', marginBottom: 12 }}>Your age</li>
@@ -88,16 +107,14 @@ const SelectGenderPage = () => {
                     paddingLeft: 10,
                   }}
                   placeholder="Enter your age"
-                  name='age'
+                  name="age"
                   onChange={handleInputChange}
                 />
               </ul>
-              <SelectGenderButton type='submit'>Next</SelectGenderButton>
-              {/* <SelectGenderButton>
-                <Link to={'/body-parameters'}>
-                  Next
-                </Link>
-              </SelectGenderButton> */}
+              {/* <SelectGenderButton>Next</SelectGenderButton> */}
+              <SelectGenderButton type="submit">
+                <Link to={'/body-parameters'}>Next</Link>
+              </SelectGenderButton>
 
               <SelectGenderBackButton location={locationRef.current} />
             </SelectGenderForm>

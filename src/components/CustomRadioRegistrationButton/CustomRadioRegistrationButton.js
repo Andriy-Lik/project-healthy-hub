@@ -11,6 +11,7 @@ const CustomRadioRegistrationButton = () => {
       <LabelWithRadio>
         <RadioInput
           type="radio"
+          name='answer'
         />
         <RadioMark></RadioMark>
       </LabelWithRadio>

@@ -1,4 +1,5 @@
 import { useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import { useDispatch } from "react-redux";
 import { useState } from "react";
@@ -75,10 +76,12 @@ const BodyParametersPage = () => {
                 Weight
                 <BodyParametersInput placeholder="Enter your weight" name='weight' onChange={handleInputChange} />
               </BodyParametersLabel>
-              <BodyParametersButton type='submit'>Next</BodyParametersButton>
-              {/* <BodyParametersButton to={'/your-activity'}>
-                Next
-              </BodyParametersButton> */}
+              <BodyParametersButton type='submit'>
+                <Link to={'/your-activity'}>
+                  Next
+                </Link>
+              </BodyParametersButton>
+
             </BodyParametersForm>
           </BodyParametersWrapper>
 
