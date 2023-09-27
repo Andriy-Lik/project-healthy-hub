@@ -1,7 +1,7 @@
 import React from 'react';
-// import { Link } from 'react-router-dom';
-import { useDispatch } from "react-redux";
-import { useState } from "react";
+import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { useState } from 'react';
 import { setNewUserGoal } from 'redux/Auth/authSlice';
 import {
   BackgroundContainer,
@@ -15,7 +15,7 @@ import {
   GoalButton,
   // GoalInput,
 } from './YourGoalPage.styled';
-import CustomRadioRegistrationButton from 'components/CustomRadioRegistrationButton/CustomRadioRegistrationButton';
+import { LabelWithRadio, RadioMark, RadioInput  } from 'components/CustomRadioButton/CustomRadioButton.style';
 import GoalLogoPic from '../../images/YourGoalLogo.png';
 
 const YourGoalPage = () => {
@@ -35,9 +35,8 @@ const YourGoalPage = () => {
           @import
           url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Roboto&display=swap');
         </style>
-          <GoalLogo src={GoalLogoPic} alt="Goal Logo" />
+        <GoalLogo src={GoalLogoPic} alt="Goal Logo" />
         <GoalContainer>
-
           <GoalHeadline>Your goal</GoalHeadline>
           <GoalText>Choose a goal so that we can help you effectively</GoalText>
           <div>
@@ -51,8 +50,16 @@ const YourGoalPage = () => {
                       display: 'flex',
                     }}
                   >
-                    <input  type="radio" name="answer" value="Lose Fat" checked={goal === "Lose Fat"} onChange={() => setGoal("Lose Fat")}/>
-                    <CustomRadioRegistrationButton />
+                    <LabelWithRadio>
+                      <RadioInput
+                        type="radio"
+                        name="answer"
+                        value="Lose Fat"
+                        checked={goal === 'Lose Fat'}
+                        onChange={() => setGoal('Lose Fat')}
+                      />
+                      <RadioMark></RadioMark>
+                    </LabelWithRadio>
                     Lose Fat
                   </GoalOption>
                 </div>
@@ -65,9 +72,16 @@ const YourGoalPage = () => {
                       display: 'flex',
                     }}
                   >
-                    <input  type="radio" name="answer" value="Maintain" checked={goal === "Maintain"} onChange={() => setGoal("Maintain")}/>
-                    
-                  <CustomRadioRegistrationButton />
+                    <LabelWithRadio>
+                      <RadioInput
+                        type="radio"
+                        name="answer"
+                        value="Maintain"
+                        checked={goal === 'Maintain'}
+                        onChange={() => setGoal('Maintain')}
+                      />
+                      <RadioMark></RadioMark>
+                    </LabelWithRadio>
                     Maintain
                   </GoalOption>
                 </div>
@@ -80,17 +94,24 @@ const YourGoalPage = () => {
                       display: 'flex',
                     }}
                   >
-                    <input  type="radio" name="answer" value="Gain Muscles" checked={goal === "Gain Muscles"} onChange={() => setGoal("Gain Muscles")}/>
-                    <CustomRadioRegistrationButton name="answer" value="Gain Muscles"/>
+                    <LabelWithRadio>
+                      <RadioInput
+                        type="radio"
+                        name="answer"
+                        value="Gain Muscles"
+                        checked={goal === 'Gain Muscles'}
+                        onChange={() => setGoal('Gain Muscles')}
+                      />
+                      <RadioMark></RadioMark>
+                    </LabelWithRadio>
                     Gain Muscles
                   </GoalOption>
                 </div>
               </GoalList>
-              <GoalButton type='submit'>Next</GoalButton>
-                {/* <GoalButton>
-                  <Link to={'/select-gender'}>Next</Link>
-                </GoalButton> */}
-
+              {/* <GoalButton type='submit'>Next</GoalButton> */}
+              <GoalButton>
+                <Link to={'/select-gender'}>Next</Link>
+              </GoalButton>
             </GoalForm>
           </div>
         </GoalContainer>

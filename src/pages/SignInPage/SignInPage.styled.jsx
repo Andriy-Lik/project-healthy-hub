@@ -164,17 +164,19 @@ export const SignInButton = styled.button`
   }
 `;
 
-export const ForgotYourPassword = styled(Link)`
+export const ForgotYourPassword = styled.button `
   font-weight: 400;
   font-size: 14px;
   line-height: 20px;
   color: #b6b6b6;
   background-color: #050505;
   border: none;
-  margin-top: 40px;
-  margin-left: 64px;
+  margin-top: 20px;
+  margin-left: 40px;
   align-text: center;
+  width: 192px;
 
+  
   @media (min-width: 834px) and (max-width: 1439px) {
     margin-left: 110px;
   }

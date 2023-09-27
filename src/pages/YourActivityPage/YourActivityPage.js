@@ -1,9 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useRef } from 'react';
 import { useLocation } from 'react-router-dom';
-import { useDispatch } from "react-redux";
-import { useState } from "react";
+import { useDispatch } from 'react-redux';
+import { useState } from 'react';
 import { setNewUserActivity } from 'redux/Auth/authSlice';
 import { register } from 'redux/Auth/authOperations';
 import { selectUser } from 'redux/Auth/authSelectors';
@@ -23,7 +24,11 @@ import {
   // YourActivityInput,
 } from './YourActivityPage.styled';
 import YourActivityBackButton from 'components/BackButtons/YourActivityBackButton/YourActivityBackButton';
-import CustomRadioRegistrationButton from 'components/CustomRadioRegistrationButton/CustomRadioRegistrationButton';
+import {
+  LabelWithRadio,
+  RadioInput,
+  RadioMark,
+} from 'components/CustomRadioButton/CustomRadioButton.style';
 import SelectGenderLogoPic from '../../images/YourActivityLogoPic.png';
 
 const YourActivityPage = () => {
@@ -32,16 +37,6 @@ const YourActivityPage = () => {
   const dispatch = useDispatch();
   const [activity0, setActivity] = useState('');
   const activity = parseFloat(activity0);
-  // const UserFinalData = {
-  //   name: user.name,
-  //   email: user.email,
-  //   password: user.password,
-  //   goal: user.goal,
-  //   gender: user.gender,
-  //   height: user.height,
-  //   weight: user.weight,
-  //   activity: user.activity,
-  // }
   const name = user.name;
   const email = user.email;
   const password = user.password;
@@ -50,17 +45,24 @@ const YourActivityPage = () => {
   const age = user.age;
   const height = user.height;
   const weight = user.weight;
-  
-
-
 
   const handleActivityResults = async event => {
     event.preventDefault();
     dispatch(setNewUserActivity(activity));
-    dispatch(register({name, email, password, goal, age, gender, height, weight, activity}));
+    dispatch(
+      register({
+        name,
+        email,
+        password,
+        goal,
+        age,
+        gender,
+        height,
+        weight,
+        activity,
+      })
+    );
   };
-
-
 
   const location = useLocation();
   const locationRef = useRef(location);
@@ -81,8 +83,16 @@ const YourActivityPage = () => {
             <YourActivityForm onSubmit={handleActivityResults}>
               <YourActivityFormList>
                 <YourActivityFormListWrapper>
-                <input  type="radio" name="answer" value="1.2" onChange={() => setActivity("1.2")} />
-                  <CustomRadioRegistrationButton />
+                  <LabelWithRadio>
+                    <RadioInput
+                      type="radio"
+                      name="answer"
+                      value="1.2"
+                      checked={activity0 === '1.2'}
+                      onChange={() => setActivity('1.2')}
+                    />
+                    <RadioMark></RadioMark>
+                  </LabelWithRadio>
                   <YourActivityFormListOption
                     style={{ color: '#FFFF', fontSize: 14 }}
                   >
@@ -92,24 +102,53 @@ const YourActivityPage = () => {
                 </YourActivityFormListWrapper>
 
                 <YourActivityFormListWrapper>
-                <input  type="radio" name="answer" value="1.375" checked={activity0 === "1.375"} onChange={() => setActivity("1.375")}/>
-                  <CustomRadioRegistrationButton />
-                  <YourActivityFormListOption style={{ color: '#FFFF', fontSize: 14 }}>
-                    1,375
+                  <LabelWithRadio>
+                    <RadioInput
+                      type="radio"
+                      name="answer"
+                      value="1.375"
+                      checked={activity0 === '1.375'}
+                      onChange={() => setActivity('1.375')}
+                    />
+                    <RadioMark></RadioMark>
+                  </LabelWithRadio>
+                  <YourActivityFormListOption
+                    style={{ color: '#FFFF', fontSize: 14 }}
+                  >
+                    1,375 - if you do short runs or light gymnastics 1-3 times a
+                    week
                   </YourActivityFormListOption>
                 </YourActivityFormListWrapper>
 
                 <YourActivityFormListWrapper>
-                <input  type="radio" name="answer" value="1.55" checked={activity0 === "1.55"} onChange={() => setActivity("1.55")}/>
-                  <CustomRadioRegistrationButton />
-                  <YourActivityFormListOption style={{ color: '#FFFF', fontSize: 14 }}>
-                    1.55
+                  <LabelWithRadio>
+                    <RadioInput
+                      type="radio"
+                      name="answer"
+                      checked={activity0 === '1.55'}
+                      onChange={() => setActivity('1.55')}
+                    />
+                    <RadioMark></RadioMark>
+                  </LabelWithRadio>
+                  <YourActivityFormListOption
+                    style={{ color: '#FFFF', fontSize: 14 }}
+                  >
+                    1.55 - if you play sports with average loads 3-5 times a
+                    week
                   </YourActivityFormListOption>
                 </YourActivityFormListWrapper>
 
                 <YourActivityFormListWrapper>
-                <input  type="radio" name="answer" value="1.725" checked={activity0 === "1.725"} onChange={() => setActivity("1.725")}/>
-                  <CustomRadioRegistrationButton />
+                  <LabelWithRadio>
+                    <RadioInput
+                      type="radio"
+                      name="answer"
+                      value="1.725"
+                      checked={activity0 === '1.725'}
+                      onChange={() => setActivity('1.725')}
+                    />
+                    <RadioMark></RadioMark>
+                  </LabelWithRadio>
                   <YourActivityFormListOption
                     style={{ color: '#FFFF', fontSize: 14 }}
                   >
@@ -118,8 +157,16 @@ const YourActivityPage = () => {
                 </YourActivityFormListWrapper>
 
                 <YourActivityFormListWrapper>
-                <input  type="radio" name="answer" value="1.9" checked={activity0 === "1.9"} onChange={() => setActivity("1.9")}/>
-                  <CustomRadioRegistrationButton />
+                  <LabelWithRadio>
+                    <RadioInput
+                      type="radio"
+                      name="answer"
+                      value="1.9"
+                      checked={activity0 === '1.9'}
+                      onChange={() => setActivity('1.9')}
+                    />
+                    <RadioMark></RadioMark>
+                  </LabelWithRadio>
                   <YourActivityFormListOption
                     style={{ color: '#FFFF', fontSize: 14 }}
                   >
@@ -129,14 +176,12 @@ const YourActivityPage = () => {
                   </YourActivityFormListOption>
                 </YourActivityFormListWrapper>
               </YourActivityFormList>
-              {/* <button type='submit'>Next</button> */}
               <YourActivityButton type="submit">Next</YourActivityButton>
               <br />
               <YourActivityBackButton location={locationRef.current} />
             </YourActivityForm>
           </YourActivityFormWrapper>
         </YourActivityContainer>
-        <p style={{ color: '#FFFF' }}>{user.password}</p>
       </BackgroundContainer>
     </div>
   );

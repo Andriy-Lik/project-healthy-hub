@@ -1,4 +1,4 @@
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import {
   setNewUserName,
   setNewUserEmail,
@@ -84,11 +84,13 @@ const SignUpPage = () => {
                 value={password}
                 onChange={handleInputChange}
               />
-              <SignUpButton type="submit">Sign Up</SignUpButton>
+              <SignUpButton type="submit">
+                <Link to={'/your-goal'}>
+                  Sign Up
+                </Link>  
+              </SignUpButton>
               {/* <SignUpButton>
-              <Link to={'/your-goal'}>
-                Sign Up
-              </Link>  
+
               </SignUpButton> */}
             </SignUpForm>
           </SignUpFormWrapper>
