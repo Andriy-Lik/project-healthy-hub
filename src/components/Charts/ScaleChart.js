@@ -38,31 +38,11 @@ const ScaleChart = ({ dataFormat }) => {
           if (!dataFormat) {
             for (const entry of info[key]) {
               value.push(entry.amount);
-            }
-            const total = value.reduce((previousValue, number) => {
-              return previousValue + number;
-            }, 0);
-            let totalAverageValue = Math.round(total / value.length);
-            averageValue.push(totalAverageValue);
+            }           
             setWeight(info[key]);
           }
 
-          if (dataFormat) {
-            const monthShortName = {
-              1: 'January',
-              2: 'February',
-              3: 'March',
-              4: 'April',
-              5: 'May',
-              6: 'June',
-              7: 'July',
-              8: 'August',
-              9: 'September',
-              10: 'October',
-              11: 'November',
-              12: 'December',
-            };
-            
+          if (dataFormat) {            
             for (const entry of info[key]) {
               const entryMonth = new Date(entry._id).getMonth() + 1;
 
