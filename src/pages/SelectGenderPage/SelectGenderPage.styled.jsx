@@ -123,7 +123,7 @@ export const SelectGenderButton = styled.button`
   padding: 8px;
   font-size: 14px;
   font-family: Poppins;
-  margin-bottom: 60px;
+  margin-bottom: 20px;
 
   @media (min-width: 834px) and (max-width: 1439px) {
     width: 380px;

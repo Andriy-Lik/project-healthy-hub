@@ -115,7 +115,7 @@ const SelectGenderPage = () => {
               <SelectGenderButton type="submit">
                 <Link to={'/body-parameters'}>Next</Link>
               </SelectGenderButton>
-
+              
               <SelectGenderBackButton location={locationRef.current} />
             </SelectGenderForm>
           </div>
