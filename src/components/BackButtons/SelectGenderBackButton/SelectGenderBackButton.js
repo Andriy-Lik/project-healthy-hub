@@ -6,7 +6,7 @@ const SelectGenderBackButton = ({ location }) => {
       <button
         type="button"
         onClick={() => navigate(location.state?.from ?? '/your-goal')}
-        style={{backgroundColor: '#050505', border: 'none', fontSize: 14, color: '#FFFFFF', marginLeft: 16}}
+        style={{backgroundColor: '#050505', border: 'none', fontSize: 14, color: '#ffffff', marginLeft: 110, alignSelf: 'center', textAlign: 'center'}}
       >
         Back
       </button>
@@ -14,3 +14,6 @@ const SelectGenderBackButton = ({ location }) => {
   };
   
   export default SelectGenderBackButton;
+
+
+  

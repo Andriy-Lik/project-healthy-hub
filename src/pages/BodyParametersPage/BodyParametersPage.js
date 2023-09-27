@@ -1,4 +1,5 @@
 import { useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import { useDispatch } from "react-redux";
 import { useState } from "react";
@@ -24,11 +25,14 @@ const BodyParametersPage = () => {
   const [height, setHeight] = useState('');
   const [weight, setWeight] = useState('');
 
+  const parsedHeight = parseFloat(height);
+  const parsedWeight = parseFloat(weight);
+
   const handleNewUserHeightWeightData = event => {
     event.preventDefault();
     console.log(`height: ${height}, weight: ${weight}`);
-    dispatch(setNewUserHeight(height));
-    dispatch(setNewUserWeight(weight));
+    dispatch(setNewUserHeight(parsedHeight));
+    dispatch(setNewUserWeight(parsedWeight));
   };
 
   const handleInputChange = event => {
@@ -72,10 +76,12 @@ const BodyParametersPage = () => {
                 Weight
                 <BodyParametersInput placeholder="Enter your weight" name='weight' onChange={handleInputChange} />
               </BodyParametersLabel>
-              <button type='submit'>Next</button>
-              <BodyParametersButton to={'/your-activity'}>
-                Next
+              <BodyParametersButton type='submit'>
+                <Link to={'/your-activity'}>
+                  Next
+                </Link>
               </BodyParametersButton>
+
             </BodyParametersForm>
           </BodyParametersWrapper>
 

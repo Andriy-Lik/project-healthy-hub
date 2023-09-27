@@ -1,5 +1,9 @@
 import { Link } from "react-router-dom";
-import { setNewUserName, setNewUserEmail, setNewUserPassword } from "redux/Auth/authSlice";
+import {
+  setNewUserName,
+  setNewUserEmail,
+  setNewUserPassword,
+} from 'redux/Auth/authSlice';
 import {
   BackgroundContainer,
   SignUpLogo,
@@ -14,9 +18,9 @@ import {
   SignInSuggestion,
   SignInLink,
 } from './SignUpPage.styled';
-import { useDispatch } from "react-redux";
+import { useDispatch } from 'react-redux';
 import welcomeLogoPic from '../../images/WelcomeLogoPic.png';
-import { useState } from "react";
+import { useState } from 'react';
 
 const SignUpPage = () => {
   const dispatch = useDispatch();
@@ -36,11 +40,9 @@ const SignUpPage = () => {
     const { name, value } = event.target;
     if (name === 'name') {
       setName(value);
-    }
-    else if (name === 'email') {
+    } else if (name === 'email') {
       setEmail(value);
-    }
-    else {
+    } else {
       setPassword(value);
     }
   };
@@ -52,30 +54,50 @@ const SignUpPage = () => {
           @import
           url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Roboto&display=swap');
         </style>
-                  <SignUpLogo src={welcomeLogoPic} alt="Logo" />
+        <SignUpLogo src={welcomeLogoPic} alt="Logo" />
         <SignUpContainer>
-
           <SignUpHeadline>Sign up</SignUpHeadline>
           <SignUpText>You need to register to use the service</SignUpText>
           <SignUpFormWrapper>
             <SignUpForm onSubmit={handleNewUserData} autoComplete="off">
-              <SignUpInput placeholder="name" id="name" type="text" name="name" value={name} onChange={handleInputChange}/>
-              <SignUpInput placeholder="e-mail"  id="email" type="email" name="email" value={email} onChange={handleInputChange}/>
-              <SignUpInput placeholder="password"  id="password" type="password" name="password" value={password} onChange={handleInputChange}/>
-              <button type="submit">Sign Up</button>
-              <SignUpButton>
+              <SignUpInput
+                placeholder="name"
+                id="name"
+                type="text"
+                name="name"
+                value={name}
+                onChange={handleInputChange}
+              />
+              <SignUpInput
+                placeholder="e-mail"
+                id="email"
+                type="email"
+                name="email"
+                value={email}
+                onChange={handleInputChange}
+              />
+              <SignUpInput
+                placeholder="password"
+                id="password"
+                type="password"
+                name="password"
+                value={password}
+                onChange={handleInputChange}
+              />
+              <SignUpButton type="submit">
                 <Link to={'/your-goal'}>
                   Sign Up
                 </Link>  
               </SignUpButton>
+              {/* <SignUpButton>
+
+              </SignUpButton> */}
             </SignUpForm>
           </SignUpFormWrapper>
 
           <SignInSuggestionButtonWrapper>
             <SignInSuggestion>Do you already have an account?</SignInSuggestion>
-            <SignInLink to={'/signin'}>
-              Sign in
-            </SignInLink>
+            <SignInLink to={'/signin'}>Sign in</SignInLink>
           </SignInSuggestionButtonWrapper>
         </SignUpContainer>
       </BackgroundContainer>

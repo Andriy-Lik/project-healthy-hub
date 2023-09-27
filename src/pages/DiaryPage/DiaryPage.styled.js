@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
-export const DashboardSection = styled.section`
+export const Section = styled.section`
   background-color: ${props => props.theme.colors.black};
   color: ${props => props.theme.colors.white};
   font-family: ${props => props.theme.fontFamily.poppins};
@@ -19,7 +19,7 @@ export const DashboardSection = styled.section`
   }
 `;
 
-export const DashboardContainer = styled.div`
+export const Container = styled.div`
   margin: 0 auto;
   @media screen and (${props => props.theme.mq.mobile}) {
     width: 320px;
@@ -116,7 +116,6 @@ export const Charts = styled.div`
   }
 `;
 
-
 export const Li = styled.li`
   ${'' /* list-style: none;
   &:not(:last-child) {
@@ -146,8 +145,6 @@ export const ChartsHeader = styled.h2`
   color: #ffffff;
   margin: 0 40px 0 0;
 `;
-
-
 
 export const List = styled.div`
   display: flex;

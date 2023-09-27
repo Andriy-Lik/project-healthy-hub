@@ -9,8 +9,8 @@ import snack from '../../images/diaryPageImages/snack.png';
 import arrowRight from '../../images/diaryPageImages/arrow-right.svg';
 
 import {
-  DashboardSection,
-  DashboardContainer,
+  Section,
+  Container,
   MainHeaderBlock,
   MainHeader,
   ChartsBlock,
@@ -128,8 +128,8 @@ const DiaryPage = () => {
    };
 
   return (
-    <DashboardSection>
-      <DashboardContainer>
+    <Section>
+      <Container>
         <MainHeaderBlock>
           <BackLink to={backLink.current}>
             <ArrowReturn src={arrowRight} alt="arrow right" />
@@ -200,8 +200,8 @@ const DiaryPage = () => {
             </Charts>
           </Li>
         </ChartsBlock>
-      </DashboardContainer>
-    </DashboardSection>
+      </Container>
+    </Section>
   );
 };
 
