@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useDispatch } from "react-redux";
@@ -79,7 +79,6 @@ const SelectGenderPage = () => {
                 <SelectGenderInput
                   style={{
                     height: 36,
-                    width: 212,
                     color: '#B6B6B6',
                     fontSize: 14,
                     fontWeight: 400,
@@ -91,12 +90,12 @@ const SelectGenderPage = () => {
                   onChange={handleInputChange}
                 />
               </ul>
-              <button type='submit'>Next</button>
-              <SelectGenderButton>
+              <SelectGenderButton type='submit'>Next</SelectGenderButton>
+              {/* <SelectGenderButton>
                 <Link to={'/body-parameters'}>
                   Next
                 </Link>
-              </SelectGenderButton>
+              </SelectGenderButton> */}
 
               <SelectGenderBackButton location={locationRef.current} />
             </SelectGenderForm>

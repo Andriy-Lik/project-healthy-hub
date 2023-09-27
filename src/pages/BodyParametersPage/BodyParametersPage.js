@@ -72,10 +72,10 @@ const BodyParametersPage = () => {
                 Weight
                 <BodyParametersInput placeholder="Enter your weight" name='weight' onChange={handleInputChange} />
               </BodyParametersLabel>
-              <button type='submit'>Next</button>
-              <BodyParametersButton to={'/your-activity'}>
+              <BodyParametersButton type='submit'>Next</BodyParametersButton>
+              {/* <BodyParametersButton to={'/your-activity'}>
                 Next
-              </BodyParametersButton>
+              </BodyParametersButton> */}
             </BodyParametersForm>
           </BodyParametersWrapper>
 

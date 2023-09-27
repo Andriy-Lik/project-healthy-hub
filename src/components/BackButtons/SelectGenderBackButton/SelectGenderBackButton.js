@@ -6,7 +6,7 @@ const SelectGenderBackButton = ({ location }) => {
       <button
         type="button"
         onClick={() => navigate(location.state?.from ?? '/your-goal')}
-        style={{backgroundColor: '#050505', border: 'none', fontSize: 14, color: '#FFFFFF', marginLeft: 16}}
+        style={{backgroundColor: '#050505', border: 'none', fontSize: 14, color: '#FFFFFF'}}
       >
         Back
       </button>

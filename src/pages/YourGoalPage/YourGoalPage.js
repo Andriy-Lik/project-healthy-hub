@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { useDispatch } from "react-redux";
 import { useState } from "react";
 import { setNewUserGoal } from 'redux/Auth/authSlice';
@@ -86,10 +86,10 @@ const YourGoalPage = () => {
                   </GoalOption>
                 </div>
               </GoalList>
-              <button type='submit'>Next</button>
-                <GoalButton>
+              <GoalButton type='submit'>Next</GoalButton>
+                {/* <GoalButton>
                   <Link to={'/select-gender'}>Next</Link>
-                </GoalButton>
+                </GoalButton> */}
 
             </GoalForm>
           </div>
