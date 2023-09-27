@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import {
   BackgroundContainer,
   WelcomeLogo,
@@ -34,11 +35,16 @@ const WelcomePage = () => {
         </WelcomeText>
 
         <WelcomeNavigationsButtonList>
-          <WelcomeNavigationsButtonSignUp to={'/signin'}>
-            Sign in
+          <WelcomeNavigationsButtonSignUp>
+            <Link to={'/signin'}>
+              Sign in
+            </Link>
           </WelcomeNavigationsButtonSignUp>
-          <WelcomeNavigationsButtonSignIn to={'/signup'}>
-            Sign up
+
+          <WelcomeNavigationsButtonSignIn>
+            <Link to={'/signup'}>
+                Sign up
+            </Link>
           </WelcomeNavigationsButtonSignIn>
         </WelcomeNavigationsButtonList>
 

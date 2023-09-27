@@ -123,22 +123,21 @@ export const WelcomeNavigationsButtonList = styled.div`
   margin-right: auto;
 `;
 
-export const WelcomeNavigationsButtonSignUp = styled(Link)`
-  background-color: '#E3FFA8';
+export const WelcomeNavigationsButtonSignUp = styled.button `
+  background-color: #E3FFA8;
   margin-top: 24px;
   border-radius: 12px;
   width: 192px;
   padding: 8px;
   font-size: 14px;
-  font-family: 'Poppins';
-  color: '#FFFF';
+  font-family: Poppins;
 `;
 
-export const WelcomeNavigationsButtonSignIn = styled(Link)`
-  background-color: '#050505';
-  border: 'none';
+export const WelcomeNavigationsButtonSignIn = styled.button `
+  background-color: #050505;
+  border: none;
+  color: #FFFF;
   font-size: 14px;
-  color: '#FFFFFF';
   margin-left: 16px;
 `;
 

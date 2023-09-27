@@ -182,7 +182,6 @@ const YourActivityPage = () => {
             </YourActivityForm>
           </YourActivityFormWrapper>
         </YourActivityContainer>
-        <p style={{ color: '#FFFF' }}>{user.password}</p>
       </BackgroundContainer>
     </div>
   );
