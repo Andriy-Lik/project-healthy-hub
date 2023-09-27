@@ -18,7 +18,7 @@ import { logIn } from '../../redux/Auth/authOperations';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import welcomeLogoPic from '../../images/WelcomeLogoPic.png';
-import { selectToken } from 'redux/Auth/authSelectors';
+// import { selectToken } from 'redux/Auth/authSelectors';
 
 const SignInPage = () => {
   const dispatch = useDispatch();
@@ -44,7 +44,6 @@ const SignInPage = () => {
 
     try {
       await dispatch(logIn({ email, password }));
-      localStorage.setItem('token', JSON.stringify(token));
       setEmail('');
       setPassword('');
     } catch (error) {
