@@ -10,6 +10,7 @@ export const Backdrop = styled.div`
   background-color: rgba(0, 0, 0, 0.2);
   z-index: 1;
 `;
+
 export const Modal = styled.div`
   position: absolute;
   top: 50%;
@@ -80,8 +81,7 @@ export const FormFormic = styled(Form)`
 `;
 
 export const ContentWrapper = styled.div`
-max-height: 300px;
- 
+  max-height: 300px; 
   margin-bottom: 16px;
 
    @media screen and (${ p => p.theme.mq.tablet}) {
@@ -90,6 +90,7 @@ max-height: 300px;
 `
 
 export const ProductList = styled.ul`
+  padding: 6px;
   overflow-y: auto;
   height: calc(100% - 44px);
   margin-bottom: 24px;
@@ -130,6 +131,20 @@ export const Product = styled.li`
   @media screen and (${ p => p.theme.mq.tablet}) {
     flex-direction: row;
   };
+
+  & > div {
+    width: 100%;
+
+     @media screen and (${ p => p.theme.mq.tablet}) {
+    width: calc((100% - 12px) / 5);
+  };
+  }
+`;
+
+export const WrapperInput = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 `;
 
 export const Input = styled(Field)`  
@@ -143,19 +158,31 @@ export const Input = styled(Field)`
   font-weight: ${props => props.theme.fontWeights.regular};
   line-height: 20px;
   letter-spacing: 0em;
-  color: ${p => p.theme.colors.white};  
+  color: ${p => p.theme.colors.white};
+  
+  &[type="number"]::-webkit-outer-spin-button,
+  &[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  };       
 
   &::placeholder {
     color: ${p => p.theme.colors.gray};
   };
+`;
 
-  @media screen and (${ p => p.theme.mq.tablet}) {
-    width: calc((100% - 12px) / 5);
-  };
+export const ErrorMsg = styled(ErrorMessage)`
+  padding: 0 5px;
+  font-family: ${props => props.theme.fontFamily.poppins};
+  font-size: 10px;
+  font-weight: ${props => props.theme.fontWeights.regular};
+  line-height: 12px;
+  letter-spacing: 0em;
+  color: ${p => p.theme.colors.error};  
 `;
 
 export const BtnAddNewProduct = styled.button`
-  border: none;
+  border:  ${p => p.theme.borders.none};
   background-color: transparent;
   font-family: ${props => props.theme.fontFamily.poppins};
   font-size: ${props => props.theme.fontSizes.xs};
@@ -164,15 +191,6 @@ export const BtnAddNewProduct = styled.button`
   letter-spacing: 0em;  
   color: ${p => p.theme.colors.greenLite};
   cursor: pointer; 
-`;
-
-export const ErrorMes = styled(ErrorMessage)`
-  font-family: ${props => props.theme.fontFamily.poppins};
-  font-size: 10px;
-  font-weight: ${props => props.theme.fontWeights.regular};
-  line-height: 20px;
-  letter-spacing: 0em;
-  color: ${p => p.theme.colors.error};  
 `;
 
 export const ContainerForBtns = styled.div`

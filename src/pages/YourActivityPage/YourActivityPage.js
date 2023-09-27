@@ -71,12 +71,8 @@ const YourActivityPage = () => {
           @import
           url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Roboto&display=swap');
         </style>
-                  <YourActivityLogo
-            src={SelectGenderLogoPic}
-            alt="Select Gender Logo"
-          />
+        <YourActivityLogo src={SelectGenderLogoPic} alt="Select Gender Logo" />
         <YourActivityContainer>
-
           <YourActivityHeadline>Your Activity</YourActivityHeadline>
           <YourActivityText>
             To correctly calculate calorie and water intake
@@ -87,8 +83,9 @@ const YourActivityPage = () => {
                 <YourActivityFormListWrapper>
                 <input  type="radio" name="answer" value="1.2" onChange={() => setActivity("1.2")} />
                   <CustomRadioRegistrationButton />
-                  <YourActivityFormListOption style={{ color: '#FFFF', fontSize: 14 }}>
-
+                  <YourActivityFormListOption
+                    style={{ color: '#FFFF', fontSize: 14 }}
+                  >
                     1.2 - if you do not have physical activity and sedentary
                     work
                   </YourActivityFormListOption>
@@ -102,52 +99,44 @@ const YourActivityPage = () => {
                   </YourActivityFormListOption>
                 </YourActivityFormListWrapper>
 
-
                 <YourActivityFormListWrapper>
                 <input  type="radio" name="answer" value="1.55" checked={activity0 === "1.55"} onChange={() => setActivity("1.55")}/>
                   <CustomRadioRegistrationButton />
                   <YourActivityFormListOption style={{ color: '#FFFF', fontSize: 14 }}>
-                
                     1.55
                   </YourActivityFormListOption>
                 </YourActivityFormListWrapper>
 
-
                 <YourActivityFormListWrapper>
                 <input  type="radio" name="answer" value="1.725" checked={activity0 === "1.725"} onChange={() => setActivity("1.725")}/>
                   <CustomRadioRegistrationButton />
-                  <YourActivityFormListOption style={{ color: '#FFFF', fontSize: 14 }}>
+                  <YourActivityFormListOption
+                    style={{ color: '#FFFF', fontSize: 14 }}
+                  >
                     1,725 ​​- if you train fully 6-7 times a week
                   </YourActivityFormListOption>
                 </YourActivityFormListWrapper>
 
                 <YourActivityFormListWrapper>
                 <input  type="radio" name="answer" value="1.9" checked={activity0 === "1.9"} onChange={() => setActivity("1.9")}/>
-
-
-
-
-
-
-
-
                   <CustomRadioRegistrationButton />
-                  <YourActivityFormListOption style={{ color: '#FFFF', fontSize: 14 }}>
+                  <YourActivityFormListOption
+                    style={{ color: '#FFFF', fontSize: 14 }}
+                  >
                     1.9 - if your work is related to physical labor, you train 2
                     times a day and include strength exercises in your training
                     program
                   </YourActivityFormListOption>
                 </YourActivityFormListWrapper>
               </YourActivityFormList>
-              <button type='submit'>Next</button>
-              <YourActivityButton>Next</YourActivityButton>
+              {/* <button type='submit'>Next</button> */}
+              <YourActivityButton type="submit">Next</YourActivityButton>
               <br />
               <YourActivityBackButton location={locationRef.current} />
-              
             </YourActivityForm>
           </YourActivityFormWrapper>
         </YourActivityContainer>
-        <p style={{color: '#FFFF'}}>{user.password}</p>
+        <p style={{ color: '#FFFF' }}>{user.password}</p>
       </BackgroundContainer>
     </div>
   );

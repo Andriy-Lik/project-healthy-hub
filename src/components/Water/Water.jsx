@@ -1,4 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+import { selectStatsInfo } from "../../redux/Statistics/statisticsSelectors"
+import { getStats } from "../../redux//Statistics/statisticsOperations";
+import { calcPercent, calcRemainder } from "../../helpers/calculations";
+import { WATER_GOAL } from "constants/constants";
 
 import {
   Wrapper,
@@ -22,12 +28,41 @@ import img1 from "../../images/add.png";
 import img2 from "../../images/add@2x.png";
 
 const Water = () => {
-
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [consumedWaterMl, setConsumedWaterMl] = useState(0);
 
   const toggleModal = () => setIsModalOpen(!isModalOpen);
 
-  let counter = "70%"; // має прийти з бекенду
+  const dispatch = useDispatch();
+  const info = useSelector(selectStatsInfo);  
+  
+  useEffect(() => {
+    dispatch(getStats('today')); 
+  }, [dispatch]);
+
+
+  useEffect(() => {
+    if (Object.keys(info).length === 0) {
+      return;
+    };
+
+    let counter = 0;      
+    const keys = Object.keys(info);
+
+    for (const key of keys) {
+      if (key === "water") {
+        for (const entry of info[key]) {
+          counter = counter + entry.water;
+        }
+      }
+    }
+
+    setConsumedWaterMl(counter);    
+  }, [info]);
+
+  let consumedWaterPercent = calcPercent(WATER_GOAL, consumedWaterMl) + "%";
+
+  let leftToConsumeWater = calcRemainder(WATER_GOAL, consumedWaterMl);
   
   return (
     <Wrapper>
@@ -36,19 +71,20 @@ const Water = () => {
         <Card>
           <WaterTracker>
             {/* лічильник спожитої води у відсотках*/}
-            <CounterOfConsumedWaterInPercentage>{counter}</CounterOfConsumedWaterInPercentage>
-            <Chart style={{height: `${counter}`}}/>
+            <CounterOfConsumedWaterInPercentage>{consumedWaterPercent}</CounterOfConsumedWaterInPercentage>
+            <Chart style={{height: `${consumedWaterPercent}`}}/>
           </WaterTracker>
           <CardText>
             <CardTitle>Water consumption</CardTitle>
             <CounterList>
               {/* лічильник випитої води у мл */}
               <CounterOfConsumedWaterInMl>
-                1050<span>ml</span>
+                {consumedWaterMl}
+                <span>ml</span>
               </CounterOfConsumedWaterInMl>
               {/* лічильник води, що залишилось випити у мл */}
               <CounterOfWaterLeftToDrinkInMl>
-                <span>left:</span> 450 ml
+                <span>left:</span> {leftToConsumeWater} ml
               </CounterOfWaterLeftToDrinkInMl>
             </CounterList>
             {/* кнопка, що відкриває модальне вікно додати воду */}
