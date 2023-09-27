@@ -17,6 +17,7 @@ export const BackgroundContainer = styled.div`
     flex-direction: center;
     margin: auto;
   }
+
   @media (min-width: 1439px) {
     display: flex;
     flex-direction: row;
@@ -49,6 +50,7 @@ export const PerksContainer = styled.div`
   max-width: 444px;
   margin-top: 120px;
   margin-left: 104px;
+
   @media (min-width: 320px) and (max-width: 833px) {
     margin: auto;
     padding-left: 10px;
@@ -62,8 +64,8 @@ export const PerksContainer = styled.div`
   }
   @media (min-width: 1439px) {
     width: 444px;
-  margin-left: 0;
-  margin-right: 120px;
+    margin-left: 0;
+    margin-right: 120px;
   }
 `;
 
@@ -122,21 +124,21 @@ export const WelcomeNavigationsButtonList = styled.div`
 `;
 
 export const WelcomeNavigationsButtonSignUp = styled(Link)`
-background-color: '#E3FFA8';
-margin-top: 24;
-border-radius: 12;
-width: 192;
-padding: 8;
-font-size: 14;
-font-family: 'Poppins';
+  background-color: '#E3FFA8';
+  margin-top: 24;
+  border-radius: 12;
+  width: 192;
+  padding: 8;
+  font-size: 14;
+  font-family: 'Poppins';
 `;
 
 export const WelcomeNavigationsButtonSignIn = styled(Link)`
-background-color: '#050505';
-border: 'none';
-font-size: 14;
-color: '#FFFFFF';
-marginLeft: 16;
+  background-color: '#050505';
+  border: 'none';
+  font-size: 14;
+  color: '#FFFFFF';
+  marginleft: 16;
 `;
 
 export const WelcomePagePerksList = styled.ul`
