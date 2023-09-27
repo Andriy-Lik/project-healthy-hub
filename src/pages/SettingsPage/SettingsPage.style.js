@@ -230,6 +230,12 @@ export const GenderLabelRadio = styled.div`
   gap: 16px;
 `;
 
+export const AvaImg = styled.img`
+  width: 36px;
+  border-radius: 50%;
+  margin-right: 12px;
+`;
+
 export const H2 = styled.h2`
   font-size: ${props => props.theme.fontSizes.xs};
   font-weight: ${props => props.theme.fontWeights.medium};

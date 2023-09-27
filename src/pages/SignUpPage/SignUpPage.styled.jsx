@@ -69,7 +69,7 @@ export const SignUpForm = styled.form `
     margin-top: 8px;
 `;
 
-export const SignUpInput = styled.input `
+export const SignUpInput = styled.input`
     border: 1px solid #E3FFA8;
     border-radius: 12px;
     background-color: #0F0F0F;
@@ -81,7 +81,7 @@ export const SignUpInput = styled.input `
     padding-bottom: 10px;
     padding-right: 8px;
     margin-top: 16px;
-`
+`;
 
 export const SignUpButton = styled.p ` 
     background-color: #E3FFA8;
@@ -103,9 +103,9 @@ export const SignInSuggestion = styled.p `
     color: #B6B6B6;
 `;
 
-export const SignInLink = styled(Link) `
+export const SignInLink = styled(Link)`
     background-color: #050505;
     color: #FFFFFF;
     border: none;
     margin-left: 16px;
-`
+`;

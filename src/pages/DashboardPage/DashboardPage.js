@@ -25,6 +25,7 @@ import arrowDown from '../../images/icons/arrow-down.svg';
 import arrowRight from '../../images/icons/arrow-right.svg';
 import LineChart from 'components/Charts/LineChart';
 import ScaleChart from 'components/Charts/ScaleChart';
+import { monthName } from '../../constants/monthName';
 
 const DashboardPage = () => {
   const [showYear, setShowYear] = useState(false);
@@ -32,7 +33,7 @@ const DashboardPage = () => {
   const [period, setPeriod] = useState('month');
 
   const location = useLocation();
-  const backLinkLocationRef = useRef(location.state?.from ?? '');
+  const backLinkLocationRef = useRef(location.state?.from ?? '/main');
 
   const dispatch = useDispatch();
 
@@ -49,6 +50,9 @@ const DashboardPage = () => {
     setPeriod(prevTime => (prevTime === 'month' ? 'year' : 'month'));
     toggleBtn();
   };
+
+  const currentMonth = monthName.full[new Date().getMonth() + 1];
+  const currentYear = new Date().getFullYear();
 
   return (
     <DashboardSection>
@@ -74,7 +78,9 @@ const DashboardPage = () => {
               </ToggleButton>
             )}
           </MainHeaderBlock>
-          <SecondHeader>{showYear ? '2023' : 'November'}</SecondHeader>
+          <SecondHeader>
+            {showYear ? `${currentYear}` : `${currentMonth}`}
+          </SecondHeader>
         </HeaderBlock>
         <LineChartBlock>
           <ChartGrid>

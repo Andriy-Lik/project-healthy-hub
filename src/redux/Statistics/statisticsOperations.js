@@ -11,6 +11,7 @@ export const getStats = createAsyncThunk(
     // const userToken =
     //   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MDg1MmVhOWQyNzgwZTQ4MGE4NjRjZiIsImlhdCI6MTY5NTc1MzA3OSwiZXhwIjoxNjk1ODM1ODc5fQ.MD5F4YBZ9aMW_223hOUuwAcwe8iVdozwezGD2BirElY';
 
+
     if (userToken === null) {
       return thunkAPI.rejectWithValue('Failed to get information');
     }

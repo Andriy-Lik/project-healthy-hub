@@ -122,21 +122,21 @@ export const WelcomeNavigationsButtonList = styled.div`
 `;
 
 export const WelcomeNavigationsButtonSignUp = styled(Link)`
-background-color: '#E3FFA8',
-margin-top: 24,
-border-radius: 12,
-width: 192,
-padding: 8,
-font-size: 14,
-font-family: 'Poppins',
+background-color: '#E3FFA8';
+margin-top: 24;
+border-radius: 12;
+width: 192;
+padding: 8;
+font-size: 14;
+font-family: 'Poppins';
 `;
 
 export const WelcomeNavigationsButtonSignIn = styled(Link)`
-background-color: '#050505',
-border: 'none',
-font-size: 14,
-color: '#FFFFFF',
-marginLeft: 16,
+background-color: '#050505';
+border: 'none';
+font-size: 14;
+color: '#FFFFFF';
+marginLeft: 16;
 `;
 
 export const WelcomePagePerksList = styled.ul`
