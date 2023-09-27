@@ -24,11 +24,14 @@ const BodyParametersPage = () => {
   const [height, setHeight] = useState('');
   const [weight, setWeight] = useState('');
 
+  const parsedHeight = parseFloat(height);
+  const parsedWeight = parseFloat(weight);
+
   const handleNewUserHeightWeightData = event => {
     event.preventDefault();
     console.log(`height: ${height}, weight: ${weight}`);
-    dispatch(setNewUserHeight(height));
-    dispatch(setNewUserWeight(weight));
+    dispatch(setNewUserHeight(parsedHeight));
+    dispatch(setNewUserWeight(parsedWeight));
   };
 
   const handleInputChange = event => {

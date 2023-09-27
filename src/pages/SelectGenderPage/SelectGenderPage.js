@@ -25,11 +25,13 @@ const SelectGenderPage = () => {
   const [gender, setGender] = useState('');
   const [age, setAge] = useState('');
 
+  const parsedAge = parseInt(age, 10);
+
   const handleNewUserGenderAgeData = event => {
     event.preventDefault();
     console.log(`gender: ${gender}, age: ${age}`);
     dispatch(setNewUserGender(gender));
-    dispatch(setNewUserAge(age));
+    dispatch(setNewUserAge(parsedAge));
   };
 
   const handleInputChange = event => {
