@@ -94,6 +94,8 @@ const LineChart = ({ dataFormat, type }) => {
     responsive: true,
     scales: {
       x: {
+        beginAtZero: false,
+        offset: true,
         ticks: {
           color: '#B6B6B6',
         },
@@ -108,6 +110,7 @@ const LineChart = ({ dataFormat, type }) => {
         min: 0,
         max: 3000,
         ticks: {
+          alignToPixels: true,
           major: {
             enabled: true,
           },
@@ -144,7 +147,7 @@ const LineChart = ({ dataFormat, type }) => {
         label: `${datasetsLabel}`,
         borderColor: '#E3FFA8',
         borderWidth: 1,
-        pointRadius: 0,
+        pointRadius: 1,
         tension: 0.5,
         drawActiveElementsOnTop: true,
       },
