@@ -16,12 +16,11 @@ import {
 } from './SignInPage.styled';
 import { logIn } from '../../redux/Auth/authOperations';
 import { useState } from 'react';
-import { useDispatch } from "react-redux";
+import { useDispatch } from 'react-redux';
 
 import welcomeLogoPic from '../../images/WelcomeLogoPic.png';
 
 const SignInPage = () => {
-
   const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -60,16 +59,27 @@ const SignInPage = () => {
           @import
           url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Roboto&display=swap');
         </style>
-          <SignInLogo src={welcomeLogoPic} alt="Logo" />
+        <SignInLogo src={welcomeLogoPic} alt="Logo" />
         <SignInContainer>
-
           <SignInHeadline>Sign in</SignInHeadline>
           <SignInText>You need to login to use the service</SignInText>
           {error && <p>{error}</p>}
           <SignInFormWrapper>
             <SignInForm onSubmit={handleSubmit} autoComplete="on">
-              <SignInInput type="email" name="email" value={email} onChange={handleEmailChange} placeholder="E-mail" />
-              <SignInInput type="password" name="password" value={password} onChange={handlePasswordChange} placeholder="Password" />
+              <SignInInput
+                type="email"
+                name="email"
+                value={email}
+                onChange={handleEmailChange}
+                placeholder="E-mail"
+              />
+              <SignInInput
+                type="password"
+                name="password"
+                value={password}
+                onChange={handlePasswordChange}
+                placeholder="Password"
+              />
               <SignInButton type="submit">Sign in</SignInButton>
               <ForgotYourPassword to={'/forgot-password'}>
                 Forgot your password?
