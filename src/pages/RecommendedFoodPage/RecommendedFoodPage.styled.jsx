@@ -22,7 +22,7 @@ margin-left: 50px;
   width: 380px;
   height: 396px;
 }
-@media (min-width: 834px) and (max-width: 1439px)  {
+@media (min-width: 834px) and (max-width: 1639px)  {
   width: 436px;
   height: 460px;
 }
@@ -74,11 +74,12 @@ export const List = styled.ul`
   justify-content: center;
   margin-top:24px;
 }
-@media (min-width: 834px) and (max-width: 1439px)  {
+@media (min-width: 834px) and (max-width: 1639px)  {
   display: flex;
 flex-direction: row;
 flex-wrap: wrap;
 align-items: center;
+width: 800px;
 }
 `
 export const ContainerTwo = styled.div`

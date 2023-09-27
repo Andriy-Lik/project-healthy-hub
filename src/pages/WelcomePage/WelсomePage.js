@@ -26,57 +26,40 @@ const WelcomePage = () => {
         @import
         url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Roboto&display=swap');
       </style>
-        <WelcomeLogo src={welcomeLogoPic} alt="Reg Logo" />
+      <WelcomeLogo src={welcomeLogoPic} alt="Reg Logo" />
       <PerksContainer>
-
         <WelcomeHeadline>Set goals and achieve them</WelcomeHeadline>
         <WelcomeText>
           The service will help you set goals and follow them.
         </WelcomeText>
 
         <WelcomeNavigationsButtonList>
-          <WelcomeNavigationsButtonSignUp
-            to={'/signin'}
-          >
+          <WelcomeNavigationsButtonSignUp to={'/signin'}>
             Sign in
           </WelcomeNavigationsButtonSignUp>
-          <WelcomeNavigationsButtonSignIn
-            to={'/signup'}
-          >
+          <WelcomeNavigationsButtonSignIn to={'/signup'}>
             Sign up
           </WelcomeNavigationsButtonSignIn>
         </WelcomeNavigationsButtonList>
 
         <WelcomePagePerksList>
           <WelcomePagePerksWrapper>
-            <WelcomePagePerksListBullets
-              src={bullets}
-              alt="bullets for list"
-            />
+            <WelcomePagePerksListBullets src={bullets} alt="bullets for list" />
             <Perks>Set goals</Perks>
           </WelcomePagePerksWrapper>
 
           <WelcomePagePerksWrapper>
-            <WelcomePagePerksListBullets
-              src={bullets}
-              alt="bullets for list"
-            />
+            <WelcomePagePerksListBullets src={bullets} alt="bullets for list" />
             <Perks>Watch your calories</Perks>
           </WelcomePagePerksWrapper>
 
           <WelcomePagePerksWrapper>
-            <WelcomePagePerksListBullets
-              src={bullets}
-              alt="bullets for list"
-            />
+            <WelcomePagePerksListBullets src={bullets} alt="bullets for list" />
             <Perks>Keep track of your water intake</Perks>
           </WelcomePagePerksWrapper>
 
           <WelcomePagePerksWrapper>
-            <WelcomePagePerksListBullets
-              src={bullets}
-              alt="bullets for list"
-            />
+            <WelcomePagePerksListBullets src={bullets} alt="bullets for list" />
             <Perks>Control your weight</Perks>
           </WelcomePagePerksWrapper>
         </WelcomePagePerksList>

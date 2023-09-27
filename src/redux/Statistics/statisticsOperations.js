@@ -6,10 +6,11 @@ axios.defaults.baseURL = 'https://healthyhub-z4y1.onrender.com';
 export const getStats = createAsyncThunk(
   'stats/getAll',
   async (time, thunkAPI) => {
-    // const state = thunkAPI.getState();
-    // const userToken = state.auth.token;
-    const userToken =
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MDg1MmVhOWQyNzgwZTQ4MGE4NjRjZiIsImlhdCI6MTY5NTY4MTAzMCwiZXhwIjoxNjk1NzYzODMwfQ.ytXYasvi05Igy9yVd4KmisIL3ZbuTsNG-AUiWNjMrcI';
+    const state = thunkAPI.getState();
+    const userToken = state.auth.token;
+    // const userToken =
+    //   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MDg1MmVhOWQyNzgwZTQ4MGE4NjRjZiIsImlhdCI6MTY5NTc1MzA3OSwiZXhwIjoxNjk1ODM1ODc5fQ.MD5F4YBZ9aMW_223hOUuwAcwe8iVdozwezGD2BirElY';
+
 
     if (userToken === null) {
       return thunkAPI.rejectWithValue('Failed to get information');

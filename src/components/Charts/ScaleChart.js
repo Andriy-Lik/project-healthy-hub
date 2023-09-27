@@ -2,18 +2,22 @@ import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 
 import { selectStatsInfo } from '../../redux/Statistics/statisticsSelectors';
-import { List, Item, WeightTitle, DataTitle } from './ScaleChart.styled';
+import { monthName } from '../../constants/monthName';
 import {
+  List,
+  Item,
+  WeightTitle,
+  DataTitle,
   TitleContainer,
   ChartsTitle,
   ChartsSubtitle,
   ChartsCaption,
   Scale,
-} from './LineChart.styled';
+} from './ScaleLineCharts.styled';
 
 const ScaleChart = ({ dataFormat }) => {
   const [weight, setWeight] = useState([]);
-  // const [average, setAverage] = useState([]);
+  const [average, setAverage] = useState([]);
 
   const info = useSelector(selectStatsInfo);
 
@@ -32,19 +36,18 @@ const ScaleChart = ({ dataFormat }) => {
           const value = [];
 
           if (!dataFormat) {
-            for (const entry of info[key]) {            
-              value.push(entry.amount);            
-            }          
-
+            for (const entry of info[key]) {
+              value.push(entry.amount);
+            }
             const total = value.reduce((previousValue, number) => {
               return previousValue + number;
             }, 0);
             let totalAverageValue = Math.round(total / value.length);
-            averageValue.push(totalAverageValue); 
+            averageValue.push(totalAverageValue);
             setWeight(info[key]);
           }
 
-          if (dataFormat) {         
+          if (dataFormat) {
             const monthShortName = {
               1: 'January',
               2: 'February',
@@ -59,44 +62,38 @@ const ScaleChart = ({ dataFormat }) => {
               11: 'November',
               12: 'December',
             };
-
+            
             for (const entry of info[key]) {
-              console.log(entry);
               const entryMonth = new Date(entry._id).getMonth() + 1;
-              // if (!entry.amount) {
-              //   console.log('ffffffff');
-              //   return;
-              // }
 
-              const average = (entry.amount / entry.count).toFixed(2);
-
-              if (!average) {
-                return console.log('NaN');
+              if (!entry.count) {
+                return;
               }
 
-              const newInfo = {
-                _id: monthShortName[entryMonth],
-                amount: average,
-              };
+              const average = (entry.amount / entry.count).toFixed(1);
 
-              console.log(newInfo);
-              value.push(entry.average);
-              infoArray.push(newInfo);
-
-              return;
+              if (average) {
+                const newInfo = {
+                  _id: monthName.full[entryMonth],
+                  amount: average,
+                };
+                infoArray.push(newInfo);
+                value.push(Number(average));
+              }
             }
-
-            const total = value.reduce((previousValue, number) => {
-              return previousValue + number;
-            }, 0);
-            let totalAverageValue = Math.round(total / value.length);
-            averageValue.push(totalAverageValue);
-
             setWeight(infoArray);
           }
+
+          const total = Math.round(
+            value.reduce((previousValue, number) => {
+              return previousValue + number;
+            }, 0) / value.length
+          );
+          averageValue.push(total);
         }
       }
     }
+    setAverage(averageValue);
   }, [dataFormat, info]);
 
   return (
@@ -104,7 +101,7 @@ const ScaleChart = ({ dataFormat }) => {
       <TitleContainer>
         <ChartsTitle>Weight</ChartsTitle>
         <ChartsSubtitle>
-          Average value: <ChartsCaption>68 kg</ChartsCaption>
+          Average value: <ChartsCaption>{average} kg</ChartsCaption>
         </ChartsSubtitle>
       </TitleContainer>
       <Scale>

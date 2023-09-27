@@ -1,5 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { register, logIn, logOut, currentUser, updateUser, forgotPassword, updateAvatar } from './authOperations';
+import {
+  register,
+  logIn,
+  logOut,
+  currentUser,
+  updateUser,
+  forgotPassword,
+  updateAvatar,
+} from './authOperations';
 
 const initialState = {
   user: {
@@ -103,7 +111,7 @@ const authSlice = createSlice({
         state.user.avatarURL = action.payload.user.avatarURL;
         state.token = action.payload.token;
         state.isLoggedIn = true;
-      })
+      });
   },
 });
 
