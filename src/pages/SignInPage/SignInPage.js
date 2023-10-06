@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+// import { Link } from "react-router-dom";
 import {
   BackgroundContainer,
   SignInLogo,
@@ -17,8 +17,8 @@ import {
 import { logIn } from '../../redux/Auth/authOperations';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+
 import welcomeLogoPic from '../../images/WelcomeLogoPic.png';
-// import { selectToken } from 'redux/Auth/authSelectors';
 
 const SignInPage = () => {
   const dispatch = useDispatch();
@@ -80,8 +80,8 @@ const SignInPage = () => {
                 placeholder="Password"
               />
               <SignInButton type="submit">Sign in</SignInButton>
-              <ForgotYourPassword>
-                <Link to={'/forgot-password'}>Forgot your password?</Link>
+              <ForgotYourPassword to={'/forgot-password'}>
+                Forgot your password?
               </ForgotYourPassword>
             </SignInForm>
           </SignInFormWrapper>
