@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const Background = styled.div`
@@ -5,8 +6,27 @@ background-color: #050505;
 width: 100%;
 flex-direction: column;
 display: flex;
-
 `
+
+export const BackLink = styled(NavLink)`
+  display: flex;
+  @media screen and (${props => props.theme.mq.mobile}) {
+    margin-right: 8px;
+  }
+  @media screen and (${props => props.theme.mq.tablet}) {
+    margin-right: 12px;
+  }
+`;
+
+export const ArrowReturn = styled.img`
+  @media screen and (${props => props.theme.mq.mobile}) {
+    width: 16px;
+  }
+  @media screen and (${props => props.theme.mq.tablet}) {
+    width: 24px;
+  }
+`;
+
 export const Title = styled.h1`
   margin-top: 20px;
   color: ${p => p.theme.colors.white};
