@@ -44,7 +44,6 @@ const SignInPage = () => {
 
     try {
       await dispatch(logIn({ email, password }));
-
       setEmail('');
       setPassword('');
     } catch (error) {
