@@ -17,7 +17,7 @@ import {
 
 const ScaleChart = ({ dataFormat }) => {
   const [weight, setWeight] = useState([]);
-  const [average, setAverage] = useState([]);
+  const [average, setAverage] = useState(0);
 
   const info = useSelector(selectStatsInfo);
 
@@ -27,7 +27,6 @@ const ScaleChart = ({ dataFormat }) => {
     }
 
     const infoArray = [];
-    const averageValue = [];
 
     if (Object.keys(info).length !== 0) {
       const keys = Object.keys(info);
@@ -38,11 +37,11 @@ const ScaleChart = ({ dataFormat }) => {
           if (!dataFormat) {
             for (const entry of info[key]) {
               value.push(entry.amount);
-            }           
+            }
             setWeight(info[key]);
           }
 
-          if (dataFormat) {            
+          if (dataFormat) {
             for (const entry of info[key]) {
               const entryMonth = new Date(entry._id).getMonth() + 1;
 
@@ -64,16 +63,17 @@ const ScaleChart = ({ dataFormat }) => {
             setWeight(infoArray);
           }
 
-          const total = Math.round(
-            value.reduce((previousValue, number) => {
-              return previousValue + number;
-            }, 0) / value.length
-          );
-          averageValue.push(total);
+          if (value.length > 0) {
+            const total = Math.round(
+              value.reduce((previousValue, number) => {
+                return previousValue + number;
+              }, 0) / value.length
+            );
+            setAverage(total);
+          }
         }
       }
     }
-    setAverage(averageValue);
   }, [dataFormat, info]);
 
   return (
