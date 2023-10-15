@@ -1,8 +1,8 @@
 import PropTypes from "prop-types";
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import { useDispatch } from "react-redux";
-import {addFood} from 'redux/Foods/foodsOperations'
+// import { useDispatch } from "react-redux";
+// import {addFood} from 'redux/Foods/foodsOperations'
 
 
 import { FieldArray, Formik } from 'formik';
@@ -78,7 +78,7 @@ const RecordDiaryModal = ({ onClose, image, title }) => {
     ],
   };
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   
   const handleKeyDown = (event) => {
     if (event.code === "Escape") {
