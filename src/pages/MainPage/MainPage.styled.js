@@ -3,14 +3,36 @@ import { Link } from 'react-router-dom';
 
 export const Container = styled.main`
   background-color: ${props => props.theme.colors.black};
+  color: ${props => props.theme.colors.white};
+  font-family: ${props => props.theme.fontFamily.poppins};
 
-  padding: 16px 10px 60px 10px;
+  padding-top: 16px;
+  padding-bottom: 60px;
 
   @media screen and (${props => props.theme.mq.tablet}) {
-    padding: 24px 27px 40px 27px;
+    padding-top: 24px;
+    padding-bottom: 40px;
   }
+
   @media screen and (${props => props.theme.mq.desktop}) {
-    padding: 20px 34px 52px 34px;
+    padding-top: 20px;
+    padding-bottom: 40px;
+  }
+`;
+
+export const Content = styled.div`
+  margin: 0 auto;
+  width: 320px;
+  padding: 0 10px;
+
+  @media screen and (${props => props.theme.mq.tablet}) {
+    width: 834px;
+    padding: 0 27px;
+  }
+
+  @media screen and (${props => props.theme.mq.desktop}) {
+    width: 1440px;
+    padding: 0 34px;
   }
 `;
 

@@ -1,6 +1,9 @@
 import PropTypes from "prop-types";
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
+import { useDispatch } from "react-redux";
+import {addFood} from 'redux/Foods/foodsOperations'
+
 
 import { FieldArray, Formik } from 'formik';
 import * as yup from 'yup';
@@ -24,6 +27,7 @@ import {
   BtnConfirm,
   BtnCancel
 } from './RecordDiaryModal.styled';
+
 
 const schema = yup.object({
   productList: yup.array().of(yup.object().shape({
@@ -57,21 +61,24 @@ const schema = yup.object({
   })),
 });
 
-const initialValues = {
-  productList: [
-    {
-      mealName: '',
-      carbonohidrates: '',
-      protein: '',
-      fat: '',
-      calories: ''
-    }
-  ],  
-};
-
 const modalRoot = document.querySelector('#modal-root');
 
 const RecordDiaryModal = ({ onClose, image, title }) => {
+
+  const initialValues = {
+    mealType: title,
+    productList: [
+      {
+        mealName: '',
+        carbonohidrates: '',
+        protein: '',
+        fat: '',
+        calories: ''
+      }
+    ],
+  };
+
+  const dispatch = useDispatch();
   
   const handleKeyDown = (event) => {
     if (event.code === "Escape") {
@@ -86,14 +93,27 @@ const RecordDiaryModal = ({ onClose, image, title }) => {
   };
   
   const handleSubmit = (values, { resetForm }) => {
-    console.log(values);
+    // const data = {
+    //   mealType: values.mealType,
+    //   mealName: values.productList[0].mealName,
+    //   carbohydrate: values.productList[0].carbonohidrates.toString(),
+    //   protein: values.productList[0].protein.toString(),
+    //   fat: values.productList[0].fat.toString(),
+    //   calories: values.productList[0].calories.toString()
+    // };
+    // console.log("recodrd food: ", data)
+    // dispatch(addFood(data))
+    console.log("record food: ", values)
     resetForm();
+    
   };
   
   useEffect(() => {
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   });
+
+  useEffect(() => { })
 
   return createPortal(
     <Backdrop onClick={handleBackdropClick}>

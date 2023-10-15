@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 import { RecommendedItem } from './RecommendedItem';
 import {
@@ -9,21 +9,13 @@ import {
   SeeMoreButton,
 } from './RecommendedFoodOnMain.styled';
 
-import { recomendedFoodInfo } from '../../redux/RecomendedFood/recomendedFoodSelectors';
-import { getRecomendedFood } from '../../redux/RecomendedFood/recomendedFoodOperations'
+import { selectRecomendedFood } from '../../redux/RecomendedFood/recomendedFoodSelectors';
 import { randomizeFood } from '../../helpers/randomizeFood'
 
 export const RecommendedFoodOnMain = () => {
   
   const [arrayForRender, setArrayForRender] = useState([]);
-  const dispatch = useDispatch();
-  
-
-  useEffect(() => async () => {
-    dispatch(getRecomendedFood());   
-  }, [dispatch]);
-
-  const info = useSelector(recomendedFoodInfo);
+  const info = useSelector(selectRecomendedFood);
   
   useEffect(() => {
     if (info.length === 0) {

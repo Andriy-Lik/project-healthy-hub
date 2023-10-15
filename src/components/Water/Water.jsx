@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
-import { selectStatsInfo } from "../../redux/Statistics/statisticsSelectors"
-import { getStats } from "../../redux//Statistics/statisticsOperations";
-import { calcPercent, calcRemainder } from "../../helpers/calculations";
+import { selectStatsInfo } from "redux/Statistics/statisticsSelectors";
+import { calcPercent, calcRemainder } from "helpers/calculations";
 import { WATER_GOAL } from "constants/constants";
 
 import {
@@ -24,22 +23,17 @@ import {
 
 import AddWater from "components/Modals/AddWater/addWater";
 
-import img1 from "../../images/add.png";
-import img2 from "../../images/add@2x.png";
+import img1 from "images/add.png";
+import img2 from "images/add@2x.png";
 
 const Water = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [consumedWaterMl, setConsumedWaterMl] = useState(0);
 
   const toggleModal = () => setIsModalOpen(!isModalOpen);
-
-  const dispatch = useDispatch();
-  const info = useSelector(selectStatsInfo);  
   
-  useEffect(() => {
-    dispatch(getStats('today')); 
-  }, [dispatch]);
-
+  const info = useSelector(selectStatsInfo);
+  
 
   useEffect(() => {
     if (Object.keys(info).length === 0) {
@@ -55,13 +49,12 @@ const Water = () => {
           counter = counter + entry.water;
         }
       }
-    }
+    };
 
     setConsumedWaterMl(counter);    
   }, [info]);
 
   let consumedWaterPercent = calcPercent(WATER_GOAL, consumedWaterMl) + "%";
-
   let leftToConsumeWater = calcRemainder(WATER_GOAL, consumedWaterMl);
   
   return (
