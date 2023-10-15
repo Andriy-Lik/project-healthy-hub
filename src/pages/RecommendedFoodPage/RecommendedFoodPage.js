@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import image from '../../images/Ketogenic.png';
 import {
@@ -17,10 +17,8 @@ import {
   ParagTwo,
   Background,
 } from './RecommendedFoodPage.styled';
-// import food from './food.json';
 
-import { recomendedFoodInfo } from '../../redux/RecomendedFood/recomendedFoodSelectors';
-import { getRecomendedFood } from '../../redux/RecomendedFood/recomendedFoodOperations';
+import { selectRecomendedFood } from '../../redux/RecomendedFood/recomendedFoodSelectors';
 import { randomizeFood } from '../../helpers/randomizeFood';
 
 import arrowRight from '../../images/icons/arrow-right.svg';
@@ -30,16 +28,8 @@ export default function RecommendedFood() {
 
   const location = useLocation();
   const backLinkLocationRef = useRef(location.state?.from ?? '/main');
-  const dispatch = useDispatch();
 
-  useEffect(
-    () => async () => {
-      dispatch(getRecomendedFood());
-    },
-    [dispatch]
-  );
-
-  const info = useSelector(recomendedFoodInfo);
+  const info = useSelector(selectRecomendedFood);
 
   useEffect(() => {
     if (info.length === 0) {

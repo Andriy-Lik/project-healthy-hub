@@ -74,13 +74,13 @@ export const CardTitle = styled.h4`
  
 `;
 
-export const CounerList = styled.div`
+export const CounterList = styled.div`
   display: flex;
   flex-direction: row;  
   gap: 12px;
 `;
 
-export const Couner = styled.p`
+export const Counter = styled.p`
 
   width: calc((100% - 12px) / 2);
   font-family: ${props => props.theme.fontFamily.poppins};

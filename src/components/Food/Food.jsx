@@ -10,8 +10,8 @@ import {
   ChartBox,
   CardText,
   CardTitle,
-  CounerList,
-  Couner,
+  CounterList,
+  Counter,
 } from './Food.styled';
 
 import DoughnutForCalorie from 'components/Charts/DoughnutChartForCalorie';
@@ -22,11 +22,8 @@ import { selectUser } from 'redux/Auth/authSelectors';
 
 
 const Food = () => {
-
-  const userInfo = useSelector(selectUser);
   
-  console.log("food_userInfo: ", userInfo)
-
+  const { carbohydrate, fat, protein} = useSelector(selectUser);
   
   return (
     <Wrapper>
@@ -42,12 +39,12 @@ const Food = () => {
             </ChartBox>
             <CardText>
               <CardTitle>Carbonohidrates</CardTitle>
-              <CounerList>
+              <CounterList>
                 {/* лічильник мета для вуглеводів */}
-                <Couner>Goal: <span>170</span></Couner>
+                <Counter>Goal: <span>{carbohydrate}</span></Counter>
                 {/* лічильник залишилось для вуглеводів */}
-                <Couner>left: <span>34</span></Couner>
-              </CounerList>
+                <Counter>left: <span>34</span></Counter>
+              </CounterList>
             </CardText>
           </Card>
           <Card>
@@ -56,12 +53,12 @@ const Food = () => {
             </ChartBox>
             <CardText>
               <CardTitle>Protein</CardTitle>
-              <CounerList>
+              <CounterList>
                 {/* лічильник мета для протеїнів */}
-                <Couner>Goal: <span>127,5</span></Couner>
+                <Counter>Goal: <span>{protein}</span></Counter>
                 {/* лічильник залишилось для протеїнів */}
-                <Couner>left: <span>8</span></Couner>
-              </CounerList>
+                <Counter>left: <span>8</span></Counter>
+              </CounterList>
             </CardText>
           </Card>
           <Card>
@@ -70,12 +67,12 @@ const Food = () => {
             </ChartBox>
             <CardText>
               <CardTitle>Fat</CardTitle>
-              <CounerList>
+              <CounterList>
                 {/* лічильник мета для жирів */}
-                <Couner>Goal: <span>56</span></Couner>
+                <Counter>Goal: <span>{fat}</span></Counter>
                 {/* лічильник залишилось для жирів */}
-                <Couner>left: <span>11,2</span></Couner>
-              </CounerList>
+                <Counter>left: <span>11,2</span></Counter>
+              </CounterList>
             </CardText>
           </Card>
         </CardList>
