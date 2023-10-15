@@ -10,6 +10,8 @@ import {
   ChartsSubtitle,
   ChartsCaption,
   Chart,
+  ChartLabelBlock,
+  ChartLabelContent,
 } from './ScaleLineCharts.styled.js';
 
 import {
@@ -37,7 +39,7 @@ ChartJS.register(
 const LineChart = ({ dataFormat, type }) => {
   const [time, setTime] = useState([]);
   const [information, setInformation] = useState([]);
-  const [average, setAverage] = useState(0);  
+  const [average, setAverage] = useState(0);
 
   const info = useSelector(selectStatsInfo);
 
@@ -47,7 +49,7 @@ const LineChart = ({ dataFormat, type }) => {
     }
 
     const infoArray = [];
-    const timesArray = [];   
+    const timesArray = [];
 
     if (Object.keys(info).length !== 0) {
       const keys = Object.keys(info);
@@ -82,19 +84,51 @@ const LineChart = ({ dataFormat, type }) => {
         }, 0) / infoArray.length
       );
       setAverage(total);
-    }    
+    }
 
     setInformation(infoArray);
-    setTime(timesArray);    
+    setTime(timesArray);
   }, [info, dataFormat, type]);
 
-  let datasetsLabel = type === 'water' ? 'milliliters' : 'calories';
   let caption = type === 'water' ? 'L' : 'K';
 
   const options = {
+    interaction: {
+      mode: 'index',
+      intersect: false,
+    },
     responsive: true,
+    plugins: {
+      legend: {
+        display: false,
+      },
+      tooltip: {
+        enabled: false,
+        position: 'nearest',
+        external: context => {
+          const { chart, tooltip } = context;
+          let tooltipEl = chart.canvas.parentNode.querySelector('div');
+          let tooltipTitle = chart.canvas.parentNode.querySelector('#value');
+
+          if (tooltip.opacity === 0) {
+            tooltipEl.style.opacity = 0;
+            return;
+          }
+
+          const { offsetLeft: positionX, offsetTop: positionY } = chart.canvas;
+
+          tooltipEl.style.opacity = 1;
+          tooltipEl.style.left = positionX + tooltip.caretX + 'px';
+          tooltipEl.style.top = positionY + tooltip.caretY - '84' + 'px';
+          tooltipTitle.textContent =
+            context.tooltip.dataPoints[0].formattedValue;
+        },
+      },
+    },
+    indexAxis: 'x',
     scales: {
       x: {
+        alignToPixels: true,
         beginAtZero: false,
         offset: true,
         ticks: {
@@ -107,6 +141,7 @@ const LineChart = ({ dataFormat, type }) => {
         },
       },
       y: {
+        alignToPixels: true,
         beginAtZero: true,
         min: 0,
         max: 3000,
@@ -133,11 +168,6 @@ const LineChart = ({ dataFormat, type }) => {
         },
       },
     },
-    plugins: {
-      legend: {
-        display: false,
-      },
-    },
   };
 
   const data = {
@@ -145,10 +175,12 @@ const LineChart = ({ dataFormat, type }) => {
     datasets: [
       {
         data: information,
-        label: `${datasetsLabel}`,
         borderColor: '#E3FFA8',
         borderWidth: 1,
-        pointRadius: 1,
+        pointRadius: 0,
+        pointHoverBackgroundColor: '#E3FFA8',
+        hitRadius: 5,
+        pointHoverRadius: 5,
         tension: 0.5,
         drawActiveElementsOnTop: true,
       },
@@ -168,6 +200,12 @@ const LineChart = ({ dataFormat, type }) => {
       </TitleContainer>
       <Chart>
         <Line options={options} data={data} />
+        <ChartLabelBlock>
+          <ChartLabelContent>
+            <p id="value"></p>
+            <span>{type === 'water' ? 'milliliters' : 'calories'}</span>
+          </ChartLabelContent>
+        </ChartLabelBlock>
       </Chart>
     </>
   );

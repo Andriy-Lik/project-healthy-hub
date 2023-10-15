@@ -2,13 +2,18 @@ import styled from 'styled-components';
 
 export const List = styled.ul`
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
+  /* justify-content: center; */
+  /* justify-content: space-between; */
 `;
 
 export const Item = styled.li`
   font-family: ${props => props.theme.fontFamily.poppins};
   font-weight: ${props => props.theme.fontWeights.regular};
   text-align: center;
+  &:not(:last-child) {
+    margin-right: 13px;
+  }
 `;
 
 export const WeightTitle = styled.p`
@@ -69,6 +74,7 @@ export const ChartsCaption = styled.span`
 `;
 
 export const Chart = styled.div`
+  position: relative;
   background-color: ${props => props.theme.colors.black2};
   border-radius: ${props => props.theme.radii.normal};
   height: 382px;
@@ -94,6 +100,38 @@ export const Chart = styled.div`
       min-width: 640px;
       min-height: auto;
     }
+  }
+`;
+
+export const ChartLabelBlock = styled.div`
+  width: 90px;
+  height: 76px;
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  left: 0;
+  padding: 8px 6px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 14px 0px rgba(227, 255, 168, 0.2);
+`;
+
+export const ChartLabelContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: ${props => props.theme.fontFamily.poppins};
+  & > p {
+    font-size: ${props => props.theme.fontSizes.xl};
+    font-weight: ${props => props.theme.fontWeights.medium};
+    line-height: 1.19;
+  }
+
+  & > span {
+    font-size: ${props => props.theme.fontSizes.xs};
+    font-weight: ${props => props.theme.fontWeights.regular};
+    line-height: 1.43;
+    color: ${props => props.theme.colors.gray};
   }
 `;
 

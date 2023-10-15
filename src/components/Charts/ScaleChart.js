@@ -36,7 +36,13 @@ const ScaleChart = ({ dataFormat }) => {
 
           if (!dataFormat) {
             for (const entry of info[key]) {
+              if (entry.count) {
+                return;
+              }
+              // const average = (entry.amount / entry.count).toFixed(1);
+
               value.push(entry.amount);
+              // value.push(Number(average));
             }
             setWeight(info[key]);
           }
