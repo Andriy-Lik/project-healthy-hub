@@ -20,7 +20,7 @@ export const Container = styled.div`
   }
 `;
 
-export const Title = styled.div`
+export const LogoBox = styled.div`
   color: ${a => a.theme.colors.gray};
   font-size: ${a => a.theme.fontSizes.l};
   font-weight: ${a => a.theme.fontWeights.bold};
@@ -41,14 +41,14 @@ export const Title = styled.div`
   }
 `;
 
-export const Menu = styled.div`
+export const MenuBox = styled.div`
   margin-left: 8px;
   @media screen and (${props => props.theme.mq.tablet}) {
     display: none;
   }
 `;
 
-export const MenuSvg = styled.img`
+export const MenuImg = styled.img`
   width: 16px;
 `;
 
@@ -133,7 +133,7 @@ export const ArrowSvg = styled.img`
   margin-left: 12px;
 `;
 
-export const WeightKg = styled.p`
+export const WeightKg = styled.span`
   color: ${p => p.theme.colors.gray};
   font-size: ${p => p.theme.fontSizes.xs};
   font-weight: ${p => p.theme.fontWeights.regular};
