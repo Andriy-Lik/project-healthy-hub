@@ -46,9 +46,8 @@ const AddWater = ({ onClose }) => {
     };
   };
   
-  const handleSubmit = ({water}, { resetForm }) => {
-    dispatch(addWater(water));
-    console.log(water)
+  const handleSubmit = (values, { resetForm }) => {
+    dispatch(addWater(values));
     resetForm();
   };
   
@@ -68,7 +67,7 @@ const AddWater = ({ onClose }) => {
         >
           <FormFormic autoComplete="off">
             <Label htmlFor="water">How much water</Label>
-            <Input name="water" type="text" placeholder="Enter milliliters"/>
+            <Input name="water" type="number" placeholder="Enter milliliters"/>
             <ErrorMes name="water" component="div" />
 
             <Button type="submit">Confirm</Button>

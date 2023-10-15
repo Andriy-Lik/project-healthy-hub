@@ -66,6 +66,12 @@ export const Input = styled(Field)`
   &::placeholder {
     color: ${p => p.theme.colors.gray};
   }
+
+  &[type="number"]::-webkit-outer-spin-button,
+  &[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
 `;
 
 export const ErrorMes = styled(ErrorMessage)`

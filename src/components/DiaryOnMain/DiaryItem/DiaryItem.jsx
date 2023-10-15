@@ -21,10 +21,6 @@ export const DiaryItem = ({ title, image, info }) => {
 
   const { carbonohidrates, protein, fat } = info;
 
-  // const handleRecordMeal = () => {
-  //   console.log('click record meal');
-  // };
-
   return (
     <CardWrap>
       <TitleWrap>

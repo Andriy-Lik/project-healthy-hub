@@ -3,7 +3,15 @@ import { selectUser } from "../../redux/Auth/authSelectors";
 
 import { WATER_GOAL } from "constants/constants";
 
-import { Wrapper, Title, InfoBox, Card, CardText, CardTitle, Counter } from "./DailyGoal.styled";
+import {
+  Wrapper,
+  Title,
+  InfoBox,
+  Card,
+  CardText,
+  CardTitle, 
+  Counter
+} from "./DailyGoal.styled";
 
 import img1 from "../../images/bubble.png";
 import img2 from "../../images/bubble@2x.png";
@@ -12,8 +20,7 @@ import img4 from "../../images/bottle@2x.png";
 
 const DailyGoal = () => {
   
-  const userInfo = useSelector(selectUser);
-  
+  const userInfo = useSelector(selectUser);  
   const caloriesGoal = userInfo.bmr;
 
   return (
@@ -52,14 +59,11 @@ const DailyGoal = () => {
               <span>ml</span>
             </Counter>
           </CardText>
-        </Card>
-            
+        </Card>            
       </InfoBox>
-
     </Wrapper>
 
   );
-
 };
 
 export default DailyGoal;
