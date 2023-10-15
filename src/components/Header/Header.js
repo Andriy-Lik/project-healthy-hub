@@ -1,21 +1,37 @@
 import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
-import { selectIsLoggedIn, selectUser } from "../../redux/Auth/authSelectors";
+import { selectIsLoggedIn, selectUser } from '../../redux/Auth/authSelectors';
 
 import {
-  Container, Title, Info, InfoOptions, InfoBlock, UserBlock,
-  IconContainer, TextContainer, InfoBlockName, InfoBlockText, WeightKg,
-  ArrowSvg, EditSvg, AvaImg, Menu, MenuSvg, Unauthorized, DefaultLink, ActiveLink
+  Container,
+  Title,
+  Info,
+  InfoOptions,
+  InfoBlock,
+  UserBlock,
+  IconContainer,
+  TextContainer,
+  InfoBlockName,
+  InfoBlockText,
+  WeightKg,
+  ArrowSvg,
+  EditSvg,
+  AvaImg,
+  Menu,
+  MenuSvg,
+  Unauthorized,
+  DefaultLink,
+  ActiveLink,
 } from './Header.styled';
 
-import waight from '../../images/icons/Waight-image.svg'
+import waight from '../../images/icons/Waight-image.svg';
 
-import loseFatMen from '../../images/icons/Lose-fat-image-men.svg'
-import loseFatGirl from '../../images/icons/Lose-fat-image-girl.svg'
-import maintakeMen from '../../images/icons/Maintake-image-men.svg'
-import maintakeGirl from '../../images/icons/Maintake-image-girl.svg'
-import muscle from '../../images/icons/Gain-muscle.svg'
+import loseFatMen from '../../images/icons/Lose-fat-image-men.svg';
+import loseFatGirl from '../../images/icons/Lose-fat-image-girl.svg';
+import maintakeMen from '../../images/icons/Maintake-image-men.svg';
+import maintakeGirl from '../../images/icons/Maintake-image-girl.svg';
+import muscle from '../../images/icons/Gain-muscle.svg';
 
 import arrowDown from '../../images/icons/arrow-down.svg';
 import edit from '../../images/icons/edit-2.svg';
@@ -28,35 +44,33 @@ import WeightModal from './HeaderModals/WeightModal';
 import ProfileModal from './HeaderModals/ProfileModal';
 import MenuModal from './HeaderModals//MenuModal';
 
-
 export default function Header() {
-
   const user = useSelector(selectUser);
 
   let goalIcon;
 
   if (user.goal) {
-    if (user.goal === "Lose fat") {
-      if (user.gender === "female") {
+    if (user.goal === 'Lose fat') {
+      if (user.gender === 'female') {
         goalIcon = loseFatGirl;
       } else {
         goalIcon = loseFatMen;
       }
-    } else if (user.goal === "Maintain") {
-      if (user.gender === "female") {
+    } else if (user.goal === 'Maintain') {
+      if (user.gender === 'female') {
         goalIcon = maintakeGirl;
       } else {
         goalIcon = maintakeMen;
       }
-    } else if (user.goal === "Gain Muscle") {
+    } else if (user.goal === 'Gain Muscle') {
       goalIcon = muscle;
     } else {
       goalIcon = loseFatMen;
     }
-  } else if (user.gender === "female") {
+  } else if (user.gender === 'female') {
     goalIcon = loseFatGirl;
   } else {
-    goalIcon = loseFatMen
+    goalIcon = loseFatMen;
   }
 
   const [showModalTarget, setShowModalTarget] = useState(false);
@@ -98,11 +112,12 @@ export default function Header() {
       <Title>
         <Link to={'/main'}>HealthyHub</Link>
         <Menu onClick={toggleModalMenu}>
-          {showModalMenu ? <MenuSvg src={menuOpened} alt="menu" />
-            : <MenuSvg src={menu} alt="menu" />}
-          {showModalMenu && (
-            <MenuModal onCloseModal={toggleModalMenu} />
+          {showModalMenu ? (
+            <MenuSvg src={menuOpened} alt="menu" />
+          ) : (
+            <MenuSvg src={menu} alt="menu" />
           )}
+          {showModalMenu && <MenuModal onCloseModal={toggleModalMenu} />}
         </Menu>
       </Title>
       <Info>
@@ -114,7 +129,7 @@ export default function Header() {
             <TextContainer>
               <InfoBlockName>Goal</InfoBlockName>
               <InfoBlockText>
-                {user.goal || "No goal yet"}
+                {user.goal || 'No goal yet'}
                 <ArrowSvg src={arrowDown} alt="arrow down" />
               </InfoBlockText>
             </TextContainer>
@@ -140,7 +155,7 @@ export default function Header() {
           </InfoBlock>
         </InfoOptions>
         <UserBlock onClick={toggleModalProfile}>
-          {user.name || "User"}
+          {user.name || 'User'}
           <AvaImg src={user.avatarURL || avatar} alt="avatar" />
           <ArrowSvg src={arrowDown} alt="arrow down" />
           {showModalProfile && (
@@ -154,14 +169,14 @@ export default function Header() {
       <Title>
         <Link to={'/'}>HealthyHub</Link>
       </Title>
-      {currentURL.endsWith("/signin") ? (
+      {currentURL.endsWith('/signin') ? (
         <Unauthorized>
           <ActiveLink to={'/signin'}>Sign in</ActiveLink>
           <p> / </p>
           <DefaultLink to={'/signup'}>Sign up</DefaultLink>
           <img src={avatar} alt="weight" width={28} />
         </Unauthorized>
-      ) : currentURL.endsWith("/signup") ? (
+      ) : currentURL.endsWith('/signup') ? (
         <Unauthorized>
           <DefaultLink to={'/signin'}>Sign in</DefaultLink>
           <p> / </p>
@@ -178,4 +193,4 @@ export default function Header() {
       )}
     </Container>
   );
-};
+}
