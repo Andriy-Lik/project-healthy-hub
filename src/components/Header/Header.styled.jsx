@@ -20,7 +20,7 @@ export const Container = styled.div`
   }
 `;
 
-export const Title = styled.a`
+export const Title = styled.div`
   color: ${a => a.theme.colors.gray};
   font-size: ${a => a.theme.fontSizes.l};
   font-weight: ${a => a.theme.fontWeights.bold};

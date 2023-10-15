@@ -33,7 +33,7 @@ export default function Header() {
 
   const user = useSelector(selectUser);
 
-  let goalIcon
+  let goalIcon;
 
   if (user.goal) {
     if (user.goal === "Lose fat") {
