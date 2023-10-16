@@ -20,6 +20,7 @@ export default function ProfileModal({ onCloseModal }) {
 
         try {
             await dispatch(logOut());
+            onCloseModal();
         } catch (error) {
             console.log("Something went wrong")
         }
