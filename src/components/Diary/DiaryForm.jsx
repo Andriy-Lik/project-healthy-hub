@@ -2,6 +2,7 @@ import { useState } from 'react';
 import edit from '../../images/diaryPageImages/edit-2.svg'
 
 import {
+  FormForm,
     Input,
     Input1,
     Input2,
@@ -73,7 +74,7 @@ export default function Form({onSubmit, type, value, onAddElement}) {
   };
 
    return (
-    <form >
+    <FormForm >
     <label>
       <Input
         type="number"
@@ -114,6 +115,6 @@ export default function Form({onSubmit, type, value, onAddElement}) {
     </label>
     {isFormActive && <SubmitButton type="submit" onClick={handleSubmit}>✅</SubmitButton>}
     {!isFormActive && <EditButton  onClick={() => setFormActive(true)}><Img src={edit} alt="Edit"/>Edit</EditButton>}
-  </form>
+  </FormForm>
    )
 }
