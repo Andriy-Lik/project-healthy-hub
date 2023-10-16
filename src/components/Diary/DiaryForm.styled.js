@@ -1,7 +1,11 @@
 import styled from 'styled-components';
 
+export const FormForm = styled.form`
+  width: 600px;
+`;
+
 export const Input = styled.input`
-  width: 30px;
+  width: 20px;
   border: none;
   font-weight: 400;
   font-size: 14px;
@@ -23,14 +27,15 @@ export const Input1 = styled.input`
 `;
 
 export const Input2 = styled.input`
-  width: 80px;
+  width: 50px;
   border: none;
   font-weight: 400;
   font-size: 14px;
   line-height: 20px;
   color: #ffffff;
-  margin: 0 8px 0 0;
+  margin: 0 15px 0 0;
   background-color: #0f0f0f;
+  text-align: right;
 `;
 
 export const SubmitButton = styled.button`
