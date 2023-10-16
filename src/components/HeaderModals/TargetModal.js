@@ -4,19 +4,12 @@ import { createPortal } from 'react-dom';
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 
-import { setNewUserGoal } from '../../../redux/Auth/authSlice'
-import { selectUser } from "../../../redux/Auth/authSelectors";
+import { setNewUserGoal } from '../../redux/Auth/authSlice'
+import { selectUser } from "../../redux/Auth/authSelectors";
 
 import { Overlay, ModalWrapper, Modal, ModalTitle, ModalText, ModalForm, ModalFormContainer, ModalLabel1Men, ModalInput1Men, ModalLabel2Men, ModalInput2Men, ModalLabel1Girl, ModalInput1Girl, ModalLabel2Girl, ModalInput2Girl, ModalLabel3, ModalInput3, ModalBtn, CloseBtn, CancelBtn } from "./HeaderModalTarget.styled";
 
-import close from '../../../images/icons/close-circle.svg'
-
-
-// import loseFatMen from '../../../images/icons/Lose-fat-image-men.svg'
-// import loseFatGirl from '../../../images/icons/Lose-fat-image-girl.svg'
-// import maintakeMen from '../../../images/icons/Maintake-image-men.svg'
-// import maintakeGirl from '../../../images/icons/Maintake-image-girl.svg'
-// import muscle from '../../../images/icons/Gain-muscle.svg'
+import close from '../../images/icons/close-circle.svg'
 
 const modalRoot = document.querySelector('#header-modal-goal')
 

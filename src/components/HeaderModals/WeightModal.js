@@ -4,11 +4,11 @@ import { createPortal } from 'react-dom';
 import { useDispatch } from "react-redux";
 import { useState } from "react";
 
-import { setNewUserWeight } from '../../../redux/Auth/authSlice'
+import { setNewUserWeight } from '../../redux/Auth/authSlice'
 
 import { Overlay, ModalWrapper, Modal, ModalTitle, ModalText, CloseBtn, DateContainer, DateText, DateDay, WeightForm, WeightFormInput, WeightFormBtn, CancelBtn } from "./HeaderModalWeight.styled";
 
-import close from '../../../images/icons/close-circle.svg'
+import close from '../../images/icons/close-circle.svg'
 
 const modalRoot = document.querySelector('#header-modal-weight')
 

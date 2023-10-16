@@ -4,7 +4,6 @@ export const Overlay = styled.div`
     position: absolute;
     left: 0;
     top: 0;
-    /* background-color: rgba(197, 197, 197, 0.2); */
     width: 100%;
     height: 100%;
     display: flex;
@@ -38,11 +37,13 @@ export const Modal = styled.div`
     gap: 16px;
 `;
 
-export const Option = styled.div`
+export const Button = styled.button`
     display: flex;
     align-items: center;
     gap: 8px;
     color: ${p => p.theme.colors.white};
+    background-color: transparent;
+    border: none;
     font-weight: ${p => p.theme.fontWeights.medium};
     font-size: ${p => p.theme.fontSizes.xs};
 `;

@@ -39,10 +39,10 @@ import menu from '../../images/icons/menu.svg';
 import menuOpened from '../../images/icons/menu-opened.svg';
 import avatar from '../../images/icons/profile-circle.svg';
 
-import TargetModal from './HeaderModals/TargetModal';
-import WeightModal from './HeaderModals/WeightModal';
-import ProfileModal from './HeaderModals/ProfileModal';
-import MenuModal from './HeaderModals//MenuModal';
+import TargetModal from '../HeaderModals/TargetModal';
+import WeightModal from '../HeaderModals/WeightModal';
+import ProfileModal from '../HeaderModals/ProfileModal';
+import MenuModal from '../HeaderModals/MenuModal';
 
 export default function Header() {
   const user = useSelector(selectUser);
