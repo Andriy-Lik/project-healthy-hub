@@ -20,7 +20,7 @@ export default function ProfileModal({ onCloseModal }) {
 
         try {
             await dispatch(logOut());
-            onCloseModal();
+            // onCloseModal();
         } catch (error) {
             console.log("Something went wrong")
         }
@@ -41,7 +41,7 @@ export default function ProfileModal({ onCloseModal }) {
     return createPortal(
         <Overlay onClick={onCloseModal()}>
             <ModalWrapper>
-                <Modal onClick={e => e.stopPropagation()}>
+                <Modal onClick={onCloseModal()}>
                     <Link to={'/settings'}>
                         <Button type="button">
                             <img src={settingImg} alt="setting" width={16} />
