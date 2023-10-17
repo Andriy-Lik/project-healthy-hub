@@ -3,7 +3,8 @@ import { useEffect } from 'react';
 import { useDispatch } from "react-redux";
 import { createPortal } from 'react-dom';
 
-import { addWater } from "../../../redux/Water/waterOperations";
+import { addWater } from "redux/Water/waterOperations";
+import { getStats } from "redux/Statistics/statisticsOperations";
 
 import { Formik } from 'formik';
 import * as yup from 'yup';
@@ -48,7 +49,9 @@ const AddWater = ({ onClose }) => {
   
   const handleSubmit = (values, { resetForm }) => {
     dispatch(addWater(values));
+    dispatch(getStats('today'));
     resetForm();
+    onClose();
   };
   
   useEffect(() => {
