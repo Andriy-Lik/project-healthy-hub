@@ -9,7 +9,7 @@ const DoughnutChartForFat = () => {
       {
         data: [44.8, 11.2], // 44.8 - спожито жирів, 11.2 - залишилось спожити
         backgroundColor: ['#B6B6B6', '#292928'],
-        // borderRadius: 12,
+        borderRadius: 12,
         borderWidth: 0,
         cutout: '80%',
       },
@@ -46,7 +46,32 @@ const DoughnutChartForFat = () => {
     },
   };
 
-  return <Doughnut data={data} options={options} plugins={[textCenter]} />;
+  const backgroundCircle = {
+    id: 'backgroundCircle',
+    beforeDatasetsDraw(chart) {
+      const { ctx } = chart;
+      ctx.save();
+      const xCoor = chart.getDatasetMeta(0).data[0].x;
+      const yCoor = chart.getDatasetMeta(0).data[0].y;
+      const innerRadius = chart.getDatasetMeta(0).data[0].innerRadius;
+      const outerRadius = chart.getDatasetMeta(0).data[0].outerRadius;
+      const width = outerRadius - innerRadius;
+      const angle = Math.PI / 180;
+      ctx.beginPath();
+      ctx.lineWidth = width;
+      ctx.strokeStyle = 'rgba(41, 41, 40, 1)';
+      ctx.arc(xCoor, yCoor, outerRadius - width / 2, 0, angle * 360, false);
+      ctx.stroke();
+    },
+  };
+
+  return (
+    <Doughnut
+      data={data}
+      options={options}
+      plugins={[textCenter, backgroundCircle]}
+    />
+  );
 };
 
 export default DoughnutChartForFat;

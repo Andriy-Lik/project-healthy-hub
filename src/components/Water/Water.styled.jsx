@@ -61,6 +61,9 @@ export const Chart = styled.span`
   height: 100%;
   border-radius: ${props => props.theme.radii.normal};
   background-color: ${props => props.theme.colors.violet};  
+  -webkit-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  transition: all 1s ease;  
 `;
 
 export const CardText = styled.div`
