@@ -1,7 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useSelector } from "react-redux";
 
-import { selectStatsConsumedWater, selectStatsIsLoading } from "redux/Statistics/statisticsSelectors";
+import { selectStatsConsumedWater } from "redux/Statistics/statisticsSelectors";
 import { calcPercent, calcRemainder } from "helpers/calculations";
 import { WATER_GOAL } from "constants/constants";
 
