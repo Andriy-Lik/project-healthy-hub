@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import { selectStatsInfo } from '../../redux/Statistics/statisticsSelectors';
 import { monthName } from '../../constants/monthName';
@@ -104,6 +105,10 @@ const ScaleChart = ({ dataFormat }) => {
       </Scale>
     </>
   );
+};
+
+ScaleChart.propTypes = {
+  dataFormat: PropTypes.bool.isRequired,
 };
 
 export default ScaleChart;
