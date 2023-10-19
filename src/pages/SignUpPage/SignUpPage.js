@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import { useDispatch } from 'react-redux';
+import { useState } from 'react';
 import {
   setNewUserName,
   setNewUserEmail,
@@ -18,9 +20,7 @@ import {
   SignInSuggestion,
   SignInLink,
 } from './SignUpPage.styled';
-import { useDispatch } from 'react-redux';
 import welcomeLogoPic from '../../images/WelcomeLogoPic.png';
-import { useState } from 'react';
 
 const SignUpPage = () => {
   const dispatch = useDispatch();
@@ -89,9 +89,6 @@ const SignUpPage = () => {
                   Sign Up
                 </Link>  
               </SignUpButton>
-              {/* <SignUpButton>
-
-              </SignUpButton> */}
             </SignUpForm>
           </SignUpFormWrapper>
 

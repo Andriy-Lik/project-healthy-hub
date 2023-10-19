@@ -15,15 +15,7 @@ const modalRoot = document.querySelector('#header-modal-profile')
 export default function ProfileModal({ onCloseModal }) {
     const dispatch = useDispatch();
 
-    const handleLogOut = async event => {
-        event.preventDefault();
-
-        try {
-            await dispatch(logOut());
-        } catch (error) {
-            console.log("Something went wrong")
-        }
-    };
+    const handleLogOut = () => dispatch(logOut());
 
     useEffect(() => {
         const escKeyHandler = event => {
