@@ -1,8 +1,10 @@
 import { useState, useRef, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { getStats } from '../../redux/Statistics/statisticsOperations';
+import { selectStatsIsLoading } from '../../redux/Statistics/statisticsSelectors';
+import Loader from '../../components/Loader';
 
 import {
   DashboardSection,
@@ -32,6 +34,8 @@ const DashboardPage = () => {
   const [timeToggleBtn, setTimeToggleBtn] = useState(false);
   const [period, setPeriod] = useState('month');
 
+  const isLoading = useSelector(selectStatsIsLoading);
+
   const location = useLocation();
   const backLinkLocationRef = useRef(location.state?.from ?? '/main');
 
@@ -57,6 +61,7 @@ const DashboardPage = () => {
   return (
     <DashboardSection>
       <DashboardContainer>
+        {isLoading && <Loader />}
         <HeaderBlock>
           <MainHeaderBlock>
             <BackLink to={backLinkLocationRef.current}>

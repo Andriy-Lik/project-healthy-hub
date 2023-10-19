@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import { selectStatsInfo } from '../../redux/Statistics/statisticsSelectors';
 import { monthName } from '../../constants/monthName';
@@ -133,6 +134,11 @@ const LineChart = ({ dataFormat, type }) => {
         offset: true,
         ticks: {
           color: '#B6B6B6',
+          padding: 6,
+          font: {
+            family: 'Poppins',
+            size: 10,
+          },
         },
         grid: {
           display: true,
@@ -157,6 +163,11 @@ const LineChart = ({ dataFormat, type }) => {
               return value;
             }
             return String(value).slice(0, 1) + `${caption}`;
+          },
+          padding: 8,
+          font: {
+            family: 'Poppins',
+            size: 10,
           },
         },
         border: {
@@ -209,6 +220,11 @@ const LineChart = ({ dataFormat, type }) => {
       </Chart>
     </>
   );
+};
+
+LineChart.propTypes = {
+  dataFormat: PropTypes.bool.isRequired,
+  type: PropTypes.string.isRequired,
 };
 
 export default LineChart;
