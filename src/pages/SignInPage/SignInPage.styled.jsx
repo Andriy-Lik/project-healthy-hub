@@ -4,25 +4,19 @@ import { Link } from 'react-router-dom';
 export const BackgroundContainer = styled.div`
   background-color: #050505;
   display: flex;
-  flex-direction: column;
+  margin: auto;
 
   @media (min-width: 320px) and (max-width: 833px) {
-    display: flex;
     flex-direction: column;
-    margin: auto;
   }
 
   @media (min-width: 834px) and (max-width: 1439px) {
-    display: flex;
     flex-direction: center;
-    margin: auto;
   }
 
   @media (min-width: 1439px) {
-    display: flex;
     flex-direction: row;
     justify-content: center;
-    margin: auto;
   }
 `;
 

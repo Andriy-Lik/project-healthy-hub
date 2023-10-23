@@ -2,22 +2,22 @@ import React from "react";
 import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { useSelector } from 'react-redux';
-import { selectUser } from "../../../redux/Auth/authSelectors";
+import { selectUser } from "../../redux/Auth/authSelectors";
 
 import { Overlay, ModalWrapper, Modal, CloseBtn, InfoOptions, InfoBlock, IconContainer, TextContainer, InfoBlockName, InfoBlockText, ArrowSvg, WeightKg, EditSvg } from "./HeaderModalMenu.styled";
 
-import close from '../../../images/icons/close-circle.svg'
+import close from '../../images/icons/close-circle.svg'
 
-import waight from '../../../images/icons/Waight-image.svg'
+import waight from '../../images/icons/Waight-image.svg'
 
-import loseFatMen from '../../../images/icons/Lose-fat-image-men.svg'
-import loseFatGirl from '../../../images/icons/Lose-fat-image-girl.svg'
-import maintakeMen from '../../../images/icons/Maintake-image-men.svg'
-import maintakeGirl from '../../../images/icons/Maintake-image-girl.svg'
-import muscle from '../../../images/icons/Gain-muscle.svg'
+import loseFatMen from '../../images/icons/Lose-fat-image-men.svg'
+import loseFatGirl from '../../images/icons/Lose-fat-image-girl.svg'
+import maintakeMen from '../../images/icons/Maintake-image-men.svg'
+import maintakeGirl from '../../images/icons/Maintake-image-girl.svg'
+import muscle from '../../images/icons/Gain-muscle.svg'
 
-import arrowRight from '../../../images/icons/arrow-right-open.svg'
-import edit from '../../../images/icons/edit-2.svg'
+import arrowRight from '../../images/icons/arrow-right-open.svg'
+import edit from '../../images/icons/edit-2.svg'
 
 import TargetModal from "./TargetModal";
 import WeightModal from "./WeightModal";

@@ -2,36 +2,40 @@ import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const DashboardSection = styled.section`
+  /* height: 100vh; */
   background-color: ${props => props.theme.colors.black};
   color: ${props => props.theme.colors.white};
   font-family: ${props => props.theme.fontFamily.poppins};
 
-  @media screen and (${props => props.theme.mq.mobile}) {
+  /* @media screen and (${props => props.theme.mq.mobile}) {
     padding-top: 16px;
     padding-bottom: 60px;
-  }
-  @media screen and (${props => props.theme.mq.tablet}) {
+  } */
+  /* @media screen and (${props => props.theme.mq.tablet}) {
     padding-top: 24px;
-  }
-  @media screen and (${props => props.theme.mq.desktop}) {
+  } */
+  /* @media screen and (${props => props.theme.mq.desktop}) {
     padding-top: 20px;
     padding-bottom: 40px;
-  }
+  } */
 `;
 
 export const DashboardContainer = styled.div`
   margin: 0 auto;
   @media screen and (${props => props.theme.mq.mobile}) {
     width: 320px;
-    padding: 0 10px;
+    padding: 16px 10px 60px;
+    /* padding: 0 10px; */
   }
   @media screen and (${props => props.theme.mq.tablet}) {
     width: 834px;
-    padding: 0 27px;
+    padding: 24px 27px 60px;
+    /* padding: 0 27px; */
   }
   @media screen and (${props => props.theme.mq.desktop}) {
     width: 1440px;
-    padding: 0 34px;
+    padding: 20px 34px 40px;
+    /* padding: 0 34px; */
   }
 `;
 
@@ -183,4 +187,3 @@ export const ScaleChartBlock = styled.div`
     margin-top: 20px;
   }
 `;
-

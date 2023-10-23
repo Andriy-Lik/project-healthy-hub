@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 
-import LoseFatMen from '../../../images/icons/Lose-fat-image-men.svg';
-import MaintakeMen from '../../../images/icons/Maintake-image-men.svg';
+import LoseFatMen from '../../images/icons/Lose-fat-image-men.svg';
+import MaintakeMen from '../../images/icons/Maintake-image-men.svg';
 
-import LoseFatGirl from '../../../images/icons/Lose-fat-image-girl.svg';
-import MaintakeGirl from '../../../images/icons/Maintake-image-girl.svg';
+import LoseFatGirl from '../../images/icons/Lose-fat-image-girl.svg';
+import MaintakeGirl from '../../images/icons/Maintake-image-girl.svg';
 
-import muscle from '../../../images/icons/Gain-muscle.svg';
+import muscle from '../../images/icons/Gain-muscle.svg';
 
 export const Overlay = styled.div`
   position: absolute;

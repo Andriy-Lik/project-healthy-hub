@@ -57,6 +57,7 @@ export const ArrowReturn = styled.img`
 export const MainHeaderBlock = styled.div`
   display: flex;
   flex-direction: row;
+
 `;
 
 export const MainHeader = styled.h1`
@@ -72,7 +73,7 @@ export const MainHeader = styled.h1`
   }
 `;
 
-export const ChartsTitle = styled.h2`
+export const ElementTitle = styled.h3`
   font-weight: ${p => p.theme.fontWeights.regular};
   @media screen and (${props => props.theme.mq.mobile}) {
     font-size: ${props => props.theme.fontSizes.xs};
@@ -82,11 +83,11 @@ export const ChartsTitle = styled.h2`
   @media screen and (${props => props.theme.mq.tablet}) {
     font-size: ${props => props.theme.fontSizes.xs};
     line-height: 1.45;
-    margin-right: 40px;
+    margin-right: 20px;
   }
 `;
 
-export const ChartsBlock = styled.ul`
+export const FoodSection = styled.ul`
   margin-top: 20px;
   display: flex;
   @media screen and (${props => props.theme.mq.mobile}) {
@@ -97,10 +98,11 @@ export const ChartsBlock = styled.ul`
   @media screen and (${props => props.theme.mq.desktop}) {
     flex-direction: row;
     flex-wrap: wrap;
+    gap: 20px;
   }
 `;
 
-export const Charts = styled.div`
+export const List = styled.div`
   background-color: ${props => props.theme.colors.black2};
   border-radius: ${props => props.theme.radii.normal};
   height: 382px;
@@ -116,14 +118,11 @@ export const Charts = styled.div`
   }
 `;
 
-export const Li = styled.li`
-  ${'' /* list-style: none;
-  &:not(:last-child) {
-    margin-right: 20px;
-  } */}
+export const FoodBlock = styled.li`
+    ${'' /* width: 600px; */}
 `;
 
-export const ChartsContainer = styled.div`
+export const FoodBlockHeader = styled.div`
   display: flex;
   @media screen and (${props => props.theme.mq.mobile}) {
   }
@@ -132,21 +131,22 @@ export const ChartsContainer = styled.div`
   align-items: center;
   }
   @media screen and (${props => props.theme.mq.desktop}) {
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+  gap: 5px;
   }
 `;
 
-export const ChartsHeader = styled.h2`
-  width: 270px;
+export const FoodHeader = styled.h2`
+  width: 150px;
   font-size: 22px;
   font-weight: 400;
   line-height: 32px;
   color: #ffffff;
-  margin: 0 40px 0 0;
+  margin: 0;
 `;
 
-export const List = styled.div`
+export const Element = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -180,4 +180,14 @@ export const Img = styled.img`
   display: block;
   width: 30px;
   margin-right: 8px;
+`;
+
+export const Div1 = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
+export const Div2 = styled.div`
+  display: flex;
+  flex-direction: row;
 `;

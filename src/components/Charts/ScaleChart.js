@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import { selectStatsInfo } from '../../redux/Statistics/statisticsSelectors';
 import { monthName } from '../../constants/monthName';
@@ -36,7 +37,13 @@ const ScaleChart = ({ dataFormat }) => {
 
           if (!dataFormat) {
             for (const entry of info[key]) {
+              if (entry.count) {
+                return;
+              }
+              // const average = (entry.amount / entry.count).toFixed(1);
+
               value.push(entry.amount);
+              // value.push(Number(average));
             }
             setWeight(info[key]);
           }
@@ -98,6 +105,10 @@ const ScaleChart = ({ dataFormat }) => {
       </Scale>
     </>
   );
+};
+
+ScaleChart.propTypes = {
+  dataFormat: PropTypes.bool.isRequired,
 };
 
 export default ScaleChart;

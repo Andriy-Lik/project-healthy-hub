@@ -5,7 +5,7 @@ import { selectIsLoggedIn, selectUser } from '../../redux/Auth/authSelectors';
 
 import {
   Container,
-  Title,
+  LogoBox,
   Info,
   InfoOptions,
   InfoBlock,
@@ -18,8 +18,8 @@ import {
   ArrowSvg,
   EditSvg,
   AvaImg,
-  Menu,
-  MenuSvg,
+  MenuBox,
+  MenuImg,
   Unauthorized,
   DefaultLink,
   ActiveLink,
@@ -39,10 +39,10 @@ import menu from '../../images/icons/menu.svg';
 import menuOpened from '../../images/icons/menu-opened.svg';
 import avatar from '../../images/icons/profile-circle.svg';
 
-import TargetModal from './HeaderModals/TargetModal';
-import WeightModal from './HeaderModals/WeightModal';
-import ProfileModal from './HeaderModals/ProfileModal';
-import MenuModal from './HeaderModals//MenuModal';
+import TargetModal from '../HeaderModals/TargetModal';
+import WeightModal from '../HeaderModals/WeightModal';
+import ProfileModal from '../HeaderModals/ProfileModal';
+import MenuModal from '../HeaderModals/MenuModal';
 
 export default function Header() {
   const user = useSelector(selectUser);
@@ -109,17 +109,17 @@ export default function Header() {
 
   return isLoggedIn ? (
     <Container>
-      <Title>
+      <LogoBox>
         <Link to={'/main'}>HealthyHub</Link>
-        <Menu onClick={toggleModalMenu}>
+        <MenuBox onClick={toggleModalMenu}>
           {showModalMenu ? (
-            <MenuSvg src={menuOpened} alt="menu" />
+            <MenuImg src={menuOpened} alt="menu" />
           ) : (
-            <MenuSvg src={menu} alt="menu" />
+            <MenuImg src={menu} alt="menu" />
           )}
           {showModalMenu && <MenuModal onCloseModal={toggleModalMenu} />}
-        </Menu>
-      </Title>
+        </MenuBox>
+      </LogoBox>
       <Info>
         <InfoOptions>
           <InfoBlock onClick={toggleModalTarget}>
@@ -166,9 +166,9 @@ export default function Header() {
     </Container>
   ) : (
     <Container>
-      <Title>
+      <LogoBox>
         <Link to={'/'}>HealthyHub</Link>
-      </Title>
+      </LogoBox>
       {currentURL.endsWith('/signin') ? (
         <Unauthorized>
           <ActiveLink to={'/signin'}>Sign in</ActiveLink>

@@ -1,31 +1,21 @@
 import React from "react";
 import { useEffect } from 'react';
-import { createPortal } from 'react-dom';
-
-import { Overlay, ModalWrapper, Modal, Option } from "./HeaderModalProfile.styled";
-
-import setting from '../../../images/icons/setting-2.svg'
-import logout from '../../../images/icons/logout.svg'
-
-import { Link } from 'react-router-dom';
-import { logOut } from '../../../redux/Auth/authOperations';
 import { useDispatch } from "react-redux";
+import { createPortal } from 'react-dom';
+import { Link } from 'react-router-dom';
+import { logOut } from '../../redux/Auth/authOperations';
+
+import { Overlay, ModalWrapper, Modal, Button } from "./ProfileModal.styled";
+
+import settingImg from '../../images/icons/setting-2.svg';
+import logOutImg from '../../images/icons/logout.svg';
 
 const modalRoot = document.querySelector('#header-modal-profile')
 
 export default function ProfileModal({ onCloseModal }) {
-
     const dispatch = useDispatch();
 
-    const handleLogOut = async event => {
-        event.preventDefault();
-
-        try {
-            await dispatch(logOut());
-        } catch (error) {
-            console.log("Something went wrong")
-        }
-    };
+    const handleLogOut = () => dispatch(logOut());
 
     useEffect(() => {
         const escKeyHandler = event => {
@@ -42,18 +32,18 @@ export default function ProfileModal({ onCloseModal }) {
     return createPortal(
         <Overlay onClick={onCloseModal()}>
             <ModalWrapper>
-                <Modal onClick={e => e.stopPropagation()}>
+                <Modal onClick={onCloseModal()}>
                     <Link to={'/settings'}>
-                        <Option>
-                            <img src={setting} alt="setting" width={16} />
+                        <Button type="button">
+                            <img src={settingImg} alt="setting" width={16} />
                             Setting
-                        </Option>
+                        </Button>
                     </Link>
                     <Link to={'/'}>
-                        <Option onClick={handleLogOut}>
-                            <img src={logout} alt="log out" width={16} />
+                        <Button type="button" onClick={handleLogOut}>
+                            <img src={logOutImg} alt="log out" width={16} />
                             Log out
-                        </Option>
+                        </Button>
                     </Link>
                 </Modal>
             </ModalWrapper>
