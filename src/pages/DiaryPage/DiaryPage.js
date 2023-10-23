@@ -8,8 +8,8 @@ import lunch from '../../images/diaryPageImages/lunch.png';
 import snack from '../../images/diaryPageImages/snack.png';
 import arrowRight from '../../images/diaryPageImages/arrow-right.svg';
 
-import { useSelector } from 'react-redux';
-import { selectStatsInfo } from '../../redux/Statistics/statisticsSelectors';
+// import { useSelector } from 'react-redux';
+// import { selectStatsInfo } from '../../redux/Statistics/statisticsSelectors';
 
 
 import {
@@ -37,7 +37,7 @@ const DiaryPage = () => {
 
   const location = useLocation();
   const backLinkLocationRef = useRef(location.state?.from ?? '/main');
-  const info = useSelector(selectStatsInfo);
+  // const info = useSelector(selectStatsInfo);
 
   const breakfastItem = window.localStorage.getItem('Breakfast') ?? '[]';
   const dinnerItem = window.localStorage.getItem('Dinner') ?? '[]';
