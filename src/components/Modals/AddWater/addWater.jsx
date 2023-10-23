@@ -47,16 +47,21 @@ const AddWater = ({ onClose }) => {
     };
   };
   
-  const handleSubmit = (values, { resetForm }) => {
-    dispatch(addWater(values));
-    dispatch(getStats('today'));
+  const handleSubmit = async (values, { resetForm }) => {
+    await dispatch(addWater(values));
+    await dispatch(getStats('today'));
     resetForm();
     onClose();
   };
   
   useEffect(() => {
+    document.body.style.overflowY = 'hidden';
     window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
+    return () => {
+      document.body.style.overflowY = 'auto';
+      window.removeEventListener('keydown', handleKeyDown);
+    }
+
   });
 
   return createPortal(

@@ -44,7 +44,7 @@ export const DiaryItem = ({ title, image, info }) => {
       )}
 
       {isModalOpen && (
-        <RecordDiaryModal onClose={toggleModal} image={ image } title={ title} />
+        <RecordDiaryModal onClose={toggleModal} image={ image } mealType={ title } />
       )}
 
 

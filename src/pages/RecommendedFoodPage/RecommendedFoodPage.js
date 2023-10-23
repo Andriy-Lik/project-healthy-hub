@@ -32,9 +32,6 @@ export default function RecommendedFood() {
   const info = useSelector(selectRecomendedFood);
 
   useEffect(() => {
-    if (info.length === 0) {
-      return;
-    }
     setArrayForRender(randomizeFood(info, 10));
   }, [info]);
 
