@@ -8,6 +8,10 @@ import lunch from '../../images/diaryPageImages/lunch.png';
 import snack from '../../images/diaryPageImages/snack.png';
 import arrowRight from '../../images/diaryPageImages/arrow-right.svg';
 
+import { useSelector } from 'react-redux';
+import { selectStatsInfo } from '../../redux/Statistics/statisticsSelectors';
+
+
 import {
   Section,
   Container,
@@ -24,28 +28,34 @@ import {
   AddFoodButton,
   BackLink,
   ArrowReturn,
-  Lol,
-  Kek,
+  Div1,
+  Div2,
 } from './DiaryPage.styled';
 
 
 const DiaryPage = () => {
 
-  const breakfastItem = window.localStorage.getItem('breakfast') ?? '[]';
-  const dinnerItem = window.localStorage.getItem('dinner') ?? '[]';
-  const lunchItem = window.localStorage.getItem('lunch') ?? '[]';
-  const snackItem = window.localStorage.getItem('snack') ?? '[]';
+  const location = useLocation();
+  const backLinkLocationRef = useRef(location.state?.from ?? '/main');
+  const info = useSelector(selectStatsInfo);
+
+  const breakfastItem = window.localStorage.getItem('Breakfast') ?? '[]';
+  const dinnerItem = window.localStorage.getItem('Dinner') ?? '[]';
+  const lunchItem = window.localStorage.getItem('Lunch') ?? '[]';
+  const snackItem = window.localStorage.getItem('Snack') ?? '[]';
   const [breakfastFood] = useState(JSON.parse(breakfastItem));
   const [dinnerFood] = useState(JSON.parse(dinnerItem));
   const [lunchFood] = useState(JSON.parse(lunchItem));
   const [snackFood] = useState(JSON.parse(snackItem));
+
+  // const [breakfastFood] = useState([]);
+  // const [dinnerFood] = useState([]);
+  // const [lunchFood] = useState([]);
+  // const [snackFood] = useState([]);
   const [addFoodButton, setAddFoodButton] = useState(true);
   const [addFoodButtonDinner, setAddFoodButtonDinner] = useState(true);
   const [addFoodButtonLunch, setAddFoodButtonLunch] = useState(true);
   const [addFoodButtonSnack, setAddFoodButtonSnack] = useState(true);
-
-  const location = useLocation();
-  const backLinkLocationRef = useRef(location.state?.from ?? '/main');
 
   const [carbonohidrates, setCarbonohidrates] = useState({
     breakfast: 0,
@@ -68,22 +78,22 @@ const DiaryPage = () => {
   
 
   const addFoodForm = (carbon, proteinNumber, fatNumber, type) => {
-    if (type==="breakfast") {
+    if (type==="Breakfast") {
       setCarbonohidrates({ ...carbonohidrates, breakfast: carbon});
       setProtein({ ...protein, breakfast: proteinNumber});
       setFat({ ...fat, breakfast: fatNumber});
 
-    } else if (type==="dinner") {
+    } else if (type==="Dinner") {
       setCarbonohidrates({ ...carbonohidrates, dinner: carbon});
       setProtein({ ...protein, dinner: proteinNumber});
       setFat({ ...fat, dinner: fatNumber});
 
-    } else if (type==="lunch") {
+    } else if (type==="Lunch") {
       setCarbonohidrates({ ...carbonohidrates, lunch: carbon});
       setProtein({ ...protein, lunch: proteinNumber});
       setFat({ ...fat, lunch: fatNumber});
 
-    } else if (type==="snack") {
+    } else if (type==="Snack") {
       setCarbonohidrates({ ...carbonohidrates, snack: carbon});
       setProtein({ ...protein, snack: proteinNumber});
       setFat({ ...fat, snack: fatNumber});
@@ -92,13 +102,13 @@ const DiaryPage = () => {
 
 
  function getFood(type) {
-  if (type==="breakfast") {
+  if (type==="Breakfast") {
     return breakfastFood;
-  } else if (type==="dinner") {
+  } else if (type==="Dinner") {
     return dinnerFood;
-  } else if (type==="lunch") {
+  } else if (type==="Lunch") {
     return lunchFood;
-  } else if (type==="snack") {
+  } else if (type==="Snack") {
     return snackFood;
   };
  }
@@ -106,21 +116,21 @@ const DiaryPage = () => {
 
   const toggleFoodButton = (type) => {
 
-    if (type==='breakfast') {
+    if (type==='Breakfast') {
     setAddFoodButton(!addFoodButton);
-  } else if (type==='dinner') {
+  } else if (type==='Dinner') {
     setAddFoodButtonDinner(!addFoodButtonDinner);
-  } else if (type==='lunch') {
+  } else if (type==='Lunch') {
     setAddFoodButtonLunch(!addFoodButtonLunch);
-  } else if (type==='snack') {
+  } else if (type==='Snack') {
     setAddFoodButtonSnack(!addFoodButtonSnack);
   };
     
     const currentFood = getFood(type);
 
     const newFoodElement = {
-      id: currentFood.length === 0 ? 1 : currentFood[currentFood.length - 1].id + 1,
-      name: '',
+      number: currentFood.length === 0 ? 1 : currentFood[currentFood.length - 1].number + 1,
+      mealName: '',
       carbon: '',
       protein: '',
       fat: '',
@@ -143,81 +153,81 @@ const DiaryPage = () => {
         <FoodSection>
           <FoodBlock>
             <FoodBlockHeader>
-              <Lol>
+              <Div1>
                 <Img src={breakfast} alt="Breakfast" />
                 <FoodHeader>Breakfast</FoodHeader>
-              </Lol>
-              <Kek>
+              </Div1>
+              <Div2>
               <ElementTitle>Carbonohidrates: {carbonohidrates.breakfast}</ElementTitle>
               <ElementTitle>Protein: {protein.breakfast} </ElementTitle>
               <ElementTitle>Fat: {fat.breakfast}</ElementTitle>
-              </Kek>
+              </Div2>
               <div></div>
             </FoodBlockHeader>
             <List>
               <Element>
-                {breakfastFood.map(food => <Form onSubmit={addFoodForm} type="breakfast" value={food} onAddElement={setAddFoodButton}/>)}
-                {addFoodButton && <AddFoodButton onClick={() => toggleFoodButton('breakfast')}>+ Record your meal</AddFoodButton>}     
+                {breakfastFood.map(food => <Form onSubmit={addFoodForm} type="Breakfast" value={food} onAddElement={setAddFoodButton}/>)}
+                {addFoodButton && <AddFoodButton onClick={() => toggleFoodButton('Breakfast')}>+ Record your meal</AddFoodButton>}     
               </Element>
             </List>
           </FoodBlock>
           <FoodBlock>
           <FoodBlockHeader>
-            <Lol>
+            <Div1>
               <Img src={dinner} alt="Dinner" />
               <FoodHeader>Dinner</FoodHeader>
-            </Lol>
-            <Kek>
+            </Div1>
+            <Div2>
               <ElementTitle>Carbonohidrates: {carbonohidrates.dinner} </ElementTitle>
                 <ElementTitle>Protein: {protein.dinner} </ElementTitle>
                 <ElementTitle>Fat: {fat.dinner} </ElementTitle>
-            </Kek>
+            </Div2>
             <div></div>
             </FoodBlockHeader>
             <List>
             <Element>
-            {dinnerFood.map(food => <Form onSubmit={addFoodForm} type="dinner" value={food} onAddElement={setAddFoodButtonDinner}/>)}
-            {addFoodButtonDinner && <AddFoodButton onClick={() => toggleFoodButton('dinner')}>+ Record your meal</AddFoodButton>}     
+            {dinnerFood.map(food => <Form onSubmit={addFoodForm} type="Dinner" value={food} onAddElement={setAddFoodButtonDinner}/>)}
+            {addFoodButtonDinner && <AddFoodButton onClick={() => toggleFoodButton('Dinner')}>+ Record your meal</AddFoodButton>}     
             </Element>
             </List>
           </FoodBlock>
           <FoodBlock>
           <FoodBlockHeader>
-            <Lol>
+            <Div1>
               <Img src={lunch} alt="Lunch" />
               <FoodHeader>Lunch</FoodHeader>
-            </Lol>
-            <Kek>
+            </Div1>
+            <Div2>
               <ElementTitle>Carbonohidrates: {carbonohidrates.lunch} </ElementTitle>
                 <ElementTitle>Protein: {protein.lunch}</ElementTitle>
                 <ElementTitle>Fat: {fat.lunch} </ElementTitle>
-                </Kek>
+                </Div2>
                 <div></div>
             </FoodBlockHeader>
             <List>
             <Element>
-            {lunchFood.map(food => <Form onSubmit={addFoodForm} type="lunch" value={food} onAddElement={setAddFoodButtonLunch}/>)}
-            {addFoodButtonLunch && <AddFoodButton onClick={() => toggleFoodButton('lunch')}>+ Record your meal</AddFoodButton>}     
+            {lunchFood.map(food => <Form onSubmit={addFoodForm} type="Lunch" value={food} onAddElement={setAddFoodButtonLunch}/>)}
+            {addFoodButtonLunch && <AddFoodButton onClick={() => toggleFoodButton('Lunch')}>+ Record your meal</AddFoodButton>}     
             </Element>
             </List>
           </FoodBlock>
           <FoodBlock>
           <FoodBlockHeader>
-          <Lol>
+          <Div1>
           <Img src={snack} alt="Snack" />
               <FoodHeader>Snack</FoodHeader>
-          </Lol>
-          <Kek>
+          </Div1>
+          <Div2>
               <ElementTitle>Carbonohidrates: {carbonohidrates.snack} </ElementTitle>
                 <ElementTitle>Protein: {protein.snack}</ElementTitle>
                 <ElementTitle>Fat: {fat.snack} </ElementTitle>
-                </Kek>
+                </Div2>
                 <div></div>
             </FoodBlockHeader>
             <List>
             <Element>
-            {snackFood.map(food => <Form onSubmit={addFoodForm} type="snack" value={food} onAddElement={setAddFoodButtonSnack}/>)}
-            {addFoodButtonSnack && <AddFoodButton onClick={() => toggleFoodButton('snack')}>+ Record your meal</AddFoodButton>}     
+            {snackFood.map(food => <Form onSubmit={addFoodForm} type="Snack" value={food} onAddElement={setAddFoodButtonSnack}/>)}
+            {addFoodButtonSnack && <AddFoodButton onClick={() => toggleFoodButton('Snack')}>+ Record your meal</AddFoodButton>}     
             </Element>
             </List>
           </FoodBlock>
@@ -228,3 +238,17 @@ const DiaryPage = () => {
 };
 
 export default DiaryPage;
+
+
+  // const breakfastItem = window.localStorage.getItem('Breakfast') ?? '[]';
+  // const dinnerItem = window.localStorage.getItem('Dinner') ?? '[]';
+  // const lunchItem = window.localStorage.getItem('Lunch') ?? '[]';
+  // const snackItem = window.localStorage.getItem('Snack') ?? '[]';
+  // const breakfastItem = [];
+  // const dinnerItem = [];
+  // const lunchItem = [];
+  // const snackItem = [];
+  // const [breakfastFood] = useState(JSON.parse(breakfastItem));
+  // const [dinnerFood] = useState(JSON.parse(dinnerItem));
+  // const [lunchFood] = useState(JSON.parse(lunchItem));
+  // const [snackFood] = useState(JSON.parse(snackItem));

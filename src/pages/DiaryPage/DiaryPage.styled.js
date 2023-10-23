@@ -182,12 +182,12 @@ export const Img = styled.img`
   margin-right: 8px;
 `;
 
-export const Lol = styled.div`
+export const Div1 = styled.div`
   display: flex;
   flex-direction: row;
 `;
 
-export const Kek = styled.div`
+export const Div2 = styled.div`
   display: flex;
   flex-direction: row;
 `;

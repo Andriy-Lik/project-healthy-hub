@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import edit from '../../images/diaryPageImages/edit-2.svg'
+import { useDispatch } from "react-redux";
+import {addFood} from 'redux/Foods/foodsOperations'
 
 import {
   FormForm,
@@ -13,9 +15,13 @@ import {
 
 
 export default function Form({onSubmit, type, value, onAddElement}) {
-   const [id] = useState(value?.id)
-   const [name, setName] = useState(value?.name)
-   const [carbon, setCarbon] = useState(value?.carbon)
+
+  const dispatch = useDispatch();
+
+
+   const [number] = useState(value?.number)
+   const [name, setName] = useState(value?.mealName)
+   const [carbon, setCarbon] = useState(value?.carbohydrate)
    const [protein, setProtein] = useState(value?.protein)
    const [fat, setFat] = useState(value?.fat)
    const [isFormActive, setFormActive] = useState(value?.isEditable);
@@ -39,37 +45,52 @@ export default function Form({onSubmit, type, value, onAddElement}) {
 
   const handleSubmit = e => {
     e.preventDefault();
-    onSubmit(name, carbon, protein, fat, type);
+    onSubmit(carbon, protein, fat, type);
     setFormActive(!isFormActive);
     onAddElement(true);
 
-    const food = {
-      id: value.id,
-      name: name,
-      carbon: carbon,
+    const foodToDisplay = {
+      number: value.number,
+      mealType: type,
+      mealName: name,
+      carbohydrate: carbon,
       protein: protein,
       fat: fat,
+      calories: Math.random(2000).toString(),
       isEditable: false,
+    }
+
+    const foodToSend = {
+      mealType: type,
+      mealName: name,
+      carbohydrate: carbon,
+      protein: protein,
+      fat: fat,
+      calories: Math.random(2000).toString(),
     }
 
     const foodTypeItem = window.localStorage.getItem(type);
     if (foodTypeItem) {
        const foodType = JSON.parse(foodTypeItem);
 
-       let foundFood = foodType.find((foodItem) => foodItem.id === food.id);
+       let foundFood = foodType.find((foodItem) => foodItem.number === foodToDisplay.number);
        if (foundFood) {
-        foundFood.name = food.name;
-        foundFood.carbon = food.carbon;
-        foundFood.protein = food.protein;
-        foundFood.fat = food.fat;
+        foundFood.mealType = foodToDisplay.mealType;
+        foundFood.mealName = foodToDisplay.mealName;
+        foundFood.carbohydrate = foodToDisplay.carbohydrate;
+        foundFood.protein = foodToDisplay.protein;
+        foundFood.fat = foodToDisplay.fat;
+        foundFood.calories = foodToDisplay.calories;
 
        } else {
-        foodType.push(food);
+        dispatch(addFood(foodToSend));
+        foodType.push(foodToDisplay);
        }
        window.localStorage.setItem(type, JSON.stringify(foodType));
     } else {
-      const foodType = [food];
-      window.localStorage.setItem(type, JSON.stringify(foodType));
+      dispatch(addFood(foodToSend));
+      const foods = [foodToDisplay];
+      window.localStorage.setItem(type, JSON.stringify(foods));
     };
   };
 
@@ -78,7 +99,7 @@ export default function Form({onSubmit, type, value, onAddElement}) {
     <label>
       <Input
         type="number"
-        value={id}
+        value={number}
         disabled={true}/>
     </label>  
     <label>
