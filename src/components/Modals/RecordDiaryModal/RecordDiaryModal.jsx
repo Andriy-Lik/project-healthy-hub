@@ -1,8 +1,10 @@
 import PropTypes from "prop-types";
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
-// import { useDispatch } from "react-redux";
-// import {addFood} from 'redux/Foods/foodsOperations'
+import { useDispatch } from "react-redux";
+
+import { addFood } from 'redux/Foods/foodsOperations';
+import { getStats } from "redux/Statistics/statisticsOperations";
 
 
 import { FieldArray, Formik } from 'formik';
@@ -63,12 +65,12 @@ const schema = yup.object({
 
 const modalRoot = document.querySelector('#modal-root');
 
-const RecordDiaryModal = ({ onClose, image, title }) => {
+const RecordDiaryModal = ({ onClose, image, mealType }) => {
 
   const initialValues = {
-    mealType: title,
     productList: [
-      {
+      { 
+        mealType: mealType,
         mealName: '',
         carbonohidrates: '',
         protein: '',
@@ -78,8 +80,8 @@ const RecordDiaryModal = ({ onClose, image, title }) => {
     ],
   };
 
-  // const dispatch = useDispatch();
-  
+  const dispatch = useDispatch();
+
   const handleKeyDown = (event) => {
     if (event.code === "Escape") {
       onClose();
@@ -92,28 +94,38 @@ const RecordDiaryModal = ({ onClose, image, title }) => {
     };
   };
   
-  const handleSubmit = (values, { resetForm }) => {
-    // const data = {
-    //   mealType: values.mealType,
-    //   mealName: values.productList[0].mealName,
-    //   carbohydrate: values.productList[0].carbonohidrates.toString(),
-    //   protein: values.productList[0].protein.toString(),
-    //   fat: values.productList[0].fat.toString(),
-    //   calories: values.productList[0].calories.toString()
-    // };
-    // console.log("recodrd food: ", data)
-    // dispatch(addFood(data))
-    console.log("record food: ", values)
+  const handleSubmit = async (values, { resetForm }) => {
+    await values.productList.forEach(({
+      mealType,
+      mealName,
+      carbonohidrates,
+      protein,
+      fat,
+      calories
+    }) => {
+      const data = {
+        mealType: mealType.toString(),
+        mealName: mealName.toString(),
+        carbohydrate: carbonohidrates.toString(),
+        protein: protein.toString(),
+        fat: fat.toString(),
+        calories: calories.toString(),      
+      }
+      dispatch(addFood(data));
+    });
+    dispatch(getStats('today'));
     resetForm();
-    
+    onClose();    
   };
   
   useEffect(() => {
+    document.body.style.overflowY = 'hidden';
     window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
+    return () => {
+      document.body.style.overflowY = 'auto';
+      window.removeEventListener('keydown', handleKeyDown);
+    }
   });
-
-  useEffect(() => { })
 
   return createPortal(
     <Backdrop onClick={handleBackdropClick}>
@@ -121,7 +133,7 @@ const RecordDiaryModal = ({ onClose, image, title }) => {
         <ModalTitle>Record your meal</ModalTitle>
         <WrapperFormTitle>
           <Image src={image} alt="Plate" />
-          <Title>{title}</Title>
+          <Title>{mealType}</Title>
         </WrapperFormTitle>
 
         <Formik
@@ -204,6 +216,7 @@ const RecordDiaryModal = ({ onClose, image, title }) => {
                         insert(
                           values.productList.length + 1,
                           {
+                            mealType: mealType,
                             mealName: '',
                             carbonohidrates: '',
                             protein: '',
@@ -236,7 +249,7 @@ const RecordDiaryModal = ({ onClose, image, title }) => {
 RecordDiaryModal.propTypes = {
   onClose: PropTypes.func.isRequired,
   image: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired
+  mealType: PropTypes.string.isRequired
 }
 
 export default RecordDiaryModal;

@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
 
-import { selectStatsConsumedWater } from "redux/Statistics/statisticsSelectors";
+import { selectStatsConsumedWaterPerDay} from "redux/Statistics/statisticsSelectors";
+// import { selectStatsConsumedWater } from "redux/Statistics/statisticsSelectors";
 import { calcPercent, calcRemainder } from "helpers/calculations";
 import { WATER_GOAL } from "constants/constants";
 
@@ -30,8 +31,8 @@ const Water = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   
   const toggleModal = () => setIsModalOpen(!isModalOpen);
-  const consumedWaterMl = useSelector(selectStatsConsumedWater);
-
+  const consumedWaterMl = useSelector(selectStatsConsumedWaterPerDay);
+ 
   let consumedWaterPercent = calcPercent(WATER_GOAL, consumedWaterMl) + "%";
   let leftToConsumeWater = calcRemainder(WATER_GOAL, consumedWaterMl);
   
@@ -50,7 +51,7 @@ const Water = () => {
             <CounterList>
               {/* лічильник випитої води у мл */}
               <CounterOfConsumedWaterInMl>
-                {consumedWaterMl}
+                {(consumedWaterMl > WATER_GOAL) ? WATER_GOAL : consumedWaterMl}
                 <span>ml</span>
               </CounterOfConsumedWaterInMl>
               {/* лічильник води, що залишилось випити у мл */}

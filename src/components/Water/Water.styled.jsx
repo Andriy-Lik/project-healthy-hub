@@ -75,7 +75,7 @@ export const CardText = styled.div`
 export const CardTitle = styled.h4`
   margin-bottom: 12px;
   font-family: ${props => props.theme.fontFamily.poppins};
-  font-size: ${props => props.theme.fontSizes.m};
+  font-size: ${props => props.theme.fontSizes.s};
   font-weight: ${props => props.theme.fontWeights.medium};
   line-height: 22px;
   letter-spacing: 0em;
