@@ -1,13 +1,24 @@
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
+import { useSelector } from 'react-redux';
+import { selectUser } from 'redux/Auth/authSelectors';
+import { selectConsumedCarbonohidratesPerDay } from 'redux/Statistics/statisticsSelectors';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const DoughnutChartForCarbonohidrates = () => {
+  const userInfo = useSelector(selectUser);
+  const carbonohidratesGoal = userInfo.carbohydrate;
+  const consumedCarbonohidrates = useSelector(
+    selectConsumedCarbonohidratesPerDay
+  );
+  const leftConsumedCarbonohidrates =
+    carbonohidratesGoal - consumedCarbonohidrates;
+
   const data = {
     datasets: [
       {
-        data: [136, 34], // 136 - спожито вуглеводів, 34 - залишилось спожити
+        data: [consumedCarbonohidrates, leftConsumedCarbonohidrates],
         backgroundColor: ['#FFC4F7', '#292928'],
         borderRadius: 12,
         borderWidth: 0,

@@ -1,14 +1,21 @@
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
+import { useSelector } from 'react-redux';
+import { selectUser } from 'redux/Auth/authSelectors';
+import { selectConsumedFatPerDay } from 'redux/Statistics/statisticsSelectors';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const DoughnutChartForFat = () => {
+  const userInfo = useSelector(selectUser);
+  const fatGoal = userInfo.fat;
+  const consumedFat = useSelector(selectConsumedFatPerDay);
+  const leftConsumedFat = fatGoal - consumedFat;
+
   const data = {
     datasets: [
       {
-        data: [44.8, 11.2], // 44.8 - спожито жирів, 11.2 - залишилось спожити
-        backgroundColor: ['#B6B6B6', '#292928'],
+        data: [consumedFat, leftConsumedFat],
         borderRadius: 12,
         borderWidth: 0,
         cutout: '80%',

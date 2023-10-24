@@ -33,7 +33,6 @@ const MainPage = () => {
 
   useEffect(() => {
     dispatch(getStats('today'));
-    // await dispatch(getRecomendedFood());
   }, [dispatch]);
 
   return (
