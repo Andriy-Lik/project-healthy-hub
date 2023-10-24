@@ -63,8 +63,8 @@ export const currentUser = createAsyncThunk(
     try {
       setAuthHeader(tokenCurrent);
       const response = await axios.get('/users/current');
-      // await thunkAPI.dispatch(getStats('today'));
-      // await thunkAPI.dispatch(getRecomendedFood());
+      await thunkAPI.dispatch(getStats('today'));
+      await thunkAPI.dispatch(getRecomendedFood());
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

@@ -19,11 +19,31 @@ import DoughnutChartForCarbonohidrates from 'components/Charts/DoughnutChartForC
 import DoughnutChartForProtein from 'components/Charts/DoughnutChartForProtein';
 import DoughnutChartForFat from 'components/Charts/DoughnutChartForFat';
 import { selectUser } from 'redux/Auth/authSelectors';
+import {
+  selectConsumedProteinPerDay,
+  selectConsumedCarbonohidratesPerDay,
+  selectConsumedFatPerDay
+} from 'redux/Statistics/statisticsSelectors';
+
+const Food = () => {  
+  const {
+    carbohydrate: carbohydrateGoal,
+    fat: fatGoal,
+    protein: proteinGoal
+  } = useSelector(selectUser);
+
+  const consumedCarbonohidrates = useSelector(
+    selectConsumedCarbonohidratesPerDay
+  );
+  const leftConsumedCarbonohidrates =
+    carbohydrateGoal - consumedCarbonohidrates;
 
 
-const Food = () => {
-  
-  const { carbohydrate, fat, protein} = useSelector(selectUser);
+  const consumedProtein = useSelector(selectConsumedProteinPerDay);
+  const leftConsumedProtein = proteinGoal - consumedProtein;
+
+  const consumedFat = useSelector(selectConsumedFatPerDay);
+  const leftConsumedFat = fatGoal - consumedFat;
   
   return (
     <Wrapper>
@@ -41,9 +61,9 @@ const Food = () => {
               <CardTitle>Carbonohidrates</CardTitle>
               <CounterList>
                 {/* лічильник мета для вуглеводів */}
-                <Counter>Goal: <span>{carbohydrate}</span></Counter>
+                <Counter>Goal: <span>{carbohydrateGoal}</span></Counter>
                 {/* лічильник залишилось для вуглеводів */}
-                <Counter>left: <span>34</span></Counter>
+                <Counter>left: <span>{leftConsumedCarbonohidrates}</span></Counter>
               </CounterList>
             </CardText>
           </Card>
@@ -55,9 +75,9 @@ const Food = () => {
               <CardTitle>Protein</CardTitle>
               <CounterList>
                 {/* лічильник мета для протеїнів */}
-                <Counter>Goal: <span>{protein}</span></Counter>
+                <Counter>Goal: <span>{proteinGoal}</span></Counter>
                 {/* лічильник залишилось для протеїнів */}
-                <Counter>left: <span>8</span></Counter>
+                <Counter>left: <span>{leftConsumedProtein}</span></Counter>
               </CounterList>
             </CardText>
           </Card>
@@ -69,9 +89,9 @@ const Food = () => {
               <CardTitle>Fat</CardTitle>
               <CounterList>
                 {/* лічильник мета для жирів */}
-                <Counter>Goal: <span>{fat}</span></Counter>
+                <Counter>Goal: <span>{fatGoal}</span></Counter>
                 {/* лічильник залишилось для жирів */}
-                <Counter>left: <span>11,2</span></Counter>
+                <Counter>left: <span>{leftConsumedFat}</span></Counter>
               </CounterList>
             </CardText>
           </Card>

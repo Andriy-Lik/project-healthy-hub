@@ -64,7 +64,10 @@ const DashboardPage = () => {
         {isLoading && <Loader />}
         <HeaderBlock>
           <MainHeaderBlock>
-            <BackLink to={backLinkLocationRef.current}>
+            <BackLink
+              onClick={() => dispatch(getStats('today'))}
+              to={backLinkLocationRef.current}
+            >
               <ArrowReturn src={arrowRight} alt="arrow right" />
             </BackLink>
             <Header>{showYear ? 'Last year' : 'Last month'}</Header>

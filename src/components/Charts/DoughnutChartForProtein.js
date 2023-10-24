@@ -1,13 +1,21 @@
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
+import { useSelector } from 'react-redux';
+import { selectUser } from 'redux/Auth/authSelectors';
+import { selectConsumedProteinPerDay } from 'redux/Statistics/statisticsSelectors';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const DoughnutChartForProtein = () => {
+  const userInfo = useSelector(selectUser);
+  const proteinGoal = userInfo.protein;
+  const consumedProtein = useSelector(selectConsumedProteinPerDay);
+  const leftConsumedProtein = proteinGoal - consumedProtein;
+
   const data = {
     datasets: [
       {
-        data: [117.5, 8], // 117.5 - спожито протеїну, 34 - залишилось спожити
+        data: [consumedProtein, leftConsumedProtein], // 117.5 - спожито протеїну, 34 - залишилось спожити
         backgroundColor: ['#FFF3B7', '#292928'],
         borderRadius: 12,
         borderWidth: 0,
