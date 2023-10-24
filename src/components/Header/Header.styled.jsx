@@ -2,12 +2,9 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 export const Container = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: ${div => div.theme.colors.black2};
-  padding: 0;
-  margin: 0;
+  background-color: ${props => props.theme.colors.black2};
+  padding-top: 26px;
+  padding-bottom: 26px;
 
   @media screen and (${props => props.theme.mq.mobile}) {
     height: 60px;
@@ -20,24 +17,44 @@ export const Container = styled.div`
   }
 `;
 
+export const Content = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+
+  width: 320px;
+  padding: 0 10px;
+
+  @media screen and (${props => props.theme.mq.tablet}) {
+    width: 834px;
+    padding: 0 27px;
+  }
+
+  @media screen and (${props => props.theme.mq.desktop}) {
+    width: 1440px;
+    padding: 0 34px;
+  }
+`;
+
 export const LogoBox = styled.div`
-  color: ${a => a.theme.colors.gray};
-  font-size: ${a => a.theme.fontSizes.l};
-  font-weight: ${a => a.theme.fontWeights.bold};
+  color: ${props => props.theme.colors.gray};
+  font-size: ${props => props.theme.fontSizes.l};
+  font-weight: ${props => props.theme.fontWeights.bold};
 
   @media screen and (${props => props.theme.mq.mobile}) {
-    margin-left: 10px;
-    font-size: ${a => a.theme.fontSizes.s};
+    /* margin-left: 10px; */
+    font-size: ${props => props.theme.fontSizes.s};
     display: flex;
     align-items: center;
   }
 
   @media screen and (${props => props.theme.mq.tablet}) {
-    margin-left: 27px;
+    /* margin-left: 27px; */
   }
 
   @media screen and (${props => props.theme.mq.desktop}) {
-    margin-left: 34px;
+    /* margin-left: 34px; */
   }
 `;
 
@@ -57,14 +74,14 @@ export const Info = styled.div`
   display: flex;
   justify-content: space-between;
   @media screen and (${props => props.theme.mq.mobile}) {
-    margin-right: 10px;
+    /* margin-right: 10px; */
   }
   @media screen and (${props => props.theme.mq.tablet}) {
-    margin-right: 27px;
+    /* margin-right: 27px; */
     width: 513px;
   }
   @media screen and (${props => props.theme.mq.desktop}) {
-    margin-right: 36px;
+    /* margin-right: 36px; */
     width: 604px;
   }
 `;
@@ -85,6 +102,7 @@ export const InfoBlock = styled.div`
   @media screen and (${props => props.theme.mq.tablet}) {
     display: flex;
     &:nth-child(1) {
+      width: 173px;
       margin-right: 40px;
     }
   }
