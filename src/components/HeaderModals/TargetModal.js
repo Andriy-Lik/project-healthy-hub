@@ -1,111 +1,131 @@
-import React from "react";
-import { useEffect } from 'react';
+// import React from 'react';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { createPortal } from 'react-dom';
-import { useDispatch, useSelector } from "react-redux";
-import { useState } from "react";
 
-import { setNewUserGoal } from '../../redux/Auth/authSlice'
-import { selectUser } from "../../redux/Auth/authSelectors";
+import { setNewUserGoal } from '../../redux/Auth/authSlice';
+import { selectUser } from '../../redux/Auth/authSelectors';
+import {
+  Overlay,
+  ModalWrapper,
+  Modal,
+  ModalTitle,
+  ModalText,
+  ModalForm,
+  TargetImg,
+  ImgBorder,
+  TargetWrapper,
+  TargetText,
+  ModalBtn,
+  CloseBtn,
+  CancelBtn,
+} from './TargetModal.styled';
 
-import { Overlay, ModalWrapper, Modal, ModalTitle, ModalText, ModalForm, ModalFormContainer, ModalLabel1Men, ModalInput1Men, ModalLabel2Men, ModalInput2Men, ModalLabel1Girl, ModalInput1Girl, ModalLabel2Girl, ModalInput2Girl, ModalLabel3, ModalInput3, ModalBtn, CloseBtn, CancelBtn } from "./HeaderModalTarget.styled";
+import LoseFatMen from '../../images/icons/Lose-fat-image-men.svg';
+import MaintakeMen from '../../images/icons/Maintake-image-men.svg';
+import LoseFatGirl from '../../images/icons/Lose-fat-image-girl.svg';
+import MaintakeGirl from '../../images/icons/Maintake-image-girl.svg';
+import muscle from '../../images/icons/Gain-muscle.svg';
+import close from '../../images/icons/close-circle.svg';
 
-import close from '../../images/icons/close-circle.svg'
-
-const modalRoot = document.querySelector('#header-modal-goal')
+const modalRoot = document.querySelector('#modal-root');
 
 export default function TargetModal({ onCloseModal }) {
+  const [newGoal, setNewGoal] = useState('');
+  const dispatch = useDispatch();
 
-    const dispatch = useDispatch();
-    const [newGoal, setNewGoal] = useState('')
+  const user = useSelector(selectUser);
+  const userGender = user.gender;
 
-    const handleNewUserGoal = event => {
-        event.preventDefault();
-        dispatch(setNewUserGoal(newGoal));
-        onCloseModal();
-    };
+  let loseFatIcon = userGender === 'Female' ? LoseFatGirl : LoseFatMen;
+  let maintainIcon = userGender === 'Female' ? MaintakeGirl : MaintakeMen;
+  let muscleIcon = muscle;
 
-    const handleInputChange = event => {
-        const { value } = event.target;
-        setNewGoal(value);
+  const overlayClickHandler = event => {
+    if (event.currentTarget === event.target) {
+      onCloseModal();
     }
+  };
 
-    useEffect(() => {
-        const escKeyHandler = event => {
-            if (event.code === 'Escape') {
-                onCloseModal();
-            }
-        };
-        window.addEventListener('keydown', escKeyHandler);
-        return () => {
-            window.removeEventListener('keydown', escKeyHandler);
-        };
-    }, [onCloseModal]);
+  useEffect(() => {
+    const escKeyHandler = event => {
+      if (event.code === 'Escape') {
+        onCloseModal();
+      }
+    };
+    window.addEventListener('keydown', escKeyHandler);
+    return () => {
+      window.removeEventListener('keydown', escKeyHandler);
+    };
+  }, [onCloseModal]);
 
-    const user = useSelector(selectUser);
-    const gender = user.gender ? user.gender : "male";
+  const handleGoalChange = goal => {
+    setNewGoal(goal);
+  };
 
-    return createPortal(
-        <Overlay onClick={onCloseModal()}>
-            <ModalWrapper>
-                <CloseBtn onClick={onCloseModal()}>
-                    <img src={close} alt="close" width={16} />
-                </CloseBtn>
-                <Modal onClick={e => e.stopPropagation()}>
-                    <ModalTitle>Target selection</ModalTitle>
-                    <ModalText>The service will adjust your calorie intake to your goal</ModalText>
-                    {gender === "male" ?
-                        <ModalForm onSubmit={handleNewUserGoal}>
-                            <ModalFormContainer>
-                                <ModalInput1Men type="radio" name="goal" value="Lose fat" id="1" onChange={handleInputChange} />
-                                <ModalLabel1Men for="1" id="11">
-                                    Lose fat
-                                </ModalLabel1Men>
-                            </ModalFormContainer>
-                            <ModalFormContainer>
-                                <ModalInput2Men type="radio" name="goal" value="Maintain" id="2" onChange={handleInputChange} />
-                                <ModalLabel2Men for="2">
-                                    Maintain
-                                </ModalLabel2Men>
-                            </ModalFormContainer>
-                            <ModalFormContainer>
-                                <ModalInput3 type="radio" name="goal" value="Gain Muscle" id="3" onChange={handleInputChange} />
-                                <ModalLabel3 for="3">
-                                    Gain Muscle
-                                </ModalLabel3>
-                            </ModalFormContainer>
+  const handleNewUserGoal = event => {
+    event.preventDefault();
+    dispatch(setNewUserGoal(newGoal));
+    onCloseModal();
+  };
 
-                            <ModalBtn type="submit">Confirm</ModalBtn>
-                        </ModalForm>
-                        :
-                        <ModalForm onSubmit={handleNewUserGoal}>
-                            <ModalFormContainer>
-                                <ModalInput1Girl type="radio" name="goal" value="Lose fat" id="1" onChange={handleInputChange} />
-                                <ModalLabel1Girl for="1" id="11">
-                                    Lose fat
-                                </ModalLabel1Girl>
-                            </ModalFormContainer>
-                            <ModalFormContainer>
-                                <ModalInput2Girl type="radio" name="goal" value="Maintain" id="2" onChange={handleInputChange} />
-                                <ModalLabel2Girl for="2">
-                                    Maintain
-                                </ModalLabel2Girl>
-                            </ModalFormContainer>
-                            <ModalFormContainer>
-                                <ModalInput3 type="radio" name="goal" value="Gain Muscle" id="3" onChange={handleInputChange} />
-                                <ModalLabel3 for="3">
-                                    Gain Muscle
-                                </ModalLabel3>
-                            </ModalFormContainer>
+  let loseFatGoal = user.goal === 'Lose fat' ? 'true' : 'false';
+  let maintainGoal = user.goal === 'Maintain' ? 'true' : 'false';
+  let gainMuscleGoal = user.goal === 'Gain Muscle' ? 'true' : 'false';
 
-                            <ModalBtn type="submit">Confirm</ModalBtn>
-                        </ModalForm>
-                    }
-                </Modal>
-                <CancelBtn onClick={onCloseModal()}>
-                    Cancel
-                </CancelBtn>
-            </ModalWrapper>
-        </Overlay>,
-        modalRoot
-    )
+  if (newGoal.length !== 0) {
+    loseFatGoal = newGoal === 'Lose fat' ? 'true' : 'false';
+    maintainGoal = newGoal === 'Maintain' ? 'true' : 'false';
+    gainMuscleGoal = newGoal === 'Gain Muscle' ? 'true' : 'false';
+  }
+
+  return createPortal(
+    <Overlay onClick={overlayClickHandler}>
+      <ModalWrapper>
+        <CloseBtn onClick={onCloseModal()}>
+          <img src={close} alt="close" width={16} />
+        </CloseBtn>
+        <Modal onClick={e => e.stopPropagation()}>
+          <ModalTitle>Target selection</ModalTitle>
+          <ModalText>
+            The service will adjust your calorie intake to your goal
+          </ModalText>
+          <ModalForm onSubmit={handleNewUserGoal}>
+            <ul>
+              <TargetWrapper
+                onClick={() => handleGoalChange('Lose fat')}
+                active={loseFatGoal}
+              >
+                <ImgBorder>
+                  <TargetImg src={loseFatIcon} alt="Lose fat" />
+                </ImgBorder>
+                <TargetText>Lose fat</TargetText>
+              </TargetWrapper>
+              <TargetWrapper
+                onClick={() => handleGoalChange('Maintain')}
+                active={maintainGoal}
+              >
+                <ImgBorder>
+                  <TargetImg src={maintainIcon} alt="Maintain" />
+                </ImgBorder>
+                <TargetText>Maintain</TargetText>
+              </TargetWrapper>
+              <TargetWrapper
+                onClick={() => handleGoalChange('Gain Muscle')}
+                active={gainMuscleGoal}
+              >
+                <ImgBorder>
+                  <TargetImg src={muscleIcon} alt="Gain Muscle" />
+                </ImgBorder>
+                <TargetText>Gain Muscle</TargetText>
+              </TargetWrapper>
+            </ul>
+            <ModalBtn type="submit">Confirm</ModalBtn>
+          </ModalForm>
+        </Modal>
+        <CancelBtn onClick={onCloseModal()}>Cancel</CancelBtn>
+      </ModalWrapper>
+    </Overlay>,
+    modalRoot
+  );
 }
