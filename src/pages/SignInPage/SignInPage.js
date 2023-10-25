@@ -1,17 +1,17 @@
 // import { Link } from "react-router-dom";
 import {
-  BackgroundContainer,
-  SignInLogo,
+  Container,
+  Img,
   SignInContainer,
-  SignInHeadline,
-  SignInText,
-  SignInFormWrapper,
-  SignInForm,
-  SignInInput,
-  SignInButton,
-  ForgotYourPassword,
-  SignUpSuggestionButtonWrapper,
-  SignUpSuggestion,
+  Title,
+  Text,
+  FormWrapper,
+  Form,
+  Input,
+  FormButton,
+  ForgotPasswordLink,
+  SignUpContainer,
+  SignUpText,
   SignUpLink,
 } from './SignInPage.styled';
 import { logIn } from '../../redux/Auth/authOperations';
@@ -53,47 +53,47 @@ const SignInPage = () => {
 
   return (
     <div>
-      <BackgroundContainer>
+      <Container>
         <style>
           @import
           url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Roboto&display=swap');
         </style>
-        <SignInLogo src={welcomeLogoPic} alt="Logo" />
+        <Img src={welcomeLogoPic} alt="img" />
         <SignInContainer>
-          <SignInHeadline>Sign in</SignInHeadline>
-          <SignInText>You need to login to use the service</SignInText>
+          <Title>Sign in</Title>
+          <Text>You need to login to use the service</Text>
           {error && <p>{error}</p>}
-          <SignInFormWrapper>
-            <SignInForm onSubmit={handleSubmit} autoComplete="on">
-              <SignInInput
+          <FormWrapper>
+            <Form onSubmit={handleSubmit} autoComplete="on">
+              <Input
                 type="email"
                 name="email"
                 value={email}
                 onChange={handleEmailChange}
                 placeholder="E-mail"
               />
-              <SignInInput
+              <Input
                 type="password"
                 name="password"
                 value={password}
                 onChange={handlePasswordChange}
                 placeholder="Password"
               />
-              <SignInButton type="submit">Sign in</SignInButton>
-              <ForgotYourPassword to={'/forgot-password'}>
+              <FormButton type="submit">Sign in</FormButton>
+              <ForgotPasswordLink to={'/forgot-password'}>
                 Forgot your password?
-              </ForgotYourPassword>
-            </SignInForm>
-          </SignInFormWrapper>
+              </ForgotPasswordLink>
+            </Form>
+          </FormWrapper>
 
-          <SignUpSuggestionButtonWrapper>
-            <SignUpSuggestion>
+          <SignUpContainer>
+            <SignUpText>
               If you don't have an account yet
-            </SignUpSuggestion>
+            </SignUpText>
             <SignUpLink to={'/signup'}>Sign up</SignUpLink>
-          </SignUpSuggestionButtonWrapper>
+          </SignUpContainer>
         </SignInContainer>
-      </BackgroundContainer>
+      </Container>
     </div>
   );
 };

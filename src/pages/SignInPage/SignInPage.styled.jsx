@@ -1,46 +1,42 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-export const BackgroundContainer = styled.div`
+export const Container = styled.div`
   background-color: #050505;
   display: flex;
-  margin: auto;
 
   @media (min-width: 320px) and (max-width: 833px) {
     flex-direction: column;
   }
 
   @media (min-width: 834px) and (max-width: 1439px) {
-    flex-direction: center;
+    flex-direction: column;
   }
 
-  @media (min-width: 1439px) {
+  @media (min-width: 1440px) {
     flex-direction: row;
     justify-content: center;
   }
 `;
 
-export const SignInLogo = styled.img`
+export const Img = styled.img`
   margin-right: auto;
   margin-left: auto;
-  margin-top: 40px;
-  margin-bottom: 40px;
 
   @media (min-width: 320px) and (max-width: 833px) {
     width: 300px;
-    margin-right: auto;
-    margin-left: auto;
+    margin-top: 24px;
+    margin-bottom: 24px;
   }
 
   @media (min-width: 834px) and (max-width: 1439px) {
     width: 380px;
-    margin-right: auto;
-    margin-left: auto;
+    margin-top: 40px;
+    margin-bottom: 60px;
   }
 
-  @media (min-width: 1439px) {
-    margin-right: 80px;
-    margin-left: 0;
+  @media (min-width: 1440px) {
+    margin: 40px 104px 72px 0;
   }
 `;
 
@@ -63,14 +59,12 @@ export const SignInContainer = styled.div`
     justify-content: center;
   }
 
-  @media (min-width: 1439px) {
-    width: 444px;
+  @media (min-width: 1440px) {
     margin-left: 0;
-    margin-right: 120px;
   }
 `;
 
-export const SignInHeadline = styled.h1`
+export const Title = styled.h1`
   color: #ffffff;
   font-size: 30px;
   font-weight: 500;
@@ -84,7 +78,7 @@ export const SignInHeadline = styled.h1`
   }
 `;
 
-export const SignInText = styled.p`
+export const Text = styled.p`
   color: #b6b6b6;
   font-weight: 400;
   font-size: 22px;
@@ -104,11 +98,11 @@ export const SignInText = styled.p`
   }
 `;
 
-export const SignInFormWrapper = styled.div`
+export const FormWrapper = styled.div`
   width: 212px;
 `;
 
-export const SignInForm = styled.form`
+export const Form = styled.form`
   display: block;
   margin-top: 8px;
   margin-top: 8px;
@@ -122,7 +116,7 @@ export const SignInForm = styled.form`
   }
 `;
 
-export const SignInInput = styled.input`
+export const Input = styled.input`
   border: 1px solid #e3ffa8;
   border-radius: 12px;
   background-color: #0f0f0f;
@@ -143,7 +137,7 @@ export const SignInInput = styled.input`
   }
 `;
 
-export const SignInButton = styled.button`
+export const FormButton = styled.button`
   background-color: #e3ffa8;
   text-align: center;
   margin-top: 16px;
@@ -158,7 +152,7 @@ export const SignInButton = styled.button`
   }
 `;
 
-export const ForgotYourPassword = styled.button `
+export const ForgotPasswordLink = styled(Link)`
   font-weight: 400;
   font-size: 14px;
   line-height: 20px;
@@ -169,14 +163,13 @@ export const ForgotYourPassword = styled.button `
   margin-left: 40px;
   align-text: center;
   width: 192px;
-
   
   @media (min-width: 834px) and (max-width: 1439px) {
     margin-left: 110px;
   }
 `;
 
-export const SignUpSuggestionButtonWrapper = styled.div`
+export const SignUpContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin-top: 200px;
@@ -188,7 +181,7 @@ export const SignUpSuggestionButtonWrapper = styled.div`
   }
 `;
 
-export const SignUpSuggestion = styled.p`
+export const SignUpText = styled.p`
   color: #b6b6b6;
 
   @media (min-width: 834px) {
