@@ -1,76 +1,73 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import {
-  BackgroundContainer,
-  WelcomeLogo,
-  PerksContainer,
-  WelcomeHeadline,
-  WelcomeText,
-  WelcomeNavigationsButtonList,
-  WelcomeNavigationsButtonSignUp,
-  WelcomeNavigationsButtonSignIn,
-  // SignInActivated,
-  // SignUpInactive,
-  WelcomePagePerksList,
-  WelcomePagePerksWrapper,
-  WelcomePagePerksListBullets,
-  Perks,
+  Container,
+  Image,
+  ContentBox,
+  Title,
+  Text,
+  BtnBox,
+  BtnSignUp,
+  BtnSignIn,
+  List,
+  Item,
+  ItemImg,
+  ItemText,
 } from './WelcomePage.styled';
 import welcomeLogoPic from '../../images/WelcomeLogoPic.png';
-import bullets from '../../images/welcome-page-perks-bullets.png';
-// import SignInPage from 'pages/SignInPage';
+import bullets from '../../images/WelcomePageImg/bullets.png';
 
 const WelcomePage = () => {
   return (
-    <BackgroundContainer>
+    <Container>
       <style>
         @import
         url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Roboto&display=swap');
       </style>
-      <WelcomeLogo src={welcomeLogoPic} alt="Reg Logo" />
-      <PerksContainer>
-        <WelcomeHeadline>Set goals and achieve them</WelcomeHeadline>
-        <WelcomeText>
+      <Image src={welcomeLogoPic} alt="Reg Logo" />
+      <ContentBox>
+        <Title>Set goals and achieve them</Title>
+        <Text>
           The service will help you set goals and follow them.
-        </WelcomeText>
+        </Text>
 
-        <WelcomeNavigationsButtonList>
-          <WelcomeNavigationsButtonSignUp>
+        <BtnBox>
+          <BtnSignUp>
             <Link to={'/signin'}>
               Sign in
             </Link>
-          </WelcomeNavigationsButtonSignUp>
+          </BtnSignUp>
 
-          <WelcomeNavigationsButtonSignIn>
+          <BtnSignIn>
             <Link to={'/signup'}>
-                Sign up
+              Sign up
             </Link>
-          </WelcomeNavigationsButtonSignIn>
-        </WelcomeNavigationsButtonList>
+          </BtnSignIn>
+        </BtnBox>
 
-        <WelcomePagePerksList>
-          <WelcomePagePerksWrapper>
-            <WelcomePagePerksListBullets src={bullets} alt="bullets for list" />
-            <Perks>Set goals</Perks>
-          </WelcomePagePerksWrapper>
+        <List>
+          <Item>
+            <ItemImg src={bullets} alt="bullets for list" />
+            <ItemText>Set goals</ItemText>
+          </Item>
 
-          <WelcomePagePerksWrapper>
-            <WelcomePagePerksListBullets src={bullets} alt="bullets for list" />
-            <Perks>Watch your calories</Perks>
-          </WelcomePagePerksWrapper>
+          <Item>
+            <ItemImg src={bullets} alt="bullets for list" />
+            <ItemText>Watch your calories</ItemText>
+          </Item>
 
-          <WelcomePagePerksWrapper>
-            <WelcomePagePerksListBullets src={bullets} alt="bullets for list" />
-            <Perks>Keep track of your water intake</Perks>
-          </WelcomePagePerksWrapper>
+          <Item>
+            <ItemImg src={bullets} alt="bullets for list" />
+            <ItemText>Keep track of your water intake</ItemText>
+          </Item>
 
-          <WelcomePagePerksWrapper>
-            <WelcomePagePerksListBullets src={bullets} alt="bullets for list" />
-            <Perks>Control your weight</Perks>
-          </WelcomePagePerksWrapper>
-        </WelcomePagePerksList>
-      </PerksContainer>
-    </BackgroundContainer>
+          <Item>
+            <ItemImg src={bullets} alt="bullets for list" />
+            <ItemText>Control your weight</ItemText>
+          </Item>
+        </List>
+      </ContentBox>
+    </Container>
   );
 };
 

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const BackgroundContainer = styled.div`
+export const Container = styled.div`
   background-color: #050505;
   display: flex;
   flex-direction: column;
@@ -25,7 +25,7 @@ export const BackgroundContainer = styled.div`
   }
 `;
 
-export const WelcomeLogo = styled.img`
+export const Image = styled.img`
   margin-right: auto;
   margin-left: auto;
   margin-top: 40px;
@@ -45,7 +45,7 @@ export const WelcomeLogo = styled.img`
   }
 `;
 
-export const PerksContainer = styled.div`
+export const ContentBox = styled.div`
   max-width: 444px;
   margin-top: 120px;
   margin-left: 104px;
@@ -68,7 +68,7 @@ export const PerksContainer = styled.div`
   }
 `;
 
-export const WelcomeHeadline = styled.h1`
+export const Title = styled.h1`
   color: #ffffff;
   font-size: 30px;
   font-weight: 500;
@@ -81,7 +81,7 @@ export const WelcomeHeadline = styled.h1`
   }
 `;
 
-export const WelcomeText = styled.p`
+export const Text = styled.p`
   color: #b6b6b6;
   font-weight: 400;
   font-size: 22px;
@@ -115,14 +115,14 @@ export const SignUpInactive = styled.button`
   margin-left: 16px;
 `;
 
-export const WelcomeNavigationsButtonList = styled.div`
+export const BtnBox = styled.div`
   margin-top: 24px;
   margin-bottom: 40px;
   margin-left: auto;
   margin-right: auto;
 `;
 
-export const WelcomeNavigationsButtonSignUp = styled.button `
+export const BtnSignUp = styled.button `
   background-color: #E3FFA8;
   margin-top: 24px;
   border-radius: 12px;
@@ -132,7 +132,7 @@ export const WelcomeNavigationsButtonSignUp = styled.button `
   font-family: Poppins;
 `;
 
-export const WelcomeNavigationsButtonSignIn = styled.button `
+export const BtnSignIn = styled.button `
   background-color: #050505;
   border: none;
   color: #FFFF;
@@ -140,7 +140,7 @@ export const WelcomeNavigationsButtonSignIn = styled.button `
   margin-left: 16px;
 `;
 
-export const WelcomePagePerksList = styled.ul`
+export const List = styled.ul`
   margin-top: 80px;
   margin-bottom: 40px;
   @media (min-width: 834px) and (max-width: 1439px) {
@@ -150,17 +150,17 @@ export const WelcomePagePerksList = styled.ul`
   }
 `;
 
-export const WelcomePagePerksWrapper = styled.div`
+export const Item = styled.li`
   display: flex;
   height: 40px;
 `;
 
-export const WelcomePagePerksListBullets = styled.img`
+export const ItemImg = styled.img`
   height: 10px;
   margin-top: 5px;
 `;
 
-export const Perks = styled.li`
+export const ItemText = styled.p`
   color: #ffffff;
   margin-bottom: 42px;
   margin-left: 10px;
