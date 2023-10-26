@@ -22,7 +22,7 @@ import {
   FoodHeader,
   List,
   Element,
-  ElementTitle,
+  // ElementTitle,
   Img,
   AddFoodButton,
   BackLink,

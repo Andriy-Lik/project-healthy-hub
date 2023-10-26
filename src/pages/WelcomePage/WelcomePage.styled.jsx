@@ -3,25 +3,18 @@ import styled from 'styled-components';
 export const Container = styled.div`
   background-color: #050505;
   display: flex;
-  flex-direction: column;
 
   @media (min-width: 320px) and (max-width: 833px) {
-    display: flex;
     flex-direction: column;
-    margin: auto;
   }
 
   @media (min-width: 834px) and (max-width: 1439px) {
-    display: flex;
     flex-direction: center;
-    margin: auto;
   }
 
-  @media (min-width: 1439px) {
-    display: flex;
+  @media (min-width: 1440px) {
     flex-direction: row;
     justify-content: center;
-    margin: auto;
   }
 `;
 
@@ -29,7 +22,7 @@ export const Image = styled.img`
   margin-right: auto;
   margin-left: auto;
   margin-top: 40px;
-  margin-bottom: 40px;
+  // margin-bottom: 40px;
 
   @media (min-width: 320px) and (max-width: 833px) {
     width: 300px;
@@ -39,16 +32,14 @@ export const Image = styled.img`
     width: 380px;
   }
 
-  @media (min-width: 1439px) {
-    margin-right: 80px;
+  @media (min-width: 1440px) {
+    margin-right: 104px;
     margin-left: 0;
   }
 `;
 
 export const ContentBox = styled.div`
   max-width: 444px;
-  margin-top: 120px;
-  margin-left: 104px;
 
   @media (min-width: 320px) and (max-width: 833px) {
     margin: auto;
@@ -61,14 +52,14 @@ export const ContentBox = styled.div`
     flex-direction: column;
     justify-content: center;
   }
-  @media (min-width: 1439px) {
+  @media (min-width: 1440px) {
     width: 444px;
-    margin-left: 0;
-    margin-right: 120px;
+    margin-top: 120px;
   }
 `;
 
 export const Title = styled.h1`
+  margin-bottom: 16px;
   color: #ffffff;
   font-size: 30px;
   font-weight: 500;
@@ -82,17 +73,17 @@ export const Title = styled.h1`
 `;
 
 export const Text = styled.p`
+  margin-bottom: 24px;
   color: #b6b6b6;
   font-weight: 400;
   font-size: 22px;
-  margin-top: 16px;
   line-height: 32px;
   @media (min-width: 834px) and (max-width: 1439px) {
     width: 360px;
     text-align: center;
     align-self: center;
   }
-  @media (min-width: 1439px) {
+  @media (min-width: 1440px) {
     width: 360px;
   }
 `;
@@ -116,15 +107,14 @@ export const SignUpInactive = styled.button`
 `;
 
 export const BtnBox = styled.div`
-  margin-top: 24px;
-  margin-bottom: 40px;
-  margin-left: auto;
-  margin-right: auto;
+  margin-bottom: 80px;
+  // margin-left: auto;
+  // margin-right: auto;
 `;
 
-export const BtnSignUp = styled.button `
+export const BtnSignIn = styled.button `
+  margin-right: 38px;
   background-color: #E3FFA8;
-  margin-top: 24px;
   border-radius: 12px;
   width: 192px;
   padding: 8px;
@@ -132,17 +122,16 @@ export const BtnSignUp = styled.button `
   font-family: Poppins;
 `;
 
-export const BtnSignIn = styled.button `
+export const BtnSignUp = styled.button `
   background-color: #050505;
   border: none;
   color: #FFFF;
   font-size: 14px;
-  margin-left: 16px;
 `;
 
 export const List = styled.ul`
-  margin-top: 80px;
-  margin-bottom: 40px;
+  // margin-top: 80px;
+  // margin-bottom: 40px;
   @media (min-width: 834px) and (max-width: 1439px) {
     display: flex;
     flex-wrap: wrap;
@@ -152,7 +141,8 @@ export const List = styled.ul`
 
 export const Item = styled.li`
   display: flex;
-  height: 40px;
+  margin-bottom: 16px;
+  // height: 40px;
 `;
 
 export const ItemImg = styled.img`
@@ -162,7 +152,6 @@ export const ItemImg = styled.img`
 
 export const ItemText = styled.p`
   color: #ffffff;
-  margin-bottom: 42px;
   margin-left: 10px;
 
   @media (min-width: 320px) and (max-width: 833px) {

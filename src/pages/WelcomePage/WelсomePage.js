@@ -32,17 +32,17 @@ const WelcomePage = () => {
         </Text>
 
         <BtnBox>
-          <BtnSignUp>
+          <BtnSignIn>
             <Link to={'/signin'}>
               Sign in
             </Link>
-          </BtnSignUp>
+          </BtnSignIn>
 
-          <BtnSignIn>
+          <BtnSignUp>
             <Link to={'/signup'}>
               Sign up
             </Link>
-          </BtnSignIn>
+          </BtnSignUp>
         </BtnBox>
 
         <List>
