@@ -2,6 +2,7 @@ import { useState } from 'react';
 import edit from '../../images/diaryPageImages/edit-2.svg'
 import { useDispatch } from "react-redux";
 import {addFood} from 'redux/Foods/foodsOperations'
+import { getStats } from '../../redux/Statistics/statisticsOperations';
 
 import {
   FormForm,
@@ -13,11 +14,9 @@ import {
     EditButton,
   } from './DiaryForm.styled';
 
-
-export default function Form({onSubmit, type, value, onAddElement}) {
+export default function Form({type, value, onAddElement}) {
 
   const dispatch = useDispatch();
-
 
    const [number] = useState(value?.number)
    const [name, setName] = useState(value?.mealName)
@@ -45,22 +44,10 @@ export default function Form({onSubmit, type, value, onAddElement}) {
 
   const handleSubmit = e => {
     e.preventDefault();
-    onSubmit(carbon, protein, fat, type);
     setFormActive(!isFormActive);
     onAddElement(true);
 
-    const foodToDisplay = {
-      number: value.number,
-      mealType: type,
-      mealName: name,
-      carbohydrate: carbon,
-      protein: protein,
-      fat: fat,
-      calories: Math.random(2000).toString(),
-      isEditable: false,
-    }
-
-    const foodToSend = {
+    const food = {
       mealType: type,
       mealName: name,
       carbohydrate: carbon,
@@ -68,34 +55,13 @@ export default function Form({onSubmit, type, value, onAddElement}) {
       fat: fat,
       calories: Math.random(2000).toString(),
     }
-
-    const foodTypeItem = window.localStorage.getItem(type);
-    if (foodTypeItem) {
-       const foodType = JSON.parse(foodTypeItem);
-
-       let foundFood = foodType.find((foodItem) => foodItem.number === foodToDisplay.number);
-       if (foundFood) {
-        foundFood.mealType = foodToDisplay.mealType;
-        foundFood.mealName = foodToDisplay.mealName;
-        foundFood.carbohydrate = foodToDisplay.carbohydrate;
-        foundFood.protein = foodToDisplay.protein;
-        foundFood.fat = foodToDisplay.fat;
-        foundFood.calories = foodToDisplay.calories;
-
-       } else {
-        dispatch(addFood(foodToSend));
-        foodType.push(foodToDisplay);
-       }
-       window.localStorage.setItem(type, JSON.stringify(foodType));
-    } else {
-      dispatch(addFood(foodToSend));
-      const foods = [foodToDisplay];
-      window.localStorage.setItem(type, JSON.stringify(foods));
-    };
+        dispatch(addFood(food));
+        dispatch(getStats('today'));
   };
 
    return (
     <FormForm >
+    
     <label>
       <Input
         type="number"
@@ -109,6 +75,7 @@ export default function Form({onSubmit, type, value, onAddElement}) {
         name="name"
         value={name}
         disabled={!isFormActive}
+        required
       />
     </label>
     <label>
@@ -117,6 +84,7 @@ export default function Form({onSubmit, type, value, onAddElement}) {
         type="number"
         value={carbon}
         disabled={!isFormActive}
+        required
       />
     </label>
     <label>
@@ -125,6 +93,7 @@ export default function Form({onSubmit, type, value, onAddElement}) {
         type="number"
         value={protein}
         disabled={!isFormActive}
+        required
       />
     </label>
     <label>
@@ -132,7 +101,9 @@ export default function Form({onSubmit, type, value, onAddElement}) {
         onChange={handleFat}
         type="number"
         value={fat}
-        disabled={!isFormActive}/>
+        disabled={!isFormActive}
+        required
+        />
     </label>
     {isFormActive && <SubmitButton type="submit" onClick={handleSubmit}>✅</SubmitButton>}
     {!isFormActive && <EditButton  onClick={() => setFormActive(true)}><Img src={edit} alt="Edit"/>Edit</EditButton>}
