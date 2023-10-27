@@ -1,4 +1,5 @@
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import { calcRemainder } from 'helpers/calculations';
 import { Doughnut } from 'react-chartjs-2';
 import { useSelector } from 'react-redux';
 import { selectUser } from 'redux/Auth/authSelectors';
@@ -10,13 +11,14 @@ const DoughnutChartForFat = () => {
   const userInfo = useSelector(selectUser);
   const fatGoal = userInfo.fat;
   const consumedFat = useSelector(selectConsumedFatPerDay);
-  const leftConsumedFat = fatGoal - consumedFat;
+  const leftConsumedFat = calcRemainder(fatGoal, consumedFat);
 
   const data = {
     datasets: [
       {
         data: [consumedFat, leftConsumedFat],
-        borderRadius: 12,
+        backgroundColor: ['#B6B6B6', '#292928'],
+        borderRadius: `${leftConsumedFat > 0 ? 12 : 0}`,
         borderWidth: 0,
         cutout: '80%',
       },

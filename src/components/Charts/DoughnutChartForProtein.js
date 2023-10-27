@@ -1,4 +1,5 @@
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import { calcRemainder } from 'helpers/calculations';
 import { Doughnut } from 'react-chartjs-2';
 import { useSelector } from 'react-redux';
 import { selectUser } from 'redux/Auth/authSelectors';
@@ -10,14 +11,14 @@ const DoughnutChartForProtein = () => {
   const userInfo = useSelector(selectUser);
   const proteinGoal = userInfo.protein;
   const consumedProtein = useSelector(selectConsumedProteinPerDay);
-  const leftConsumedProtein = proteinGoal - consumedProtein;
+  const leftConsumedProtein = calcRemainder(proteinGoal, consumedProtein);
 
   const data = {
     datasets: [
       {
-        data: [consumedProtein, leftConsumedProtein], // 117.5 - спожито протеїну, 34 - залишилось спожити
+        data: [consumedProtein, leftConsumedProtein],
         backgroundColor: ['#FFF3B7', '#292928'],
-        borderRadius: 12,
+        borderRadius: `${leftConsumedProtein > 0 ? 12 : 0}`,
         borderWidth: 0,
         cutout: '80%',
       },

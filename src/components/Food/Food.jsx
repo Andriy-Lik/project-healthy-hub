@@ -24,6 +24,7 @@ import {
   selectConsumedCarbonohidratesPerDay,
   selectConsumedFatPerDay
 } from 'redux/Statistics/statisticsSelectors';
+import { calcRemainder } from 'helpers/calculations';
 
 const Food = () => {  
   const {
@@ -35,15 +36,22 @@ const Food = () => {
   const consumedCarbonohidrates = useSelector(
     selectConsumedCarbonohidratesPerDay
   );
-  const leftConsumedCarbonohidrates =
-    carbohydrateGoal - consumedCarbonohidrates;
-
-
+  const leftConsumedCarbonohidrates = calcRemainder(
+    carbohydrateGoal,
+    consumedCarbonohidrates
+  );
+  
   const consumedProtein = useSelector(selectConsumedProteinPerDay);
-  const leftConsumedProtein = proteinGoal - consumedProtein;
+  const leftConsumedProtein = calcRemainder(
+    proteinGoal,
+    consumedProtein
+  );
 
   const consumedFat = useSelector(selectConsumedFatPerDay);
-  const leftConsumedFat = fatGoal - consumedFat;
+  const leftConsumedFat = calcRemainder(
+    fatGoal,
+    consumedFat
+  );
   
   return (
     <Wrapper>

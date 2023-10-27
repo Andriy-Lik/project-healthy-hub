@@ -16,13 +16,18 @@ import {
   FormFormic,
   Label,
   Button,
-  ButtonTwo,
+  ButtonCancel,
   Input,
   ErrorMes,
 } from './addWater.styled';
 
 const schema = yup.object({
-  water: yup.number().required().positive().integer(),
+  water: yup.number()
+    .required("Required")
+    .typeError("Must be a number")
+    .positive("Must be a positive number")
+    .max(1500, "The maximum allowable value is 1500")
+    .integer("Must be an integer"),
 });
 
 const initialValues = {
@@ -79,7 +84,7 @@ const AddWater = ({ onClose }) => {
             <ErrorMes name="water" component="div" />
 
             <Button type="submit">Confirm</Button>
-            <ButtonTwo type="button" onClick={onClose}>Cancel</ButtonTwo>
+            <ButtonCancel type="button" onClick={onClose}>Cancel</ButtonCancel>
           </FormFormic>
         </Formik>
       </Modal>
