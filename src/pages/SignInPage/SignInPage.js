@@ -18,7 +18,7 @@ import { logIn } from '../../redux/Auth/authOperations';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import welcomeLogoPic from '../../images/WelcomeLogoPic.png';
+import logoPic from '../../images/WelcomePageImg/logoPic.png';
 
 const SignInPage = () => {
   const dispatch = useDispatch();
@@ -58,7 +58,7 @@ const SignInPage = () => {
           @import
           url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Roboto&display=swap');
         </style>
-        <Img src={welcomeLogoPic} alt="img" />
+        <Img src={logoPic} alt="img" />
         <SignInContainer>
           <Title>Sign in</Title>
           <Text>You need to login to use the service</Text>
