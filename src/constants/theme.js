@@ -2,7 +2,7 @@ const breakpoints = ['320', '834', '1440'];
 // const breakpoints = ['320', '768', '1280'];
 
 export const theme = Object.freeze({
-  // Кольори, приклад background-color: ${theme.colors.gray};
+  // Кольори, приклад background-color: ${p => p.theme.colors.white};
   colors: {
     // Основні
     white: '#FFFFFF', // білий
@@ -21,7 +21,7 @@ export const theme = Object.freeze({
     correct: '#3CBC81', // зелений правильно
   },
 
-  // Сімейство шрифтів, приклад font-family: ${theme.fontFamily.poppins};
+  // Сімейство шрифтів, приклад font-family: ${p => p.theme.fontFamily.poppins};
   fontFamily: {
     poppins: "'Poppins', sans-serif",
   },
@@ -36,12 +36,23 @@ export const theme = Object.freeze({
 
   // Розміри шрифту, приклад font-size: ${p => p.theme.fontSizes.l}px;
   fontSizes: {
-    xs: '14px',
-    s: '16px',
-    m: '18px',
-    l: '22px',
-    xl: '30px',
-    xxl: '32px',
+    xs: 14,
+    s: 16,
+    m: 18,
+    l: 22,
+    l2: 24,
+    xl: 30,
+    xxl: 32,
+  },
+
+  // Висота рядка, приклад line-height: ${p => p.theme.lineHeights.l}px;
+  lineHeights: {
+    xs: 20,
+    s: 24,
+    m: 30,
+    l: 32,
+    xl: 36,
+    // xxl: 32,
   },
 
   //Медіа запити, прклад
