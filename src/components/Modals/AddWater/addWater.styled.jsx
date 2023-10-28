@@ -7,15 +7,14 @@ export const Backdrop = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.2);
-  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.8);
 `;
 export const Modal = styled.div`
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 338px;
-  height: 280px;
+  width: 300px;
+  min-height: 266px;
   padding: 16px 12px;
   display: flex;
   align-items: center;
@@ -24,20 +23,33 @@ export const Modal = styled.div`
   border-radius: ${p => p.theme.radii.normal};  
   transform: translate(-50%, -50%) scale(1);
   transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1), opacity 300ms;
+
+    @media screen and (${ p => p.theme.mq.tablet}) {
+    width: 338px;
+    min-height: 280px;
+  };
 `;
 export const Title = styled.h1`
   margin-bottom: 24px;
   font-family: ${props => props.theme.fontFamily.poppins};
-  font-size: ${props => props.theme.fontSizes.xl};
+  font-size: 24px;
   font-weight: ${props => props.theme.fontWeights.medium};
   line-height: 36px;
   letter-spacing: 0em;  
   color: ${p => p.theme.colors.white};    
-  color: ${p => p.theme.colors.white};  
+  color: ${p => p.theme.colors.white};
+  
+    @media screen and (${ p => p.theme.mq.tablet}) {
+    font-size: ${props => props.theme.fontSizes.xl};
+  };
 `;
 
 export const FormFormic = styled(Form)`  
-  width: 212px;  
+  width: 100%;
+  
+    @media screen and (${ p => p.theme.mq.tablet}) {
+    width: 212px;   
+  };
 `;
 export const Label = styled.label`
   
@@ -51,6 +63,7 @@ export const Label = styled.label`
 
 export const Input = styled(Field)`
   margin-top: 12px;
+  margin-bottom: 5px;
   padding: 8px 10px;
   width: 100%;  
   border: ${p => p.theme.borders.normal} ${p => p.theme.colors.greenLite};
@@ -75,12 +88,13 @@ export const Input = styled(Field)`
 `;
 
 export const ErrorMes = styled(ErrorMessage)`
+  padding: 0 5px;
   font-family: ${props => props.theme.fontFamily.poppins};
-  font-size: ${props => props.theme.fontSizes.xs};
+  font-size: 10px;
   font-weight: ${props => props.theme.fontWeights.regular};
-  line-height: 20px;
+  line-height: 12px;
   letter-spacing: 0em;
-  color: ${p => p.theme.colors.error};  
+  color: ${p => p.theme.colors.error};   
 `;
 
 export const Button = styled.button`
@@ -99,7 +113,7 @@ export const Button = styled.button`
   cursor: pointer;
 `;
 
-export const ButtonTwo = styled.button`
+export const ButtonCancel = styled.button`
   margin-top: 8px;
   padding: 8px 10px;
   width: 100%;

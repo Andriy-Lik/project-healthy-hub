@@ -7,8 +7,7 @@ export const Backdrop = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.2);
-  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.8);
 `;
 
 export const Modal = styled.div`
@@ -92,13 +91,14 @@ export const ContentWrapper = styled.div`
 export const ProductList = styled.ul`
   padding: 6px;
   overflow-y: auto;
-  height: calc(100% - 44px);
+  height: 200px;
   margin-bottom: 24px;
   display: flex;
   flex-direction: column;
   gap: 30px;
 
   @media screen and (${ p => p.theme.mq.tablet}) {
+    height: calc(100% - 44px);
     gap: 24px;
   };
   
@@ -106,39 +106,45 @@ export const ProductList = styled.ul`
     width: 10px;  
   };
 
-  &::-webkit-scrollbar-track {
-    background-color: ${ p => p.theme.colors.gray};
-    border-radius: ${ p => p.theme.radii.normal};
-  };
-
   &::-webkit-scrollbar-thumb {
-    background-color: ${ p => p.theme.colors.gray1};
+    background-color: rgba(41, 41, 40, 0.2);
     border-radius: ${ p => p.theme.radii.normal};
-    border: 1px solid ${ p => p.theme.colors.gray};
+    border: 1px solid  rgba(227, 255, 168, 0.2);    
 
     &:hover {
-      background-color: ${ p => p.theme.colors.greenLite};
-    }
-
+      background-color: rgba(227, 255, 168, 0.2);
+    };
   };
 `;
 
 export const Product = styled.li`
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+  display: grid;
+  grid-gap: 12px;
+  grid-template-columns: repeat(3, 1fr);
+
+  & > div:nth-child(-n + 3){
+    grid-column-start: 1;
+    grid-column-end: 4;
+  };
 
   @media screen and (${ p => p.theme.mq.tablet}) {
-    flex-direction: row;
-  };
+    grid-template-columns: 40.5% 15.3% 11.5% 7.5% 13% 2.5%;
 
-  & > div {
-    width: 100%;
+    & > div:nth-child(1){
+      grid-column-start: 1;
+      grid-column-end: 2;
+    };
 
-     @media screen and (${ p => p.theme.mq.tablet}) {
-    width: calc((100% - 12px) / 5);
-  };
-  }
+    & > div:nth-child(2){
+      grid-column-start: 2;
+      grid-column-end: 3;
+    };
+
+    & > div:nth-child(3){
+      grid-column-start: 3;
+      grid-column-end: 4;
+    };
+  }; 
 `;
 
 export const WrapperInput = styled.div`
@@ -168,7 +174,7 @@ export const Input = styled(Field)`
 
   &::placeholder {
     color: ${p => p.theme.colors.gray};
-  };
+  };  
 `;
 
 export const ErrorMsg = styled(ErrorMessage)`
@@ -179,6 +185,14 @@ export const ErrorMsg = styled(ErrorMessage)`
   line-height: 12px;
   letter-spacing: 0em;
   color: ${p => p.theme.colors.error};  
+`;
+
+export const BtnRemoveProduct = styled.button`
+  padding: 0;
+  margin: 0;
+  border:  ${p => p.theme.borders.none};
+  background-color: transparent;
+  cursor: pointer;  
 `;
 
 export const BtnAddNewProduct = styled.button`

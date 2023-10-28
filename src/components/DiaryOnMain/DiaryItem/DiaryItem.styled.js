@@ -50,15 +50,15 @@ export const InfoWrap = styled.div`
 `;
 
 export const CarbonohidratesWrap = styled.p`
-  width: 164px;
+  min-width: 190px;
 `;
 
 export const ProteinWrap = styled.p`
-  width: 92px;
+  width: 110px;
 `;
 
 export const FatWrap = styled.p`
-  width: 66px;
+  width: 60px;
 `;
 
 export const Value = styled.span`
@@ -90,7 +90,3 @@ export const AddButton = styled.button`
   padding: 0;
   cursor: pointer;
 `;
-
-// export const AddIcon = styled(Icon)`
-//   stroke: var(--icon-color-green);
-// `;

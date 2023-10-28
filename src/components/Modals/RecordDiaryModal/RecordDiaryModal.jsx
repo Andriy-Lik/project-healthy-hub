@@ -2,10 +2,10 @@ import PropTypes from "prop-types";
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { useDispatch } from "react-redux";
+import 'react-toastify/dist/ReactToastify.css';
 
 import { addFood } from 'redux/Foods/foodsOperations';
 import { getStats } from "redux/Statistics/statisticsOperations";
-
 
 import { FieldArray, Formik } from 'formik';
 import * as yup from 'yup';
@@ -23,6 +23,7 @@ import {
   Product,
   WrapperInput,
   Input,
+  BtnRemoveProduct,
   BtnAddNewProduct,  
   ErrorMsg,
   ContainerForBtns,
@@ -30,36 +31,56 @@ import {
   BtnCancel
 } from './RecordDiaryModal.styled';
 
+import img1 from 'images/trash.png';
+import img2 from 'images/trash@2x.png';
 
 const schema = yup.object({
   productList: yup.array().of(yup.object().shape({
     mealName:
       yup.string()
-        .required("Name is a required field")
+        .required("Name is a required")
         .trim('Name cannot include leading and trailing spaces')
         .strict(true),
     carbonohidrates:
       yup.number()
-        .required("Carbonohidrates is a required field")
-        .typeError('Carbonohidrates must be a number')
-        .min(0, "Carbonohidrates must a positive number")
-        .integer("Carbonohidrates must be an integer"),
+        .required("Carbonohidrates is required")
+        .typeError("Must be a number")
+        .min(0, "Must be a positive number")
+        .max(1000, "The maximum allowable value is 1000")
+        .test(
+          "maxDigitsAfterDecimal",
+          "Must have 1 digits after decimal",
+          (number) => /^\d+(\.\d{1})?$/.test(number)
+        ),
     protein:
       yup.number()
-        .required("Protein is a required field")
-        .typeError('Protein must be a number')        
-        .min(0, "Protein must a positive number"),
+        .required("Protein is required")
+        .typeError('Must be a number')
+        .min(0, "Must be a positive number")
+        .max(1000, "The maximum allowable value is 1000")
+        .test(
+          "maxDigitsAfterDecimal",
+          "Must have 1 digits after decimal",
+          (number) => /^\d+(\.\d{1})?$/.test(number)
+        ),
     fat:
       yup.number()
-        .required("Fat is a required field")
-        .typeError('Fat must be a number')
-        .min(0, "Protein must a positive number"),
+        .required("Fat is required")
+        .typeError('Must be a number')
+        .min(0, "Must be a positive number")
+        .max(1000, "The maximum allowable value is 1000")
+        .test(
+          "maxDigitsAfterDecimal",
+          "Must have 1 digits after decimal",
+          (number) => /^\d+(\.\d{1})?$/.test(number)
+        ),
     calories:
       yup.number()
-        .required("Calories is a required field")
-        .typeError('Calories must be a number')
-        .min(0, "Calories must a positive number")
-        .integer("Calories must be an integer"),
+        .required("Calories is required")
+        .typeError('Must be a number')
+        .min(0, "Must a be positive number")
+        .max(10000, "The maximum allowable value is 10000")
+        .integer("Must be an integer"),
   })),
 });
 
@@ -106,9 +127,9 @@ const RecordDiaryModal = ({ onClose, image, mealType }) => {
       const data = {
         mealType: mealType.toString(),
         mealName: mealName.toString(),
-        carbohydrate: carbonohidrates.toString(),
-        protein: protein.toString(),
-        fat: fat.toString(),
+        carbohydrate: carbonohidrates.toFixed(1).toString(),
+        protein: protein.toFixed(1).toString(),
+        fat: fat.toFixed(1).toString(),  
         calories: calories.toString(),      
       }
       dispatch(addFood(data));
@@ -204,15 +225,30 @@ const RecordDiaryModal = ({ onClose, image, mealType }) => {
                               <ErrorMsg name={`productList.${index}.calories`} component="div" />
                             </WrapperInput>
 
+                            {values.productList.length > 1 &&
+                              <BtnRemoveProduct
+                                type="button"
+                                onClick={() => remove(index)}
+                              >
+                                <img
+                                  srcSet={`${img1} 1x, ${img2} 2x`}
+                                  width={20}
+                                  height={20}
+                                  src={img1}
+                                  alt="Trash"
+                                />
+                              </BtnRemoveProduct>
+                            }
                           </Product>
-                        )
-                      })}
-                      
+                        );
+
+                      })}                      
                     </ProductList>
                    
                     <BtnAddNewProduct
                       type="button"
                       onClick={() => {
+                        
                         insert(
                           values.productList.length + 1,
                           {
@@ -223,7 +259,7 @@ const RecordDiaryModal = ({ onClose, image, mealType }) => {
                             fat: '',
                             calories: ''
                           }
-                        )
+                        )                          
                       }}
                     >
                       + Add more
