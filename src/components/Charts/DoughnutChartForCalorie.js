@@ -1,4 +1,5 @@
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import { calcRemainder } from 'helpers/calculations';
 import { Doughnut } from 'react-chartjs-2';
 import { useSelector } from 'react-redux';
 import { selectUser } from 'redux/Auth/authSelectors';
@@ -10,7 +11,7 @@ const DoughnutForCalorie = () => {
   const userInfo = useSelector(selectUser);
   const caloriesGoal = userInfo.bmr;
   const consumedCalories = useSelector(selectConsumedCaloriesPerDay);
-  const leftConsumedCalories = caloriesGoal - consumedCalories;
+  const leftConsumedCalories = calcRemainder(caloriesGoal, consumedCalories);
 
   const data = {
     labels: ['Consumed:', 'Left:'],
@@ -19,7 +20,7 @@ const DoughnutForCalorie = () => {
         data: [consumedCalories, leftConsumedCalories],
         backgroundColor: ['#45FFBC', '#292928'],
         borderColor: ['rgba(69, 255, 188, 0)'],
-        borderRadius: 12,
+        borderRadius: `${leftConsumedCalories > 0 ? 12 : 0}`,
         borderWidth: 0,
         cutout: '80%',
       },

@@ -1,4 +1,5 @@
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import { calcRemainder } from 'helpers/calculations';
 import { Doughnut } from 'react-chartjs-2';
 import { useSelector } from 'react-redux';
 import { selectUser } from 'redux/Auth/authSelectors';
@@ -12,15 +13,17 @@ const DoughnutChartForCarbonohidrates = () => {
   const consumedCarbonohidrates = useSelector(
     selectConsumedCarbonohidratesPerDay
   );
-  const leftConsumedCarbonohidrates =
-    carbonohidratesGoal - consumedCarbonohidrates;
+  const leftConsumedCarbonohidrates = calcRemainder(
+    carbonohidratesGoal,
+    consumedCarbonohidrates
+  );
 
   const data = {
     datasets: [
       {
         data: [consumedCarbonohidrates, leftConsumedCarbonohidrates],
         backgroundColor: ['#FFC4F7', '#292928'],
-        borderRadius: 12,
+        borderRadius: `${leftConsumedCarbonohidrates > 0 ? 12 : 0}`,
         borderWidth: 0,
         cutout: '80%',
       },
