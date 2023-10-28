@@ -14,7 +14,7 @@ import {
   ItemImg,
   ItemText,
 } from './WelcomePage.styled';
-import welcomeLogoPic from '../../images/WelcomeLogoPic.png';
+import logoPic from '../../images/WelcomePageImg/logoPic.png';
 import bullets from '../../images/WelcomePageImg/bullets.png';
 
 const WelcomePage = () => {
@@ -24,7 +24,7 @@ const WelcomePage = () => {
         @import
         url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Roboto&display=swap');
       </style>
-      <Image src={welcomeLogoPic} alt="Reg Logo" />
+      <Image src={logoPic} alt="Reg Logo" />
       <ContentBox>
         <Title>Set goals and achieve them</Title>
         <Text>
