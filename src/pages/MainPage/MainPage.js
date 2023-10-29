@@ -2,7 +2,6 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { getStats } from 'redux/Statistics/statisticsOperations';
-// import { getRecomendedFood } from 'redux/RecomendedFood/recomendedFoodOperations';
 
 import {
   Container,
@@ -22,8 +21,8 @@ import Food from 'components/Food';
 import { DiaryOnMain } from 'components/DiaryOnMain';
 import { RecommendedFoodOnMain } from 'components/RecommendedFoodOnMain';
 
-import img1 from '../../images/arrow-right.png';
-import img2 from '../../images/arrow-right@2x.png';
+import img1 from 'images/arrow-right.png';
+import img2 from 'images/arrow-right@2x.png';
 import { selectStatsIsLoading } from 'redux/Statistics/statisticsSelectors';
 import Loader from 'components/Loader';
 

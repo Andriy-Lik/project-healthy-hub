@@ -7,10 +7,10 @@ import {
   Container,
 } from './DiaryOnMain.styled';
 
-import breakfastImage from '../../images/breakfast-image.svg';
-import dinnerImage from '../../images/dinner-image.svg';
-import lunchImage from '../../images/lunch-image.svg';
-import snackImage from '../../images/snack-image.svg';
+import breakfastImage from 'images/breakfast-image.svg';
+import dinnerImage from 'images/dinner-image.svg';
+import lunchImage from 'images/lunch-image.svg';
+import snackImage from 'images/snack-image.svg';
 import { useSelector } from 'react-redux';
 import { selectConsumedMacronutrientsPerDay } from 'redux/Statistics/statisticsSelectors';
 

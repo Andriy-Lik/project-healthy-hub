@@ -89,7 +89,7 @@ export const ContentWrapper = styled.div`
 `
 
 export const ProductList = styled.ul`
-  padding: 6px;
+  padding: 10px;
   overflow-y: auto;
   height: 200px;
   margin-bottom: 24px;
@@ -103,7 +103,8 @@ export const ProductList = styled.ul`
   };
   
   &::-webkit-scrollbar {
-    width: 10px;  
+    width: 7px;
+   
   };
 
   &::-webkit-scrollbar-thumb {

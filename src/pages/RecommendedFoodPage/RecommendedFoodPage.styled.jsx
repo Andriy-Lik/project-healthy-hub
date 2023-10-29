@@ -1,12 +1,43 @@
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
-export const Background = styled.div`
-background-color: #050505;
-width: 100%;
-flex-direction: column;
-display: flex;
-`
+export const Container = styled.main`
+  background-color: ${props => props.theme.colors.black};
+  color: ${props => props.theme.colors.white};
+  font-family: ${props => props.theme.fontFamily.poppins};
+
+  padding-top: 16px;
+  padding-bottom: 40px;
+
+  @media screen and (${props => props.theme.mq.tablet}) {
+    padding-top: 24px;
+  }
+
+  @media screen and (${props => props.theme.mq.desktop}) {
+    padding-top: 20px;
+  }
+`;
+
+export const Content = styled.div`
+  margin: 0 auto;
+  width: 320px;
+  padding: 0 10px;
+
+  @media screen and (${props => props.theme.mq.tablet}) {
+    width: 834px;
+    padding: 0 27px;
+  }
+
+  @media screen and (${props => props.theme.mq.desktop}) {
+    width: 1440px;
+    padding: 0 34px;
+  }
+`;
+
+export const HeaderPage = styled.header`
+  display: flex;
+  margin-bottom: 16px;
+`;
 
 export const BackLink = styled(NavLink)`
   display: flex;
@@ -19,97 +50,120 @@ export const BackLink = styled(NavLink)`
 `;
 
 export const ArrowReturn = styled.img`
-  @media screen and (${props => props.theme.mq.mobile}) {
-    width: 16px;
-  }
+  width: 16px;  
   @media screen and (${props => props.theme.mq.tablet}) {
     width: 24px;
   }
 `;
 
-export const Title = styled.h1`
-  margin-top: 20px;
-  color: ${p => p.theme.colors.white};
-  margin-left: 34px;
-`
-export const Img = styled.img`
-width: 300px;
-height: 312px;
-margin-top: 24px;
-margin-right: 44px;
-margin-left: 50px;
-@media (min-width: 320px) and (max-width: 833px)  {
-  width: 380px;
-  height: 396px;
-}
-@media (min-width: 834px) and (max-width: 1639px)  {
-  width: 436px;
-  height: 460px;
-}
-`
-export const Item = styled.li`
-border-radius: 12px;
-border: 1px solid black;
-display: flex;
-justify-content: flex-start;
-align-items: center;
-width: 300px;
-height: 86px;
-margin-right: 20px;
-margin-bottom: 20px;
-font-size: 12px;
-background-color:${p => p.theme.colors.black2};
-color:${p => p.theme.colors.white};
+export const TitlePage = styled.h1`
+  font-size: 24px;
+  font-weight: ${props => props.theme.fontWeights.medium};
+  line-height: 30px;
+  letter-spacing: 0em;
 
-@media (min-width: 320px) and (max-width: 833px)  {
-  width: 380px;
-}
-@media (min-width: 834px) and (max-width: 1439px)  {
-  width: calc((100% - 60px) / 2);
-  max-width: 328px;
-}
-`
-export const Container = styled.div`
-display: flex;
-`
-export const Svg = styled.img`
-width: 46px;
-height: 46px;
-margin-left:24px;
-margin-right:20px;
-`
-export const Parag = styled.p`
-margin-right: 6px;
-`
-export const ParagTwo = styled.p`
-color:${p => p.theme.colors.gray}
-`
+  @media screen and (${props => props.theme.mq.tablet}) {
+    font-size: ${props => props.theme.fontSizes.xl};
+    line-height: 36px;
+  }
+`;
 
-export const List = styled.ul`
-
-@media (min-width: 320px) and (max-width: 1003px)  {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-top:24px;
-}
-@media (min-width: 834px) and (max-width: 1639px)  {
-  display: flex;
-flex-direction: row;
-flex-wrap: wrap;
-align-items: center;
-width: 800px;
-}
-`
-export const ContainerTwo = styled.div`
-display: flex;
-justify-content: space-around;
-
-@media (min-width: 320px) and (max-width: 1003px)  {
+export const InfoBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-}
+  justify-content: center;
 
-`
+   @media screen and (${props => props.theme.mq.desktop}) {
+    flex-direction: row;
+    align-items: start;
+    justify-content: space-between;
+  }
+`;
+
+export const BannerThumb = styled.div`
+  margin-bottom: 24px;
+  width: 300px;
+  height: 312px;
+
+  @media screen and (${props => props.theme.mq.tablet}) {
+    width: 380px;
+    height: 396px;
+    
+    
+  }
+ 
+  @media screen and (${props => props.theme.mq.desktop}) {
+    width: 536px;
+    height: 560px;
+    margin-bottom: 0;
+  }
+`;
+
+export const Img = styled.img`
+  display: block;
+  max-width: 100%;
+  height: auto;
+`;
+
+export const ProductList = styled.ul`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+
+  @media screen and (${props => props.theme.mq.tablet}) {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  @media screen and (${props => props.theme.mq.desktop}) {    
+    width: calc((100% - 44px) / 2);
+  }
+`;
+
+export const ProductItem = styled.li`  
+  flex-basis: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  column-gap: 20px;
+  padding: 20px 24px;
+  border-radius: ${p => p.theme.radii.normal};
+  background-color: ${p => p.theme.colors.black2};
+  
+  @media screen and (${props => props.theme.mq.tablet}) {
+    flex-basis: calc((100% - 20px)/2);
+  }  
+`;
+
+export const ImgThumb = styled.div`
+  width: 46px;
+  height: 46px;
+`;
+
+export const Description = styled.div`
+  display: flex;
+  flex-direction: column;
+  column-gap: 2px;
+`;
+
+export const Title = styled.p`
+  font-size: ${p => p.theme.fontSizes.m};
+  font-weight: ${p => p.theme.fontWeights.medium};
+  line-height: 24px;
+  letter-spacing: 0em;  
+`;
+
+export const Value = styled.p`
+margin-right: 6px;
+  font-size: ${p => p.theme.fontSizes.xs};
+  font-weight: ${p => p.theme.fontWeights.regular};
+  line-height: 20px;
+  letter-spacing: 0em;
+  
+  & > span{ 
+    font-weight: ${p => p.theme.fontWeights.medium};
+    color: ${p => p.theme.colors.gray};
+  }
+`;

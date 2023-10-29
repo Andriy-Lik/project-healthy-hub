@@ -98,17 +98,27 @@ export const TrackerList = styled.ul`
 export const Tarker = styled.li`
   flex-basis: 100%;
 
-  @media screen and (${props => props.theme.mq.desktop}) {
-    flex-basis: calc((100% - 40px) / 3);
-  }
-
   &:not(:last-of-type) {
     @media screen and (${props => props.theme.mq.tablet}) {
       flex-basis: calc((100% - 20px) / 2);
     }
+  }
 
+  &:nth-child(1) {
     @media screen and (${props => props.theme.mq.desktop}) {
-      flex-basis: calc((100% - 40px) / 3);
+      flex-basis: 328px;
+    }
+  }
+
+  &:nth-child(2) {
+    @media screen and (${props => props.theme.mq.desktop}) {
+      flex-basis: 444px;
+    }
+  }
+
+  &:nth-child(3) {
+    @media screen and (${props => props.theme.mq.desktop}) {
+      flex-basis: 560px;
     }
   }
 `;

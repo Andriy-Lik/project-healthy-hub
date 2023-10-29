@@ -12,7 +12,8 @@ import {
   DiaryImage,
   TitleWrap
 } from './DiaryItem.styled.js';
-import RecordDiaryModal from '../../Modals/RecordDiaryModal/RecordDiaryModal.jsx'
+
+import RecordDiaryModal from 'components/Modals/RecordDiaryModal/RecordDiaryModal.jsx'
 
 export const DiaryItem = ({ title, image, info }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
