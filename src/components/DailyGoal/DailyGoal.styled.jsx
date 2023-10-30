@@ -58,8 +58,9 @@ export const Counter = styled.p`
   letter-spacing: 0em;
   color: ${props => props.theme.colors.white};
   
-  & > span {
+  & > span:not(:first-child) {
     font-size: ${props => props.theme.fontSizes.xs};
     color: ${props => props.theme.colors.gray};
   }  
 `;
+

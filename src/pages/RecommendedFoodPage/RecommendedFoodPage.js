@@ -2,26 +2,29 @@ import { useState, useRef, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
-import image from '../../images/Ketogenic.png';
+import image from 'images/Ketogenic.png';
 import {
+  Container,
+  Content,
+  HeaderPage,
   BackLink,
   ArrowReturn,
-  Title,
+  TitlePage,
+  InfoBox,
+  BannerThumb,
   Img,
-  Item,
-  Container,
-  Svg,
-  Parag,
-  List,
-  ContainerTwo,
-  ParagTwo,
-  Background,
+  ProductList,
+  ProductItem,
+  ImgThumb,
+  Description,
+  Title,
+  Value,
 } from './RecommendedFoodPage.styled';
 
-import { selectRecomendedFood } from '../../redux/RecomendedFood/recomendedFoodSelectors';
-import { randomizeFood } from '../../helpers/randomizeFood';
+import { selectRecomendedFood } from 'redux/RecomendedFood/recomendedFoodSelectors';
+import { randomizeFood } from 'helpers/randomizeFood';
 
-import arrowRight from '../../images/icons/arrow-right.svg';
+import arrowRight from 'images/icons/arrow-right.svg';
 
 export default function RecommendedFood() {
   const [arrayForRender, setArrayForRender] = useState([]);
@@ -36,30 +39,38 @@ export default function RecommendedFood() {
   }, [info]);
 
   return (
-    <Background>
-      <BackLink to={backLinkLocationRef.current}>
-        <ArrowReturn src={arrowRight} alt="arrow right" />
-      </BackLink>
-      <Title>Recommented food</Title>
-      <ContainerTwo>
-        <Img src={image} alt="Recommended food" />
-        <List>
-          {arrayForRender.map(({ img, name, amount, calories }) => {
-            return (
-              <Item>
-                <Svg src={img} alt={name} />
-                <div>
-                  <h2>{name}</h2>
-                  <Container>
-                    <Parag>{amount}</Parag>
-                    <ParagTwo>{calories}</ParagTwo>
-                  </Container>
-                </div>
-              </Item>
-            );
-          })}
-        </List>
-      </ContainerTwo>
-    </Background>
+    <Container>
+      <Content>
+        <HeaderPage>
+          <BackLink to={backLinkLocationRef.current}>
+            <ArrowReturn src={arrowRight} alt="arrow right" />
+          </BackLink>
+          <TitlePage>Recommented food</TitlePage>
+        </HeaderPage>
+
+        <InfoBox>
+          <BannerThumb>
+            <Img src={image} alt="Banner recommended food" />
+          </BannerThumb>
+          <ProductList>
+            {arrayForRender.map(({ _id, img, name, amount, calories }) => {
+              return (
+                <ProductItem key={_id}>
+                  <ImgThumb>
+                    <Img src={img} alt={name} />
+                  </ImgThumb>
+                  <Description>
+                    <Title>{name}</Title>
+                    <Value>
+                      {amount} <span>{calories} calories</span>
+                    </Value>
+                  </Description>
+                </ProductItem>
+              );
+            })}
+          </ProductList>
+        </InfoBox>
+      </Content>
+    </Container>
   );
 }

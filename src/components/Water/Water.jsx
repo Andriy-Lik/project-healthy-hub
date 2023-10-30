@@ -35,6 +35,8 @@ const Water = () => {
  
   let consumedWaterPercent = calcPercent(WATER_GOAL, consumedWaterMl) + "%";
   let leftToConsumeWater = calcRemainder(WATER_GOAL, consumedWaterMl);
+
+ setTimeout(() => {document.querySelector("#bla").style.height = consumedWaterPercent}, 0)
   
   return (
     <Wrapper>
@@ -44,7 +46,7 @@ const Water = () => {
           <WaterTracker>
             {/* лічильник спожитої води у відсотках*/}
             <CounterOfConsumedWaterInPercentage>{consumedWaterPercent}</CounterOfConsumedWaterInPercentage>
-            <Chart style={{height: `${consumedWaterPercent}`}}/>
+            <Chart id="bla" style={{height: 0}} />
           </WaterTracker>
           <CardText>
             <CardTitle>Water consumption</CardTitle>
