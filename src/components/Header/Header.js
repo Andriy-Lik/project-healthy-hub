@@ -3,6 +3,8 @@ import { useSelector } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
 import { selectIsLoggedIn, selectUser } from '../../redux/Auth/authSelectors';
 
+import HeaderOverlay from 'components/HeaderModals/HeaderOverlay';
+
 import {
   Container,
   Content,
@@ -150,10 +152,12 @@ export default function Header() {
                   />
                 </InfoBlockText>
               </TextContainer>
-              {showModalTarget && (
-                <TargetModal onCloseModal={toggleModalTarget} />
-              )}
             </InfoBlock>
+            {showModalTarget && (
+              <HeaderOverlay onCloseOverlay={toggleModalTarget}>
+                <TargetModal onCloseModal={toggleModalTarget} />
+              </HeaderOverlay>
+            )}
             <InfoBlock onClick={toggleModalWeight}>
               <IconContainer>
                 <img src={waight} alt="weight" width={28} />
@@ -166,10 +170,12 @@ export default function Header() {
                   <EditSvg src={edit} alt="edit" />
                 </InfoBlockText>
               </TextContainer>
-              {showModalWeight && (
-                <WeightModal onCloseModal={toggleModalWeight} />
-              )}
             </InfoBlock>
+            {showModalWeight && (
+              <HeaderOverlay onCloseOverlay={toggleModalWeight}>
+                <WeightModal onCloseModal={toggleModalWeight} />
+              </HeaderOverlay>
+            )}
           </InfoOptions>
           <UserBlock onClick={toggleModalProfile}>
             {user.name || 'User'}

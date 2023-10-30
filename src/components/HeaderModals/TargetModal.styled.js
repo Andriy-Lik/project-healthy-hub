@@ -1,25 +1,5 @@
 import styled from 'styled-components';
 
-export const Overlay = styled.div`
-  position: absolute;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 5;
-  @media screen and (${props => props.theme.mq.mobile}) {
-    top: 60px;
-    display: flex;
-  }
-  @media screen and (${props => props.theme.mq.tablet}) {
-    top: 100px;
-    display: flex;
-  }
-  @media screen and (${props => props.theme.mq.desktop}) {
-    top: 100px;
-    display: flex;
-  }
-`;
-
 export const ModalWrapper = styled.div`
   position: absolute;
   box-shadow: 0 4px 14px 0 rgba(227, 255, 168, 0.2);
@@ -63,15 +43,16 @@ export const Modal = styled.div`
 `;
 
 export const CloseBtn = styled.button`
+  width: 16px;
+  height: 16px;
   background: inherit;
   border: none;
   justify-content: center;
   align-items: center;
-  width: 26px;
-  height: 26px;
   position: absolute;
   right: 32px;
   top: 20px;
+  cursor: pointer;
   @media screen and (${props => props.theme.mq.mobile}) {
     display: none;
   }
@@ -193,3 +174,24 @@ export const CancelBtn = styled.button`
     display: none;
   }
 `;
+
+
+// export const Overlay = styled.div`
+//   position: absolute;
+//   left: 0;
+//   width: 100%;
+//   height: 100%;
+//   z-index: 5;
+//   @media screen and (${props => props.theme.mq.mobile}) {
+//     top: 60px;
+//     display: flex;
+//   }
+//   @media screen and (${props => props.theme.mq.tablet}) {
+//     top: 100px;
+//     display: flex;
+//   }
+//   @media screen and (${props => props.theme.mq.desktop}) {
+//     top: 100px;
+//     display: flex;
+//   }
+// `;
