@@ -59,6 +59,8 @@ export default function Header() {
   const user = useSelector(selectUser);
   const isLoggedIn = useSelector(selectIsLoggedIn);
 
+  // console.log(isLoggedIn);
+
   let goalIcon;
 
   switch (user.gender) {
@@ -152,12 +154,12 @@ export default function Header() {
                   />
                 </InfoBlockText>
               </TextContainer>
+              {showModalTarget && (
+                <HeaderOverlay onCloseOverlay={toggleModalTarget}>
+                  <TargetModal onCloseModal={toggleModalTarget} />
+                </HeaderOverlay>
+              )}
             </InfoBlock>
-            {showModalTarget && (
-              <HeaderOverlay onCloseOverlay={toggleModalTarget}>
-                <TargetModal onCloseModal={toggleModalTarget} />
-              </HeaderOverlay>
-            )}
             <InfoBlock onClick={toggleModalWeight}>
               <IconContainer>
                 <img src={waight} alt="weight" width={28} />
@@ -170,12 +172,12 @@ export default function Header() {
                   <EditSvg src={edit} alt="edit" />
                 </InfoBlockText>
               </TextContainer>
+              {showModalWeight && (
+                <HeaderOverlay onCloseOverlay={toggleModalWeight}>
+                  <WeightModal onCloseModal={toggleModalWeight} />
+                </HeaderOverlay>
+              )}
             </InfoBlock>
-            {showModalWeight && (
-              <HeaderOverlay onCloseOverlay={toggleModalWeight}>
-                <WeightModal onCloseModal={toggleModalWeight} />
-              </HeaderOverlay>
-            )}
           </InfoOptions>
           <UserBlock onClick={toggleModalProfile}>
             {user.name || 'User'}
