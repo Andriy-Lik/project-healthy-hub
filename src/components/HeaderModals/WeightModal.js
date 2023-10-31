@@ -35,12 +35,11 @@ export default function WeightModal({ onCloseModal }) {
     onCloseModal();
   };
 
-  const closeBtnHandler = event => {
-    if (event.currentTarget === event.target) {
-      onCloseModal();
-    }
-  };
-
+  // const closeBtnHandler = event => {
+  //   if (event.currentTarget === event.target) {
+  //     onCloseModal();
+  //   }
+  // };
 
   function getCurrentDateFormatted() {
     const currentDate = new Date();
@@ -57,7 +56,12 @@ export default function WeightModal({ onCloseModal }) {
   return (
     <ModalWrapper>
       <CloseBtn>
-        <img src={close} alt="close" width={16} onClick={closeBtnHandler} />
+        <img
+          src={close}
+          alt="close"
+          width={16}
+          onClick={() => onCloseModal()}
+        />
       </CloseBtn>
       <Modal onClick={e => e.stopPropagation()}>
         <ModalTitle>Enter your current weight</ModalTitle>
@@ -79,7 +83,7 @@ export default function WeightModal({ onCloseModal }) {
           <WeightFormBtn type="submit">Confirm</WeightFormBtn>
         </WeightForm>
       </Modal>
-      <CancelBtn onClick={onCloseModal()}>Cancel</CancelBtn>
+      <CancelBtn onClick={() => onCloseModal()}>Cancel</CancelBtn>
     </ModalWrapper>
   );
 }
