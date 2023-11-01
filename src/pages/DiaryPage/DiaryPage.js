@@ -44,11 +44,6 @@ const DiaryPage = () => {
   const toggleModal2 = () => setIsModalOpen2(!isModalOpen2);
   const toggleModal3 = () => setIsModalOpen3(!isModalOpen3);
 
-  // const [count, setCount] = useState(1);
-  // const incrementCount = () => {
-  //   setCount(count + 1);
-  // };
-
   const location = useLocation();
   const backLinkLocationRef = useRef(location.state?.from ?? '/main');
 
@@ -61,14 +56,10 @@ const DiaryPage = () => {
   } = consumedMacronutrients;
 
   const foodIntake = useSelector(selectIntakeFoodPerDay)
-  const breakfastFoodIntake = foodIntake.filter((value) => value.mealType === 'Breakfast' ).map(item => <ElementOfFood item={item} />)
-  const dinnerFoodIntake = foodIntake.filter((value) => value.mealType === 'Dinner' ).map(item => <ElementOfFood item={item} />)
-  const lunchFoodIntake = foodIntake.filter((value) => value.mealType === 'Lunch' ).map(item => <ElementOfFood item={item} />)
-  const snackFoodIntake = foodIntake.filter((value) => value.mealType === 'Snack' ).map(item => <ElementOfFood item={item} />)
-
-  // console.log(consumedMacronutrients)
-  // console.log(foodIntake)
-  // console.log(breakfastFoodIntake)
+  const breakfastFoodIntake = foodIntake.filter((value) => value.mealType === 'Breakfast' ).map((item, index) => <ElementOfFood item={item} index={index}/>)
+  const dinnerFoodIntake = foodIntake.filter((value) => value.mealType === 'Dinner' ).map((item, index) => <ElementOfFood item={item} index={index}/>)
+  const lunchFoodIntake = foodIntake.filter((value) => value.mealType === 'Lunch' ).map((item, index) => <ElementOfFood item={item} index={index}/>)
+  const snackFoodIntake = foodIntake.filter((value) => value.mealType === 'Snack' ).map((item, index) => <ElementOfFood item={item} index={index}/>)
 
   return (
     <Section>
@@ -100,7 +91,7 @@ const DiaryPage = () => {
               <Element>
               <AddFoodButton onClick={toggleModal}>+ Record your meal</AddFoodButton>
               {isModalOpen && (
-              <RecordDiaryModal onClose={toggleModal} image={ breakfast } mealType={ 'Breakfast' } item={foodIntake}/>)}           
+              <RecordDiaryModal onClose={toggleModal} image={ breakfast } mealType={ 'Breakfast' }/>)}           
               </Element>
             </List>
           </FoodBlock>
@@ -121,7 +112,7 @@ const DiaryPage = () => {
             <Element>
             <AddFoodButton onClick={toggleModal1}>+ Record your meal</AddFoodButton>
               {isModalOpen1 && (
-              <RecordDiaryModal onClose={toggleModal1} image= { dinner } mealType={ 'Dinner' } item={foodIntake}/>)} 
+              <RecordDiaryModal onClose={toggleModal1} image= { dinner } mealType={ 'Dinner' }/>)} 
             </Element>
             </List>
           </FoodBlock>
@@ -142,7 +133,7 @@ const DiaryPage = () => {
             <Element>
             <AddFoodButton onClick={toggleModal2}>+ Record your meal</AddFoodButton>
               {isModalOpen2 && (
-              <RecordDiaryModal onClose={toggleModal2} image={ lunch } mealType={ 'Lunch' } item={foodIntake}/>)}   
+              <RecordDiaryModal onClose={toggleModal2} image={ lunch } mealType={ 'Lunch' }/>)}   
             </Element>
             </List>
           </FoodBlock>
@@ -163,7 +154,7 @@ const DiaryPage = () => {
             <Element>
               <AddFoodButton onClick={toggleModal3}>+ Record your meal</AddFoodButton>
               {isModalOpen3 && (
-              <RecordDiaryModal onClose={toggleModal3} image={ snack } mealType={ 'Snack' } item={foodIntake}/>)}    
+              <RecordDiaryModal onClose={toggleModal3} image={ snack } mealType={ 'Snack' }/>)}    
             </Element>
             </List>
           </FoodBlock>

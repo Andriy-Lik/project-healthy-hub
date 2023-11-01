@@ -15,7 +15,7 @@ import {
 } from './ElementOfFood.styled';
 import RecordDiaryModal from 'components/Modals/RecordDiaryModal/RecordDiaryModal.jsx';
 
-export const ElementOfFood = ({ item }) => {
+export const ElementOfFood = ({ item, index }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const toggleModal = () => setIsModalOpen(!isModalOpen);
@@ -25,6 +25,7 @@ export const ElementOfFood = ({ item }) => {
   return (
     <CardWrap>
       <TitleWrap>
+      {index + 1}
         <Title>{mealName}</Title>
       </TitleWrap>
         <InfoWrap>
