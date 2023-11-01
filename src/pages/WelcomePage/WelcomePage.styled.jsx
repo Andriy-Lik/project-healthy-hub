@@ -10,7 +10,6 @@ export const Container = styled.div`
 
   @media (min-width: 834px) and (max-width: 1439px) {
     flex-direction: column;
-    width: 1094
   }
 
   @media (min-width: 1440px) {
@@ -37,28 +36,27 @@ export const Image = styled.img`
 
   @media (min-width: 1440px) {
     width: 592px;
-    margin-right: 104px;
-    margin-left: 0;
+    margin: 40px 104px 72px 0;
   }
 `;
 
 export const ContentBox = styled.div`
-  width: 444px;
 
   @media (min-width: 320px) and (max-width: 833px) {
     width: 300px;
-    margin: auto;
+    margin: 0 auto 40px;
   }
 
   @media (min-width: 834px) and (max-width: 1439px) {
     width: 436px;
-    margin: auto;
+    margin: 0 auto 286px;
     display: flex;
     flex-direction: column;
     justify-content: center;
   }
   
   @media (min-width: 1440px) {
+    width: 444px;
     margin-top: 120px;
   }
 `;
@@ -67,17 +65,16 @@ export const Title = styled.h1`
   margin-bottom: 16px;
   color: ${p => p.theme.colors.white};
   font-family: ${p => p.theme.fontFamily.poppins};
-  font-size: ${p => p.theme.fontSizes.xl}px;
+  font-size: ${p => p.theme.fontSizes.xl};
   font-weight: ${p => p.theme.fontWeights.medium};
   line-height: 36px;
 
   @media (min-width: 320px) and (max-width: 833px) {
-    font-size: ${p => p.theme.fontSizes.l2}px;
+    font-size: ${p => p.theme.fontSizes.l2};
     line-height: 30px;
   }
 
   @media (min-width: 834px) and (max-width: 1439px) {
-    width: 100%;
     text-align: center;
     align-self: center;
   }
@@ -88,21 +85,22 @@ export const Text = styled.p`
   color: ${p => p.theme.colors.gray};
   font-family: ${p => p.theme.fontFamily.poppins};
   font-weight: ${p => p.theme.fontWeights.regular};
-  font-size: ${p => p.theme.fontSizes.l}px;
+  font-size: ${p => p.theme.fontSizes.l};
   line-height: 32px;
 
   @media (min-width: 320px) and (max-width: 833px) {
-    font-size: ${p => p.theme.fontSizes.m}px;
+    font-size: ${p => p.theme.fontSizes.m};
     line-height: 24px;
   }
 
   @media (min-width: 834px) and (max-width: 1439px) {
-    width: 360px;
+    width: 410px;
     text-align: center;
     align-self: center;
   }
+  
   @media (min-width: 1440px) {
-    width: 360px;
+    width: 410px;
   }
 `;
 
@@ -121,13 +119,14 @@ export const BtnBox = styled.div`
 
 export const BtnSignIn = styled.button`
   
-  padding: 6px;
+  padding: 8px 10px;
   background-color: ${p => p.theme.colors.greenLite};
   color: ${p => p.theme.colors.black2};
   border-radius: ${p => p.theme.radii.normal};
+  border: ${p => p.theme.borders.none};
   font-family: ${p => p.theme.fontFamily.poppins};
   font-weight: ${p => p.theme.fontWeights.medium};
-  font-size: ${p => p.theme.fontSizes.xs}px;
+  font-size: ${p => p.theme.fontSizes.xs};
   line-height: 20px;
 
   @media (min-width: 320px) and (max-width: 833px) {
@@ -152,7 +151,7 @@ export const BtnSignUp = styled.button`
   color: ${p => p.theme.colors.white};
   font-family: ${p => p.theme.fontFamily.poppins};
   font-weight: ${p => p.theme.fontWeights.medium};
-  font-size: ${p => p.theme.fontSizes.xs}px;
+  font-size: ${p => p.theme.fontSizes.xs};
   line-height: 20px;
 `;
 
@@ -207,6 +206,6 @@ export const ItemText = styled.p`
   color: ${p => p.theme.colors.white};
   font-family: ${p => p.theme.fontFamily.poppins};
   font-weight: ${p => p.theme.fontWeights.regular};
-  font-size: ${p => p.theme.fontSizes.xs}px;
+  font-size: ${p => p.theme.fontSizes.xs};
   line-height: 20px;
 `;
