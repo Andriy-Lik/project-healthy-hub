@@ -45,17 +45,7 @@ export const theme = Object.freeze({
     xxl: '32px',
   },
 
-  // Висота рядка, приклад line-height: ${p => p.theme.lineHeights.l}px;
-  lineHeights: {
-    xs: 20,
-    s: 24,
-    m: 30,
-    l: 32,
-    xl: 36,
-    // xxl: 32,
-  },
-
-  //Медіа запити, прклад
+    //Медіа запити, прклад
   // @media screen and(${ p => p.theme.mq.tablet}) {
   //    font-size: ${p => p.theme.fontSizes.l}px;
   // }
