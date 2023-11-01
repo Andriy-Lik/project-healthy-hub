@@ -1,15 +1,17 @@
 import React from "react";
 import { useState, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
-import Form from '../../components/Diary/DiaryForm';
 import breakfast from '../../images/diaryPageImages/breakfast.png';
 import dinner from '../../images/diaryPageImages/dinner.png';
 import lunch from '../../images/diaryPageImages/lunch.png';
 import snack from '../../images/diaryPageImages/snack.png';
 import arrowRight from '../../images/diaryPageImages/arrow-right.svg';
 import { ItemToAdd } from "../../components/DiaryPageItemsToAdd/ItemsToAdd";
-import { selectConsumedMacronutrientsPerDay } from '../../redux/Statistics/statisticsSelectors';
+import { selectConsumedMacronutrientsPerDay, selectIntakeFoodPerDay } from '../../redux/Statistics/statisticsSelectors';
+import RecordDiaryModal from "components/Modals/RecordDiaryModal/RecordDiaryModal";
 import { useSelector } from 'react-redux';
+import { ElementOfFood } from "../../components/Diary/ElementOfFood";
+
 
 import {
   Section,
@@ -22,7 +24,6 @@ import {
   FoodHeader,
   List,
   Element,
-  // ElementTitle,
   Img,
   AddFoodButton,
   BackLink,
@@ -34,6 +35,18 @@ import {
 
 const DiaryPage = () => {
 
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalOpen1, setIsModalOpen1] = useState(false);
+  const [isModalOpen2, setIsModalOpen2] = useState(false);
+  const [isModalOpen3, setIsModalOpen3] = useState(false);
+  const toggleModal = () => setIsModalOpen(!isModalOpen);
+  const toggleModal1 = () => setIsModalOpen1(!isModalOpen1);
+  const toggleModal2 = () => setIsModalOpen2(!isModalOpen2);
+  const toggleModal3 = () => setIsModalOpen3(!isModalOpen3);
+
+  const location = useLocation();
+  const backLinkLocationRef = useRef(location.state?.from ?? '/main');
+
   const consumedMacronutrients = useSelector(selectConsumedMacronutrientsPerDay);
   const {
     breakfast: breakfastInfo,
@@ -42,60 +55,11 @@ const DiaryPage = () => {
     snack: snackInfo,
   } = consumedMacronutrients;
 
-   console.log(consumedMacronutrients.lunch);
-   console.log(consumedMacronutrients.breakfast);
-   console.log(consumedMacronutrients.snack);
-
-  const location = useLocation();
-  const backLinkLocationRef = useRef(location.state?.from ?? '/main');
-  // const info = useSelector(selectStatsInfo);
-
-  const [breakfastFood] = useState([]);
-  const [dinnerFood] = useState([]);
-  const [lunchFood] = useState([]);
-  const [snackFood] = useState([]);
-  const [addFoodButton, setAddFoodButton] = useState(true);
-  const [addFoodButtonDinner, setAddFoodButtonDinner] = useState(true);
-  const [addFoodButtonLunch, setAddFoodButtonLunch] = useState(true);
-  const [addFoodButtonSnack, setAddFoodButtonSnack] = useState(true);
-
-  function getFood(type) {
-    if (type==="Breakfast") {
-      return breakfastFood;
-    } else if (type==="Dinner") {
-      return dinnerFood;
-    } else if (type==="Lunch") {
-      return lunchFood;
-    } else if (type==="Snack") {
-      return snackFood;
-    };
-  };
-
-  const toggleFoodButton = (type) => {
-
-    if (type==='Breakfast') {
-    setAddFoodButton(!addFoodButton);
-  } else if (type==='Dinner') {
-    setAddFoodButtonDinner(!addFoodButtonDinner);
-  } else if (type==='Lunch') {
-    setAddFoodButtonLunch(!addFoodButtonLunch);
-  } else if (type==='Snack') {
-    setAddFoodButtonSnack(!addFoodButtonSnack);
-  };
-    
-    // currentFood - це масив їжі, яка відноситься до конкретного типу (брекфест, діннер і тд)
-    const currentFood = getFood(type);
-
-    const newFoodElement = {
-      number: currentFood.length === 0 ? 1 : currentFood[currentFood.length - 1].number + 1,
-      mealName: '',
-      carbon: '',
-      protein: '',
-      fat: '',
-      isEditable: true,
-    };
-    currentFood.push(newFoodElement);
-   };
+  const foodIntake = useSelector(selectIntakeFoodPerDay)
+  const breakfastFoodIntake = foodIntake.filter((value) => value.mealType === 'Breakfast' ).map((item, index) => <ElementOfFood item={item} index={index}/>)
+  const dinnerFoodIntake = foodIntake.filter((value) => value.mealType === 'Dinner' ).map((item, index) => <ElementOfFood item={item} index={index}/>)
+  const lunchFoodIntake = foodIntake.filter((value) => value.mealType === 'Lunch' ).map((item, index) => <ElementOfFood item={item} index={index}/>)
+  const snackFoodIntake = foodIntake.filter((value) => value.mealType === 'Snack' ).map((item, index) => <ElementOfFood item={item} index={index}/>)
 
   return (
     <Section>
@@ -122,9 +86,12 @@ const DiaryPage = () => {
               <div></div>
             </FoodBlockHeader>
             <List>
+
+            {breakfastFoodIntake}
               <Element>
-                {breakfastFood.map(food => <Form type="Breakfast" value={food} onAddElement={setAddFoodButton}/>)}
-                {addFoodButton && <AddFoodButton onClick={() => toggleFoodButton('Breakfast')}>+ Record your meal</AddFoodButton>}     
+              <AddFoodButton onClick={toggleModal}>+ Record your meal</AddFoodButton>
+              {isModalOpen && (
+              <RecordDiaryModal onClose={toggleModal} image={ breakfast } mealType={ 'Breakfast' }/>)}           
               </Element>
             </List>
           </FoodBlock>
@@ -141,9 +108,11 @@ const DiaryPage = () => {
             <div></div>
             </FoodBlockHeader>
             <List>
+            {dinnerFoodIntake}
             <Element>
-            {dinnerFood.map(food => <Form type="Dinner" value={food} onAddElement={setAddFoodButtonDinner}/>)}
-            {addFoodButtonDinner && <AddFoodButton onClick={() => toggleFoodButton('Dinner')}>+ Record your meal</AddFoodButton>}     
+            <AddFoodButton onClick={toggleModal1}>+ Record your meal</AddFoodButton>
+              {isModalOpen1 && (
+              <RecordDiaryModal onClose={toggleModal1} image= { dinner } mealType={ 'Dinner' }/>)} 
             </Element>
             </List>
           </FoodBlock>
@@ -160,9 +129,11 @@ const DiaryPage = () => {
             <div></div>
             </FoodBlockHeader>
             <List>
+            {lunchFoodIntake}
             <Element>
-            {lunchFood.map(food => <Form type="Lunch" value={food} onAddElement={setAddFoodButtonLunch}/>)}
-            {addFoodButtonLunch && <AddFoodButton onClick={() => toggleFoodButton('Lunch')}>+ Record your meal</AddFoodButton>}     
+            <AddFoodButton onClick={toggleModal2}>+ Record your meal</AddFoodButton>
+              {isModalOpen2 && (
+              <RecordDiaryModal onClose={toggleModal2} image={ lunch } mealType={ 'Lunch' }/>)}   
             </Element>
             </List>
           </FoodBlock>
@@ -179,9 +150,11 @@ const DiaryPage = () => {
                 <div></div>
             </FoodBlockHeader>
             <List>
+            {snackFoodIntake}
             <Element>
-            {snackFood.map(food => <Form type="Snack" value={food} onAddElement={setAddFoodButtonSnack}/>)}
-            {addFoodButtonSnack && <AddFoodButton onClick={() => toggleFoodButton('Snack')}>+ Record your meal</AddFoodButton>}     
+              <AddFoodButton onClick={toggleModal3}>+ Record your meal</AddFoodButton>
+              {isModalOpen3 && (
+              <RecordDiaryModal onClose={toggleModal3} image={ snack } mealType={ 'Snack' }/>)}    
             </Element>
             </List>
           </FoodBlock>
