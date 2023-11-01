@@ -34,15 +34,15 @@ export const theme = Object.freeze({
     bold: 700, // жирний
   },
 
-  // Розміри шрифту, приклад font-size: ${p => p.theme.fontSizes.l}px;
+  // Розміри шрифту, приклад font-size: ${p => p.theme.fontSizes.l};
   fontSizes: {
-    xs: 14,
-    s: 16,
-    m: 18,
-    l: 22,
-    l2: 24,
-    xl: 30,
-    xxl: 32,
+    xs: '14px',
+    s: '16px',
+    m: '18px',
+    l: '22px',
+    l2: '24px',
+    xl: '30px',
+    xxl: '32px',
   },
 
   // Висота рядка, приклад line-height: ${p => p.theme.lineHeights.l}px;
