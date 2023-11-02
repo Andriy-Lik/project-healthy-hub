@@ -1,1 +1,1 @@
-export { RecommendedFoodOnMain } from './RecommendedFoodOnMain';
+export { default } from './RecommendedFoodOnMain';

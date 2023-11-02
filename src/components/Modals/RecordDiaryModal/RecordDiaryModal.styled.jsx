@@ -91,7 +91,7 @@ export const ContentWrapper = styled.div`
 export const ProductList = styled.ul`
   padding: 10px;
   overflow-y: auto;
-  height: 200px;
+  height: 210px;
   margin-bottom: 24px;
   display: flex;
   flex-direction: column;
@@ -103,8 +103,7 @@ export const ProductList = styled.ul`
   };
   
   &::-webkit-scrollbar {
-    width: 7px;
-   
+    width: 7px;   
   };
 
   &::-webkit-scrollbar-thumb {
@@ -191,13 +190,13 @@ export const ErrorMsg = styled(ErrorMessage)`
 export const BtnRemoveProduct = styled.button`
   padding: 0;
   margin: 0;
-  border:  ${p => p.theme.borders.none};
+  border: ${p => p.theme.borders.none};
   background-color: transparent;
   cursor: pointer;  
 `;
 
 export const BtnAddNewProduct = styled.button`
-  border:  ${p => p.theme.borders.none};
+  border: ${p => p.theme.borders.none};
   background-color: transparent;
   font-family: ${props => props.theme.fontFamily.poppins};
   font-size: ${props => props.theme.fontSizes.xs};

@@ -1,4 +1,4 @@
-import { DiaryItem } from './DiaryItem';
+import DiaryItem from './DiaryItem';
 import {
   CardsWrap,
   DiaryLink,
@@ -14,9 +14,9 @@ import snackImage from 'images/snack-image.svg';
 import { useSelector } from 'react-redux';
 import { selectConsumedMacronutrientsPerDay } from 'redux/Statistics/statisticsSelectors';
 
-export const DiaryOnMain = () => {
+const DiaryOnMain = () => {
   const ConsumedMacronutrients = useSelector(selectConsumedMacronutrientsPerDay);
- 
+  
   const {
     breakfast: breakfastInfo,
     lunch: lunchInfo,

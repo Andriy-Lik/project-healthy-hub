@@ -1,1 +1,1 @@
-export { DiaryItem } from './DiaryItem';
+export { default } from './DiaryItem';

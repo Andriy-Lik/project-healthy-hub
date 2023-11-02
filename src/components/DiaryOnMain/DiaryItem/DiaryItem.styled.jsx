@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-export const CardWrap = styled.div`
-  @media screen and (min-width: 834px) {
+export const CardWrap = styled.li`
+  @media screen and (${ p => p.theme.mq.tablet}) {
     display: flex;
     column-gap: 8px;
     align-items: center;
@@ -16,17 +16,16 @@ export const TitleWrap = styled.div`
   margin-bottom: 8px;
 
   color: ${props => props.theme.colors.white};
-  font-family: ${props => props.theme.fontFamily.poppins};
-  font-style: normal;
+  font-family: ${props => props.theme.fontFamily.poppins};  
 
-  @media screen and (min-width: 834px) {
+  @media screen and (${ p => p.theme.mq.tablet}) {
     margin-bottom: 0px;
   }
 `;
 
 export const Title = styled.h3`
-  font-size: 18px;
-  font-weight: 500;
+  font-size: ${p => p.theme.fontSizes.m};
+  font-weight: ${p => p.theme.fontWeights.medium};
   line-height: 24px;
 `;
 
@@ -34,16 +33,13 @@ export const InfoWrap = styled.div`
   display: flex;
   flex-direction: column;
   row-gap: 20px;
-
   color: ${props => props.theme.colors.white};
-
   font-family: ${props => props.theme.fontFamily.poppins};
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
+  font-size: ${p => p.theme.fontSizes.xs};
+  font-weight: ${p => p.theme.fontWeights.regular};
   line-height: 20px;
 
-  @media screen and (min-width: 834px) {
+  @media screen and (${ p => p.theme.mq.tablet}) {
     flex-direction: row;
     column-gap: 20px;
   }
@@ -63,7 +59,7 @@ export const FatWrap = styled.p`
 
 export const Value = styled.span`
   color: ${props => props.theme.colors.gray};
-  font-weight: 500;
+  font-weight: ${p => p.theme.fontWeights.medium};
 `;
 
 export const DiaryImage = styled.img`
@@ -75,15 +71,11 @@ export const AddButton = styled.button`
   display: flex;
   align-items: center;
   column-gap: 8px;
-
   color: ${props => props.theme.colors.greenLite};
-
   font-family: ${props => props.theme.fontFamily.poppins};
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 500;
+  font-size: ${p => p.theme.fontSizes.xs};
+  font-weight: ${p => p.theme.fontWeights.medium};
   line-height: 20px;
-
   background-color: transparent;
   border: none;
   outline: none;

@@ -1,1 +1,1 @@
-export { DiaryOnMain } from './DiaryOnMain';
+export { default } from './DiaryOnMain';
