@@ -88,9 +88,7 @@ export const BannerThumb = styled.div`
 
   @media screen and (${props => props.theme.mq.tablet}) {
     width: 380px;
-    height: 396px;
-    
-    
+    height: 396px;   
   }
  
   @media screen and (${props => props.theme.mq.desktop}) {
@@ -106,7 +104,7 @@ export const Img = styled.img`
   height: auto;
 `;
 
-export const ProductList = styled.ul`
+export const RecommendedFoodList = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -119,51 +117,5 @@ export const ProductList = styled.ul`
 
   @media screen and (${props => props.theme.mq.desktop}) {    
     width: calc((100% - 44px) / 2);
-  }
-`;
-
-export const ProductItem = styled.li`  
-  flex-basis: 100%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  column-gap: 20px;
-  padding: 20px 24px;
-  border-radius: ${p => p.theme.radii.normal};
-  background-color: ${p => p.theme.colors.black2};
-  
-  @media screen and (${props => props.theme.mq.tablet}) {
-    flex-basis: calc((100% - 20px)/2);
-  }  
-`;
-
-export const ImgThumb = styled.div`
-  width: 46px;
-  height: 46px;
-`;
-
-export const Description = styled.div`
-  display: flex;
-  flex-direction: column;
-  column-gap: 2px;
-`;
-
-export const Title = styled.p`
-  font-size: ${p => p.theme.fontSizes.m};
-  font-weight: ${p => p.theme.fontWeights.medium};
-  line-height: 24px;
-  letter-spacing: 0em;  
-`;
-
-export const Value = styled.p`
-margin-right: 6px;
-  font-size: ${p => p.theme.fontSizes.xs};
-  font-weight: ${p => p.theme.fontWeights.regular};
-  line-height: 20px;
-  letter-spacing: 0em;
-  
-  & > span{ 
-    font-weight: ${p => p.theme.fontWeights.medium};
-    color: ${p => p.theme.colors.gray};
   }
 `;

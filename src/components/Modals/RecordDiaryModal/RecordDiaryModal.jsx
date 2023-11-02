@@ -286,6 +286,6 @@ RecordDiaryModal.propTypes = {
   onClose: PropTypes.func.isRequired,
   image: PropTypes.string.isRequired,
   mealType: PropTypes.string.isRequired
-}
+};
 
 export default RecordDiaryModal;

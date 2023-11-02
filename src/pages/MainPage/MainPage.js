@@ -17,9 +17,8 @@ import {
 import DailyGoal from 'components/DailyGoal';
 import Water from 'components/Water';
 import Food from 'components/Food';
-
-import { DiaryOnMain } from 'components/DiaryOnMain';
-import { RecommendedFoodOnMain } from 'components/RecommendedFoodOnMain';
+import DiaryOnMain from 'components/DiaryOnMain';
+import RecommendedFoodOnMain from 'components/RecommendedFoodOnMain';
 
 import img1 from 'images/arrow-right.png';
 import img2 from 'images/arrow-right@2x.png';

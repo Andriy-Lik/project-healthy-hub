@@ -1,4 +1,4 @@
-export const outNum = (number, element, time = 500, step = 100) => {
+export const outNum = (number, element, time = 500, step = 50) => {
   let el = document.querySelector('#' + element);
   let num = 0;
   let t = Math.round(time / (number / step));
