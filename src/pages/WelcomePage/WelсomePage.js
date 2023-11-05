@@ -20,10 +20,6 @@ import bullets from '../../images/WelcomePageImg/bullets.png';
 const WelcomePage = () => {
   return (
     <Container>
-      <style>
-        @import
-        url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Roboto&display=swap');
-      </style>
       <Image src={logoPic} alt="Reg Logo" />
       <ContentBox>
         <Title>Set goals and achieve them</Title>
