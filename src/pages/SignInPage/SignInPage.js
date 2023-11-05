@@ -54,10 +54,6 @@ const SignInPage = () => {
   return (
     <div>
       <Container>
-        {/* <style>
-          @import
-          url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Roboto&display=swap');
-        </style> */}
         <Image src={logoPic} alt="img" />
         <ContentBox>
           <Title>Sign in</Title>
