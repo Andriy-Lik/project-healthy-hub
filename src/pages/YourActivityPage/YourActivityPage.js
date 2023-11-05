@@ -20,8 +20,6 @@ import {
   YourActivityFormListWrapper,
   YourActivityFormListOption,
   YourActivityButton,
-  // YourActivityBackButton,
-  // YourActivityInput,
 } from './YourActivityPage.styled';
 import YourActivityBackButton from 'components/BackButtons/YourActivityBackButton/YourActivityBackButton';
 import {
