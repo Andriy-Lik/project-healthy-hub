@@ -6,6 +6,7 @@ export const RecommendedFoodSection = styled.div`
   @media screen and (${ p => p.theme.mq.desktop}) {
     display: flex;
     flex-direction: column;
+    flex-basis: 100%;
   }
 `;
 

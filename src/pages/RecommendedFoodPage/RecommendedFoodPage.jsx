@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { getRecommentedFood } from 'helpers/getRecommentedFood';
 
 import CardRecommendedProduct from 'components/CardRecommendedProduct/CardRecommendedProduct';
 import image from 'images/Ketogenic.png';
@@ -17,7 +18,6 @@ import {
   RecommendedFoodList,
 } from './RecommendedFoodPage.styled';
 
-import { selectRecomendedFood } from 'redux/RecomendedFood/recomendedFoodSelectors';
 import { randomizeFood } from 'helpers/randomizeFood';
 
 import arrowRight from 'images/icons/arrow-right.svg';
@@ -30,11 +30,13 @@ export default function RecommendedFood() {
   const location = useLocation();
   const backLinkLocationRef = useRef(location.state?.from ?? '/main');
 
-  const info = useSelector(selectRecomendedFood);
-
   useEffect(() => {
-    setArrayForRender(randomizeFood(info, 10));
-  }, [info]);
+    getRecommentedFood()
+      .then(responce => {
+        setArrayForRender(randomizeFood(responce, 10))
+      })
+      .catch(err => console.error(err));
+  }, []);
 
   return (
     <Container>

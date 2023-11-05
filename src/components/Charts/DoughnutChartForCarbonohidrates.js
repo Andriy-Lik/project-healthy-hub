@@ -1,7 +1,10 @@
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
-import { calcRemainder } from 'helpers/calculations';
+import { calcRemainder, calcPercent } from 'helpers/calculations';
 import { Doughnut } from 'react-chartjs-2';
 import { useSelector } from 'react-redux';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import { selectUser } from 'redux/Auth/authSelectors';
 import { selectConsumedCarbonohidratesPerDay } from 'redux/Statistics/statisticsSelectors';
 
@@ -9,21 +12,27 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 const DoughnutChartForCarbonohidrates = () => {
   const userInfo = useSelector(selectUser);
-  const carbonohidratesGoal = userInfo.carbohydrate;
-  const consumedCarbonohidrates = useSelector(
-    selectConsumedCarbonohidratesPerDay
-  );
-  const leftConsumedCarbonohidrates = calcRemainder(
-    carbonohidratesGoal,
-    consumedCarbonohidrates
-  );
+  const goal = userInfo.carbohydrate;
+  const consumed = useSelector(selectConsumedCarbonohidratesPerDay);
+  const leftConsumed = calcRemainder(goal, consumed);
+  const consumedPercent = calcPercent(goal, consumed) + '%';
+
+  const warning = consumed > goal;
+
+  const notifyWarn = message => {
+    toast.error(message, {
+      position: toast.POSITION.TOP_CENTER,
+      theme: 'dark',
+      autoClose: 3000,
+    });
+  };
 
   const data = {
     datasets: [
       {
-        data: [consumedCarbonohidrates, leftConsumedCarbonohidrates],
-        backgroundColor: ['#FFC4F7', '#292928'],
-        borderRadius: `${leftConsumedCarbonohidrates > 0 ? 12 : 0}`,
+        data: [consumed, leftConsumed >= 0 ? leftConsumed : 0],
+        backgroundColor: [`${warning ? '#E74A3B' : '#FFC4F7'}`, '#292928'],
+        borderRadius: `${leftConsumed > 0 ? 12 : 0}`,
         borderWidth: 0,
         cutout: '80%',
       },
@@ -41,22 +50,16 @@ const DoughnutChartForCarbonohidrates = () => {
   const textCenter = {
     id: 'textCenter',
     beforeDatasetsDraw(chart, args, pluginOptions) {
-      const { ctx, data } = chart;
+      const { ctx } = chart;
       const xCoor = chart.getDatasetMeta(0).data[0].x;
       const yCoor = chart.getDatasetMeta(0).data[0].y;
-
-      const consumed = data.datasets[0].data[0];
-      const left = data.datasets[0].data[1];
-      const counterPercentage = () => {
-        return Math.round((consumed * 100) / (consumed + left)) + '%';
-      };
 
       ctx.save();
       ctx.font = `400 12px sans-serif`;
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
       ctx.fillStyle = '#B6B6B6';
-      ctx.fillText(counterPercentage(), xCoor, yCoor);
+      ctx.fillText(consumedPercent, xCoor, yCoor);
     },
   };
 
@@ -79,12 +82,21 @@ const DoughnutChartForCarbonohidrates = () => {
     },
   };
 
+  if (warning) {
+    notifyWarn(
+      'Maximum carbonohidrates consumption. If you continue to consume, you will not reach your goal'
+    );
+  }
+
   return (
-    <Doughnut
-      data={data}
-      options={options}
-      plugins={[textCenter, backgroundCircle]}
-    />
+    <>
+      <ToastContainer />
+      <Doughnut
+        data={data}
+        options={options}
+        plugins={[textCenter, backgroundCircle]}
+      />
+    </>
   );
 };
 
