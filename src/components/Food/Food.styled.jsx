@@ -81,7 +81,8 @@ export const CounterList = styled.div`
 `;
 
 export const Counter = styled.p`
-
+  display: flex;
+  gap: 2px;
   width: calc((100% - 12px) / 2);
   font-family: ${props => props.theme.fontFamily.poppins};
   font-size: ${props => props.theme.fontSizes.xs};
@@ -91,8 +92,8 @@ export const Counter = styled.p`
   color: ${props => props.theme.colors.white}; 
 
   & > span {
-    display: inline-block;
-    width: calc((50% - 12px) / 2);
+    /* display: inline-block;
+    width: calc((50% - 12px) / 2); */
     color: ${props => props.theme.colors.gray}; 
   };
 `; 

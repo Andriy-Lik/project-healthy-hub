@@ -2,7 +2,6 @@ import PropTypes from "prop-types";
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { useDispatch } from "react-redux";
-import 'react-toastify/dist/ReactToastify.css';
 
 import { addFood } from 'redux/Foods/foodsOperations';
 import { getStats } from "redux/Statistics/statisticsOperations";
@@ -46,7 +45,7 @@ const schema = yup.object({
         .required("Carbonohidrates is required")
         .typeError("Must be a number")
         .min(0, "Must be a positive number")
-        .max(1000, "The maximum allowable value is 1000")
+        .max(100, "The maximum allowable value is 100")
         .test(
           "maxDigitsAfterDecimal",
           "Must have 1 digits after decimal",
@@ -57,7 +56,7 @@ const schema = yup.object({
         .required("Protein is required")
         .typeError('Must be a number')
         .min(0, "Must be a positive number")
-        .max(1000, "The maximum allowable value is 1000")
+        .max(100, "The maximum allowable value is 100")
         .test(
           "maxDigitsAfterDecimal",
           "Must have 1 digits after decimal",
@@ -68,7 +67,7 @@ const schema = yup.object({
         .required("Fat is required")
         .typeError('Must be a number')
         .min(0, "Must be a positive number")
-        .max(1000, "The maximum allowable value is 1000")
+        .max(100, "The maximum allowable value is 100")
         .test(
           "maxDigitsAfterDecimal",
           "Must have 1 digits after decimal",
@@ -79,7 +78,7 @@ const schema = yup.object({
         .required("Calories is required")
         .typeError('Must be a number')
         .min(0, "Must a be positive number")
-        .max(10000, "The maximum allowable value is 10000")
+        .max(1000, "The maximum allowable value is 1000")
         .integer("Must be an integer"),
   })),
 });

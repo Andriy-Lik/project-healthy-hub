@@ -120,7 +120,7 @@ export const ProductList = styled.ul`
 export const Product = styled.li`
   display: grid;
   grid-gap: 12px;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
 
   & > div:nth-child(-n + 3){
     grid-column-start: 1;

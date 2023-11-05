@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import { selectStatsConsumedWaterPerDay} from "redux/Statistics/statisticsSelectors";
-import { calcPercent, calcRemainder } from "helpers/calculations";
+import { calcPercent, calcRemainder, calcSurplus } from "helpers/calculations";
 import { WATER_GOAL } from "constants/constants";
 
 import {
@@ -32,38 +34,57 @@ const Water = () => {
   const toggleModal = () => setIsModalOpen(!isModalOpen);
   const consumedWaterMl = useSelector(selectStatsConsumedWaterPerDay);
  
-  let consumedWaterPercent = calcPercent(WATER_GOAL, consumedWaterMl) + "%";
-  let leftToConsumeWater = calcRemainder(WATER_GOAL, consumedWaterMl);
+  const consumedWaterPercent = calcPercent(WATER_GOAL, consumedWaterMl) + "%";
+  const leftToConsumeWater = calcRemainder(WATER_GOAL, consumedWaterMl);
+  const excessConsumptionWater = calcSurplus(WATER_GOAL, consumedWaterMl);
 
- setTimeout(() => {document.querySelector("#bla").style.height = consumedWaterPercent}, 0)
+  const warning = consumedWaterMl > WATER_GOAL;
+
+  const notifyWarn = message => {
+    toast.error(message, {
+      position: toast.POSITION.TOP_CENTER,
+      theme: 'dark',
+      autoClose: 3000,
+    });
+  };
+
+  setTimeout(() => { document.querySelector("#chart").style.height = consumedWaterPercent }, 0);
+
+  if (warning) {
+    notifyWarn(
+      `Maximum water consumption. If you continue to consume, you will not reach your goal`
+    );
+  }
   
   return (
-    <Wrapper>
+    <>
+      <ToastContainer/>
+      <Wrapper>
       <Title>Water</Title>
       <InfoBox>
         <Card>
           <WaterTracker>
             {/* лічильник спожитої води у відсотках*/}
-            <CounterOfConsumedWaterInPercentage>{consumedWaterPercent}</CounterOfConsumedWaterInPercentage>
-            <Chart id="bla" style={{height: 0}} />
+            <CounterOfConsumedWaterInPercentage style={{color: `${warning && "#E74A3B"}`}}>{consumedWaterPercent}</CounterOfConsumedWaterInPercentage>
+            <Chart id="chart" style={{height: 0, backgroundColor: `${warning && "#E74A3B"}`}} />
           </WaterTracker>
           <CardText>
             <CardTitle>Water consumption</CardTitle>
             <CounterList>
               {/* лічильник випитої води у мл */}
               <CounterOfConsumedWaterInMl>
-                {(consumedWaterMl > WATER_GOAL) ? WATER_GOAL : consumedWaterMl}
+                {/* {(consumedWaterMl > WATER_GOAL) ? WATER_GOAL : consumedWaterMl} */}
+                {consumedWaterMl}
                 <span>ml</span>
               </CounterOfConsumedWaterInMl>
               {/* лічильник води, що залишилось випити у мл */}
-              <CounterOfWaterLeftToDrinkInMl>
-                <span>left:</span> {leftToConsumeWater} ml
+              <CounterOfWaterLeftToDrinkInMl style={{color: `${warning && "#E74A3B"}`}}>
+                <span>{warning ? "excess:" : "left:"}</span> {warning ? excessConsumptionWater : leftToConsumeWater} ml
               </CounterOfWaterLeftToDrinkInMl>
             </CounterList>
             {/* кнопка, що відкриває модальне вікно додати воду */}
             <Btn type="button" onClick={toggleModal}>
-              <img
-                // loading="lazy"
+              <img                
                 srcSet={`${img1} 1x, ${img2} 2x`}
                 width={16}
                 height={16}
@@ -81,6 +102,7 @@ const Water = () => {
       )}
       
     </Wrapper>
+    </>
   );
 };
 

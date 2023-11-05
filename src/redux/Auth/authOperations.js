@@ -1,7 +1,6 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { getStats } from 'redux/Statistics/statisticsOperations';
-import { getRecomendedFood } from 'redux/RecomendedFood/recomendedFoodOperations';
 
 axios.defaults.baseURL = 'https://healthyhub-z4y1.onrender.com';
 
@@ -33,7 +32,6 @@ export const logIn = createAsyncThunk(
       const response = await axios.post('/users/login', credentials);
       setAuthHeader(response.data.token);
       thunkAPI.dispatch(getStats('today'));
-      thunkAPI.dispatch(getRecomendedFood());
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -64,7 +62,6 @@ export const currentUser = createAsyncThunk(
       setAuthHeader(tokenCurrent);
       const response = await axios.get('/users/current');
       await thunkAPI.dispatch(getStats('today'));
-      await thunkAPI.dispatch(getRecomendedFood());
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

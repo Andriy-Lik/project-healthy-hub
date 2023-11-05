@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
 
 import CardRecommendedProduct from 'components/CardRecommendedProduct';
 import {
@@ -9,18 +8,21 @@ import {
   SeeMoreButton,
 } from './RecommendedFoodOnMain.styled';
 
-import { selectRecomendedFood } from 'redux/RecomendedFood/recomendedFoodSelectors';
+import { getRecommentedFood } from "helpers/getRecommentedFood";
 import { randomizeFood } from 'helpers/randomizeFood'
 
 const RecommendedFoodOnMain = () => {
   
   const [arrayForRender, setArrayForRender] = useState([]);
-  const info = useSelector(selectRecomendedFood);
   
-  useEffect(() => {  
-    setArrayForRender(randomizeFood(info));
-  }, [info]);
-
+  useEffect(() => {
+    getRecommentedFood()
+      .then(responce => {
+        setArrayForRender(randomizeFood(responce))
+      })
+      .catch(err => console.log(err))
+  }, [])
+  
   return (
     <RecommendedFoodSection>
       <TitleSection>Recommended food</TitleSection>

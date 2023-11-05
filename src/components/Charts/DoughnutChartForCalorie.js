@@ -2,6 +2,9 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { calcRemainder } from 'helpers/calculations';
 import { Doughnut } from 'react-chartjs-2';
 import { useSelector } from 'react-redux';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import { selectUser } from 'redux/Auth/authSelectors';
 import { selectConsumedCaloriesPerDay } from 'redux/Statistics/statisticsSelectors';
 
@@ -9,18 +12,28 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 const DoughnutForCalorie = () => {
   const userInfo = useSelector(selectUser);
-  const caloriesGoal = userInfo.bmr;
-  const consumedCalories = useSelector(selectConsumedCaloriesPerDay);
-  const leftConsumedCalories = calcRemainder(caloriesGoal, consumedCalories);
+  const goal = userInfo.bmr;
+  const consumed = useSelector(selectConsumedCaloriesPerDay);
+  const leftConsumed = calcRemainder(goal, consumed);
+
+  const warning = consumed > goal;
+
+  const notifyWarn = message => {
+    toast.error(message, {
+      position: toast.POSITION.TOP_CENTER,
+      theme: 'dark',
+      autoClose: 3000,
+    });
+  };
 
   const data = {
     labels: ['Consumed:', 'Left:'],
     datasets: [
       {
-        data: [consumedCalories, leftConsumedCalories],
-        backgroundColor: ['#45FFBC', '#292928'],
+        data: [consumed, leftConsumed >= 0 ? leftConsumed : 0],
+        backgroundColor: [`${warning ? '#E74A3B' : '#45FFBC'}`, '#292928'],
         borderColor: ['rgba(69, 255, 188, 0)'],
-        borderRadius: `${leftConsumedCalories > 0 ? 12 : 0}`,
+        borderRadius: `${leftConsumed > 0 ? 12 : 0}`,
         borderWidth: 0,
         cutout: '80%',
       },
@@ -46,7 +59,7 @@ const DoughnutForCalorie = () => {
       ctx.font = `500 32px sans-serif`;
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
-      ctx.fillStyle = '#ffffff';
+      ctx.fillStyle = `${warning ? '#E74A3B' : '#FFFFFF'}`;
       ctx.fillText(data.datasets[0].data[0], xCoor, yCoor - 5);
 
       ctx.font = `400 14px sans-serif`;
@@ -74,12 +87,21 @@ const DoughnutForCalorie = () => {
     },
   };
 
+  if (warning) {
+    notifyWarn(
+      'Maximum calories consumption. If you continue to consume, you will not reach your goal'
+    );
+  }
+
   return (
-    <Doughnut
-      data={data}
-      options={options}
-      plugins={[textCenter, backgroundCircle]}
-    />
+    <>
+      <ToastContainer />
+      <Doughnut
+        data={data}
+        options={options}
+        plugins={[textCenter, backgroundCircle]}
+      />
+    </>
   );
 };
 
