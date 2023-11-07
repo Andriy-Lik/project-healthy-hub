@@ -1,7 +1,4 @@
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-
-import { getStats } from 'redux/Statistics/statisticsOperations';
+import { useSelector } from 'react-redux';
 
 import {
   Container,
@@ -27,11 +24,6 @@ import Loader from 'components/Loader';
 
 const MainPage = () => {
   const isLoading = useSelector(selectStatsIsLoading);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getStats('today'));
-  }, [dispatch]);
 
   return (
     <>
