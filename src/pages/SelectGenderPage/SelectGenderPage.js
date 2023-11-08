@@ -1,9 +1,6 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { useRef } from 'react';
-import { useLocation } from 'react-router-dom';
+import React, { useRef, useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { useState } from 'react';
 import { setNewUserAge, setNewUserGender } from 'redux/Auth/authSlice';
 import {
   BackgroundContainer,
@@ -13,7 +10,6 @@ import {
   SelectGenderText,
   SelectGenderForm,
   SelectGenderButton,
-  // SelectGenderBackButton,
   SelectGenderInput,
 } from './SelectGenderPage.styled';
 import { LabelWithRadio, RadioMark, RadioInput } from 'components/CustomRadioButton/CustomRadioButton.style';
@@ -25,13 +21,11 @@ const SelectGenderPage = () => {
   const [gender, setGender] = useState('');
   const [age, setAge] = useState('');
 
-  const parsedAge = parseInt(age, 10);
-
   const handleNewUserGenderAgeData = event => {
     event.preventDefault();
     console.log(`gender: ${gender}, age: ${age}`);
     dispatch(setNewUserGender(gender));
-    dispatch(setNewUserAge(parsedAge));
+    dispatch(setNewUserAge(age));
   };
 
   const handleInputChange = event => {
@@ -46,10 +40,6 @@ const SelectGenderPage = () => {
   return (
     <div>
       <BackgroundContainer>
-        <style>
-          @import
-          url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Roboto&display=swap');
-        </style>
         <SelectGenderLogo src={SelectGenderLogoPic} alt="Select Gender Logo" />
         <SelectGenderContainer>
           <SelectGenderHeadline>Select gender, Age</SelectGenderHeadline>
@@ -111,7 +101,6 @@ const SelectGenderPage = () => {
                   onChange={handleInputChange}
                 />
               </ul>
-              {/* <SelectGenderButton>Next</SelectGenderButton> */}
               <SelectGenderButton type="submit">
                 <Link to={'/body-parameters'}>Next</Link>
               </SelectGenderButton>

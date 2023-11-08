@@ -1,10 +1,6 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { useRef } from 'react';
-import { useLocation } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { useState } from 'react';
+import React, { useRef, useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 import { setNewUserActivity } from 'redux/Auth/authSlice';
 import { register } from 'redux/Auth/authOperations';
 import { selectUser } from 'redux/Auth/authSelectors';
@@ -33,8 +29,7 @@ const YourActivityPage = () => {
   const user = useSelector(selectUser);
 
   const dispatch = useDispatch();
-  const [activity0, setActivity] = useState('');
-  const activity = parseFloat(activity0);
+  const [activity, setActivity] = useState('');
   const name = user.name;
   const email = user.email;
   const password = user.password;
@@ -46,6 +41,7 @@ const YourActivityPage = () => {
 
   const handleActivityResults = async event => {
     event.preventDefault();
+    console.log(`activity: ${activity}`);
     dispatch(setNewUserActivity(activity));
     dispatch(
       register({
@@ -67,10 +63,6 @@ const YourActivityPage = () => {
   return (
     <div>
       <BackgroundContainer>
-        <style>
-          @import
-          url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Roboto&display=swap');
-        </style>
         <YourActivityLogo src={SelectGenderLogoPic} alt="Select Gender Logo" />
         <YourActivityContainer>
           <YourActivityHeadline>Your Activity</YourActivityHeadline>
@@ -86,7 +78,7 @@ const YourActivityPage = () => {
                       type="radio"
                       name="answer"
                       value="1.2"
-                      checked={activity0 === '1.2'}
+                      checked={activity === '1.2'}
                       onChange={() => setActivity('1.2')}
                     />
                     <RadioMark></RadioMark>
@@ -105,7 +97,7 @@ const YourActivityPage = () => {
                       type="radio"
                       name="answer"
                       value="1.375"
-                      checked={activity0 === '1.375'}
+                      checked={activity === '1.375'}
                       onChange={() => setActivity('1.375')}
                     />
                     <RadioMark></RadioMark>
@@ -123,7 +115,7 @@ const YourActivityPage = () => {
                     <RadioInput
                       type="radio"
                       name="answer"
-                      checked={activity0 === '1.55'}
+                      checked={activity === '1.55'}
                       onChange={() => setActivity('1.55')}
                     />
                     <RadioMark></RadioMark>
@@ -142,7 +134,7 @@ const YourActivityPage = () => {
                       type="radio"
                       name="answer"
                       value="1.725"
-                      checked={activity0 === '1.725'}
+                      checked={activity === '1.725'}
                       onChange={() => setActivity('1.725')}
                     />
                     <RadioMark></RadioMark>
@@ -160,7 +152,7 @@ const YourActivityPage = () => {
                       type="radio"
                       name="answer"
                       value="1.9"
-                      checked={activity0 === '1.9'}
+                      checked={activity === '1.9'}
                       onChange={() => setActivity('1.9')}
                     />
                     <RadioMark></RadioMark>
