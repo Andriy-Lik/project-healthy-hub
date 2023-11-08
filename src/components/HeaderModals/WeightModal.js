@@ -2,6 +2,7 @@ import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 
 import { setNewUserWeight } from '../../redux/Auth/authSlice';
+import HeaderOverlay from './HeaderOverlay';
 
 import {
   ModalWrapper,
@@ -35,12 +36,6 @@ export default function WeightModal({ onCloseModal }) {
     onCloseModal();
   };
 
-  // const closeBtnHandler = event => {
-  //   if (event.currentTarget === event.target) {
-  //     onCloseModal();
-  //   }
-  // };
-
   function getCurrentDateFormatted() {
     const currentDate = new Date();
 
@@ -53,37 +48,38 @@ export default function WeightModal({ onCloseModal }) {
 
   const formattedDate = getCurrentDateFormatted();
 
+  const closeBtnHandler = () => {
+    onCloseModal();
+  };
+
   return (
-    <ModalWrapper>
-      <CloseBtn>
-        <img
-          src={close}
-          alt="close"
-          width={16}
-          onClick={() => onCloseModal()}
-        />
-      </CloseBtn>
-      <Modal onClick={e => e.stopPropagation()}>
-        <ModalTitle>Enter your current weight</ModalTitle>
-        <ModalText>You can record your weight once a day</ModalText>
-        <DateContainer>
-          <DateText>Today</DateText>
-          <DateDay>{formattedDate}</DateDay>
-        </DateContainer>
-        <WeightForm onSubmit={handleNewUserWeight}>
-          <WeightFormInput
-            type="number"
-            name="weight"
-            placeholder="Enter your weight"
-            autoComplete="off"
-            onChange={handleInputChange}
-            required
-            autoFocus
-          />
-          <WeightFormBtn type="submit">Confirm</WeightFormBtn>
-        </WeightForm>
-      </Modal>
-      <CancelBtn onClick={() => onCloseModal()}>Cancel</CancelBtn>
-    </ModalWrapper>
+    <HeaderOverlay onCloseOverlay={onCloseModal}>
+      <ModalWrapper>
+        <CloseBtn onClick={closeBtnHandler}>
+          <img src={close} alt="close" width={16} onClick={closeBtnHandler} />
+        </CloseBtn>
+        <Modal onClick={e => e.stopPropagation()}>
+          <ModalTitle>Enter your current weight</ModalTitle>
+          <ModalText>You can record your weight once a day</ModalText>
+          <DateContainer>
+            <DateText>Today</DateText>
+            <DateDay>{formattedDate}</DateDay>
+          </DateContainer>
+          <WeightForm onSubmit={handleNewUserWeight}>
+            <WeightFormInput
+              type="number"
+              name="weight"
+              placeholder="Enter your weight"
+              autoComplete="off"
+              onChange={handleInputChange}
+              required
+              autoFocus
+            />
+            <WeightFormBtn type="submit">Confirm</WeightFormBtn>
+          </WeightForm>
+        </Modal>
+        <CancelBtn onClick={() => onCloseModal()}>Cancel</CancelBtn>
+      </ModalWrapper>
+    </HeaderOverlay>
   );
 }
