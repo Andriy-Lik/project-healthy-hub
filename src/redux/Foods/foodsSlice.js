@@ -12,13 +12,6 @@ const foodsSlice = createSlice({
       fat: '',
       calories: '',
     },
-    diaryEat: {
-      breakfast: [],
-      dinner: [],
-      snack: [],
-      lunch: [],
-    },
-    isDiaryEatLoading: false,
     isLoading: false,
     error: null,
   },
