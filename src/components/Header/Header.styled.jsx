@@ -102,7 +102,7 @@ export const InfoBlock = styled.div`
   @media screen and (${props => props.theme.mq.tablet}) {
     display: flex;
     &:nth-child(1) {
-      width: 173px;
+      /* width: 173px; */
       margin-right: 40px;
     }
   }

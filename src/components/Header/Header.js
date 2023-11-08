@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
 import { selectIsLoggedIn, selectUser } from '../../redux/Auth/authSelectors';
 
-import HeaderOverlay from 'components/HeaderModals/HeaderOverlay';
+// import HeaderOverlay from 'components/HeaderModals/HeaderOverlay';
 
 import {
   Container,
@@ -59,7 +59,8 @@ export default function Header() {
   const user = useSelector(selectUser);
   const isLoggedIn = useSelector(selectIsLoggedIn);
 
-  // console.log(isLoggedIn);
+  console.log('isLoggedIn', isLoggedIn);
+  // console.log('user', user);
 
   let goalIcon;
 
@@ -155,9 +156,7 @@ export default function Header() {
                 </InfoBlockText>
               </TextContainer>
               {showModalTarget && (
-                <HeaderOverlay onCloseOverlay={toggleModalTarget}>
-                  <TargetModal onCloseModal={toggleModalTarget} />
-                </HeaderOverlay>
+                <TargetModal onCloseModal={toggleModalTarget} />
               )}
             </InfoBlock>
             <InfoBlock onClick={toggleModalWeight}>
@@ -173,16 +172,20 @@ export default function Header() {
                 </InfoBlockText>
               </TextContainer>
               {showModalWeight && (
-                <HeaderOverlay onCloseOverlay={toggleModalWeight}>
-                  <WeightModal onCloseModal={toggleModalWeight} />
-                </HeaderOverlay>
+                <WeightModal onCloseModal={toggleModalWeight} />
               )}
             </InfoBlock>
           </InfoOptions>
           <UserBlock onClick={toggleModalProfile}>
             {user.name || 'User'}
             <AvaImg src={user.avatarURL || avatar} alt="avatar" />
-            <ArrowSvg src={arrowDown} alt="arrow down" />
+            <ArrowSvg
+              src={arrowDown}
+              alt="arrow down"
+              style={{
+                transform: showModalProfile ? 'rotate(180deg)' : 'rotate(0deg)',
+              }}
+            />
             {showModalProfile && (
               <ProfileModal onCloseModal={toggleModalProfile} />
             )}
