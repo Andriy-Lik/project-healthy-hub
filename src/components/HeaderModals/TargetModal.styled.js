@@ -118,14 +118,6 @@ export const ImgBorder = styled.div`
   margin-right: 12px;
   border: 1px solid ${props => props.theme.colors.gray1};
   border-radius: ${props => props.theme.radii.normal};
-
-  ${TargetWrapper}:hover & {
-    border: 2px solid ${props => props.theme.colors.violet};
-  }
-
-  ${TargetWrapper}[active='true'] & {
-    border: 2px solid ${props => props.theme.colors.violet};
-  }
 `;
 
 export const TargetText = styled.p`
@@ -133,14 +125,6 @@ export const TargetText = styled.p`
   color: ${props => props.theme.colors.white};
   font-size: ${props => props.theme.fontSizes.xs};
   font-weight: ${props => props.theme.fontWeights.regular};
-
-  ${TargetWrapper}:hover & {
-    color: ${props => props.theme.colors.violet};
-  }
-
-  ${TargetWrapper}[active='true'] & {
-    color: ${props => props.theme.colors.violet};
-  }
 `;
 
 export const ModalBtn = styled.button`
@@ -174,23 +158,3 @@ export const CancelBtn = styled.button`
     display: none;
   }
 `;
-
-// export const Overlay = styled.div`
-//   position: absolute;
-//   left: 0;
-//   width: 100%;
-//   height: 100%;
-//   z-index: 5;
-//   @media screen and (${props => props.theme.mq.mobile}) {
-//     top: 60px;
-//     display: flex;
-//   }
-//   @media screen and (${props => props.theme.mq.tablet}) {
-//     top: 100px;
-//     display: flex;
-//   }
-//   @media screen and (${props => props.theme.mq.desktop}) {
-//     top: 100px;
-//     display: flex;
-//   }
-// `;
