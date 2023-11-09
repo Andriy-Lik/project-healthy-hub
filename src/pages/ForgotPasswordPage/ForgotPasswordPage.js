@@ -13,7 +13,7 @@ import {
   SignInSuggestion,
   SignInLink,
 } from './ForgotPasswordPage.styled';
-import welcomeLogoPic from '../../images/WelcomeLogoPic.png';
+import logoPic from '../../images/WelcomePageImg/logoPic.png';
 
 const ForgotPasswordPage = () => {
   return (
@@ -24,7 +24,7 @@ const ForgotPasswordPage = () => {
           url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Roboto&display=swap');
         </style>
 
-          <ForgotPasswordLogo src={welcomeLogoPic} alt="Logo" />
+          <ForgotPasswordLogo src={logoPic} alt="Logo" />
         <ForgotPasswordContainer>
 
           <ForgotPasswordHeadline>Forgot your password</ForgotPasswordHeadline>

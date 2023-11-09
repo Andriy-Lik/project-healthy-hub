@@ -24,7 +24,7 @@ export const addFood = createAsyncThunk("foods/addFood", async (data, thunkAPI) 
     }
 });
 
-export const updateFood = createAsyncThunk("foods/updateFood", async (foodId, thunkAPI) => {
+export const updateFood = createAsyncThunk("foods/updateFood", async ({foodId, data}, thunkAPI) => {
     const state = thunkAPI.getState();
     const tokenCurrent = state.auth.token;
 
@@ -34,7 +34,7 @@ export const updateFood = createAsyncThunk("foods/updateFood", async (foodId, th
 
     try {
         setAuthHeader(tokenCurrent);
-        const response = await axios.put(`/api/user/food-intake/${foodId}`);
+        const response = await axios.put(`/api/user/food-intake/${foodId}`, data);
         return response.data;
     } catch (error) {
         return thunkAPI.rejectWithValue(error.message);

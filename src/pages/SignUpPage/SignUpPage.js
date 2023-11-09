@@ -20,7 +20,7 @@ import {
   SignInSuggestion,
   SignInLink,
 } from './SignUpPage.styled';
-import welcomeLogoPic from '../../images/WelcomeLogoPic.png';
+import logoPic from '../../images/WelcomePageImg/logoPic.png';
 
 const SignUpPage = () => {
   const dispatch = useDispatch();
@@ -54,7 +54,7 @@ const SignUpPage = () => {
           @import
           url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Roboto&display=swap');
         </style>
-        <SignUpLogo src={welcomeLogoPic} alt="Logo" />
+        <SignUpLogo src={logoPic} alt="Logo" />
         <SignUpContainer>
           <SignUpHeadline>Sign up</SignUpHeadline>
           <SignUpText>You need to register to use the service</SignUpText>

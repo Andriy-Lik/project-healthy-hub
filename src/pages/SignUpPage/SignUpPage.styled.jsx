@@ -18,7 +18,7 @@ export const BackgroundContainer = styled.div`
     margin: auto;
   }
 
-  @media (min-width: 1439px) {
+  @media (min-width: 1440px) {
     display: flex;
     flex-direction: row;
     justify-content: center;

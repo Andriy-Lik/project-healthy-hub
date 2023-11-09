@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { useDispatch } from "react-redux";
 
-import { addFood } from 'redux/Foods/foodsOperations';
+import { addFood, updateFood } from 'redux/Foods/foodsOperations';
 import { getStats } from "redux/Statistics/statisticsOperations";
 
 import { FieldArray, Formik } from 'formik';
@@ -85,17 +85,18 @@ const schema = yup.object({
 
 const modalRoot = document.querySelector('#modal-root');
 
-const RecordDiaryModal = ({ onClose, image, mealType }) => {
+
+const RecordDiaryModal = ({ onClose, image, mealType, item }) => {
 
   const initialValues = {
     productList: [
       { 
         mealType: mealType,
-        mealName: '',
-        carbonohidrates: '',
-        protein: '',
-        fat: '',
-        calories: ''
+        mealName: item?.mealName ?? '',
+        carbonohidrates: item?.carbohydrate ?? '',
+        protein: item?.protein ?? '',
+        fat: item?.fat ?? '',
+        calories: item?.calories ?? ''
       }
     ],
   };
@@ -131,7 +132,12 @@ const RecordDiaryModal = ({ onClose, image, mealType }) => {
         fat: fat.toFixed(1).toString(),  
         calories: calories.toString(),      
       }
+      console.log(item)
+      if (item) {
+        dispatch(updateFood({foodId: item._id, data}));
+      } else {
       dispatch(addFood(data));
+      };
     });
     dispatch(getStats('today'));
     resetForm();
@@ -243,8 +249,8 @@ const RecordDiaryModal = ({ onClose, image, mealType }) => {
 
                       })}                      
                     </ProductList>
-                   
-                    <BtnAddNewProduct
+                    {!item && (
+                      <BtnAddNewProduct
                       type="button"
                       onClick={() => {
                         
@@ -262,7 +268,9 @@ const RecordDiaryModal = ({ onClose, image, mealType }) => {
                       }}
                     >
                       + Add more
-                    </BtnAddNewProduct>
+                    </BtnAddNewProduct>)}
+                  
+
                   </ContentWrapper>
                 )
               }} />
@@ -288,3 +296,5 @@ RecordDiaryModal.propTypes = {
 };
 
 export default RecordDiaryModal;
+
+

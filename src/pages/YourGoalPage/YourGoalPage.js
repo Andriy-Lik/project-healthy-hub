@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { useState } from 'react';
 import { setNewUserGoal } from 'redux/Auth/authSlice';
 import {
   BackgroundContainer,
@@ -13,7 +12,6 @@ import {
   GoalList,
   GoalOption,
   GoalButton,
-  // GoalInput,
 } from './YourGoalPage.styled';
 import { LabelWithRadio, RadioMark, RadioInput  } from 'components/CustomRadioButton/CustomRadioButton.style';
 import GoalLogoPic from '../../images/YourGoalLogo.png';
@@ -24,17 +22,13 @@ const YourGoalPage = () => {
 
   const handleGoalResults = event => {
     event.preventDefault();
-    console.log(`Goal is ${goal}`);
+    console.log(`Goal: ${goal}`);
     dispatch(setNewUserGoal(goal));
   };
 
   return (
     <div>
       <BackgroundContainer>
-        <style>
-          @import
-          url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Roboto&display=swap');
-        </style>
         <GoalLogo src={GoalLogoPic} alt="Goal Logo" />
         <GoalContainer>
           <GoalHeadline>Your goal</GoalHeadline>
@@ -54,13 +48,13 @@ const YourGoalPage = () => {
                       <RadioInput
                         type="radio"
                         name="answer"
-                        value="Lose Fat"
-                        checked={goal === 'Lose Fat'}
-                        onChange={() => setGoal('Lose Fat')}
+                        value="Lose fat"
+                        checked={goal === 'Lose fat'}
+                        onChange={() => setGoal('Lose fat')}
                       />
                       <RadioMark></RadioMark>
                     </LabelWithRadio>
-                    Lose Fat
+                    Lose fat
                   </GoalOption>
                 </div>
 
@@ -98,17 +92,16 @@ const YourGoalPage = () => {
                       <RadioInput
                         type="radio"
                         name="answer"
-                        value="Gain Muscles"
-                        checked={goal === 'Gain Muscles'}
-                        onChange={() => setGoal('Gain Muscles')}
+                        value="Gain muscle"
+                        checked={goal === 'Gain muscle'}
+                        onChange={() => setGoal('Gain muscle')}
                       />
                       <RadioMark></RadioMark>
                     </LabelWithRadio>
-                    Gain Muscles
+                    Gain muscle
                   </GoalOption>
                 </div>
               </GoalList>
-              {/* <GoalButton type='submit'>Next</GoalButton> */}
               <GoalButton>
                 <Link to={'/select-gender'}>Next</Link>
               </GoalButton>

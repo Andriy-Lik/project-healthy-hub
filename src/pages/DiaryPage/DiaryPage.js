@@ -1,15 +1,16 @@
 import React from "react";
 import { useState, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
-import Form from '../../components/Diary/DiaryForm';
 import breakfast from '../../images/diaryPageImages/breakfast.png';
 import dinner from '../../images/diaryPageImages/dinner.png';
 import lunch from '../../images/diaryPageImages/lunch.png';
 import snack from '../../images/diaryPageImages/snack.png';
 import arrowRight from '../../images/diaryPageImages/arrow-right.svg';
-
-// import { useSelector } from 'react-redux';
-// import { selectStatsInfo } from '../../redux/Statistics/statisticsSelectors';
+import { ItemToAdd } from "../../components/DiaryPageItemsToAdd/ItemsToAdd";
+import { selectConsumedMacronutrientsPerDay, selectIntakeFoodPerDay } from '../../redux/Statistics/statisticsSelectors';
+import RecordDiaryModal from "components/Modals/RecordDiaryModal/RecordDiaryModal";
+import { useSelector } from 'react-redux';
+import { ElementOfFood } from "../../components/Diary/ElementOfFood";
 
 
 import {
@@ -21,7 +22,6 @@ import {
   FoodBlock,
   FoodBlockHeader,
   FoodHeader,
-  ElementTitle,
   List,
   Element,
   Img,
@@ -35,109 +35,31 @@ import {
 
 const DiaryPage = () => {
 
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalOpen1, setIsModalOpen1] = useState(false);
+  const [isModalOpen2, setIsModalOpen2] = useState(false);
+  const [isModalOpen3, setIsModalOpen3] = useState(false);
+  const toggleModal = () => setIsModalOpen(!isModalOpen);
+  const toggleModal1 = () => setIsModalOpen1(!isModalOpen1);
+  const toggleModal2 = () => setIsModalOpen2(!isModalOpen2);
+  const toggleModal3 = () => setIsModalOpen3(!isModalOpen3);
+
   const location = useLocation();
   const backLinkLocationRef = useRef(location.state?.from ?? '/main');
-  // const info = useSelector(selectStatsInfo);
 
-  const breakfastItem = window.localStorage.getItem('Breakfast') ?? '[]';
-  const dinnerItem = window.localStorage.getItem('Dinner') ?? '[]';
-  const lunchItem = window.localStorage.getItem('Lunch') ?? '[]';
-  const snackItem = window.localStorage.getItem('Snack') ?? '[]';
-  const [breakfastFood] = useState(JSON.parse(breakfastItem));
-  const [dinnerFood] = useState(JSON.parse(dinnerItem));
-  const [lunchFood] = useState(JSON.parse(lunchItem));
-  const [snackFood] = useState(JSON.parse(snackItem));
+  const consumedMacronutrients = useSelector(selectConsumedMacronutrientsPerDay);
+  const {
+    breakfast: breakfastInfo,
+    lunch: lunchInfo,
+    dinner: dinnerInfo,
+    snack: snackInfo,
+  } = consumedMacronutrients;
 
-  // const [breakfastFood] = useState([]);
-  // const [dinnerFood] = useState([]);
-  // const [lunchFood] = useState([]);
-  // const [snackFood] = useState([]);
-  const [addFoodButton, setAddFoodButton] = useState(true);
-  const [addFoodButtonDinner, setAddFoodButtonDinner] = useState(true);
-  const [addFoodButtonLunch, setAddFoodButtonLunch] = useState(true);
-  const [addFoodButtonSnack, setAddFoodButtonSnack] = useState(true);
-
-  const [carbonohidrates, setCarbonohidrates] = useState({
-    breakfast: 0,
-    dinner: 0,
-    lunch: 0,
-    snack: 0
-    });
-  const [protein, setProtein] = useState({
-    breakfast: 0,
-    dinner: 0,
-    lunch: 0,
-    snack: 0
-    });
-  const [fat, setFat] = useState({
-    breakfast: 0,
-    dinner: 0,
-    lunch: 0,
-    snack: 0
-    });
-  
-
-  const addFoodForm = (carbon, proteinNumber, fatNumber, type) => {
-    if (type==="Breakfast") {
-      setCarbonohidrates({ ...carbonohidrates, breakfast: carbon});
-      setProtein({ ...protein, breakfast: proteinNumber});
-      setFat({ ...fat, breakfast: fatNumber});
-
-    } else if (type==="Dinner") {
-      setCarbonohidrates({ ...carbonohidrates, dinner: carbon});
-      setProtein({ ...protein, dinner: proteinNumber});
-      setFat({ ...fat, dinner: fatNumber});
-
-    } else if (type==="Lunch") {
-      setCarbonohidrates({ ...carbonohidrates, lunch: carbon});
-      setProtein({ ...protein, lunch: proteinNumber});
-      setFat({ ...fat, lunch: fatNumber});
-
-    } else if (type==="Snack") {
-      setCarbonohidrates({ ...carbonohidrates, snack: carbon});
-      setProtein({ ...protein, snack: proteinNumber});
-      setFat({ ...fat, snack: fatNumber});
-    };   
-  };
-
-
- function getFood(type) {
-  if (type==="Breakfast") {
-    return breakfastFood;
-  } else if (type==="Dinner") {
-    return dinnerFood;
-  } else if (type==="Lunch") {
-    return lunchFood;
-  } else if (type==="Snack") {
-    return snackFood;
-  };
- }
-
-
-  const toggleFoodButton = (type) => {
-
-    if (type==='Breakfast') {
-    setAddFoodButton(!addFoodButton);
-  } else if (type==='Dinner') {
-    setAddFoodButtonDinner(!addFoodButtonDinner);
-  } else if (type==='Lunch') {
-    setAddFoodButtonLunch(!addFoodButtonLunch);
-  } else if (type==='Snack') {
-    setAddFoodButtonSnack(!addFoodButtonSnack);
-  };
-    
-    const currentFood = getFood(type);
-
-    const newFoodElement = {
-      number: currentFood.length === 0 ? 1 : currentFood[currentFood.length - 1].number + 1,
-      mealName: '',
-      carbon: '',
-      protein: '',
-      fat: '',
-      isEditable: true,
-    };
-    currentFood.push(newFoodElement);
-   };
+  const foodIntake = useSelector(selectIntakeFoodPerDay)
+  const breakfastFoodIntake = foodIntake.filter((value) => value.mealType === 'Breakfast' ).map((item, index) => <ElementOfFood item={item} index={index}/>)
+  const dinnerFoodIntake = foodIntake.filter((value) => value.mealType === 'Dinner' ).map((item, index) => <ElementOfFood item={item} index={index}/>)
+  const lunchFoodIntake = foodIntake.filter((value) => value.mealType === 'Lunch' ).map((item, index) => <ElementOfFood item={item} index={index}/>)
+  const snackFoodIntake = foodIntake.filter((value) => value.mealType === 'Snack' ).map((item, index) => <ElementOfFood item={item} index={index}/>)
 
   return (
     <Section>
@@ -158,16 +80,18 @@ const DiaryPage = () => {
                 <FoodHeader>Breakfast</FoodHeader>
               </Div1>
               <Div2>
-              <ElementTitle>Carbonohidrates: {carbonohidrates.breakfast}</ElementTitle>
-              <ElementTitle>Protein: {protein.breakfast} </ElementTitle>
-              <ElementTitle>Fat: {fat.breakfast}</ElementTitle>
+              <ItemToAdd 
+              info={breakfastInfo} />
               </Div2>
               <div></div>
             </FoodBlockHeader>
             <List>
+
+            {breakfastFoodIntake}
               <Element>
-                {breakfastFood.map(food => <Form onSubmit={addFoodForm} type="Breakfast" value={food} onAddElement={setAddFoodButton}/>)}
-                {addFoodButton && <AddFoodButton onClick={() => toggleFoodButton('Breakfast')}>+ Record your meal</AddFoodButton>}     
+              <AddFoodButton onClick={toggleModal}>+ Record your meal</AddFoodButton>
+              {isModalOpen && (
+              <RecordDiaryModal onClose={toggleModal} image={ breakfast } mealType={ 'Breakfast' }/>)}           
               </Element>
             </List>
           </FoodBlock>
@@ -178,16 +102,17 @@ const DiaryPage = () => {
               <FoodHeader>Dinner</FoodHeader>
             </Div1>
             <Div2>
-              <ElementTitle>Carbonohidrates: {carbonohidrates.dinner} </ElementTitle>
-                <ElementTitle>Protein: {protein.dinner} </ElementTitle>
-                <ElementTitle>Fat: {fat.dinner} </ElementTitle>
+            <ItemToAdd 
+              info={dinnerInfo} />
             </Div2>
             <div></div>
             </FoodBlockHeader>
             <List>
+            {dinnerFoodIntake}
             <Element>
-            {dinnerFood.map(food => <Form onSubmit={addFoodForm} type="Dinner" value={food} onAddElement={setAddFoodButtonDinner}/>)}
-            {addFoodButtonDinner && <AddFoodButton onClick={() => toggleFoodButton('Dinner')}>+ Record your meal</AddFoodButton>}     
+            <AddFoodButton onClick={toggleModal1}>+ Record your meal</AddFoodButton>
+              {isModalOpen1 && (
+              <RecordDiaryModal onClose={toggleModal1} image= { dinner } mealType={ 'Dinner' }/>)} 
             </Element>
             </List>
           </FoodBlock>
@@ -197,17 +122,18 @@ const DiaryPage = () => {
               <Img src={lunch} alt="Lunch" />
               <FoodHeader>Lunch</FoodHeader>
             </Div1>
-            <Div2>
-              <ElementTitle>Carbonohidrates: {carbonohidrates.lunch} </ElementTitle>
-                <ElementTitle>Protein: {protein.lunch}</ElementTitle>
-                <ElementTitle>Fat: {fat.lunch} </ElementTitle>
-                </Div2>
-                <div></div>
+             <Div2>
+             <ItemToAdd 
+              info={lunchInfo} />
+             </Div2>
+            <div></div>
             </FoodBlockHeader>
             <List>
+            {lunchFoodIntake}
             <Element>
-            {lunchFood.map(food => <Form onSubmit={addFoodForm} type="Lunch" value={food} onAddElement={setAddFoodButtonLunch}/>)}
-            {addFoodButtonLunch && <AddFoodButton onClick={() => toggleFoodButton('Lunch')}>+ Record your meal</AddFoodButton>}     
+            <AddFoodButton onClick={toggleModal2}>+ Record your meal</AddFoodButton>
+              {isModalOpen2 && (
+              <RecordDiaryModal onClose={toggleModal2} image={ lunch } mealType={ 'Lunch' }/>)}   
             </Element>
             </List>
           </FoodBlock>
@@ -218,16 +144,17 @@ const DiaryPage = () => {
               <FoodHeader>Snack</FoodHeader>
           </Div1>
           <Div2>
-              <ElementTitle>Carbonohidrates: {carbonohidrates.snack} </ElementTitle>
-                <ElementTitle>Protein: {protein.snack}</ElementTitle>
-                <ElementTitle>Fat: {fat.snack} </ElementTitle>
+          <ItemToAdd 
+              info={snackInfo} />
                 </Div2>
                 <div></div>
             </FoodBlockHeader>
             <List>
+            {snackFoodIntake}
             <Element>
-            {snackFood.map(food => <Form onSubmit={addFoodForm} type="Snack" value={food} onAddElement={setAddFoodButtonSnack}/>)}
-            {addFoodButtonSnack && <AddFoodButton onClick={() => toggleFoodButton('Snack')}>+ Record your meal</AddFoodButton>}     
+              <AddFoodButton onClick={toggleModal3}>+ Record your meal</AddFoodButton>
+              {isModalOpen3 && (
+              <RecordDiaryModal onClose={toggleModal3} image={ snack } mealType={ 'Snack' }/>)}    
             </Element>
             </List>
           </FoodBlock>
@@ -239,16 +166,3 @@ const DiaryPage = () => {
 
 export default DiaryPage;
 
-
-  // const breakfastItem = window.localStorage.getItem('Breakfast') ?? '[]';
-  // const dinnerItem = window.localStorage.getItem('Dinner') ?? '[]';
-  // const lunchItem = window.localStorage.getItem('Lunch') ?? '[]';
-  // const snackItem = window.localStorage.getItem('Snack') ?? '[]';
-  // const breakfastItem = [];
-  // const dinnerItem = [];
-  // const lunchItem = [];
-  // const snackItem = [];
-  // const [breakfastFood] = useState(JSON.parse(breakfastItem));
-  // const [dinnerFood] = useState(JSON.parse(dinnerItem));
-  // const [lunchFood] = useState(JSON.parse(lunchItem));
-  // const [snackFood] = useState(JSON.parse(snackItem));

@@ -12,9 +12,7 @@ const clearAuthHeader = () => {
   axios.defaults.headers.common.Authorization = '';
 };
 
-export const register = createAsyncThunk(
-  'auth/register',
-  async (credentials, thunkAPI) => {
+export const register = createAsyncThunk('auth/register', async (credentials, thunkAPI) => {
     try {
       const response = await axios.post('/users/register', credentials);
       setAuthHeader(response.data.token);
@@ -25,9 +23,7 @@ export const register = createAsyncThunk(
   }
 );
 
-export const logIn = createAsyncThunk(
-  'auth/login',
-  async (credentials, thunkAPI) => {
+export const logIn = createAsyncThunk('auth/login', async (credentials, thunkAPI) => {
     try {
       const response = await axios.post('/users/login', credentials);
       setAuthHeader(response.data.token);
@@ -48,15 +44,13 @@ export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
   }
 });
 
-export const currentUser = createAsyncThunk(
-  'auth/refresh',
-  async (_, thunkAPI) => {
+export const currentUser = createAsyncThunk('auth/refresh', async (_, thunkAPI) => {
     const state = thunkAPI.getState();
     const tokenCurrent = state.auth.token;
 
     if (tokenCurrent === null) {
       return thunkAPI.rejectWithValue('Unable to fetch user');
-    }
+    }    
 
     try {
       setAuthHeader(tokenCurrent);
@@ -69,9 +63,7 @@ export const currentUser = createAsyncThunk(
   }
 );
 
-export const updateUser = createAsyncThunk(
-  'auth/updateUser',
-  async (data, thunkAPI) => {
+export const updateUser = createAsyncThunk('auth/updateUser', async (data, thunkAPI) => {
     const state = thunkAPI.getState();
     const tokenCurrent = state.auth.token;
 
@@ -88,9 +80,7 @@ export const updateUser = createAsyncThunk(
   }
 );
 
-export const forgotPassword = createAsyncThunk(
-  'auth/forgotPassword',
-  async (password, thunkAPI) => {
+export const forgotPassword = createAsyncThunk('auth/forgotPassword', async (password, thunkAPI) => {
     const state = thunkAPI.getState();
     const tokenCurrent = state.auth.token;
 
@@ -110,9 +100,7 @@ export const forgotPassword = createAsyncThunk(
   }
 );
 
-export const updateAvatar = createAsyncThunk(
-  'auth/updateAvatar',
-  async (avatarURL, thunkAPI) => {
+export const updateAvatar = createAsyncThunk('auth/updateAvatar', async (avatarURL, thunkAPI) => {
     const state = thunkAPI.getState();
     const tokenCurrent = state.auth.token;
 
@@ -132,9 +120,7 @@ export const updateAvatar = createAsyncThunk(
   }
 );
 
-export const addWeight = createAsyncThunk(
-  'auth/weight',
-  async (inputWeight, thunkAPI) => {
+export const addWeight = createAsyncThunk('auth/weight', async (inputWeight, thunkAPI) => {
     const state = thunkAPI.getState();
     const tokenCurrent = state.auth.token;
 
@@ -154,9 +140,7 @@ export const addWeight = createAsyncThunk(
   }
 );
 
-export const updateGoal = createAsyncThunk(
-  'auth/goal',
-  async (selectedGoal, thunkAPI) => {
+export const updateGoal = createAsyncThunk('auth/goal', async (selectedGoal, thunkAPI) => {
     const state = thunkAPI.getState();
     const tokenCurrent = state.auth.token;
 

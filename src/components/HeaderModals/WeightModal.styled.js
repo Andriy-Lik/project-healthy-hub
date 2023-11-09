@@ -1,32 +1,12 @@
 import styled from 'styled-components';
 
-export const Overlay = styled.div`
-  position: absolute;
-  left: 0;
-  top: 0;
-  /* background-color: rgba(197, 197, 197, 0.2); */
-  width: 100%;
-  height: 100%;
-  z-index: 6;
-  @media screen and (${props => props.theme.mq.mobile}) {
-    display: flex;
-  }
-  @media screen and (${props => props.theme.mq.tablet}) {
-    display: flex;
-  }
-  @media screen and (${props => props.theme.mq.desktop}) {
-    display: flex;
-  }
-`;
-
 export const ModalWrapper = styled.div`
   position: absolute;
   box-shadow: 0 4px 14px 0 rgba(227, 255, 168, 0.2);
   background-color: ${div => div.theme.colors.black2};
   border-radius: ${div => div.theme.radii.normal};
   @media screen and (${props => props.theme.mq.mobile}) {
-    right: 0;
-    top: 60px;
+    right: 0;    
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -34,14 +14,12 @@ export const ModalWrapper = styled.div`
   }
   @media screen and (${props => props.theme.mq.tablet}) {
     right: 148px;
-    width: 392px;
-    top: 100px;
+    width: 392px;   
     padding-bottom: 0;
   }
   @media screen and (${props => props.theme.mq.desktop}) {
     right: 36px;
-    width: 392px;
-    top: 100px;
+    width: 392px;    
     padding-bottom: 0;
   }
 `;

@@ -1,207 +1,235 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-export const BackgroundContainer = styled.div`
+export const Container = styled.div`
   background-color: #050505;
   display: flex;
-  margin: auto;
 
   @media (min-width: 320px) and (max-width: 833px) {
     flex-direction: column;
   }
 
   @media (min-width: 834px) and (max-width: 1439px) {
-    flex-direction: center;
+    flex-direction: column;
   }
 
-  @media (min-width: 1439px) {
+  @media (min-width: 1440px) {
     flex-direction: row;
     justify-content: center;
   }
 `;
 
-export const SignInLogo = styled.img`
+export const Image = styled.img`
   margin-right: auto;
   margin-left: auto;
   margin-top: 40px;
-  margin-bottom: 40px;
 
   @media (min-width: 320px) and (max-width: 833px) {
     width: 300px;
-    margin-right: auto;
-    margin-left: auto;
+    margin-top: 24px;
+    margin-bottom: 24px;
   }
 
   @media (min-width: 834px) and (max-width: 1439px) {
     width: 380px;
-    margin-right: auto;
-    margin-left: auto;
-  }
-
-  @media (min-width: 1439px) {
-    margin-right: 80px;
-    margin-left: 0;
-  }
-`;
-
-export const SignInContainer = styled.div`
-  max-width: 444px;
-  margin-top: 120px;
-  margin-left: 104px;
-
-  @media (min-width: 320px) and (max-width: 833px) {
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-
-  @media (min-width: 834px) and (max-width: 1439px) {
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-
-  @media (min-width: 1439px) {
-    width: 444px;
-    margin-left: 0;
-    margin-right: 120px;
-  }
-`;
-
-export const SignInHeadline = styled.h1`
-  color: #ffffff;
-  font-size: 30px;
-  font-weight: 500;
-  line-height: 36px;
-  font-family: Poppins;
-
-  @media (min-width: 834px) and (max-width: 1439px) {
-    width: 100%;
-    text-align: center;
-    align-self: center;
-  }
-`;
-
-export const SignInText = styled.p`
-  color: #b6b6b6;
-  font-weight: 400;
-  font-size: 22px;
-  margin-top: 16px;
-  line-height: 32px;
-  width: 280px;
-
-  @media (min-width: 834px) and (max-width: 1439px) {
-    width: 360px;
-    text-align: center;
-    align-self: center;
-    align-text: center;
-  }
-
-  @media (min-width: 1439px) {
-    width: 460px;
-  }
-`;
-
-export const SignInFormWrapper = styled.div`
-  width: 212px;
-`;
-
-export const SignInForm = styled.form`
-  display: block;
-  margin-top: 8px;
-  margin-top: 8px;
-  align-self: center;
-  margin-right: auto;
-  margin-left: auto;
-  align-text: center;
-
-  @media (min-width: 834px) and (max-width: 1439px) {
-    width: 380px;
-  }
-`;
-
-export const SignInInput = styled.input`
-  border: 1px solid #e3ffa8;
-  border-radius: 12px;
-  background-color: #0f0f0f;
-  width: 268px;
-  height: 36px;
-  color: #b6b6b6;
-  padding-left: 8px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-right: 8px;
-  margin-top: 16px;
-  align-self: center;
-  margin-right: auto;
-  margin-left: auto;
-
-  @media (min-width: 834px) and (max-width: 1439px) {
-    width: 380px;
-  }
-`;
-
-export const SignInButton = styled.button`
-  background-color: #e3ffa8;
-  text-align: center;
-  margin-top: 16px;
-  border-radius: 12px;
-  width: 268px;
-  padding: 8px;
-  font-size: 14px;
-  font-family: Poppins;
-
-  @media (min-width: 834px) and (max-width: 1439px) {
-    width: 380px;
-  }
-`;
-
-export const ForgotYourPassword = styled.button `
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 20px;
-  color: #b6b6b6;
-  background-color: #050505;
-  border: none;
-  margin-top: 20px;
-  margin-left: 40px;
-  align-text: center;
-  width: 192px;
-
-  
-  @media (min-width: 834px) and (max-width: 1439px) {
-    margin-left: 110px;
-  }
-`;
-
-export const SignUpSuggestionButtonWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-top: 200px;
-
-  @media (min-width: 834px) {
-    display: flex;
-    flex-direction: row;
     margin-bottom: 60px;
   }
+
+  @media (min-width: 1440px) {
+    width: 592px;
+    margin: 40px 104px 72px 0;
+  }
 `;
 
-export const SignUpSuggestion = styled.p`
-  color: #b6b6b6;
+export const ContentBox = styled.div`
+  width: 444px;
+
+  @media (min-width: 320px) and (max-width: 833px) {
+    width: 300px;
+    margin: auto;
+  }
+
+  @media (min-width: 834px) and (max-width: 1439px) {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  @media (min-width: 1440px) {
+    margin-top: 120px;
+  }
+`;
+
+export const Title = styled.h1`
+  margin-bottom: 16px;
+  color: ${p => p.theme.colors.white};
+  font-family: ${p => p.theme.fontFamily.poppins};
+  font-size: ${p => p.theme.fontSizes.xl};
+  font-weight: ${p => p.theme.fontWeights.medium};
+  line-height: 1.2;
+
+  @media (min-width: 320px) and (max-width: 833px) {
+    font-size: ${p => p.theme.fontSizes.l2};
+    line-height: 1.25;
+  }
+
+  @media (min-width: 834px) and (max-width: 1439px) {
+    text-align: center;
+    align-self: center;
+  }
+`;
+
+export const Text = styled.p`
+  margin-bottom: 24px;
+  color: ${p => p.theme.colors.gray};
+  font-family: ${p => p.theme.fontFamily.poppins};
+  font-weight: ${p => p.theme.fontWeights.regular};
+  font-size: ${p => p.theme.fontSizes.l};
+  line-height: 1.455;
+
+  @media (min-width: 320px) and (max-width: 833px) {
+    font-size: ${p => p.theme.fontSizes.m};
+    line-height: 1.333;
+  }
+
+  @media (min-width: 834px) and (max-width: 1439px) {
+    text-align: center;
+  }
+`;
+
+export const FormWrapper = styled.div`
+
+  @media (min-width: 320px) and (max-width: 833px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 32px;
+  }
+
+  @media (min-width: 834px) and (max-width: 1439px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 222px;
+  }
+
+  @media (min-width: 1440px) {
+    margin-bottom: 184px;
+  }
+`;
+
+export const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+`;
+
+export const Input = styled.input`
+  width: 212px;
+  margin-bottom: 20px;
+  padding: 7px 10px;
+  color: ${p => p.theme.colors.gray};
+  background-color: ${p => p.theme.colors.black2};
+  border: ${p => p.theme.borders.normal} ${p => p.theme.colors.greenLite};
+  border-radius: 12px;
+
+  font-family: ${p => p.theme.fontFamily.poppins};
+  font-weight: ${p => p.theme.fontWeights.regular};
+  font-size: ${p => p.theme.fontSizes.xs};
+  line-height: 1.429;
+
+  @media (min-width: 320px) and (max-width: 833px) {
+    width: 300px;
+  }
+
+  @media (min-width: 834px) and (max-width: 1439px) {
+    width: 380px;
+  }
+`;
+
+export const FormButton = styled.button`
+  width: 212px;
+  margin-top: 20px;
+  padding: 8px;
+  background-color: ${p => p.theme.colors.greenLite};
+  text-align: center;
+  border-radius: 12px;
+  border: none;
+  font-family: ${p => p.theme.fontFamily.poppins};
+  font-size: ${p => p.theme.fontSizes.xs};
+  font-weight: ${p => p.theme.fontWeights.medium};
+  line-height: 1.429;  
+
+  @media (min-width: 320px) and (max-width: 833px) {
+    width: 300px;
+  }
+
+  @media (min-width: 834px) and (max-width: 1439px) {
+    width: 380px;
+  }
+`;
+
+export const ForgotPasswordLink = styled(Link)`
+  color: ${p => p.theme.colors.gray};
+  background-color: ${p => p.theme.colors.black};
+  border: none;
+  font-family: ${p => p.theme.fontFamily.poppins};
+  font-size: ${p => p.theme.fontSizes.xs};
+  font-weight: ${p => p.theme.fontWeights.regular};
+  line-height: 1.429;
+  
+  
+  @media (min-width: 320px) and (max-width: 833px) {
+    text-align: center;
+  }
+`;
+
+export const SignUpContainer = styled.div`
+  display: flex;
+
+  @media (min-width: 320px) and (max-width: 833px) {
+    margin-bottom: 20px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  @media (min-width: 834px) and (max-width: 1439px) {
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 60px;
+  }
 
   @media (min-width: 834px) {
-    margin-right: 20px;
+    flex-direction: row;
+  }
+`;
+
+export const SignUpText = styled.p`
+  color: ${p => p.theme.colors.gray};
+  font-family: ${p => p.theme.fontFamily.poppins};
+  font-size: ${p => p.theme.fontSizes.xs};
+  font-weight: ${p => p.theme.fontWeights.regular};
+  line-height: 1.429;
+
+  @media (min-width: 320px) and (max-width: 833px) {
+    margin-bottom: 16px;
+  }
+
+  @media (min-width: 834px) {
+    margin-right: 16px;
   }
 `;
 
 export const SignUpLink = styled(Link)`
-  background-color: #050505;
-  color: #ffffff;
+  background-color:${p => p.theme.colors.black};
+  color: ${p => p.theme.colors.white};
   border: none;
-  margin-top: 20px;
-  margin-bottom: 40px;
+
+  font-family: ${p => p.theme.fontFamily.poppins};
+  font-size: ${p => p.theme.fontSizes.xs};
+  font-weight: ${p => p.theme.fontWeights.medium};
+  line-height: 1.429;
 
   @media (min-width: 834px) {
     margin: 0;

@@ -15,7 +15,6 @@ import {
   BodyParametersLabel,
   BodyParametersInput,
   BodyParametersButton,
-  // BodyParametersBackButton,
 } from './BodyParametersPage.styled';
 import BodyParametersBackButton from 'components/BackButtons/SelectGenderBackButton/BodyParametersBackButton/BodyParametersBackButton';
 import BodyParametersLogoPic from '../../images/BodyParametersLogoPic.png';
@@ -25,14 +24,11 @@ const BodyParametersPage = () => {
   const [height, setHeight] = useState('');
   const [weight, setWeight] = useState('');
 
-  const parsedHeight = parseFloat(height);
-  const parsedWeight = parseFloat(weight);
-
   const handleNewUserHeightWeightData = event => {
     event.preventDefault();
     console.log(`height: ${height}, weight: ${weight}`);
-    dispatch(setNewUserHeight(parsedHeight));
-    dispatch(setNewUserWeight(parsedWeight));
+    dispatch(setNewUserHeight(height));
+    dispatch(setNewUserWeight(weight));
   };
 
   const handleInputChange = event => {
@@ -45,17 +41,11 @@ const BodyParametersPage = () => {
     }
   }
 
-
-
   const location = useLocation();
   const locationRef = useRef(location);
   return (
     <div>
       <BackgroundContainer>
-        <style>
-          @import
-          url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Roboto&display=swap');
-        </style>
           <BodyParametersLogo
             src={BodyParametersLogoPic}
             alt="BodyParametersLogoPic"
@@ -93,4 +83,5 @@ const BodyParametersPage = () => {
     </div>
   );
 };
+
 export default BodyParametersPage;

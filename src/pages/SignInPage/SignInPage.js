@@ -1,24 +1,24 @@
 // import { Link } from "react-router-dom";
 import {
-  BackgroundContainer,
-  SignInLogo,
-  SignInContainer,
-  SignInHeadline,
-  SignInText,
-  SignInFormWrapper,
-  SignInForm,
-  SignInInput,
-  SignInButton,
-  ForgotYourPassword,
-  SignUpSuggestionButtonWrapper,
-  SignUpSuggestion,
+  Container,
+  Image,
+  ContentBox,
+  Title,
+  Text,
+  FormWrapper,
+  Form,
+  Input,
+  FormButton,
+  ForgotPasswordLink,
+  SignUpContainer,
+  SignUpText,
   SignUpLink,
 } from './SignInPage.styled';
 import { logIn } from '../../redux/Auth/authOperations';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import welcomeLogoPic from '../../images/WelcomeLogoPic.png';
+import logoPic from '../../images/WelcomePageImg/logoPic.png';
 
 const SignInPage = () => {
   const dispatch = useDispatch();
@@ -53,47 +53,43 @@ const SignInPage = () => {
 
   return (
     <div>
-      <BackgroundContainer>
-        <style>
-          @import
-          url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Roboto&display=swap');
-        </style>
-        <SignInLogo src={welcomeLogoPic} alt="Logo" />
-        <SignInContainer>
-          <SignInHeadline>Sign in</SignInHeadline>
-          <SignInText>You need to login to use the service</SignInText>
+      <Container>
+        <Image src={logoPic} alt="img" />
+        <ContentBox>
+          <Title>Sign in</Title>
+          <Text>You need to login to use the service</Text>
           {error && <p>{error}</p>}
-          <SignInFormWrapper>
-            <SignInForm onSubmit={handleSubmit} autoComplete="on">
-              <SignInInput
+          <FormWrapper>
+            <Form onSubmit={handleSubmit} autoComplete="on">
+              <Input
                 type="email"
                 name="email"
                 value={email}
                 onChange={handleEmailChange}
                 placeholder="E-mail"
               />
-              <SignInInput
+              <Input
                 type="password"
                 name="password"
                 value={password}
                 onChange={handlePasswordChange}
                 placeholder="Password"
               />
-              <SignInButton type="submit">Sign in</SignInButton>
-              <ForgotYourPassword to={'/forgot-password'}>
-                Forgot your password?
-              </ForgotYourPassword>
-            </SignInForm>
-          </SignInFormWrapper>
+              <FormButton type="submit">Sign in</FormButton>
+            </Form>
+            <ForgotPasswordLink to={'/forgot-password'}>
+              Forgot your password?
+            </ForgotPasswordLink>
+          </FormWrapper>
 
-          <SignUpSuggestionButtonWrapper>
-            <SignUpSuggestion>
+          <SignUpContainer>
+            <SignUpText>
               If you don't have an account yet
-            </SignUpSuggestion>
+            </SignUpText>
             <SignUpLink to={'/signup'}>Sign up</SignUpLink>
-          </SignUpSuggestionButtonWrapper>
-        </SignInContainer>
-      </BackgroundContainer>
+          </SignUpContainer>
+        </ContentBox>
+      </Container>
     </div>
   );
 };
