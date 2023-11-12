@@ -9,7 +9,7 @@ const HeaderOverlay = ({ onCloseOverlay, children }) => {
   const overlayClickHandler = event => {
     if (event.currentTarget === event.target) {
       onCloseOverlay();
-      console.log('onCloseOverlay()', onCloseOverlay());
+      console.log(onCloseOverlay());
     }
   };
 
