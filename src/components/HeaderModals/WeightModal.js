@@ -49,6 +49,7 @@ export default function WeightModal({ onCloseModal }) {
   const formattedDate = getCurrentDateFormatted();
 
   const closeBtnHandler = () => {
+    console.log(onCloseModal());
     onCloseModal();
   };
 
@@ -78,7 +79,7 @@ export default function WeightModal({ onCloseModal }) {
             <WeightFormBtn type="submit">Confirm</WeightFormBtn>
           </WeightForm>
         </Modal>
-        <CancelBtn onClick={() => onCloseModal()}>Cancel</CancelBtn>
+        <CancelBtn onClick={closeBtnHandler}>Cancel</CancelBtn>
       </ModalWrapper>
     </HeaderOverlay>
   );
