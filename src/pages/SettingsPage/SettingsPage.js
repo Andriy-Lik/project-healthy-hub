@@ -1,21 +1,23 @@
-import React, { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate } from 'react-router-dom';
 
-import { updateUser } from '../../redux/Auth/authOperations';
-import { selectUser } from '../../redux/Auth/authSelectors';
+import { updateUser } from 'redux/Auth/authOperations';
+import { selectUser } from 'redux/Auth/authSelectors';
 
 import {
   SettingsPageSection,
   SettingsPageContainer,
-  H1,
-  ButtonContainer,
+  HeaderPage,
+  TitlePage,
+  ButtonContainerTablet,
+  ButtonContainerMobile,
   CancelButton,
   SaveButton,
-  MiddleProfileSetting,
+  ProfileSettingsContainer,
+  BannerThumb,
   Img,
-  Forms,
+  Form,
   SecondForm,
   FormRow,
   Label,
@@ -25,64 +27,33 @@ import {
   H2,
 } from './SettingsPage.style';
 
-import setingsPage from '../../images/setings-page-png.png';
-import downloadPhoto from '../../images/icons/download-new-photo.svg';
-import CustomRadioButton from '../../components/CustomRadioButton/CustomRadioButton';
+import setingsPage from 'images/setings-page-png.png';
+import downloadPhoto from 'images/icons/download-new-photo.svg';
+import avatar from 'images/icons/profile-circle.svg';
+import CustomRadioButton from 'components/CustomRadioButton/CustomRadioButton';
 
 const SettingsPage = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const userProfile = useSelector(selectUser);
 
-  useEffect(() => {
-    if (userProfile) {
-      setFormData({
-        name: userProfile.name || '',
-        age: userProfile.age || '',
-        gender: userProfile.gender || 'Male',
-        height: userProfile.height || '',
-        weight: userProfile.weight || '',
-        activity: userProfile.activity || '1.2',
-      });
-
-      setInitialFormData({
-        name: userProfile.name || '',
-        age: userProfile.age || '',
-        gender: userProfile.gender || 'Male',
-        height: userProfile.height || '',
-        weight: userProfile.weight || '',
-        activity: userProfile.activity || '1.2',
-      });
-    }
-  }, [userProfile]);
-
   const [formData, setFormData] = useState({
-    name: '',
-    avatarURL: null,
-    age: '',
-    gender: '',
-    height: '',
-    weight: '',
-    activity: '',
+    name: userProfile.name,
+    age: userProfile.age,
+    gender: userProfile.gender,
+    height: userProfile.height,
+    weight: userProfile.weight,
+    activity: userProfile.activity,
   });
 
-  const [initialFormData, setInitialFormData] = useState({
-    name: '',
-    avatarURL: null,
-    age: '',
-    gender: '',
-    height: '',
-    weight: '',
-    activity: '',
-  });
+  const handleInputChange = event => {
+    const { name, value, type, files } = event.currentTarget;
+    // const newValue = type === 'file' ? files[0] : value;
 
-  const handleInputChange = e => {
-    const { name, value, type, files } = e.currentTarget;
-    const newValue = type === 'file' ? files[0] : value;
-
-    setFormData({
-      ...formData,
-      [name]: newValue,
-    });
+    setFormData(prevData => ({
+      ...prevData,
+      [name]: value,
+    }));
   };
 
   const handleRadioChange = (name, value) => {
@@ -102,7 +73,7 @@ const SettingsPage = () => {
       isNaN(formData.weight)
     ) {
       hasErrors = true;
-      notifyError(
+      console.log(
         'Please enter valid numeric values for age, height, and weight.'
       );
     }
@@ -110,53 +81,44 @@ const SettingsPage = () => {
     return !hasErrors;
   };
 
-  const handleSaveClick = () => {
+  const handleSaveClick = event => {
+    event.preventDefault();
     if (validateForm()) {
       dispatch(updateUser(formData));
-      notifySuccess('Profile saved successfully!');
+      navigate('/main');
     } else {
-      notifyError('Form has validation errors');
+      console.log('Form has validation errors');
     }
   };
 
-  const handleCancelClick = () => {
-    setFormData({ ...initialFormData });
-    try {
-      notifySuccess('Profile successfully reset to previous data!');
-      dispatch(updateUser(initialFormData));
-    } catch (error) {
-      console.error('Error sending data to the server:', error);
-    }
-  };
-
-  const notifySuccess = message => {
-    toast.success(message, {
-      position: toast.POSITION.TOP_CENTER,
-      autoClose: 3000,
-    });
-  };
-
-  const notifyError = message => {
-    toast.error(message, {
-      position: toast.POSITION.TOP_CENTER,
-      autoClose: 3000,
-    });
+  const handleCancelClick = event => {
+    event.preventDefault();
+    navigate('/main');
   };
 
   return (
     <>
       <SettingsPageSection>
-        <ToastContainer />
         <SettingsPageContainer>
-          <H1>Profile setting</H1>
-          <ButtonContainer>
-            <CancelButton onClick={handleCancelClick}>Cancel</CancelButton>
-            <SaveButton onClick={handleSaveClick}>Save</SaveButton>
-          </ButtonContainer>
+          <HeaderPage>
+            <TitlePage>Profile setting</TitlePage>
 
-          <MiddleProfileSetting>
-            <Img src={setingsPage} alt="setings-page-png" width="536" />
-            <Forms>
+            <ButtonContainerTablet>
+              <CancelButton type="button" onClick={handleCancelClick}>
+                Cancel
+              </CancelButton>
+              <SaveButton type="submit" onClick={handleSaveClick}>
+                Save
+              </SaveButton>
+            </ButtonContainerTablet>
+          </HeaderPage>
+
+          <ProfileSettingsContainer>
+            <BannerThumb>
+              <Img src={setingsPage} alt="Banner setings page" />
+            </BannerThumb>
+
+            <Form>
               <FormRow>
                 <Label>
                   Your name
@@ -186,7 +148,10 @@ const SettingsPage = () => {
                       alignItems: 'center',
                     }}
                   >
-                    <AvaImg src={formData.avatarURL} alt="avatar" />
+                    <AvaImg
+                      src={userProfile.avatarURL || avatar}
+                      alt="avatar"
+                    />
                     <img
                       src={downloadPhoto}
                       alt="Select File"
@@ -300,8 +265,17 @@ const SettingsPage = () => {
                   }
                 />
               </SecondForm>
-            </Forms>
-          </MiddleProfileSetting>
+            </Form>
+          </ProfileSettingsContainer>
+
+          <ButtonContainerMobile>
+            <SaveButton type="button" onClick={handleSaveClick}>
+              Save
+            </SaveButton>
+            <CancelButton type="submit" onClick={handleCancelClick}>
+              Cancel
+            </CancelButton>
+          </ButtonContainerMobile>
         </SettingsPageContainer>
       </SettingsPageSection>
     </>

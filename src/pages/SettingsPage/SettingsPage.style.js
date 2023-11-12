@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const SettingsPageSection = styled.section`
+export const SettingsPageSection = styled.main`
   background-color: ${props => props.theme.colors.black};
   color: ${props => props.theme.colors.white};
   font-family: ${props => props.theme.fontFamily.poppins};
@@ -9,72 +9,74 @@ export const SettingsPageSection = styled.section`
     padding-top: 16px;
     padding-bottom: 40px;
   }
+
   @media screen and (${props => props.theme.mq.tablet}) {
     padding-top: 24px;
+    padding-bottom: 40px;
   }
+
   @media screen and (${props => props.theme.mq.desktop}) {
     padding-top: 20px;
-    padding-bottom: 56px;
   }
 `;
 
 export const SettingsPageContainer = styled.div`
   display: flex;
+  flex-direction: column;
   margin: 0 auto;
+  padding: 0 10px;
+  width: 320px;
 
-  @media screen and (${props => props.theme.mq.mobile}) {
-    width: 320px;
-    padding: 0 10px;
-    flex-direction: column;
-  }
   @media screen and (${props => props.theme.mq.tablet}) {
     width: 834px;
     padding: 0 27px;
-
-    position: relative;
   }
+
   @media screen and (${props => props.theme.mq.desktop}) {
     width: 1440px;
     padding: 0 34px;
-
-    position: relative;
   }
 `;
 
-export const H1 = styled.h1`
+export const HeaderPage = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+export const TitlePage = styled.h1`
   font-weight: ${props => props.theme.fontWeights.medium};
+  font-size: ${props => props.theme.fontSizes.l};
+  line-height: 30px;
 
-  @media screen and (${props => props.theme.mq.mobile}) {
-    font-size: ${props => props.theme.fontSizes.l};
-    line-height: 30px;
-  }
   @media screen and (${props => props.theme.mq.tablet}) {
     font-size: ${props => props.theme.fontSizes.xl};
     line-height: 36px;
   }
+
   @media screen and (${props => props.theme.mq.desktop}) {
     font-size: ${props => props.theme.fontSizes.xl};
     line-height: 36px;
   }
 `;
 
-export const ButtonContainer = styled.div`
-  @media screen and (max-width: 833px) {
-    display: flex;
-    flex-direction: column-reverse;
+export const ButtonContainerMobile = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 40px;
 
-    order: 3;
-    margin-top: 40px;
-  }
   @media screen and (${props => props.theme.mq.tablet}) {
-    position: absolute;
-    top: 0;
-    right: 0;
+    display: none;
   }
-  @media screen and (${props => props.theme.mq.desktop}) {
-    position: absolute;
-    top: 0;
-    right: 0;
+`;
+
+export const ButtonContainerTablet = styled.div`
+  display: none;
+
+  @media screen and (${props => props.theme.mq.tablet}) {
+    display: flex;
+    gap: 12px;
   }
 `;
 
@@ -86,13 +88,18 @@ export const CancelButton = styled.button`
   font-weight: ${props => props.theme.fontWeights.regular};
   line-height: 20px;
 
-  width: 192px;
-  padding: 8px 12px 8px 12px;
-  border: none;
+  width: 100%;
+  padding: 8px 12px;
+  border: ${p => p.theme.borders.normal} transparent;
+  border-radius: ${props => props.theme.radii.normal};
   cursor: pointer;
 
-  @media screen and (max-width: 833px) {
-    width: 100%;
+  &:hover {
+    border: ${p => p.theme.borders.normal} ${p => p.theme.colors.greenLite};
+  }
+
+  @media screen and (${props => props.theme.mq.tablet}) {
+    width: 212px;
   }
 `;
 
@@ -104,6 +111,7 @@ export const SaveButton = styled.button`
   line-height: 20px;
 
   width: 212px;
+  border: ${p => p.theme.borders.normal} ${p => p.theme.colors.greenLite};
   border-radius: ${props => props.theme.radii.normal};
   padding: 8px;
   cursor: pointer;
@@ -113,55 +121,56 @@ export const SaveButton = styled.button`
   }
 `;
 
-export const MiddleProfileSetting = styled.div`
+export const ProfileSettingsContainer = styled.div`
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
-  @media screen and (${props => props.theme.mq.mobile}) {
-    flex-direction: column;
-    order: 2;
-  }
   @media screen and (${props => props.theme.mq.tablet}) {
-    flex-direction: column;
-    order: 3;
     margin-top: 20px;
   }
+
   @media screen and (${props => props.theme.mq.desktop}) {
     flex-direction: row;
-    order: 3;
+    align-items: start;
+    justify-content: center;
+    gap: 100px;
     margin-top: 16px;
   }
 `;
 
-export const Img = styled.img`
-  @media screen and (${props => props.theme.mq.mobile}) {
-    width: 300px;
-    margin: 0 auto;
-    margin-bottom: 24px;
-  }
+export const BannerThumb = styled.div`
+  width: 300px;
+  margin-bottom: 24px;
+
   @media screen and (${props => props.theme.mq.tablet}) {
     width: 380px;
-    margin: 0 auto;
-    margin-bottom: 24px;
   }
+
   @media screen and (${props => props.theme.mq.desktop}) {
     width: 536px;
-    margin-right: 160px;
+    margin-bottom: 0;
   }
 `;
 
-export const Forms = styled.div`
+export const Img = styled.img`
+  display: block;
+  max-width: 100%;
+  height: auto;
+`;
+
+export const Form = styled.form`
   display: flex;
   flex-direction: column;
 
-  @media screen and (${props => props.theme.mq.mobile}) {
-    margin: 0 auto;
-  }
   @media screen and (${props => props.theme.mq.tablet}) {
-    width: 491px;
-    margin: 0 auto;
+    padding: 0 144px;
   }
+
   @media screen and (${props => props.theme.mq.desktop}) {
-    width: 491px;
+    padding: 0;
+    width: calc((100% - 160px) / 2);
   }
 `;
 
@@ -173,11 +182,8 @@ export const FormRow = styled.div`
     flex-direction: column;
     gap: 40px;
   }
+
   @media screen and (${props => props.theme.mq.tablet}) {
-    flex-direction: row;
-    gap: 60px;
-  }
-  @media screen and (${props => props.theme.mq.desktop}) {
     flex-direction: row;
     gap: 60px;
   }
