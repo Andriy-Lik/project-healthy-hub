@@ -167,9 +167,7 @@ const YourActivityPage = () => {
                 </YourActivityFormListWrapper>
               </YourActivityFormList>
               <YourActivityButton type="submit">
-                <Link to={'/signin'}>
-                  Next
-                </Link>
+                Next
               </YourActivityButton>
               <br />
               <YourActivityBackButton location={locationRef.current} />
