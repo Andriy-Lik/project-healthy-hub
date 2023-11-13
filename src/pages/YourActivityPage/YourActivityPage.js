@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { setNewUserActivity } from 'redux/Auth/authSlice';
 import { register } from 'redux/Auth/authOperations';
