@@ -94,7 +94,7 @@ export const ArrowSvg = styled.img`
   margin-left: 12px;
 `;
 
-export const WeightKg = styled.p`
+export const WeightKg = styled.span`
   color: ${p => p.theme.colors.gray};
   font-size: ${p => p.theme.fontSizes.xs};
   font-weight: ${p => p.theme.fontWeights.regular};

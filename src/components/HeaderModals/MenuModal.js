@@ -82,10 +82,15 @@ export default function MenuModal({ onCloseModal }) {
     setShowModalWeight(showModalWeight => !showModalWeight);
   };
 
+  const closeBtnHandler = () => {
+    console.log(onCloseModal());
+    onCloseModal();
+  };
+
   return (
     <HeaderOverlay onCloseOverlay={onCloseModal}>
       <ModalWrapper>
-        <CloseBtn onClick={onCloseModal()}>
+        <CloseBtn onClick={closeBtnHandler}>
           <img src={close} alt="close" width={16} />
         </CloseBtn>
         <InfoOptions>
