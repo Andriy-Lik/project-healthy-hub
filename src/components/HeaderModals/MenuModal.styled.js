@@ -1,35 +1,36 @@
 import styled from 'styled-components';
 
-export const Overlay = styled.div`
-  position: absolute;
-  left: 0;
-  top: 0;
-  /* background-color: rgba(197, 197, 197, 0.2); */
-  width: 100%;
-  height: 100%;
-  @media screen and (${props => props.theme.mq.mobile}) {
-    display: flex;
-  }
-  @media screen and (${props => props.theme.mq.tablet}) {
-    display: none;
-  }
-  @media screen and (${props => props.theme.mq.desktop}) {
-    display: none;
-  }
-`;
+// export const Overlay = styled.div`
+//   position: absolute;
+//   left: 0;
+//   top: 0;
+//   /* background-color: rgba(197, 197, 197, 0.2); */
+//   width: 100%;
+//   height: 100%;
+//   @media screen and (${props => props.theme.mq.mobile}) {
+//     display: flex;
+//   }
+//   @media screen and (${props => props.theme.mq.tablet}) {
+//     display: none;
+//   }
+//   @media screen and (${props => props.theme.mq.desktop}) {
+//     display: none;
+//   }
+// `;
 
 export const ModalWrapper = styled.div`
   position: absolute;
-  top: 60px;
+  /* top: 60px;
   right: 10px;
-  left: 10px;
+  left: 10px; */
+  width: 300px;
   box-shadow: 0 4px 14px 0 rgba(227, 255, 168, 0.2);
   background-color: ${div => div.theme.colors.black2};
   border-radius: ${div => div.theme.radii.normal};
   padding: 24px 0 24px 24px;
 `;
 
-export const Modal = styled.div``;
+// export const Modal = styled.div``;
 
 export const CloseBtn = styled.button`
   background: inherit;
@@ -93,7 +94,7 @@ export const ArrowSvg = styled.img`
   margin-left: 12px;
 `;
 
-export const WeightKg = styled.p`
+export const WeightKg = styled.span`
   color: ${p => p.theme.colors.gray};
   font-size: ${p => p.theme.fontSizes.xs};
   font-weight: ${p => p.theme.fontWeights.regular};

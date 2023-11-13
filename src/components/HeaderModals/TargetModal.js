@@ -49,6 +49,7 @@ export default function TargetModal({ onCloseModal }) {
   };
 
   const closeBtnHandler = () => {
+    console.log( onCloseModal());
     onCloseModal();
   };
 
@@ -126,7 +127,7 @@ export default function TargetModal({ onCloseModal }) {
             <ModalBtn type="submit">Confirm</ModalBtn>
           </ModalForm>
         </Modal>
-        <CancelBtn onClick={() => onCloseModal()}>Cancel</CancelBtn>
+        <CancelBtn onClick={closeBtnHandler}>Cancel</CancelBtn>
       </ModalWrapper>
     </HeaderOverlay>
   );
