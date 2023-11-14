@@ -3,8 +3,6 @@ import { useSelector } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
 import { selectIsLoggedIn, selectUser } from '../../redux/Auth/authSelectors';
 
-// import HeaderOverlay from 'components/HeaderModals/HeaderOverlay';
-
 import {
   Container,
   Content,
@@ -58,9 +56,6 @@ export default function Header() {
 
   const user = useSelector(selectUser);
   const isLoggedIn = useSelector(selectIsLoggedIn);
-
-  console.log('isLoggedIn', isLoggedIn);
-  // console.log('user', user);
 
   let goalIcon;
 

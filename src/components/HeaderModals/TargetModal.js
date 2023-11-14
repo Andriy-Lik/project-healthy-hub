@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { setNewUserGoal } from '../../redux/Auth/authSlice';
+import { updateGoal } from '../../redux/Auth/authOperations';
 import { selectUser } from '../../redux/Auth/authSelectors';
 import HeaderOverlay from './HeaderOverlay';
 
@@ -43,13 +43,13 @@ export default function TargetModal({ onCloseModal }) {
   const newGailMuscleGoal = () => setUserGoal('Gain muscle');
 
   const handleNewUserGoal = event => {
-    event.preventDefault();
-    dispatch(setNewUserGoal(userGoal));
+    event.preventDefault();    
+    dispatch(updateGoal(userGoal));
     onCloseModal();
   };
 
   const closeBtnHandler = () => {
-    console.log( onCloseModal());
+    console.log(onCloseModal());
     onCloseModal();
   };
 
