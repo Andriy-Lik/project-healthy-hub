@@ -5,16 +5,6 @@ export const Container = styled.div`
   background-color: ${props => props.theme.colors.black2};
   padding-top: 26px;
   padding-bottom: 26px;
-
-  @media screen and (${props => props.theme.mq.mobile}) {
-    height: 60px;
-  }
-  @media screen and (${props => props.theme.mq.tablet}) {
-    height: 100px;
-  }
-  @media screen and (${props => props.theme.mq.desktop}) {
-    height: 100px;
-  }
 `;
 
 export const Content = styled.div`
@@ -42,19 +32,10 @@ export const LogoBox = styled.div`
   font-size: ${props => props.theme.fontSizes.l};
   font-weight: ${props => props.theme.fontWeights.bold};
 
-  @media screen and (${props => props.theme.mq.mobile}) {
-    /* margin-left: 10px; */
+  @media screen and (${props => props.theme.mq.mobile}) {   
     font-size: ${props => props.theme.fontSizes.s};
     display: flex;
     align-items: center;
-  }
-
-  @media screen and (${props => props.theme.mq.tablet}) {
-    /* margin-left: 27px; */
-  }
-
-  @media screen and (${props => props.theme.mq.desktop}) {
-    /* margin-left: 34px; */
   }
 `;
 
@@ -73,15 +54,11 @@ export const Info = styled.div`
   margin: 0;
   display: flex;
   justify-content: space-between;
-  @media screen and (${props => props.theme.mq.mobile}) {
-    /* margin-right: 10px; */
-  }
-  @media screen and (${props => props.theme.mq.tablet}) {
-    /* margin-right: 27px; */
+
+  @media screen and (${props => props.theme.mq.tablet}) {   
     width: 513px;
   }
-  @media screen and (${props => props.theme.mq.desktop}) {
-    /* margin-right: 36px; */
+  @media screen and (${props => props.theme.mq.desktop}) {   
     width: 604px;
   }
 `;
@@ -101,8 +78,7 @@ export const InfoBlock = styled.div`
 
   @media screen and (${props => props.theme.mq.tablet}) {
     display: flex;
-    &:nth-child(1) {
-      /* width: 173px; */
+    &:nth-child(1) {    
       margin-right: 40px;
     }
   }
@@ -209,5 +185,5 @@ export const DefaultLink = styled(Link)`
 `;
 
 export const ActiveLink = styled(Link)`
-  color: ${p => p.theme.colors.violet};
+  color: ${p => p.theme.colors.greenLite};
 `;
