@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Field } from 'formik';
 
 export const RadioMark = styled.span`
   min-width: 12px;
@@ -21,7 +22,7 @@ export const RadioMark = styled.span`
   }
 `;
 
-export const RadioInput = styled.input`
+export const RadioInput = styled(Field)`
   display: none;
   margin-right: 8px;
 
@@ -36,7 +37,7 @@ export const LabelWithRadio = styled.label`
   display: flex;
   align-items: center;
   gap: 10px;
-  width: 100%;
+  /* width: 100%; */
   cursor: pointer;
 
   &:hover > ${RadioMark} {

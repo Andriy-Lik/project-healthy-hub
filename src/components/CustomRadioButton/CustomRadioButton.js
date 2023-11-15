@@ -5,7 +5,7 @@ import {
 } from './CustomRadioButton.style';
 import React from 'react';
 
-const CustomRadioButton = ({ name, value, selectedValue, onChange, text }) => {
+const CustomRadioButton = ({ name, value, selectedValue, text }) => {
   return (
     <>
       <LabelWithRadio>
@@ -14,9 +14,8 @@ const CustomRadioButton = ({ name, value, selectedValue, onChange, text }) => {
           name={name}
           value={value}
           checked={selectedValue === value}
-          onChange={() => onChange()}
         />
-        <RadioMark></RadioMark>
+        <RadioMark />
         {text}
       </LabelWithRadio>
     </>
