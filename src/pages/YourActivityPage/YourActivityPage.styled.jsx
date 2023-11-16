@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const BackgroundContainer = styled.div`
+export const Container = styled.div`
   background-color: #050505;
   display: flex;
   flex-direction: column;
@@ -25,7 +25,7 @@ export const BackgroundContainer = styled.div`
   }
 `;
 
-export const YourActivityLogo = styled.img`
+export const Image = styled.img`
   margin-right: auto;
   margin-left: auto;
   margin-top: 40px;
@@ -49,7 +49,7 @@ export const YourActivityLogo = styled.img`
   }
 `;
 
-export const YourActivityContainer = styled.div`
+export const ContentBox = styled.div`
   max-width: 444px;
   margin-top: 120px;
   margin-left: 104px;
@@ -75,7 +75,7 @@ export const YourActivityContainer = styled.div`
   }
 `;
 
-export const YourActivityHeadline = styled.h1`
+export const Title = styled.h1`
   color: #ffffff;
   font-size: 30px;
   font-weight: 500;
@@ -90,7 +90,7 @@ export const YourActivityHeadline = styled.h1`
   }
 `;
 
-export const YourActivityText = styled.p`
+export const Text = styled.p`
   color: #b6b6b6;
   font-weight: 400;
   font-size: 22px;
@@ -111,7 +111,7 @@ export const YourActivityText = styled.p`
   }
 `;
 
-export const YourActivityButton = styled.button`
+export const Button = styled.button`
   background-color: #e3ffa8;
   text-align: center;
   margin-top: 16px;
@@ -131,7 +131,7 @@ export const YourActivityButton = styled.button`
   }
 `;
 
-export const YourActivityFormWrapper = styled.div`
+export const FormWrapper = styled.div`
   width: 328px;
 
   @media (min-width: 834px) and (max-width: 1439px) {
@@ -139,25 +139,25 @@ export const YourActivityFormWrapper = styled.div`
   }
 `;
 
-export const YourActivityForm = styled.form`
+export const Form = styled.form`
   margin-top: 1px;
 `;
 
-export const YourActivityFormList = styled.ul`
+export const FormList = styled.ul`
   color: #ffff;
 `;
 
-export const YourActivityFormListWrapper = styled.div`
+export const FormListWrapper = styled.div`
   display: flex;
   margin-bottom: 16px;
 `;
 
-export const YourActivityFormListOption = styled.li`
+export const FormListOption = styled.li`
   color: #ffff;
   font-size: 14px;
 `;
 
-export const YourActivityInput = styled.input`
+export const Input = styled.input`
   color: #ffffff;
   margin-bottom: 16px;
 `;
