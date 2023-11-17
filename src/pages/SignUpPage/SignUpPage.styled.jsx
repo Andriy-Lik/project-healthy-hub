@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-export const BackgroundContainer = styled.div`
+export const Container = styled.div`
   background-color: #050505;
   display: flex;
   flex-direction: column;
@@ -26,7 +26,7 @@ export const BackgroundContainer = styled.div`
   }
 `;
 
-export const SignUpLogo = styled.img`
+export const Image = styled.img`
   margin-right: auto;
   margin-left: auto;
   margin-top: 40px;
@@ -50,7 +50,7 @@ export const SignUpLogo = styled.img`
   }
 `;
 
-export const SignUpContainer = styled.div`
+export const ContentBox = styled.div`
   max-width: 444px;
   margin-top: 120px;
   margin-left: 104px;
@@ -76,7 +76,7 @@ export const SignUpContainer = styled.div`
   }
 `;
 
-export const SignUpHeadline = styled.h1`
+export const Title = styled.h1`
   color: #ffffff;
   font-size: 30px;
   font-weight: 500;
@@ -90,7 +90,7 @@ export const SignUpHeadline = styled.h1`
   }
 `;
 
-export const SignUpText = styled.p`
+export const Text = styled.p`
   color: #b6b6b6;
   font-weight: 400;
   font-size: 22px;
@@ -110,11 +110,11 @@ export const SignUpText = styled.p`
   }
 `;
 
-export const SignUpFormWrapper = styled.div`
+export const FormWrapper = styled.div`
   width: 212px;
 `;
 
-export const SignUpForm = styled.form`
+export const Form = styled.form`
   margin-top: 8px;
   align-self: center;
   margin-right: auto;
@@ -122,7 +122,7 @@ export const SignUpForm = styled.form`
   align-text: center;
 `;
 
-export const SignUpInput = styled.input`
+export const Input = styled.input`
   border: 1px solid #e3ffa8;
   border-radius: 12px;
   background-color: #0f0f0f;
@@ -143,7 +143,7 @@ export const SignUpInput = styled.input`
   }
 `;
 
-export const SignUpButton = styled.button`
+export const Button = styled.button`
   background-color: #e3ffa8;
   text-align: center;
   margin-top: 16px;
@@ -158,7 +158,7 @@ export const SignUpButton = styled.button`
   }
 `;
 
-export const SignInSuggestionButtonWrapper = styled.div`
+export const SuggestionButtonWrapper = styled.div`
   display: flex;
   flex-direction: column;
   margin-top: 200px;
@@ -170,7 +170,7 @@ export const SignInSuggestionButtonWrapper = styled.div`
   }
 `;
 
-export const SignInSuggestion = styled.p`
+export const Suggestion = styled.p`
   color: #b6b6b6;
 
   @media (min-width: 834px) {
