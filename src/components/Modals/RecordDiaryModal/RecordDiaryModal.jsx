@@ -37,7 +37,7 @@ const schema = yup.object({
   productList: yup.array().of(yup.object().shape({
     mealName:
       yup.string()
-        .required("Name is a required")
+        .required("Name is required")
         .trim('Name cannot include leading and trailing spaces')
         .strict(true),
     carbonohidrates:
@@ -131,8 +131,7 @@ const RecordDiaryModal = ({ onClose, image, mealType, item }) => {
         protein: protein.toFixed(1).toString(),
         fat: fat.toFixed(1).toString(),  
         calories: calories.toString(),      
-      }
-      console.log(item)
+      }      
       if (item) {
         dispatch(updateFood({foodId: item._id, data}));
       } else {

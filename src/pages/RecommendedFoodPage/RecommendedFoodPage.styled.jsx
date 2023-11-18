@@ -40,10 +40,9 @@ export const HeaderPage = styled.header`
 `;
 
 export const BackLink = styled(NavLink)`
-  display: flex;
-  @media screen and (${props => props.theme.mq.mobile}) {
+    display: flex;  
     margin-right: 8px;
-  }
+ 
   @media screen and (${props => props.theme.mq.tablet}) {
     margin-right: 12px;
   }

@@ -13,7 +13,9 @@ const clearAuthHeader = () => {
   axios.defaults.headers.common.Authorization = '';
 };
 
-export const register = createAsyncThunk('auth/register', async (credentials, thunkAPI) => {
+export const register = createAsyncThunk(
+  'auth/register',
+  async (credentials, thunkAPI) => {
     try {
       const response = await axios.post('/users/register', credentials);
       if (response.data) {
@@ -29,7 +31,9 @@ export const register = createAsyncThunk('auth/register', async (credentials, th
   }
 );
 
-export const logIn = createAsyncThunk('auth/login', async (credentials, thunkAPI) => {
+export const logIn = createAsyncThunk(
+  'auth/login',
+  async (credentials, thunkAPI) => {
     try {
       const response = await axios.post('/users/login', credentials);
       setAuthHeader(response.data.token);
@@ -50,13 +54,15 @@ export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
   }
 });
 
-export const currentUser = createAsyncThunk('auth/refresh', async (_, thunkAPI) => {
+export const currentUser = createAsyncThunk(
+  'auth/refresh',
+  async (_, thunkAPI) => {
     const state = thunkAPI.getState();
     const tokenCurrent = state.auth.token;
 
     if (tokenCurrent === null) {
       return thunkAPI.rejectWithValue('Unable to fetch user');
-    }    
+    }
 
     try {
       setAuthHeader(tokenCurrent);
@@ -69,15 +75,10 @@ export const currentUser = createAsyncThunk('auth/refresh', async (_, thunkAPI) 
   }
 );
 
-export const updateUser = createAsyncThunk('auth/updateUser', async (data, thunkAPI) => {
-    const state = thunkAPI.getState();
-    const tokenCurrent = state.auth.token;
-
-    if (tokenCurrent === null) {
-      return thunkAPI.rejectWithValue('Unable to fetch user');
-    }
+export const updateUser = createAsyncThunk(
+  'auth/updateUser',
+  async (data, thunkAPI) => {
     try {
-      setAuthHeader(tokenCurrent);
       const response = await axios.patch('/users/update', data);
       return response.data;
     } catch (error) {
@@ -86,7 +87,9 @@ export const updateUser = createAsyncThunk('auth/updateUser', async (data, thunk
   }
 );
 
-export const forgotPassword = createAsyncThunk('auth/forgotPassword', async (password, thunkAPI) => {
+export const forgotPassword = createAsyncThunk(
+  'auth/forgotPassword',
+  async (password, thunkAPI) => {
     const state = thunkAPI.getState();
     const tokenCurrent = state.auth.token;
 
@@ -106,19 +109,20 @@ export const forgotPassword = createAsyncThunk('auth/forgotPassword', async (pas
   }
 );
 
-export const updateAvatar = createAsyncThunk('auth/updateAvatar', async (avatarURL, thunkAPI) => {
-    const state = thunkAPI.getState();
-    const tokenCurrent = state.auth.token;
-
-    if (tokenCurrent === null) {
-      return thunkAPI.rejectWithValue('Unable to fetch user');
-    }
-
+export const updateAvatar = createAsyncThunk(
+  'auth/updateAvatar',
+  async (avatarData, thunkAPI) => {
     try {
-      setAuthHeader(tokenCurrent);
-      const response = await axios.patch('/users/avatars', {
-        avatars: avatarURL,
+      const response = await axios.patch('/users/avatars', avatarData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
       });
+      console.log(
+        'updated avatarUrl: ',
+        response.data,
+        'this log is for checking data from the backend'
+      );
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -126,7 +130,9 @@ export const updateAvatar = createAsyncThunk('auth/updateAvatar', async (avatarU
   }
 );
 
-export const addWeight = createAsyncThunk('auth/weight', async (inputWeight, thunkAPI) => {
+export const addWeight = createAsyncThunk(
+  'auth/weight',
+  async (inputWeight, thunkAPI) => {
     const state = thunkAPI.getState();
     const tokenCurrent = state.auth.token;
 
@@ -148,7 +154,9 @@ export const addWeight = createAsyncThunk('auth/weight', async (inputWeight, thu
   }
 );
 
-export const updateGoal = createAsyncThunk('auth/goal', async (selectedGoal, thunkAPI) => {
+export const updateGoal = createAsyncThunk(
+  'auth/goal',
+  async (selectedGoal, thunkAPI) => {
     const state = thunkAPI.getState();
     const tokenCurrent = state.auth.token;
 
