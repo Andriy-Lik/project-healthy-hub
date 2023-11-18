@@ -108,15 +108,9 @@ const authSlice = createSlice({
       .addCase(currentUser.rejected, state => {
         state.isRefreshing = false;
       })
-      .addCase(updateUser.fulfilled, (state, { payload }) => {
-        state.user.name = payload.user.name;
-        state.user.gender = payload.user.gender;
-        state.user.age = payload.user.age;
-        state.user.height = payload.user.height;
-        state.user.weight = payload.user.weight;
-        state.user.activity = payload.user.activity;
-        state.user.avatarURL = payload.user.avatarURL;
-        state.token = payload.token;
+
+      .addCase(updateUser.fulfilled, (state, action) => {
+        state.user = { ...state.user, ...action.payload };
         state.isLoggedIn = true;
       })
       .addCase(forgotPassword.fulfilled, (state, action) => {
@@ -125,8 +119,8 @@ const authSlice = createSlice({
         state.isLoggedIn = true;
       })
       .addCase(updateAvatar.fulfilled, (state, action) => {
-        state.user.avatarURL = action.payload.user.avatarURL;
-        state.token = action.payload.token;
+        state.user.avatarURL = action.payload;
+        // state.token = action.payload.token;
         state.isLoggedIn = true;
       })
       .addCase(addWeight.fulfilled, (state, action) => {      

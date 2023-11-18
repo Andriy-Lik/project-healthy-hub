@@ -1,57 +1,52 @@
 import styled from 'styled-components';
+import { ErrorMessage, Field, Form } from 'formik';
 
-export const SettingsPageSection = styled.section`
+export const SettingsPageSection = styled.main`
   background-color: ${props => props.theme.colors.black};
   color: ${props => props.theme.colors.white};
   font-family: ${props => props.theme.fontFamily.poppins};
+  padding-top: 16px;
+  padding-bottom: 20px;
 
-  @media screen and (${props => props.theme.mq.mobile}) {
-    padding-top: 16px;
-    padding-bottom: 40px;
-  }
   @media screen and (${props => props.theme.mq.tablet}) {
     padding-top: 24px;
+    padding-bottom: 20px;
   }
+
   @media screen and (${props => props.theme.mq.desktop}) {
     padding-top: 20px;
-    padding-bottom: 56px;
   }
 `;
 
 export const SettingsPageContainer = styled.div`
   display: flex;
+  flex-direction: column;
   margin: 0 auto;
+  padding: 0 10px;
+  width: 320px;
 
-  @media screen and (${props => props.theme.mq.mobile}) {
-    width: 320px;
-    padding: 0 10px;
-    flex-direction: column;
-  }
   @media screen and (${props => props.theme.mq.tablet}) {
     width: 834px;
     padding: 0 27px;
-
     position: relative;
   }
+
   @media screen and (${props => props.theme.mq.desktop}) {
     width: 1440px;
     padding: 0 34px;
-
-    position: relative;
   }
 `;
 
-export const H1 = styled.h1`
+export const TitlePage = styled.h1`
   font-weight: ${props => props.theme.fontWeights.medium};
+  font-size: ${props => props.theme.fontSizes.l};
+  line-height: 30px;
 
-  @media screen and (${props => props.theme.mq.mobile}) {
-    font-size: ${props => props.theme.fontSizes.l};
-    line-height: 30px;
-  }
   @media screen and (${props => props.theme.mq.tablet}) {
     font-size: ${props => props.theme.fontSizes.xl};
     line-height: 36px;
   }
+
   @media screen and (${props => props.theme.mq.desktop}) {
     font-size: ${props => props.theme.fontSizes.xl};
     line-height: 36px;
@@ -59,22 +54,24 @@ export const H1 = styled.h1`
 `;
 
 export const ButtonContainer = styled.div`
-  @media screen and (max-width: 833px) {
-    display: flex;
-    flex-direction: column-reverse;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 40px;
 
-    order: 3;
-    margin-top: 40px;
-  }
   @media screen and (${props => props.theme.mq.tablet}) {
     position: absolute;
+    flex-direction: row-reverse;
     top: 0;
     right: 0;
+    margin-top: 0;
+    margin-right: 27px;
   }
+
   @media screen and (${props => props.theme.mq.desktop}) {
     position: absolute;
-    top: 0;
-    right: 0;
+    flex-direction: row-reverse;
+    margin-right: 34px;
   }
 `;
 
@@ -86,13 +83,18 @@ export const CancelButton = styled.button`
   font-weight: ${props => props.theme.fontWeights.regular};
   line-height: 20px;
 
-  width: 192px;
-  padding: 8px 12px 8px 12px;
-  border: none;
+  width: 100%;
+  padding: 8px 12px;
+  border: ${p => p.theme.borders.normal} transparent;
+  border-radius: ${props => props.theme.radii.normal};
   cursor: pointer;
 
-  @media screen and (max-width: 833px) {
-    width: 100%;
+  &:hover {
+    border: ${p => p.theme.borders.normal} ${p => p.theme.colors.greenLite};
+  }
+
+  @media screen and (${props => props.theme.mq.tablet}) {
+    width: 212px;
   }
 `;
 
@@ -104,6 +106,7 @@ export const SaveButton = styled.button`
   line-height: 20px;
 
   width: 212px;
+  border: ${p => p.theme.borders.normal} ${p => p.theme.colors.greenLite};
   border-radius: ${props => props.theme.radii.normal};
   padding: 8px;
   cursor: pointer;
@@ -113,100 +116,88 @@ export const SaveButton = styled.button`
   }
 `;
 
-export const MiddleProfileSetting = styled.div`
+export const ProfileSettingsContainer = styled.div`
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 16px;
 
-  @media screen and (${props => props.theme.mq.mobile}) {
-    flex-direction: column;
-    order: 2;
-  }
   @media screen and (${props => props.theme.mq.tablet}) {
-    flex-direction: column;
-    order: 3;
     margin-top: 20px;
   }
+
   @media screen and (${props => props.theme.mq.desktop}) {
     flex-direction: row;
-    order: 3;
+    align-items: start;
+    justify-content: center;
+    gap: 100px;
     margin-top: 16px;
   }
 `;
 
-export const Img = styled.img`
-  @media screen and (${props => props.theme.mq.mobile}) {
-    width: 300px;
-    margin: 0 auto;
-    margin-bottom: 24px;
-  }
+export const BannerThumb = styled.div`
+  width: 300px;
+  margin-bottom: 24px;
+
   @media screen and (${props => props.theme.mq.tablet}) {
     width: 380px;
-    margin: 0 auto;
-    margin-bottom: 24px;
   }
+
   @media screen and (${props => props.theme.mq.desktop}) {
     width: 536px;
-    margin-right: 160px;
+    margin-bottom: 0;
   }
 `;
 
-export const Forms = styled.div`
+export const Img = styled.img`
+  display: block;
+  max-width: 100%;
+  height: auto;
+`;
+
+export const FormFormik = styled(Form)`
   display: flex;
   flex-direction: column;
+  row-gap: 40px;
+  width: 100%;
 
-  @media screen and (${props => props.theme.mq.mobile}) {
-    margin: 0 auto;
-  }
-  @media screen and (${props => props.theme.mq.tablet}) {
-    width: 491px;
-    margin: 0 auto;
-  }
-  @media screen and (${props => props.theme.mq.desktop}) {
-    width: 491px;
-  }
-`;
-
-export const FormRow = styled.div`
-  display: flex;
-  margin-bottom: 40px;
-
-  @media screen and (${props => props.theme.mq.mobile}) {
-    flex-direction: column;
-    gap: 40px;
-  }
   @media screen and (${props => props.theme.mq.tablet}) {
     flex-direction: row;
-    gap: 60px;
-  }
-  @media screen and (${props => props.theme.mq.desktop}) {
-    flex-direction: row;
-    gap: 60px;
-  }
-`;
+    flex-wrap: wrap;
+    column-gap: 60px;
+    width: 499px;
 
-export const SecondForm = styled.form`
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
+    & > :not(div[aria-labelledby='activity-head']) {
+      width: calc((100% - 60px) / 2);
+    }
+  }
 `;
 
 export const Label = styled.label`
   font-size: ${props => props.theme.fontSizes.xs};
   font-weight: ${props => props.theme.fontWeights.medium};
   line-height: 20px;
-
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  row-gap: 12px;
+
+  &[for='userAvatarFile'] {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+  }
 `;
 
-export const Input = styled.input`
+export const Input = styled(Field)`
   font-size: ${props => props.theme.fontSizes.xs};
   font-weight: ${props => props.theme.fontWeights.regular};
   line-height: 20px;
   background-color: ${props => props.theme.colors.black};
   color: ${props => props.theme.colors.white};
 
-  padding: 8px 10px 8px 10px;
+  padding: 8px 10px;
   border-radius: ${props => props.theme.radii.normal};
   border: 1px solid ${props => props.theme.colors.gray};
 
@@ -214,31 +205,90 @@ export const Input = styled.input`
     border-color: ${props => props.theme.colors.greenLite};
   }
 
-  @media screen and (${props => props.theme.mq.mobile}) {
-    width: 300px;
+  &[type='file'] {
+    visibility: hidden;
+    pointer-events: none;
+    display: none;
   }
-  @media screen and (${props => props.theme.mq.tablet}) {
-    width: 212px;
+  &[type='number']::-webkit-outer-spin-button,
+  &[type='number']::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
   }
-  @media screen and (${props => props.theme.mq.desktop}) {
-    width: 212px;
+
+  &::placeholder {
+    color: ${p => p.theme.colors.gray};
   }
 `;
 
-export const GenderLabelRadio = styled.div`
+export const ErrorMsg = styled(ErrorMessage)`
+  font-family: ${props => props.theme.fontFamily.poppins};
+  font-size: 10px;
+  font-weight: ${props => props.theme.fontWeights.regular};
+  line-height: 12px;
+  color: ${p => p.theme.colors.error};
+`;
+
+export const InputFileContainer = styled.div`
+  font-size: ${props => props.theme.fontSizes.xs};
+  font-weight: ${props => props.theme.fontWeights.medium};
+  line-height: 20px;
+
   display: flex;
-  gap: 16px;
+  flex-direction: column;
+  row-gap: 12px;
 `;
 
-export const AvaImg = styled.img`
-  width: 36px;
-  border-radius: 50%;
-  margin-right: 12px;
+export const FormGroup = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  & > label {
+    font-size: ${props => props.theme.fontSizes.xs};
+    font-weight: ${props => props.theme.fontWeights.medium};
+    line-height: 20px;
+
+    &:not(:last-child) {
+      margin-bottom: 24px;
+    }
+  }
 `;
 
-export const H2 = styled.h2`
+export const FormGroupLabel = styled.p`
   font-size: ${props => props.theme.fontSizes.xs};
   font-weight: ${props => props.theme.fontWeights.medium};
   line-height: 20px;
   margin-bottom: 12px;
+`;
+
+export const WrapperRadioButton = styled.div`
+  display: flex;
+  gap: 16px;
+  height: 100%;
+`;
+
+export const AvaThumb = styled.div`
+  height: 36px;
+  width: 36px;
+  border-radius: 50%;
+  margin-right: 12px;
+  overflow: hidden;
+`;
+
+export const AvaImg = styled.img`
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+`;
+
+export const LinkDownloadPhoto = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  & > img {
+    width: 16px;
+    height: 16px;
+  }
 `;
