@@ -105,19 +105,18 @@ export const forgotPassword = createAsyncThunk(
 
 export const updateAvatar = createAsyncThunk(
   'auth/updateAvatar',
-  async (avatarURL, thunkAPI) => {
-    const state = thunkAPI.getState();
-    const tokenCurrent = state.auth.token;
-
-    if (tokenCurrent === null) {
-      return thunkAPI.rejectWithValue('Unable to fetch user');
-    }
-
+  async (avatarData, thunkAPI) => {
     try {
-      setAuthHeader(tokenCurrent);
-      const response = await axios.patch('/users/avatars', {
-        avatars: avatarURL,
+      const response = await axios.patch('/users/avatars', avatarData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
       });
+      console.log(
+        'updated avatarUrl: ',
+        response.data,
+        'this log is for checking data from the backend'
+      );
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

@@ -117,8 +117,8 @@ const authSlice = createSlice({
         state.isLoggedIn = true;
       })
       .addCase(updateAvatar.fulfilled, (state, action) => {
-        state.user.avatarURL = action.payload.user.avatarURL;
-        state.token = action.payload.token;
+        state.user.avatarURL = action.payload;
+        // state.token = action.payload.token;
         state.isLoggedIn = true;
       });
   },

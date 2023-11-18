@@ -178,10 +178,16 @@ export const Label = styled.label`
   font-size: ${props => props.theme.fontSizes.xs};
   font-weight: ${props => props.theme.fontWeights.medium};
   line-height: 20px;
-
   display: flex;
   flex-direction: column;
   row-gap: 12px;
+
+  &[for='userAvatarFile'] {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+  }
 `;
 
 export const Input = styled(Field)`
@@ -199,6 +205,11 @@ export const Input = styled(Field)`
     border-color: ${props => props.theme.colors.greenLite};
   }
 
+  &[type='file'] {
+    visibility: hidden;
+    pointer-events: none;
+    display: none;
+  }
   &[type='number']::-webkit-outer-spin-button,
   &[type='number']::-webkit-inner-spin-button {
     -webkit-appearance: none;
@@ -216,6 +227,16 @@ export const ErrorMsg = styled(ErrorMessage)`
   font-weight: ${props => props.theme.fontWeights.regular};
   line-height: 12px;
   color: ${p => p.theme.colors.error};
+`;
+
+export const InputFileContainer = styled.div`
+  font-size: ${props => props.theme.fontSizes.xs};
+  font-weight: ${props => props.theme.fontWeights.medium};
+  line-height: 20px;
+
+  display: flex;
+  flex-direction: column;
+  row-gap: 12px;
 `;
 
 export const FormGroup = styled.div`
@@ -246,8 +267,28 @@ export const WrapperRadioButton = styled.div`
   height: 100%;
 `;
 
-export const AvaImg = styled.img`
+export const AvaThumb = styled.div`
+  height: 36px;
   width: 36px;
   border-radius: 50%;
   margin-right: 12px;
+  overflow: hidden;
+`;
+
+export const AvaImg = styled.img`
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+`;
+
+export const LinkDownloadPhoto = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  & > img {
+    width: 16px;
+    height: 16px;
+  }
 `;
