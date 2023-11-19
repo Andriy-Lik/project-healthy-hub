@@ -13,12 +13,16 @@ import {
   EditButton,
   Img,
 } from './ElementOfFood.styled';
+
 import RecordDiaryModal from 'components/Modals/RecordDiaryModal/RecordDiaryModal.jsx';
+import UpdateMealModal from 'components/Modals/UpdateMealModal/UpdateMealModal';
 
 export const ElementOfFood = ({ item, index }) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isRecordModalOpen, setIsRecordModalOpen] = useState(false);
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
 
-  const toggleModal = () => setIsModalOpen(!isModalOpen);
+  const toggleModalRecord = () => setIsRecordModalOpen(!isRecordModalOpen);
+  const toggleModalEdit = () => setIsEditModalOpen(!isEditModalOpen);
 
   const { carbohydrate, protein, fat, mealName, mealType } = item;
 
@@ -38,12 +42,16 @@ export const ElementOfFood = ({ item, index }) => {
           <FatWrap>
             <Value>{fat}</Value>
           </FatWrap>
-          <EditButton onClick={toggleModal}><Img src={edit} alt="Edit"/>Edit</EditButton>
-        </InfoWrap>
+          <EditButton onClick={toggleModalEdit}><Img src={edit} alt="Edit"/>Edit</EditButton>
+      </InfoWrap>
+      
+      {isEditModalOpen && (
+        <UpdateMealModal onClose ={toggleModalEdit} mealType={ mealType}  item={ item } />
+      )}
 
 
-        {isModalOpen && (
-        <RecordDiaryModal onClose={toggleModal} mealType={ mealType } item={ item }/>
+        {isRecordModalOpen && (
+        <RecordDiaryModal onClose={toggleModalRecord} mealType={ mealType } item={ item }/>
       )}
 
 
