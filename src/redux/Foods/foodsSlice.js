@@ -4,14 +4,7 @@ import { addFood, updateFood } from './foodsOperations';
 const foodsSlice = createSlice({
   name: 'foods',
   initialState: {
-    foods: {
-      mealType: '',
-      mealName: '',
-      carbohydrate: '',
-      protein: '',
-      fat: '',
-      calories: '',
-    },
+    foods: [],
     isLoading: false,
     error: null,
   },
@@ -24,7 +17,7 @@ const foodsSlice = createSlice({
       .addCase(addFood.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        state.foods = { ...action.payload };
+        state.foods.push(action.payload);
       })
       .addCase(addFood.rejected, (state, action) => {
         state.isLoading = false;
@@ -37,7 +30,7 @@ const foodsSlice = createSlice({
         state.isLoading = false;
         state.error = null;
         const index = state.foods.findIndex(
-          food => food.id === action.payload.id
+          food => food._id === action.payload._id
         );
         state.foods.splice(index, 1, action.payload);
       })

@@ -57,7 +57,6 @@ export const ArrowReturn = styled.img`
 export const MainHeaderBlock = styled.div`
   display: flex;
   flex-direction: row;
-
 `;
 
 export const MainHeader = styled.h1`
@@ -119,7 +118,7 @@ export const List = styled.div`
 `;
 
 export const FoodBlock = styled.li`
-    ${'' /* width: 600px; */}
+  ${'' /* width: 600px; */}
 `;
 
 export const FoodBlockHeader = styled.div`
@@ -127,13 +126,13 @@ export const FoodBlockHeader = styled.div`
   @media screen and (${props => props.theme.mq.mobile}) {
   }
   @media screen and (${props => props.theme.mq.tablet}) {
-  justify-content: space-around;
-  align-items: center;
+    justify-content: space-around;
+    align-items: center;
   }
   @media screen and (${props => props.theme.mq.desktop}) {
-  justify-content: space-between;
-  align-items: center;
-  gap: 5px;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5px;
   }
 `;
 
@@ -165,7 +164,7 @@ export const AddFoodButton = styled.button`
   font-size: 14px;
   line-height: 20px;
   background-color: #0f0f0f;
-  color: #E3FFA8;
+  color: #e3ffa8;
   cursor: pointer;
 `;
 
