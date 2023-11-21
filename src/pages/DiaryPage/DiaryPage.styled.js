@@ -63,7 +63,7 @@ export const MainHeader = styled.h1`
   font-weight: ${props => props.theme.fontWeights.medium};
 
   @media screen and (${props => props.theme.mq.mobile}) {
-    font-size: 24px;
+    font-size: 28px;
     line-height: 1.25;
   }
   @media screen and (${props => props.theme.mq.tablet}) {
@@ -122,14 +122,15 @@ export const FoodBlock = styled.li`
 `;
 
 export const FoodBlockHeader = styled.div`
-  display: flex;
   @media screen and (${props => props.theme.mq.mobile}) {
   }
   @media screen and (${props => props.theme.mq.tablet}) {
+    display: flex;
     justify-content: space-around;
     align-items: center;
   }
   @media screen and (${props => props.theme.mq.desktop}) {
+    display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 5px;
@@ -158,13 +159,18 @@ export const Element = styled.div`
 `;
 
 export const AddFoodButton = styled.button`
-  border: none;
-  font: Poppins;
-  font-weight: 500;
-  font-size: 14px;
+  display: flex;
+  align-items: center;
+  column-gap: 8px;
+  color: ${props => props.theme.colors.greenLite};
+  font-family: ${props => props.theme.fontFamily.poppins};
+  font-size: ${p => p.theme.fontSizes.xs};
+  font-weight: ${p => p.theme.fontWeights.medium};
   line-height: 20px;
-  background-color: #0f0f0f;
-  color: #e3ffa8;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  padding: 0;
   cursor: pointer;
 `;
 
@@ -184,6 +190,9 @@ export const Img = styled.img`
 export const Div1 = styled.div`
   display: flex;
   flex-direction: row;
+  @media screen and (${props => props.theme.mq.mobile}) {
+    margin-bottom: 10px;
+}
 `;
 
 export const Div2 = styled.div`

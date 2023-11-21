@@ -44,18 +44,12 @@ export const ElementOfFood = ({ item, index }) => {
           </FatWrap>
           <EditButton onClick={toggleModalEdit}><Img src={edit} alt="Edit"/>Edit</EditButton>
       </InfoWrap>
-      
       {isEditModalOpen && (
         <UpdateMealModal onClose ={toggleModalEdit} mealType={ mealType}  item={ item } />
       )}
-
-
         {isRecordModalOpen && (
         <RecordDiaryModal onClose={toggleModalRecord} mealType={ mealType } item={ item }/>
       )}
-
-
-
     </CardWrap>
   );
 };
