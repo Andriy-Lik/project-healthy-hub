@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import { updateGoal } from '../../redux/Auth/authOperations';
 import { selectUser } from '../../redux/Auth/authSelectors';
@@ -132,3 +133,7 @@ export default function TargetModal({ onCloseModal }) {
     </HeaderOverlay>
   );
 }
+
+TargetModal.propTypes = {
+  onCloseOverlay: PropTypes.func.isRequired,
+};
