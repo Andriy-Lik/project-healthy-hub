@@ -11,6 +11,7 @@ import { selectConsumedMacronutrientsPerDay, selectIntakeFoodPerDay } from '../.
 import RecordDiaryModal from "components/Modals/RecordDiaryModal/RecordDiaryModal";
 import { useSelector } from 'react-redux';
 import { ElementOfFood } from "../../components/Diary/ElementOfFood";
+import { v4 } from 'uuid'
 
 
 import {
@@ -56,10 +57,10 @@ const DiaryPage = () => {
   } = consumedMacronutrients;
 
   const foodIntake = useSelector(selectIntakeFoodPerDay)
-  const breakfastFoodIntake = foodIntake.filter((value) => value.mealType === 'Breakfast' ).map((item, index) => <ElementOfFood item={item} index={index}/>)
-  const dinnerFoodIntake = foodIntake.filter((value) => value.mealType === 'Dinner' ).map((item, index) => <ElementOfFood item={item} index={index}/>)
-  const lunchFoodIntake = foodIntake.filter((value) => value.mealType === 'Lunch' ).map((item, index) => <ElementOfFood item={item} index={index}/>)
-  const snackFoodIntake = foodIntake.filter((value) => value.mealType === 'Snack' ).map((item, index) => <ElementOfFood item={item} index={index}/>)
+  const breakfastFoodIntake = foodIntake.filter((value) => value.mealType === 'Breakfast' ).map((item, index) => <ElementOfFood item={item} index={index} key={v4()}/>)
+  const dinnerFoodIntake = foodIntake.filter((value) => value.mealType === 'Dinner' ).map((item, index) => <ElementOfFood item={item} index={index} key={v4()}/>)
+  const lunchFoodIntake = foodIntake.filter((value) => value.mealType === 'Lunch' ).map((item, index) => <ElementOfFood item={item} index={index} key={v4()}/>)
+  const snackFoodIntake = foodIntake.filter((value) => value.mealType === 'Snack' ).map((item, index) => <ElementOfFood item={item} index={index} key={v4()}/>)
 
   return (
     <Section>
