@@ -3,8 +3,15 @@ import { Link } from 'react-router-dom';
 
 export const Container = styled.div`
   background-color: ${props => props.theme.colors.black2};
-  padding-top: 26px;
-  padding-bottom: 26px;
+  
+  @media screen and (${props => props.theme.mq.mobile}) {
+    padding-top: 18px;
+    padding-bottom: 18px;
+  }
+  @media screen and (${props => props.theme.mq.tablet}) {
+    padding-top: 26px;
+    padding-bottom: 26px;
+  } 
 `;
 
 export const Content = styled.div`
@@ -32,7 +39,7 @@ export const LogoBox = styled.div`
   font-size: ${props => props.theme.fontSizes.l};
   font-weight: ${props => props.theme.fontWeights.bold};
 
-  @media screen and (${props => props.theme.mq.mobile}) {   
+  @media screen and (${props => props.theme.mq.mobile}) {
     font-size: ${props => props.theme.fontSizes.s};
     display: flex;
     align-items: center;
@@ -55,10 +62,10 @@ export const Info = styled.div`
   display: flex;
   justify-content: space-between;
 
-  @media screen and (${props => props.theme.mq.tablet}) {   
+  @media screen and (${props => props.theme.mq.tablet}) {
     width: 513px;
   }
-  @media screen and (${props => props.theme.mq.desktop}) {   
+  @media screen and (${props => props.theme.mq.desktop}) {
     width: 604px;
   }
 `;
@@ -78,7 +85,7 @@ export const InfoBlock = styled.div`
 
   @media screen and (${props => props.theme.mq.tablet}) {
     display: flex;
-    &:nth-child(1) {    
+    &:nth-child(1) {
       margin-right: 40px;
     }
   }

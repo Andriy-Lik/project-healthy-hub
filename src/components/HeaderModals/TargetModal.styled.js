@@ -6,7 +6,6 @@ export const ModalWrapper = styled.div`
   background-color: ${props => props.theme.colors.black2};
   border-radius: ${props => props.theme.radii.normal};
   @media screen and (${props => props.theme.mq.mobile}) {
-    /* right: 0; */
     display: flex;
     flex-direction: column;
     align-items: center;

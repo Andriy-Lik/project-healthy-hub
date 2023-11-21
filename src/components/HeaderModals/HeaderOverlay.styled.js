@@ -7,16 +7,7 @@ export const Overlay = styled.div`
   width: 100%;
   height: 100%;
   z-index: 5;
-  @media screen and (${props => props.theme.mq.mobile}) {
-    /* top: 60px; */
-    display: flex;
-  }
-  @media screen and (${props => props.theme.mq.tablet}) {
-    /* top: 100px; */
-    display: flex;
-  }
-  @media screen and (${props => props.theme.mq.desktop}) {
-    /* top: 100px; */
+  @media screen and (${props => props.theme.mq.mobile}) {    
     display: flex;
   }
 `;
