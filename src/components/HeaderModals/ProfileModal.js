@@ -1,6 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { logOut } from '../../redux/Auth/authOperations';
+import PropTypes from 'prop-types';
 
 import HeaderOverlay from './HeaderOverlay';
 import { ModalWrapper, Modal, Button } from './ProfileModal.styled';
@@ -33,3 +34,7 @@ export default function ProfileModal({ onCloseModal }) {
     </HeaderOverlay>
   );
 }
+
+ProfileModal.propTypes = {
+  onCloseOverlay: PropTypes.func.isRequired,
+};

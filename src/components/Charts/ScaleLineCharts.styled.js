@@ -3,8 +3,6 @@ import styled from 'styled-components';
 export const List = styled.ul`
   display: flex;
   justify-content: space-evenly;
-  /* justify-content: center; */
-  /* justify-content: space-between; */
 `;
 
 export const Item = styled.li`

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { selectUser } from '../../redux/Auth/authSelectors';
+import PropTypes from 'prop-types';
 
 import HeaderOverlay from './HeaderOverlay';
 import {
@@ -130,3 +131,7 @@ export default function MenuModal({ onCloseModal }) {
     </HeaderOverlay>
   );
 }
+
+MenuModal.propTypes = {
+  onCloseOverlay: PropTypes.func.isRequired,
+};

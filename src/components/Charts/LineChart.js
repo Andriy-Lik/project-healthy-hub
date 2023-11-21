@@ -92,6 +92,7 @@ const LineChart = ({ dataFormat, type }) => {
   }, [info, dataFormat, type]);
 
   let caption = type === 'water' ? 'L' : 'K';
+  const yScaleMax = Math.max(...information) + 1000;
 
   const options = {
     interaction: {
@@ -150,7 +151,7 @@ const LineChart = ({ dataFormat, type }) => {
         alignToPixels: true,
         beginAtZero: true,
         min: 0,
-        max: 3000,
+        max: yScaleMax,
         ticks: {
           alignToPixels: true,
           major: {
