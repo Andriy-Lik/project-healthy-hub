@@ -1,5 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 
 import { addWeight } from '../../redux/Auth/authOperations';
 import HeaderOverlay from './HeaderOverlay';
@@ -69,6 +70,8 @@ export default function WeightModal({ onCloseModal }) {
           <WeightForm onSubmit={handleNewUserWeight}>
             <WeightFormInput
               type="number"
+              step="0.1"
+              min="0"
               name="weight"
               placeholder="Enter your weight"
               autoComplete="off"
@@ -84,3 +87,7 @@ export default function WeightModal({ onCloseModal }) {
     </HeaderOverlay>
   );
 }
+
+WeightModal.propTypes = {
+  onCloseOverlay: PropTypes.func.isRequired,
+};
