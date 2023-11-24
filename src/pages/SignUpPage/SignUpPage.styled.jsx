@@ -143,7 +143,7 @@ export const Input = styled.input`
   }
 `;
 
-export const Button = styled.button`
+export const FormButton = styled.button`
   background-color: #e3ffa8;
   text-align: center;
   margin-top: 16px;
@@ -153,12 +153,16 @@ export const Button = styled.button`
   font-size: 14px;
   font-family: Poppins;
 
+  @media (min-width: 320px) and (max-width: 833px) {
+    width: 300px;
+  }
+
   @media (min-width: 834px) and (max-width: 1439px) {
     width: 380px;
   }
 `;
 
-export const SuggestionButtonWrapper = styled.div`
+export const QuestionWrapper = styled.div`
   display: flex;
   flex-direction: column;
   margin-top: 200px;
@@ -170,7 +174,7 @@ export const SuggestionButtonWrapper = styled.div`
   }
 `;
 
-export const Suggestion = styled.p`
+export const QuestionText = styled.p`
   color: #b6b6b6;
 
   @media (min-width: 834px) {

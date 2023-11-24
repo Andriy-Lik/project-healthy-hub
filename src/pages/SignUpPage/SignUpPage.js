@@ -1,11 +1,7 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
-import {
-  setNewUserName,
-  setNewUserEmail,
-  setNewUserPassword,
-} from 'redux/Auth/authSlice';
+import { setNewUserName, setNewUserEmail, setNewUserPassword, } from 'redux/Auth/authSlice';
 import {
   Container,
   Image,
@@ -15,22 +11,23 @@ import {
   FormWrapper,
   Form,
   Input,
-  Button,
-  SuggestionButtonWrapper,
-  Suggestion,
+  FormButton,
+  QuestionWrapper,
+  QuestionText,
   SignInLink,
 } from './SignUpPage.styled';
 import logoPic from '../../images/WelcomePageImg/logoPic.png';
 
 const SignUpPage = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleNewUserData = event => {
     event.preventDefault();
-    console.log(`name: ${name}, e-mail: ${email}, password: ${password}`);
+    // console.log(`name: ${name}, e-mail: ${email}, password: ${password}`);
     dispatch(setNewUserName(name));
     dispatch(setNewUserEmail(email));
     dispatch(setNewUserPassword(password));
@@ -84,21 +81,20 @@ const SignUpPage = () => {
                 value={password}
                 onChange={handleInputChange}
               />
-              <Button type="submit">
-                <Link to={'/your-goal'}>
-                  Sign Up
-                </Link>  
-              </Button>
+              <FormButton type="submit" onClick={() => {navigate('/your-goal')}}>
+                Sign Up 
+              </FormButton>
             </Form>
           </FormWrapper>
 
-          <SuggestionButtonWrapper>
-            <Suggestion>Do you already have an account?</Suggestion>
+          <QuestionWrapper>
+            <QuestionText>Do you already have an account?</QuestionText>
             <SignInLink to={'/signin'}>Sign in</SignInLink>
-          </SuggestionButtonWrapper>
+          </QuestionWrapper>
         </ContentBox>
       </Container>
     </div>
   );
 };
+
 export default SignUpPage;
