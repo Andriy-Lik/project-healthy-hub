@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
+import PropTypes from 'prop-types';
 
 import { Overlay, ContentContainer } from './HeaderOverlay.styled';
 
@@ -9,7 +10,7 @@ const HeaderOverlay = ({ onCloseOverlay, children }) => {
   const overlayClickHandler = event => {
     if (event.currentTarget === event.target) {
       onCloseOverlay();
-      console.log('onCloseOverlay()', onCloseOverlay());
+      console.log(onCloseOverlay());
     }
   };
 
@@ -33,6 +34,11 @@ const HeaderOverlay = ({ onCloseOverlay, children }) => {
     </Overlay>,
     modalRoot
   );
+};
+
+HeaderOverlay.propTypes = {
+  onCloseOverlay: PropTypes.func.isRequired,
+  children: PropTypes.object,
 };
 
 export default HeaderOverlay;

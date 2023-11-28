@@ -1,7 +1,8 @@
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 
-import { setNewUserWeight } from '../../redux/Auth/authSlice';
+import { addWeight } from '../../redux/Auth/authOperations';
 import HeaderOverlay from './HeaderOverlay';
 
 import {
@@ -32,7 +33,7 @@ export default function WeightModal({ onCloseModal }) {
 
   const handleNewUserWeight = event => {
     event.preventDefault();
-    dispatch(setNewUserWeight(newWeight));
+    dispatch(addWeight(newWeight));
     onCloseModal();
   };
 
@@ -49,6 +50,7 @@ export default function WeightModal({ onCloseModal }) {
   const formattedDate = getCurrentDateFormatted();
 
   const closeBtnHandler = () => {
+    console.log(onCloseModal());
     onCloseModal();
   };
 
@@ -68,6 +70,8 @@ export default function WeightModal({ onCloseModal }) {
           <WeightForm onSubmit={handleNewUserWeight}>
             <WeightFormInput
               type="number"
+              step="0.1"
+              min="0"
               name="weight"
               placeholder="Enter your weight"
               autoComplete="off"
@@ -78,8 +82,12 @@ export default function WeightModal({ onCloseModal }) {
             <WeightFormBtn type="submit">Confirm</WeightFormBtn>
           </WeightForm>
         </Modal>
-        <CancelBtn onClick={() => onCloseModal()}>Cancel</CancelBtn>
+        <CancelBtn onClick={closeBtnHandler}>Cancel</CancelBtn>
       </ModalWrapper>
     </HeaderOverlay>
   );
 }
+
+WeightModal.propTypes = {
+  onCloseOverlay: PropTypes.func.isRequired,
+};

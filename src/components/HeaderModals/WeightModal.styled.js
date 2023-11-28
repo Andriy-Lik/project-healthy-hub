@@ -5,8 +5,7 @@ export const ModalWrapper = styled.div`
   box-shadow: 0 4px 14px 0 rgba(227, 255, 168, 0.2);
   background-color: ${div => div.theme.colors.black2};
   border-radius: ${div => div.theme.radii.normal};
-  @media screen and (${props => props.theme.mq.mobile}) {
-    right: 0;    
+  @media screen and (${props => props.theme.mq.mobile}) {    
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -14,12 +13,12 @@ export const ModalWrapper = styled.div`
   }
   @media screen and (${props => props.theme.mq.tablet}) {
     right: 148px;
-    width: 392px;   
+    width: 392px;
     padding-bottom: 0;
   }
   @media screen and (${props => props.theme.mq.desktop}) {
     right: 36px;
-    width: 392px;    
+    width: 392px;
     padding-bottom: 0;
   }
 `;
@@ -27,7 +26,7 @@ export const ModalWrapper = styled.div`
 export const Modal = styled.div`
   @media screen and (${props => props.theme.mq.mobile}) {
     padding: 24px 10px 0 10px;
-    width: 100vw;
+    width: 300px;
     height: auto;
   }
   @media screen and (${props => props.theme.mq.tablet}) {
@@ -114,6 +113,21 @@ export const WeightForm = styled.form`
 `;
 
 export const WeightFormInput = styled.input`
+  &[type='number']::-webkit-inner-spin-button,
+  &[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
+  }
+
+  &[type='number'],
+  &[type='number']:hover,
+  &[type='number']:focus {
+    appearance: none;
+    -moz-appearance: textfield;
+  }
+
   height: 36px;
   border-radius: ${input => input.theme.radii.normal};
   border: 1px solid ${input => input.theme.colors.greenLite};

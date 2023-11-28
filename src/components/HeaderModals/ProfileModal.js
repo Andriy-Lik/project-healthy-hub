@@ -1,6 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { logOut } from '../../redux/Auth/authOperations';
+import PropTypes from 'prop-types';
 
 import HeaderOverlay from './HeaderOverlay';
 import { ModalWrapper, Modal, Button } from './ProfileModal.styled';
@@ -16,13 +17,13 @@ export default function ProfileModal({ onCloseModal }) {
     <HeaderOverlay onCloseOverlay={onCloseModal}>
       <ModalWrapper>
         <Modal onClick={() => onCloseModal()}>
-          <Link to={'/settings'}>
+          <Link onClick={() => onCloseModal()} to={'/settings'}>
             <Button type="button">
               <img src={settingImg} alt="setting" width={16} />
               Setting
             </Button>
           </Link>
-          <Link to={'/'}>
+          <Link onClick={() => onCloseModal()} to={'/'}>
             <Button type="button" onClick={handleLogOut}>
               <img src={logOutImg} alt="log out" width={16} />
               Log out
@@ -33,3 +34,7 @@ export default function ProfileModal({ onCloseModal }) {
     </HeaderOverlay>
   );
 }
+
+ProfileModal.propTypes = {
+  onCloseOverlay: PropTypes.func.isRequired,
+};

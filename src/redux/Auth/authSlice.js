@@ -7,6 +7,8 @@ import {
   updateUser,
   forgotPassword,
   updateAvatar,
+  addWeight,
+  updateGoal
 } from './authOperations';
 
 const initialState = {
@@ -23,7 +25,7 @@ const initialState = {
     bmr: null,
     fat: null,
     protein: null,
-    cabohydrate: null,
+    carbohydrate: null,
     avatarURL: null,
   },
   token: null,
@@ -89,7 +91,7 @@ const authSlice = createSlice({
           bmr: null,
           fat: null,
           protein: null,
-          cabohydrate: null,
+          carbohydrate: null,
           avatarURL: null,
         };
         state.token = null;
@@ -120,7 +122,17 @@ const authSlice = createSlice({
         state.user.avatarURL = action.payload;
         // state.token = action.payload.token;
         state.isLoggedIn = true;
-      });
+      })
+      .addCase(addWeight.fulfilled, (state, action) => {      
+        state.user.weight = action.payload.weight;
+        state.user.bmr = action.payload.bmr;
+      })
+      .addCase(updateGoal.fulfilled, (state, action) => {
+        state.user.goal = action.payload.goal;
+        state.user.fat = action.payload.fat;
+        state.user.protein = action.payload.protein;
+        state.user.carbohydrate = action.payload.carbohydrate;
+      });    
   },
 });
 

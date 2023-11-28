@@ -1,29 +1,29 @@
 import React, { useRef, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { setNewUserActivity } from 'redux/Auth/authSlice';
 import { register } from 'redux/Auth/authOperations';
 import { selectUser } from 'redux/Auth/authSelectors';
 import {
-  BackgroundContainer,
-  YourActivityLogo,
-  YourActivityContainer,
-  YourActivityHeadline,
-  YourActivityText,
-  YourActivityFormWrapper,
-  YourActivityForm,
-  YourActivityFormList,
-  YourActivityFormListWrapper,
-  YourActivityFormListOption,
-  YourActivityButton,
+  Container,
+  Image,
+  ContentBox,
+  Title,
+  Text,
+  FormWrapper,
+  Form,
+  FormList,
+  FormListWrapper,
+  FormListOption,
+  Button,
 } from './YourActivityPage.styled';
-import YourActivityBackButton from 'components/BackButtons/YourActivityBackButton/YourActivityBackButton';
+import BackButton from 'components/BackButtons/YourActivityBackButton/YourActivityBackButton';
 import {
   LabelWithRadio,
   RadioInput,
   RadioMark,
 } from 'components/CustomRadioButton/CustomRadioButton.style';
-import SelectGenderLogoPic from '../../images/YourActivityLogoPic.png';
+import LogoPic from '../../images/YourActivityLogoPic.png';
 
 const YourActivityPage = () => {
   const user = useSelector(selectUser);
@@ -62,17 +62,17 @@ const YourActivityPage = () => {
   const locationRef = useRef(location);
   return (
     <div>
-      <BackgroundContainer>
-        <YourActivityLogo src={SelectGenderLogoPic} alt="Select Gender Logo" />
-        <YourActivityContainer>
-          <YourActivityHeadline>Your Activity</YourActivityHeadline>
-          <YourActivityText>
+      <Container>
+        <Image src={LogoPic} alt="Select Gender Logo" />
+        <ContentBox>
+          <Title>Your Activity</Title>
+          <Text>
             To correctly calculate calorie and water intake
-          </YourActivityText>
-          <YourActivityFormWrapper>
-            <YourActivityForm onSubmit={handleActivityResults}>
-              <YourActivityFormList>
-                <YourActivityFormListWrapper>
+          </Text>
+          <FormWrapper>
+            <Form onSubmit={handleActivityResults}>
+              <FormList>
+                <FormListWrapper>
                   <LabelWithRadio>
                     <RadioInput
                       type="radio"
@@ -83,15 +83,15 @@ const YourActivityPage = () => {
                     />
                     <RadioMark></RadioMark>
                   </LabelWithRadio>
-                  <YourActivityFormListOption
+                  <FormListOption
                     style={{ color: '#FFFF', fontSize: 14 }}
                   >
                     1.2 - if you do not have physical activity and sedentary
                     work
-                  </YourActivityFormListOption>
-                </YourActivityFormListWrapper>
+                  </FormListOption>
+                </FormListWrapper>
 
-                <YourActivityFormListWrapper>
+                <FormListWrapper>
                   <LabelWithRadio>
                     <RadioInput
                       type="radio"
@@ -102,15 +102,15 @@ const YourActivityPage = () => {
                     />
                     <RadioMark></RadioMark>
                   </LabelWithRadio>
-                  <YourActivityFormListOption
+                  <FormListOption
                     style={{ color: '#FFFF', fontSize: 14 }}
                   >
                     1,375 - if you do short runs or light gymnastics 1-3 times a
                     week
-                  </YourActivityFormListOption>
-                </YourActivityFormListWrapper>
+                  </FormListOption>
+                </FormListWrapper>
 
-                <YourActivityFormListWrapper>
+                <FormListWrapper>
                   <LabelWithRadio>
                     <RadioInput
                       type="radio"
@@ -120,15 +120,15 @@ const YourActivityPage = () => {
                     />
                     <RadioMark></RadioMark>
                   </LabelWithRadio>
-                  <YourActivityFormListOption
+                  <FormListOption
                     style={{ color: '#FFFF', fontSize: 14 }}
                   >
                     1.55 - if you play sports with average loads 3-5 times a
                     week
-                  </YourActivityFormListOption>
-                </YourActivityFormListWrapper>
+                  </FormListOption>
+                </FormListWrapper>
 
-                <YourActivityFormListWrapper>
+                <FormListWrapper>
                   <LabelWithRadio>
                     <RadioInput
                       type="radio"
@@ -139,14 +139,14 @@ const YourActivityPage = () => {
                     />
                     <RadioMark></RadioMark>
                   </LabelWithRadio>
-                  <YourActivityFormListOption
+                  <FormListOption
                     style={{ color: '#FFFF', fontSize: 14 }}
                   >
                     1,725 ​​- if you train fully 6-7 times a week
-                  </YourActivityFormListOption>
-                </YourActivityFormListWrapper>
+                  </FormListOption>
+                </FormListWrapper>
 
-                <YourActivityFormListWrapper>
+                <FormListWrapper>
                   <LabelWithRadio>
                     <RadioInput
                       type="radio"
@@ -157,26 +157,24 @@ const YourActivityPage = () => {
                     />
                     <RadioMark></RadioMark>
                   </LabelWithRadio>
-                  <YourActivityFormListOption
+                  <FormListOption
                     style={{ color: '#FFFF', fontSize: 14 }}
                   >
                     1.9 - if your work is related to physical labor, you train 2
                     times a day and include strength exercises in your training
                     program
-                  </YourActivityFormListOption>
-                </YourActivityFormListWrapper>
-              </YourActivityFormList>
-              <YourActivityButton type="submit">
-                <Link to={'/signin'}>
-                  Next
-                </Link>
-              </YourActivityButton>
+                  </FormListOption>
+                </FormListWrapper>
+              </FormList>
+              <Button type="submit">
+                Next
+              </Button>
               <br />
-              <YourActivityBackButton location={locationRef.current} />
-            </YourActivityForm>
-          </YourActivityFormWrapper>
-        </YourActivityContainer>
-      </BackgroundContainer>
+              <BackButton location={locationRef.current} />
+            </Form>
+          </FormWrapper>
+        </ContentBox>
+      </Container>
     </div>
   );
 };

@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
 
-import { setNewUserGoal } from '../../redux/Auth/authSlice';
+import { updateGoal } from '../../redux/Auth/authOperations';
 import { selectUser } from '../../redux/Auth/authSelectors';
 import HeaderOverlay from './HeaderOverlay';
 
@@ -43,12 +44,13 @@ export default function TargetModal({ onCloseModal }) {
   const newGailMuscleGoal = () => setUserGoal('Gain muscle');
 
   const handleNewUserGoal = event => {
-    event.preventDefault();
-    dispatch(setNewUserGoal(userGoal));
+    event.preventDefault();    
+    dispatch(updateGoal(userGoal));
     onCloseModal();
   };
 
   const closeBtnHandler = () => {
+    console.log(onCloseModal());
     onCloseModal();
   };
 
@@ -126,8 +128,12 @@ export default function TargetModal({ onCloseModal }) {
             <ModalBtn type="submit">Confirm</ModalBtn>
           </ModalForm>
         </Modal>
-        <CancelBtn onClick={() => onCloseModal()}>Cancel</CancelBtn>
+        <CancelBtn onClick={closeBtnHandler}>Cancel</CancelBtn>
       </ModalWrapper>
     </HeaderOverlay>
   );
 }
+
+TargetModal.propTypes = {
+  onCloseOverlay: PropTypes.func.isRequired,
+};

@@ -7,17 +7,17 @@ import {
   setNewUserPassword,
 } from 'redux/Auth/authSlice';
 import {
-  BackgroundContainer,
-  SignUpLogo,
-  SignUpContainer,
-  SignUpHeadline,
-  SignUpText,
-  SignUpFormWrapper,
-  SignUpForm,
-  SignUpInput,
-  SignUpButton,
-  SignInSuggestionButtonWrapper,
-  SignInSuggestion,
+  Container,
+  Image,
+  ContentBox,
+  Title,
+  Text,
+  FormWrapper,
+  Form,
+  Input,
+  Button,
+  SuggestionButtonWrapper,
+  Suggestion,
   SignInLink,
 } from './SignUpPage.styled';
 import logoPic from '../../images/WelcomePageImg/logoPic.png';
@@ -49,18 +49,18 @@ const SignUpPage = () => {
 
   return (
     <div>
-      <BackgroundContainer>
+      <Container>
         <style>
           @import
           url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Roboto&display=swap');
         </style>
-        <SignUpLogo src={logoPic} alt="Logo" />
-        <SignUpContainer>
-          <SignUpHeadline>Sign up</SignUpHeadline>
-          <SignUpText>You need to register to use the service</SignUpText>
-          <SignUpFormWrapper>
-            <SignUpForm onSubmit={handleNewUserData} autoComplete="off">
-              <SignUpInput
+        <Image src={logoPic} alt="Logo" />
+        <ContentBox>
+          <Title>Sign up</Title>
+          <Text>You need to register to use the service</Text>
+          <FormWrapper>
+            <Form onSubmit={handleNewUserData} autoComplete="off">
+              <Input
                 placeholder="name"
                 id="name"
                 type="text"
@@ -68,7 +68,7 @@ const SignUpPage = () => {
                 value={name}
                 onChange={handleInputChange}
               />
-              <SignUpInput
+              <Input
                 placeholder="e-mail"
                 id="email"
                 type="email"
@@ -76,7 +76,7 @@ const SignUpPage = () => {
                 value={email}
                 onChange={handleInputChange}
               />
-              <SignUpInput
+              <Input
                 placeholder="password"
                 id="password"
                 type="password"
@@ -84,20 +84,20 @@ const SignUpPage = () => {
                 value={password}
                 onChange={handleInputChange}
               />
-              <SignUpButton type="submit">
+              <Button type="submit">
                 <Link to={'/your-goal'}>
                   Sign Up
                 </Link>  
-              </SignUpButton>
-            </SignUpForm>
-          </SignUpFormWrapper>
+              </Button>
+            </Form>
+          </FormWrapper>
 
-          <SignInSuggestionButtonWrapper>
-            <SignInSuggestion>Do you already have an account?</SignInSuggestion>
+          <SuggestionButtonWrapper>
+            <Suggestion>Do you already have an account?</Suggestion>
             <SignInLink to={'/signin'}>Sign in</SignInLink>
-          </SignInSuggestionButtonWrapper>
-        </SignUpContainer>
-      </BackgroundContainer>
+          </SuggestionButtonWrapper>
+        </ContentBox>
+      </Container>
     </div>
   );
 };
