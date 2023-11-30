@@ -89,7 +89,7 @@ export const ContentWrapper = styled.div`
 `
 
 export const ProductList = styled.ul`
-  padding-right: 10px;
+  padding: 10px;
   overflow-y: auto;
   height: 210px;
   margin-bottom: 24px;

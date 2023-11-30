@@ -2,7 +2,8 @@ import { useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { nanoid } from 'nanoid';
-import DiaryGeneralInfo from 'components/Diary/DiaryGeneralInfo';
+
+import ItemsToAdd from 'components/DiaryPageItemsToAdd/ItemsToAdd';
 import ElementOfFood from 'components/Diary/ElementOfFood';
 import {
   selectConsumedMacronutrientsPerDay,
@@ -54,7 +55,7 @@ const DiaryPage = () => {
     lunch: lunchInfo,
     dinner: dinnerInfo,
     snack: snackInfo,
-  } = consumedMacronutrients; 
+  } = consumedMacronutrients;
 
   return (
     <Section>
@@ -75,7 +76,7 @@ const DiaryPage = () => {
                 </ThumbImg>
                 <Title>Breakfast</Title>
               </BlockHeader>
-              <DiaryGeneralInfo info={breakfastInfo} />
+              <ItemsToAdd info={breakfastInfo} />
             </BlockGeneralInfo>
             <BlockDetailedInformation>
               <ListOfDishes>
@@ -101,18 +102,20 @@ const DiaryPage = () => {
                 </ThumbImg>
                 <Title>Lunch</Title>
               </BlockHeader>
-              <DiaryGeneralInfo info={lunchInfo} />
+              <ItemsToAdd info={lunchInfo} />
             </BlockGeneralInfo>
             <BlockDetailedInformation>
               <ListOfDishes>
-                {getArrayToRenderDiary(lunchFoodIntake, 'Lunch').map((item, index) => (
-                  <ElementOfFood
-                    item={item}
-                    key={nanoid()}
-                    index={index}
-                    img={lunchImg}
-                  />
-                ))}
+                {getArrayToRenderDiary(lunchFoodIntake, 'Lunch').map(
+                  (item, index) => (
+                    <ElementOfFood
+                      item={item}
+                      key={nanoid()}
+                      index={index}
+                      img={lunchImg}
+                    />
+                  )
+                )}
               </ListOfDishes>
             </BlockDetailedInformation>
           </DiaryItem>
@@ -125,18 +128,20 @@ const DiaryPage = () => {
                 </ThumbImg>
                 <Title>Dinner</Title>
               </BlockHeader>
-              <DiaryGeneralInfo info={dinnerInfo} />
+              <ItemsToAdd info={dinnerInfo} />
             </BlockGeneralInfo>
             <BlockDetailedInformation>
               <ListOfDishes>
-                {getArrayToRenderDiary(dinnerFoodIntake, 'Dinner').map((item, index) => (
-                  <ElementOfFood
-                    item={item}
-                    key={nanoid()}
-                    index={index}
-                    img={dinnerImg}
-                  />
-                ))}
+                {getArrayToRenderDiary(dinnerFoodIntake, 'Dinner').map(
+                  (item, index) => (
+                    <ElementOfFood
+                      item={item}
+                      key={nanoid()}
+                      index={index}
+                      img={dinnerImg}
+                    />
+                  )
+                )}
               </ListOfDishes>
             </BlockDetailedInformation>
           </DiaryItem>
@@ -149,18 +154,20 @@ const DiaryPage = () => {
                 </ThumbImg>
                 <Title>Snack</Title>
               </BlockHeader>
-              <DiaryGeneralInfo info={snackInfo} />
+              <ItemsToAdd info={snackInfo} />
             </BlockGeneralInfo>
             <BlockDetailedInformation>
               <ListOfDishes>
-                {getArrayToRenderDiary(snackFoodIntake, 'Snack').map((item, index) => (
-                  <ElementOfFood
-                    item={item}
-                    key={nanoid()}
-                    index={index}
-                    img={snackImg}
-                  />
-                ))}
+                {getArrayToRenderDiary(snackFoodIntake, 'Snack').map(
+                  (item, index) => (
+                    <ElementOfFood
+                      item={item}
+                      key={nanoid()}
+                      index={index}
+                      img={snackImg}
+                    />
+                  )
+                )}
               </ListOfDishes>
             </BlockDetailedInformation>
           </DiaryItem>

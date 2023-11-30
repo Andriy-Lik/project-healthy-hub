@@ -5,7 +5,7 @@ export const Info = styled.div`
   row-gap: 12px;
   column-gap: 20px;
   flex-wrap: wrap;
-  
+
   font-size: ${p => p.theme.fontSizes.xs};
   font-weight: ${p => p.theme.fontWeights.regular};
   line-height: 20px;

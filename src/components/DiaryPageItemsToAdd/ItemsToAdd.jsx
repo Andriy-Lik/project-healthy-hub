@@ -1,12 +1,12 @@
 import {
   Info,
-  Value,
+  Value, 
   CarbonohidratesWrap,
   ProteinWrap,
   FatWrap,
-} from './DiaryGeneralInfo.styled';
+} from '../DiaryPageItemsToAdd/ItemsToAdd.styled';
 
-const DiaryGeneralInfo = ({ info }) => {
+const ItemToAdd = ({ info }) => {
 
   const { carbonohidrates, protein, fat } = info;
 
@@ -26,5 +26,4 @@ const DiaryGeneralInfo = ({ info }) => {
   );
 };
 
-
-export default DiaryGeneralInfo;
+export default ItemToAdd;
