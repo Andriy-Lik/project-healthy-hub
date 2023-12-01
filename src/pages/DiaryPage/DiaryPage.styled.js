@@ -58,6 +58,7 @@ export const MainHeaderBlock = styled.header`
 
   @media screen and (${p => p.theme.mq.tablet}) {
     margin-bottom: 24px;
+
   }
   @media screen and (${p => p.theme.mq.desktop}) {
     margin-bottom: 16px;
@@ -113,6 +114,7 @@ export const DiaryItem = styled.li`
   }
 `;
 
+
 export const BlockGeneralInfo = styled.div`
   @media screen and (${p => p.theme.mq.tablet}) {
     display: flex;
@@ -130,6 +132,7 @@ export const BlockHeader = styled.div`
   @media screen and (${p => p.theme.mq.tablet}) {
     margin-bottom: 0;
   }
+
 `;
 
 export const ThumbImg = styled.div`

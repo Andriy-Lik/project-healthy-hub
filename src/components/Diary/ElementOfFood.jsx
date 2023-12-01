@@ -77,7 +77,7 @@ const ElementOfFood = ({ item, index, img }) => {
             )}
           </Wrapper>
         )}
-    </>  
+    </>
   );
 };
 

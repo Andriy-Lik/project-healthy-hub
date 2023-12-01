@@ -72,7 +72,7 @@ export const Carbonohidrates = styled.p`
   & > span {
     color: ${props => props.theme.colors.gray};
   }
-
+  
   @media screen and (${p => p.theme.mq.tablet}) {
     width: 80px;
 
