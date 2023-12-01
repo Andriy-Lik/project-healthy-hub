@@ -1,98 +1,113 @@
 import styled from 'styled-components';
 
-export const Img = styled.img`
-  width: 20px;
+export const Wrapper = styled.li`
+  display: flex;
+  column-gap: 16px;
+  color: ${p => p.theme.colors.white};
+  font-family: ${p => p.theme.fontFamily.poppins};
+  font-size: ${p => p.theme.fontSizes.xs};
+  font-weight: ${p => p.theme.fontWeights.regular};
+  line-height: 20px;
+`;
+
+export const SequenceNumber = styled.span`
+  min-width: 16px;
+  font-weight: ${p => p.theme.fontWeights.semiBold};
+  text-align: center;
+`;
+
+export const Dish = styled.div`
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  row-gap: 6px;
+`;
+
+export const Title = styled.p`
+  text-transform: capitalize;
+  flex-grow: 1;
 `;
 
 export const EditButton = styled.button`
-  border: none;
-  background-color: #0f0f0f;
-  cursor: pointer;
-  align-items: center;
-  text-align: center;
-  color: #B6B6B6;
   padding: 0;
-`;
-
-export const CardWrap = styled.div`
-  @media screen and (${props => props.theme.mq.mobile}) {
-  }
-  @media screen and (min-width: 834px) {
-    display: flex;
-    column-gap: 8px;
-    align-items: center;
-    justify-content: center;
-  }
-`;
-
-export const TitleWrap = styled.div`
-
-  width: 250px;
+  border: none;
+  background-color: transparent;
   display: flex;
   align-items: center;
+  column-gap: 6px;
+  color: ${p => p.theme.colors.gray};
+  font-family: ${p => p.theme.fontFamily.poppins};
+  font-size: ${p => p.theme.fontSizes.xs};
+  font-weight: ${p => p.theme.fontWeights.regular};
+  line-height: 20px;
+  cursor: pointer;
+
+  @media screen and (${p => p.theme.mq.tablet}) {
+    order: 1;
+  }
+`;
+
+export const Img = styled.img`
+  width: 16px;
+  height: 16px;
+`;
+
+export const BlockInfo = styled.div`
+  display: flex;
   column-gap: 12px;
-  margin-bottom: 0px;
-  margin-top: 20px;
+  font-size: 12px;
+  line-height: 18px;
 
-  color: ${props => props.theme.colors.white};
-  font-family: ${props => props.theme.fontFamily.poppins};
-  font-style: normal;
-
-  @media screen and (min-width: 834px) {
-    margin-top: 0px;
+  @media screen and (${p => p.theme.mq.tablet}) {
+    font-size: ${p => p.theme.fontSizes.xs};
+    line-height: 20px;
   }
 `;
 
-export const Title = styled.h3`
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 20px;
-`;
-
-export const InfoWrap = styled.div`
+export const Carbonohidrates = styled.p`
   display: flex;
-  row-gap: 20px;
+  width: 70px;
+  column-gap: 6px;
+
+  & > span {
+    color: ${props => props.theme.colors.gray};
+  }
+  
+  @media screen and (${p => p.theme.mq.tablet}) {
+    width: 80px;
+
+    & > span {
+      display: none;
+    }
+  }
+`;
+
+export const Protein = styled(Carbonohidrates)`
+  width: 62px;
+  @media screen and (${p => p.theme.mq.tablet}) {
+    width: 80px;
+  }
+`;
+
+export const Fat = styled(Carbonohidrates)`
+  width: 58px;
+  @media screen and (${p => p.theme.mq.tablet}) {
+    width: 80px;
+  }
+`;
+
+export const AddFoodButton = styled.button`
+  display: flex;
   align-items: center;
-  justify-content: center;
-  color: ${props => props.theme.colors.white};
+  column-gap: 8px;
+  color: ${props => props.theme.colors.greenLite};
   font-family: ${props => props.theme.fontFamily.poppins};
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
+  font-size: ${p => p.theme.fontSizes.xs};
+  font-weight: ${p => p.theme.fontWeights.medium};
   line-height: 20px;
-  text-align: center;
-  @media screen and (${props => props.theme.mq.mobile}) {
-    margin-bottom: 15px;
-  }
-  @media screen and (min-width: 834px) {
-    flex-direction: row;
-    column-gap: 20px;
-    margin-bottom: 0;
-  }
-`;
-
-export const CarbonohidratesWrap = styled.p`
-  width: 90px;
-  @media screen and (min-width: 834px) {
-    width: 164px;
-  }
-`;
-
-export const ProteinWrap = styled.p`
-  width: 90px;
-  @media screen and (min-width: 834px) {
-    width: 92px;
-  }
-`;
-
-export const FatWrap = styled.p`
-  width: 90px;
-  @media screen and (min-width: 834px) {
-    width: 66px;
-  }
-`;
-
-export const Value = styled.span`
-  color: ${props => props.theme.colors.gray};
-  font-weight: 500;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  padding: 0;
+  cursor: pointer;
 `;
