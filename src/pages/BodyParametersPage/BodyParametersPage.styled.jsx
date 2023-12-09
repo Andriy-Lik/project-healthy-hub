@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Field, Form } from 'formik';
 // import { Link } from 'react-router-dom';
 
 export const BackgroundContainer = styled.div`
@@ -117,7 +118,7 @@ export const BodyParametersWrapper = styled.div`
   width: 212px;
 `;
 
-export const BodyParametersForm = styled.form`
+export const BodyParametersForm = styled(Form)`
   display: block;
   margin-top: 8px;
   width: 280px;
@@ -135,7 +136,7 @@ export const BodyParametersLabel = styled.label`
   color: #FFFF;
 `;
 
-export const BodyParametersInput = styled.input`
+export const BodyParametersInput = styled(Field)`
   border: 1px solid #e3ffa8;
   border-radius: 12px;
   background-color: #0f0f0f;

@@ -1,8 +1,7 @@
-import { useRef } from 'react';
-import { Link } from 'react-router-dom';
-import { useLocation } from 'react-router-dom';
+import { useRef, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch } from "react-redux";
-import { useState } from "react";
+import { Formik } from 'formik';
 import { setNewUserHeight, setNewUserWeight } from 'redux/Auth/authSlice';
 import {
   BackgroundContainer,
@@ -21,6 +20,7 @@ import BodyParametersLogoPic from '../../images/BodyParametersLogoPic.png';
 
 const BodyParametersPage = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [height, setHeight] = useState('');
   const [weight, setWeight] = useState('');
 
@@ -51,28 +51,27 @@ const BodyParametersPage = () => {
             alt="BodyParametersLogoPic"
           />
         <BodyParametersContainer>
-
           <BodyParametersHeadline>Body parameters</BodyParametersHeadline>
           <BodyParametersText>
             Enter your parameters for correct performance tracking
           </BodyParametersText>
           <BodyParametersWrapper>
-            <BodyParametersForm onSubmit={handleNewUserHeightWeightData}>
-              <BodyParametersLabel>
-                Height
-                <BodyParametersInput placeholder="Enter your height" name='height' onChange={handleInputChange} />
-              </BodyParametersLabel>
-              <BodyParametersLabel>
-                Weight
-                <BodyParametersInput placeholder="Enter your weight" name='weight' onChange={handleInputChange} />
-              </BodyParametersLabel>
-              <BodyParametersButton type='submit'>
-                <Link to={'/your-activity'}>
+            <Formik>
+              <BodyParametersForm onSubmit={handleNewUserHeightWeightData}>
+                <BodyParametersLabel>
+                  Height
+                  <BodyParametersInput placeholder="Enter your height" name='height' onChange={handleInputChange} />
+                </BodyParametersLabel>
+                <BodyParametersLabel>
+                  Weight
+                  <BodyParametersInput placeholder="Enter your weight" name='weight' onChange={handleInputChange} />
+                </BodyParametersLabel>
+                <BodyParametersButton type='submit' onClick={() => {navigate('/your-activity')}}>
                   Next
-                </Link>
-              </BodyParametersButton>
+                </BodyParametersButton>
 
-            </BodyParametersForm>
+              </BodyParametersForm>
+            </Formik>
           </BodyParametersWrapper>
 
           <div>

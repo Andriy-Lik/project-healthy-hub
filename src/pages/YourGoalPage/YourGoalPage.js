@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setNewUserGoal } from 'redux/Auth/authSlice';
+import { Formik } from 'formik';
+// import * as yup from 'yup';
 import {
   BackgroundContainer,
   GoalLogo,
@@ -18,6 +20,7 @@ import GoalLogoPic from '../../images/YourGoalLogo.png';
 
 const YourGoalPage = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [goal, setGoal] = useState('');
 
   const handleGoalResults = event => {
@@ -34,6 +37,7 @@ const YourGoalPage = () => {
           <GoalHeadline>Your goal</GoalHeadline>
           <GoalText>Choose a goal so that we can help you effectively</GoalText>
           <div>
+            <Formik>
             <GoalForm onSubmit={handleGoalResults}>
               <GoalList>
                 <div>
@@ -102,10 +106,11 @@ const YourGoalPage = () => {
                   </GoalOption>
                 </div>
               </GoalList>
-              <GoalButton>
-                <Link to={'/select-gender'}>Next</Link>
+              <GoalButton onClick={() => {navigate('/select-gender')}}>
+                Next
               </GoalButton>
             </GoalForm>
+            </Formik>
           </div>
         </GoalContainer>
       </BackgroundContainer>

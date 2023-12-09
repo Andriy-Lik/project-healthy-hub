@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { setNewUserActivity } from 'redux/Auth/authSlice';
 import { register } from 'redux/Auth/authOperations';
 import { selectUser } from 'redux/Auth/authSelectors';
+import { Formik } from 'formik';
 import {
   Container,
   Image,
@@ -11,7 +12,7 @@ import {
   Title,
   Text,
   FormWrapper,
-  Form,
+  ActivityForm,
   FormList,
   FormListWrapper,
   FormListOption,
@@ -70,108 +71,110 @@ const YourActivityPage = () => {
             To correctly calculate calorie and water intake
           </Text>
           <FormWrapper>
-            <Form onSubmit={handleActivityResults}>
-              <FormList>
-                <FormListWrapper>
-                  <LabelWithRadio>
-                    <RadioInput
-                      type="radio"
-                      name="answer"
-                      value="1.2"
-                      checked={activity === '1.2'}
-                      onChange={() => setActivity('1.2')}
-                    />
-                    <RadioMark></RadioMark>
-                  </LabelWithRadio>
-                  <FormListOption
-                    style={{ color: '#FFFF', fontSize: 14 }}
-                  >
-                    1.2 - if you do not have physical activity and sedentary
-                    work
-                  </FormListOption>
-                </FormListWrapper>
+            <Formik>
+              <ActivityForm onSubmit={handleActivityResults}>
+                <FormList>
+                  <FormListWrapper>
+                    <LabelWithRadio>
+                      <RadioInput
+                        type="radio"
+                        name="answer"
+                        value="1.2"
+                        checked={activity === '1.2'}
+                        onChange={() => setActivity('1.2')}
+                      />
+                      <RadioMark></RadioMark>
+                    </LabelWithRadio>
+                    <FormListOption
+                      style={{ color: '#FFFF', fontSize: 14 }}
+                    >
+                      1.2 - if you do not have physical activity and sedentary
+                      work
+                    </FormListOption>
+                  </FormListWrapper>
 
-                <FormListWrapper>
-                  <LabelWithRadio>
-                    <RadioInput
-                      type="radio"
-                      name="answer"
-                      value="1.375"
-                      checked={activity === '1.375'}
-                      onChange={() => setActivity('1.375')}
-                    />
-                    <RadioMark></RadioMark>
-                  </LabelWithRadio>
-                  <FormListOption
-                    style={{ color: '#FFFF', fontSize: 14 }}
-                  >
-                    1,375 - if you do short runs or light gymnastics 1-3 times a
-                    week
-                  </FormListOption>
-                </FormListWrapper>
+                  <FormListWrapper>
+                    <LabelWithRadio>
+                      <RadioInput
+                        type="radio"
+                        name="answer"
+                        value="1.375"
+                        checked={activity === '1.375'}
+                        onChange={() => setActivity('1.375')}
+                      />
+                      <RadioMark></RadioMark>
+                    </LabelWithRadio>
+                    <FormListOption
+                      style={{ color: '#FFFF', fontSize: 14 }}
+                    >
+                      1,375 - if you do short runs or light gymnastics 1-3 times a
+                      week
+                    </FormListOption>
+                  </FormListWrapper>
 
-                <FormListWrapper>
-                  <LabelWithRadio>
-                    <RadioInput
-                      type="radio"
-                      name="answer"
-                      checked={activity === '1.55'}
-                      onChange={() => setActivity('1.55')}
-                    />
-                    <RadioMark></RadioMark>
-                  </LabelWithRadio>
-                  <FormListOption
-                    style={{ color: '#FFFF', fontSize: 14 }}
-                  >
-                    1.55 - if you play sports with average loads 3-5 times a
-                    week
-                  </FormListOption>
-                </FormListWrapper>
+                  <FormListWrapper>
+                    <LabelWithRadio>
+                      <RadioInput
+                        type="radio"
+                        name="answer"
+                        checked={activity === '1.55'}
+                        onChange={() => setActivity('1.55')}
+                      />
+                      <RadioMark></RadioMark>
+                    </LabelWithRadio>
+                    <FormListOption
+                      style={{ color: '#FFFF', fontSize: 14 }}
+                    >
+                      1.55 - if you play sports with average loads 3-5 times a
+                      week
+                    </FormListOption>
+                  </FormListWrapper>
 
-                <FormListWrapper>
-                  <LabelWithRadio>
-                    <RadioInput
-                      type="radio"
-                      name="answer"
-                      value="1.725"
-                      checked={activity === '1.725'}
-                      onChange={() => setActivity('1.725')}
-                    />
-                    <RadioMark></RadioMark>
-                  </LabelWithRadio>
-                  <FormListOption
-                    style={{ color: '#FFFF', fontSize: 14 }}
-                  >
-                    1,725 ​​- if you train fully 6-7 times a week
-                  </FormListOption>
-                </FormListWrapper>
+                  <FormListWrapper>
+                    <LabelWithRadio>
+                      <RadioInput
+                        type="radio"
+                        name="answer"
+                        value="1.725"
+                        checked={activity === '1.725'}
+                        onChange={() => setActivity('1.725')}
+                      />
+                      <RadioMark></RadioMark>
+                    </LabelWithRadio>
+                    <FormListOption
+                      style={{ color: '#FFFF', fontSize: 14 }}
+                    >
+                      1,725 ​​- if you train fully 6-7 times a week
+                    </FormListOption>
+                  </FormListWrapper>
 
-                <FormListWrapper>
-                  <LabelWithRadio>
-                    <RadioInput
-                      type="radio"
-                      name="answer"
-                      value="1.9"
-                      checked={activity === '1.9'}
-                      onChange={() => setActivity('1.9')}
-                    />
-                    <RadioMark></RadioMark>
-                  </LabelWithRadio>
-                  <FormListOption
-                    style={{ color: '#FFFF', fontSize: 14 }}
-                  >
-                    1.9 - if your work is related to physical labor, you train 2
-                    times a day and include strength exercises in your training
-                    program
-                  </FormListOption>
-                </FormListWrapper>
-              </FormList>
-              <Button type="submit">
-                Next
-              </Button>
-              <br />
-              <BackButton location={locationRef.current} />
-            </Form>
+                  <FormListWrapper>
+                    <LabelWithRadio>
+                      <RadioInput
+                        type="radio"
+                        name="answer"
+                        value="1.9"
+                        checked={activity === '1.9'}
+                        onChange={() => setActivity('1.9')}
+                      />
+                      <RadioMark></RadioMark>
+                    </LabelWithRadio>
+                    <FormListOption
+                      style={{ color: '#FFFF', fontSize: 14 }}
+                    >
+                      1.9 - if your work is related to physical labor, you train 2
+                      times a day and include strength exercises in your training
+                      program
+                    </FormListOption>
+                  </FormListWrapper>
+                </FormList>
+                <Button type="submit">
+                  Next
+                </Button>
+                <br />
+                <BackButton location={locationRef.current} />
+              </ActivityForm>
+            </Formik>
           </FormWrapper>
         </ContentBox>
       </Container>

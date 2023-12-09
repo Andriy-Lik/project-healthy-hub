@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { Field, Form } from 'formik';
 
 export const BackgroundContainer = styled.div`
   background-color: #050505;
@@ -132,7 +133,7 @@ export const SelectGenderButton = styled.button`
 
 
 
-export const SelectGenderForm = styled.form`
+export const SelectGenderForm = styled(Form)`
   margin-top: 1px;
   margin-right: 0;
   width: 268px;
@@ -142,7 +143,7 @@ export const SelectGenderForm = styled.form`
   }
 `;
 
-export const SelectGenderInput = styled.input`
+export const SelectGenderInput = styled(Field)`
   color: #ffffff;
   border: 1px solid #e3ffa8;
   background-color: #0f0f0f;

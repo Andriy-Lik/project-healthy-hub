@@ -1,7 +1,8 @@
 import React, { useRef, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setNewUserAge, setNewUserGender } from 'redux/Auth/authSlice';
+import { Formik } from 'formik';
 import {
   BackgroundContainer,
   SelectGenderLogo,
@@ -18,6 +19,7 @@ import SelectGenderLogoPic from '../../images/SelectGenderLogoPic.png';
 
 const SelectGenderPage = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [gender, setGender] = useState('');
   const [age, setAge] = useState('');
 
@@ -48,6 +50,7 @@ const SelectGenderPage = () => {
           </SelectGenderText>
 
           <div>
+            <Formik>
             <SelectGenderForm
               onSubmit={handleNewUserGenderAgeData}
               autoComplete="off"
@@ -101,12 +104,13 @@ const SelectGenderPage = () => {
                   onChange={handleInputChange}
                 />
               </ul>
-              <SelectGenderButton type="submit">
-                <Link to={'/body-parameters'}>Next</Link>
+              <SelectGenderButton type="submit" onClick={() => {navigate('/body-parameters')}}>
+                Next
               </SelectGenderButton>
               
               <SelectGenderBackButton location={locationRef.current} />
             </SelectGenderForm>
+            </Formik>            
           </div>
         </SelectGenderContainer>
       </BackgroundContainer>

@@ -29,7 +29,7 @@ import {
   FormGroup,
   FormGroupLabel,
   LinkDownloadPhoto,
-} from './SettingsPage.style';
+} from './SettingsPage.styled';
 
 import setingsPage from 'images/setings-page-png.png';
 import downloadPhoto from 'images/icons/download-new-photo.svg';

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Field, Form } from 'formik';
 
 export const Container = styled.div`
   background-color: #050505;
@@ -139,7 +140,7 @@ export const FormWrapper = styled.div`
   }
 `;
 
-export const Form = styled.form`
+export const ActivityForm = styled(Form)`
   margin-top: 1px;
 `;
 
@@ -157,7 +158,7 @@ export const FormListOption = styled.li`
   font-size: 14px;
 `;
 
-export const Input = styled.input`
+export const Input = styled(Field)`
   color: #ffffff;
   margin-bottom: 16px;
 `;

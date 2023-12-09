@@ -1,5 +1,5 @@
 import styled from "styled-components";
-// import { Link } from "react-router-dom";
+import { Field, Form } from 'formik';
 
 export const BackgroundContainer = styled.div`
   background-color: #050505;
@@ -143,18 +143,18 @@ export const GoalList = styled.ul `
 `
 
 export const GoalOption = styled.li `
-    color: 'white';
+  color: 'white';
 `;
 
 
 
-export const GoalForm = styled.form` 
-    margin-top: 1px;
+export const GoalForm = styled(Form)` 
+  margin-top: 1px;
 `;
 
-export const GoalInput = styled.input` 
-    color: #FFFFFF;
-    margin-bottom: 16px;
-    background-color: #E3FFA8;
-    margin-right: 8px;
+export const GoalInput = styled(Field)` 
+  color: #FFFFFF;
+  margin-bottom: 16px;
+  background-color: #E3FFA8;
+  margin-right: 8px;
 `;
