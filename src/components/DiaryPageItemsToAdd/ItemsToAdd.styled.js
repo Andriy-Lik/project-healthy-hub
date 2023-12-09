@@ -1,34 +1,31 @@
 import styled from 'styled-components';
 
-export const Card = styled.div`
-  @media screen and (min-width: 834px) {
-    display: flex;
-    column-gap: 8px;
-    align-items: center;
-  }
-`;
-
 export const Info = styled.div`
   display: flex;
-  flex-direction: column;
-  row-gap: 20px;
+  row-gap: 12px;
+  column-gap: 20px;
+  flex-wrap: wrap;
 
-  color: ${props => props.theme.colors.white};
-
-  font-family: ${props => props.theme.fontFamily.poppins};
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
+  font-size: ${p => p.theme.fontSizes.xs};
+  font-weight: ${p => p.theme.fontWeights.regular};
   line-height: 20px;
 
-  @media screen and (min-width: 834px) {
-    flex-direction: row;
-    column-gap: 20px;
+  @media screen and (${p => p.theme.mq.tablet}) {
+    margin-right: 60px;
+    flex-wrap: nowrap;
+  }
+
+  @media screen and (${p => p.theme.mq.desktop}) {
+    margin-right: 25px;
   }
 `;
 
 export const CarbonohidratesWrap = styled.p`
-  width: 164px;
+  width: 100%;
+
+  @media screen and (${p => p.theme.mq.tablet}) {
+    width: 164px;
+  }
 `;
 
 export const ProteinWrap = styled.p`
@@ -41,7 +38,5 @@ export const FatWrap = styled.p`
 
 export const Value = styled.span`
   color: ${props => props.theme.colors.gray};
-  font-weight: 500;
+  font-weight: ${p => p.theme.fontWeights.medium};
 `;
-
-

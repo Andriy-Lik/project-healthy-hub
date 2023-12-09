@@ -1,55 +1,84 @@
 import { useState } from 'react';
-import edit from '../../images/diaryPageImages/edit-2.svg'
-
-import {
-  InfoWrap,
-  Title,
-  Value,
-  CardWrap,
-  CarbonohidratesWrap,
-  ProteinWrap,
-  FatWrap,
-  TitleWrap,
-  EditButton,
-  Img,
-} from './ElementOfFood.styled';
-
 import RecordDiaryModal from 'components/Modals/RecordDiaryModal/RecordDiaryModal.jsx';
 import UpdateMealModal from 'components/Modals/UpdateMealModal/UpdateMealModal';
 
-export const ElementOfFood = ({ item, index }) => {
+import edit from 'images/diaryPageImages/edit-2.svg'
+
+import {
+  Wrapper,
+  SequenceNumber,
+  AddFoodButton,
+  Dish,
+  Title,
+  EditButton,
+  Img,
+  BlockInfo,
+  Carbonohidrates,
+  Protein,
+  Fat,
+} from './ElementOfFood.styled';
+
+
+const ElementOfFood = ({ item, index, img }) => {
   const [isRecordModalOpen, setIsRecordModalOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
 
   const toggleModalRecord = () => setIsRecordModalOpen(!isRecordModalOpen);
   const toggleModalEdit = () => setIsEditModalOpen(!isEditModalOpen);
 
-  const { carbohydrate, protein, fat, mealName, mealType } = item;
+  const { carbohydrate, protein, fat, mealName, mealType, showButton } = item;  
 
   return (
-    <CardWrap>
-      <TitleWrap>
-      {index + 1}
-        <Title>{mealName}</Title>
-      </TitleWrap>
-        <InfoWrap>
-          <CarbonohidratesWrap>
-            <Value>{carbohydrate}</Value>
-          </CarbonohidratesWrap>
-          <ProteinWrap>
-            <Value>{protein}</Value>
-          </ProteinWrap>
-          <FatWrap>
-            <Value>{fat}</Value>
-          </FatWrap>
-          <EditButton onClick={toggleModalEdit}><Img src={edit} alt="Edit"/>Edit</EditButton>
-      </InfoWrap>
-      {isEditModalOpen && (
-        <UpdateMealModal onClose ={toggleModalEdit} mealType={ mealType}  item={ item } />
-      )}
-        {isRecordModalOpen && (
-        <RecordDiaryModal onClose={toggleModalRecord} mealType={ mealType } item={ item }/>
-      )}
-    </CardWrap>
+    <>
+      {showButton
+        ? (
+          <Wrapper>
+            <SequenceNumber>
+              {index + 1}
+            </SequenceNumber>
+            <AddFoodButton onClick={toggleModalRecord}>
+              + Record your meal
+            </AddFoodButton>
+            {isRecordModalOpen && (
+              <RecordDiaryModal
+                onClose={toggleModalRecord}
+                image={img}
+                mealType={mealType}
+              />
+            )}
+          </Wrapper>
+        ) : (
+          <Wrapper>
+            <SequenceNumber>
+              {index + 1}
+            </SequenceNumber>
+            {mealType && (
+              <Dish>                
+                <Title>{mealName}</Title>
+                <EditButton type="button" onClick={toggleModalEdit}><Img src={edit} alt="Edit" />Edit</EditButton>                
+                <BlockInfo>
+                  <Carbonohidrates>
+                    <span>Carb.</span>
+                    {carbohydrate}
+                  </Carbonohidrates>
+                  <Protein>
+                    <span>Prot.</span>
+                    {protein}
+                  </Protein>
+                  <Fat>
+                    <span>Fat.</span>
+                    {fat}
+                  </Fat>
+                </BlockInfo>                
+              </Dish>
+            )}
+            {isEditModalOpen && (
+              <UpdateMealModal onClose={toggleModalEdit} mealType={mealType} item={item} />
+            )}
+          </Wrapper>
+        )}
+    </>
   );
 };
+
+export default ElementOfFood;

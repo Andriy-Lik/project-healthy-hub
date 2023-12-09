@@ -1,66 +1,61 @@
-import React from "react";
-import { useState, useRef } from 'react';
+import { useRef } from 'react';
 import { useLocation } from 'react-router-dom';
-import breakfast from '../../images/diaryPageImages/breakfast.png';
-import dinner from '../../images/diaryPageImages/dinner.png';
-import lunch from '../../images/diaryPageImages/lunch.png';
-import snack from '../../images/diaryPageImages/snack.png';
-import arrowRight from '../../images/diaryPageImages/arrow-right.svg';
-import { ItemToAdd } from "../../components/DiaryPageItemsToAdd/ItemsToAdd";
-import { selectConsumedMacronutrientsPerDay, selectIntakeFoodPerDay } from '../../redux/Statistics/statisticsSelectors';
-import RecordDiaryModal from "components/Modals/RecordDiaryModal/RecordDiaryModal";
 import { useSelector } from 'react-redux';
-import { ElementOfFood } from "../../components/Diary/ElementOfFood";
-import { v4 } from 'uuid'
+import { nanoid } from 'nanoid';
 
+import ItemsToAdd from 'components/DiaryPageItemsToAdd/ItemsToAdd';
+import ElementOfFood from 'components/Diary/ElementOfFood';
+import {
+  selectConsumedMacronutrientsPerDay,
+  selectConsumedProductsForBreakfast,
+  selectConsumedProductsForDinner,
+  selectConsumedProductsForLunch,
+  selectConsumedProductsForSnack,
+} from 'redux/Statistics/statisticsSelectors';
+import { getArrayToRenderDiary } from 'helpers/getArrayToRenderDiary';
+
+import breakfastImg from 'images/diaryPageImages/breakfast.png';
+import dinnerImg from 'images/diaryPageImages/dinner.png';
+import lunchImg from 'images/diaryPageImages/lunch.png';
+import snackImg from 'images/diaryPageImages/snack.png';
+import arrowRight from 'images/diaryPageImages/arrow-right.svg';
 
 import {
   Section,
   Container,
   MainHeaderBlock,
-  MainHeader,
-  FoodSection,
-  FoodBlock,
-  FoodBlockHeader,
-  FoodHeader,
-  List,
-  Element,
-  Img,
-  AddFoodButton,
   BackLink,
   ArrowReturn,
-  Div1,
-  Div2,
+  MainHeader,
+  DiaryWrap,
+  DiaryItem,
+  BlockGeneralInfo,
+  ThumbImg,
+  Img,
+  Title,
+  BlockDetailedInformation,
+  ListOfDishes,
+  BlockHeader,
 } from './DiaryPage.styled';
 
-
 const DiaryPage = () => {
-
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isModalOpen1, setIsModalOpen1] = useState(false);
-  const [isModalOpen2, setIsModalOpen2] = useState(false);
-  const [isModalOpen3, setIsModalOpen3] = useState(false);
-  const toggleModal = () => setIsModalOpen(!isModalOpen);
-  const toggleModal1 = () => setIsModalOpen1(!isModalOpen1);
-  const toggleModal2 = () => setIsModalOpen2(!isModalOpen2);
-  const toggleModal3 = () => setIsModalOpen3(!isModalOpen3);
-
   const location = useLocation();
   const backLinkLocationRef = useRef(location.state?.from ?? '/main');
 
-  const consumedMacronutrients = useSelector(selectConsumedMacronutrientsPerDay);
+  const consumedMacronutrients = useSelector(
+    selectConsumedMacronutrientsPerDay
+  );
+  const breakfastFoodIntake = useSelector(selectConsumedProductsForBreakfast);
+  const lunchFoodIntake = useSelector(selectConsumedProductsForLunch);
+  const dinnerFoodIntake = useSelector(selectConsumedProductsForDinner);
+  const snackFoodIntake = useSelector(selectConsumedProductsForSnack);
+
   const {
     breakfast: breakfastInfo,
     lunch: lunchInfo,
     dinner: dinnerInfo,
     snack: snackInfo,
   } = consumedMacronutrients;
-
-  const foodIntake = useSelector(selectIntakeFoodPerDay)
-  const breakfastFoodIntake = foodIntake.filter((value) => value.mealType === 'Breakfast' ).map((item, index) => <ElementOfFood item={item} index={index} key={v4()}/>)
-  const dinnerFoodIntake = foodIntake.filter((value) => value.mealType === 'Dinner' ).map((item, index) => <ElementOfFood item={item} index={index} key={v4()}/>)
-  const lunchFoodIntake = foodIntake.filter((value) => value.mealType === 'Lunch' ).map((item, index) => <ElementOfFood item={item} index={index} key={v4()}/>)
-  const snackFoodIntake = foodIntake.filter((value) => value.mealType === 'Snack' ).map((item, index) => <ElementOfFood item={item} index={index} key={v4()}/>)
 
   return (
     <Section>
@@ -69,101 +64,117 @@ const DiaryPage = () => {
           <BackLink to={backLinkLocationRef.current}>
             <ArrowReturn src={arrowRight} alt="arrow right" />
           </BackLink>
-          <MainHeader>
-            Diary
-          </MainHeader>
+          <MainHeader>Diary</MainHeader>
         </MainHeaderBlock>
-        <FoodSection>
-          <FoodBlock>
-            <FoodBlockHeader>
-              <Div1>
-                <Img src={breakfast} alt="Breakfast" />
-                <FoodHeader>Breakfast</FoodHeader>
-              </Div1>
-              <Div2>
-              <ItemToAdd 
-              info={breakfastInfo} />
-              </Div2>
-              <div></div>
-            </FoodBlockHeader>
-            <List>
 
-            {breakfastFoodIntake}
-              <Element>
-              <AddFoodButton onClick={toggleModal}>+ Record your meal</AddFoodButton>
-              {isModalOpen && (
-              <RecordDiaryModal onClose={toggleModal} image={ breakfast } mealType={ 'Breakfast' }/>)}           
-              </Element>
-            </List>
-          </FoodBlock>
-          <FoodBlock>
-          <FoodBlockHeader>
-            <Div1>
-              <Img src={dinner} alt="Dinner" />
-              <FoodHeader>Dinner</FoodHeader>
-            </Div1>
-            <Div2>
-            <ItemToAdd 
-              info={dinnerInfo} />
-            </Div2>
-            <div></div>
-            </FoodBlockHeader>
-            <List>
-            {dinnerFoodIntake}
-            <Element>
-            <AddFoodButton onClick={toggleModal1}>+ Record your meal</AddFoodButton>
-              {isModalOpen1 && (
-              <RecordDiaryModal onClose={toggleModal1} image= { dinner } mealType={ 'Dinner' }/>)} 
-            </Element>
-            </List>
-          </FoodBlock>
-          <FoodBlock>
-          <FoodBlockHeader>
-            <Div1>
-              <Img src={lunch} alt="Lunch" />
-              <FoodHeader>Lunch</FoodHeader>
-            </Div1>
-             <Div2>
-             <ItemToAdd 
-              info={lunchInfo} />
-             </Div2>
-            <div></div>
-            </FoodBlockHeader>
-            <List>
-            {lunchFoodIntake}
-            <Element>
-            <AddFoodButton onClick={toggleModal2}>+ Record your meal</AddFoodButton>
-              {isModalOpen2 && (
-              <RecordDiaryModal onClose={toggleModal2} image={ lunch } mealType={ 'Lunch' }/>)}   
-            </Element>
-            </List>
-          </FoodBlock>
-          <FoodBlock>
-          <FoodBlockHeader>
-          <Div1>
-          <Img src={snack} alt="Snack" />
-              <FoodHeader>Snack</FoodHeader>
-          </Div1>
-          <Div2>
-          <ItemToAdd 
-              info={snackInfo} />
-                </Div2>
-                <div></div>
-            </FoodBlockHeader>
-            <List>
-            {snackFoodIntake}
-            <Element>
-              <AddFoodButton onClick={toggleModal3}>+ Record your meal</AddFoodButton>
-              {isModalOpen3 && (
-              <RecordDiaryModal onClose={toggleModal3} image={ snack } mealType={ 'Snack' }/>)}    
-            </Element>
-            </List>
-          </FoodBlock>
-        </FoodSection>
+        <DiaryWrap>
+          <DiaryItem>
+            <BlockGeneralInfo>
+              <BlockHeader>
+                <ThumbImg>
+                  <Img src={breakfastImg} alt="Plate" />
+                </ThumbImg>
+                <Title>Breakfast</Title>
+              </BlockHeader>
+              <ItemsToAdd info={breakfastInfo} />
+            </BlockGeneralInfo>
+            <BlockDetailedInformation>
+              <ListOfDishes>
+                {getArrayToRenderDiary(breakfastFoodIntake, 'Breakfast').map(
+                  (item, index) => (
+                    <ElementOfFood
+                      item={item}
+                      key={nanoid()}
+                      index={index}
+                      img={breakfastImg}
+                    />
+                  )
+                )}
+              </ListOfDishes>
+            </BlockDetailedInformation>
+          </DiaryItem>
+
+          <DiaryItem>
+            <BlockGeneralInfo>
+              <BlockHeader>
+                <ThumbImg>
+                  <Img src={lunchImg} alt="Plate" />
+                </ThumbImg>
+                <Title>Lunch</Title>
+              </BlockHeader>
+              <ItemsToAdd info={lunchInfo} />
+            </BlockGeneralInfo>
+            <BlockDetailedInformation>
+              <ListOfDishes>
+                {getArrayToRenderDiary(lunchFoodIntake, 'Lunch').map(
+                  (item, index) => (
+                    <ElementOfFood
+                      item={item}
+                      key={nanoid()}
+                      index={index}
+                      img={lunchImg}
+                    />
+                  )
+                )}
+              </ListOfDishes>
+            </BlockDetailedInformation>
+          </DiaryItem>
+
+          <DiaryItem>
+            <BlockGeneralInfo>
+              <BlockHeader>
+                <ThumbImg>
+                  <Img src={dinnerImg} alt="Plate" />
+                </ThumbImg>
+                <Title>Dinner</Title>
+              </BlockHeader>
+              <ItemsToAdd info={dinnerInfo} />
+            </BlockGeneralInfo>
+            <BlockDetailedInformation>
+              <ListOfDishes>
+                {getArrayToRenderDiary(dinnerFoodIntake, 'Dinner').map(
+                  (item, index) => (
+                    <ElementOfFood
+                      item={item}
+                      key={nanoid()}
+                      index={index}
+                      img={dinnerImg}
+                    />
+                  )
+                )}
+              </ListOfDishes>
+            </BlockDetailedInformation>
+          </DiaryItem>
+
+          <DiaryItem>
+            <BlockGeneralInfo>
+              <BlockHeader>
+                <ThumbImg>
+                  <Img src={snackImg} alt="Plate" />
+                </ThumbImg>
+                <Title>Snack</Title>
+              </BlockHeader>
+              <ItemsToAdd info={snackInfo} />
+            </BlockGeneralInfo>
+            <BlockDetailedInformation>
+              <ListOfDishes>
+                {getArrayToRenderDiary(snackFoodIntake, 'Snack').map(
+                  (item, index) => (
+                    <ElementOfFood
+                      item={item}
+                      key={nanoid()}
+                      index={index}
+                      img={snackImg}
+                    />
+                  )
+                )}
+              </ListOfDishes>
+            </BlockDetailedInformation>
+          </DiaryItem>
+        </DiaryWrap>
       </Container>
     </Section>
   );
 };
 
 export default DiaryPage;
-
