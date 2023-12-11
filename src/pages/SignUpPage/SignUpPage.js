@@ -2,14 +2,14 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { setNewUserName, setNewUserEmail, setNewUserPassword, } from 'redux/Auth/authSlice';
+import { Formik } from 'formik';
 import {
   Container,
   Image,
   ContentBox,
   Title,
   Text,
-  FormWrapper,
-  Form,
+  SignUpForm,
   Input,
   FormButton,
   QuestionWrapper,
@@ -55,8 +55,9 @@ const SignUpPage = () => {
         <ContentBox>
           <Title>Sign up</Title>
           <Text>You need to register to use the service</Text>
-          <FormWrapper>
-            <Form onSubmit={handleNewUserData} autoComplete="off">
+
+          <Formik>
+            <SignUpForm onSubmit={handleNewUserData} autoComplete="off">
               <Input
                 placeholder="name"
                 id="name"
@@ -84,9 +85,9 @@ const SignUpPage = () => {
               <FormButton type="submit" onClick={() => {navigate('/your-goal')}}>
                 Sign Up 
               </FormButton>
-            </Form>
-          </FormWrapper>
-
+            </SignUpForm>
+          </Formik>
+          
           <QuestionWrapper>
             <QuestionText>Do you already have an account?</QuestionText>
             <SignInLink to={'/signin'}>Sign in</SignInLink>
