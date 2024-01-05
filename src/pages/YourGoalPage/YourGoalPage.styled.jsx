@@ -1,160 +1,189 @@
 import styled from "styled-components";
-import { Field, Form } from 'formik';
+import { Form } from 'formik';
 
-export const BackgroundContainer = styled.div`
-  background-color: #050505;
+export const Container = styled.div`
   display: flex;
   flex-direction: column;
-
-  @media (min-width: 320px) and (max-width: 833px) {
-    display: flex;
-    flex-direction: column;
-    margin: auto;
-  }
-
-  @media (min-width: 834px) and (max-width: 1439px) {
-    display: flex;
-    flex-direction: center;
-    margin: auto;
-  }
-
-  @media (min-width: 1439px) {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    margin: auto;
-  }
-`;
-
-export const GoalLogo = styled.img`
-  margin-right: auto;
-  margin-left: auto;
-  margin-top: 40px;
-  margin-bottom: 40px;
+  background-color: ${p => p.theme.colors.black};
 
   @media (min-width: 320px) and (max-width: 833px) {
     width: 300px;
-    margin-right: auto;
-    margin-left: auto;
+    margin: 24px auto 20px;
+    align-items: center;
   }
 
   @media (min-width: 834px) and (max-width: 1439px) {
-    width: 380px;
-    margin-right: auto;
-    margin-left: auto;
+    width: 444px;
+    margin: 40px auto 366px;
+    align-items: center;
   }
 
-  @media (min-width: 1439px) {
-    margin-right: 80px;
-    margin-left: 0;
+  @media (min-width: 1440px) {
+    width: 1140px;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 40px auto 86px;
   }
 `;
 
-export const GoalContainer = styled.div`
-  max-width: 444px;
-  margin-top: 120px;
-  margin-left: 104px;
+export const Image = styled.img`
 
   @media (min-width: 320px) and (max-width: 833px) {
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    width: 300px;
+    margin-bottom: 24px;
   }
 
   @media (min-width: 834px) and (max-width: 1439px) {
-    margin: auto;
+    width: 380px;
+    margin-bottom: 60px;
+  }
+`;
+
+export const ContentBox = styled.div`
+
+  @media (min-width: 320px) and (max-width: 833px) {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    align-items: center;
   }
 
-  @media (min-width: 1439px) {
+  @media (min-width: 834px) and (max-width: 1439px) {
     width: 444px;
-    margin-left: 0;
-    margin-right: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  @media (min-width: 1440px) {
+    width: 444px;
+    margin-top: 80px;
   }
 `;
 
-export const GoalHeadline = styled.h1`
-  color: #ffffff;
-  font-size: 30px;
-  font-weight: 500;
-  line-height: 36px;
-  font-family: Poppins;
+export const Title = styled.h1`
+  width: 100%;
+  margin-bottom: 16px;
+  color: ${p => p.theme.colors.white};
+  font-family: ${p => p.theme.fontFamily.poppins};
+  font-weight: ${p => p.theme.fontWeights.medium};
+  font-size: ${p => p.theme.fontSizes.xl};
+  line-height: 1.2;
+
+  @media (min-width: 320px) and (max-width: 833px) {
+    font-size: ${p => p.theme.fontSizes.l2};
+    line-height: 1.25;
+    text-align: center;
+  }
 
   @media (min-width: 834px) and (max-width: 1439px) {
-    width: 100%;
     text-align: center;
     align-self: center;
-    margin-top: 16px;
   }
 `;
 
-export const GoalText = styled.p`
-  color: #b6b6b6;
-  font-weight: 400;
-  font-size: 22px;
-  margin-top: 16px;
-  margin-bottom: 20px;
-  line-height: 32px;
-  width: 280px;
+export const Text = styled.p`
+  margin-bottom: 24px;
+  color: ${p => p.theme.colors.gray};
+  font-family: ${p => p.theme.fontFamily.poppins};
+  font-weight: ${p => p.theme.fontWeights.regular};
+  font-size: ${p => p.theme.fontSizes.l};
+  line-height: 1.45;
 
-  @media (min-width: 834px) and (max-width: 1439px) {
-    width: 380px;
+  @media (min-width: 320px) and (max-width: 833px) {
     text-align: center;
-    align-self: center;
-    align-text: center;
+    font-size: ${p => p.theme.fontSizes.m};
+    line-height: 1.33;
   }
-
-  @media (min-width: 1439px) {
-    width: 460px;
-  }
-`;
-
-export const GoalButton = styled.button`
-  background-color: #e3ffa8;
-  text-align: center;
-  margin-top: 16px;
-  border-radius: 12px;
-  width: 268px;
-  padding: 8px;
-  font-size: 14px;
-  font-family: Poppins;
-  margin-bottom: 60px;
 
   @media (min-width: 834px) and (max-width: 1439px) {
-    width: 380px;
+    text-align: center;
   }
 `;
-
-export const GoalList = styled.ul `
-    width: 254px;
-
-    @media (min-width: 320px) and (max-width: 833px)  {
-        width: 250px;
-      }
-
-    @media (min-width: 834px) and (max-width: 1439px)  {
-        display: flex;
-        justify-content: space-between;
-        width: 400px;
-      }
-`
-
-export const GoalOption = styled.li `
-  color: 'white';
-`;
-
-
 
 export const GoalForm = styled(Form)` 
-  margin-top: 1px;
+  margin-top: 0;
+  margin-bottom: 20px;
 `;
 
-export const GoalInput = styled(Field)` 
-  color: #FFFFFF;
-  margin-bottom: 16px;
-  background-color: #E3FFA8;
-  margin-right: 8px;
+export const List = styled.ul`
+  margin-bottom: 24px;
+
+  @media (min-width: 834px) and (max-width: 1439px)  {
+    display: flex;
+    justify-content: space-between;
+    width: 380px;
+    margin: 0 auto 24px;
+  }
+`
+
+export const Item = styled.li`
+  display: flex;
+  color: ${p => p.theme.colors.white};
+
+  @media (min-width: 320px) and (max-width: 833px) {
+    margin-bottom: 24px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  @media (min-width: 1440px) {
+    margin-bottom: 16px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+`;
+
+export const ItemText = styled.span`
+  margin-left: 4px;
+  font-family: ${p => p.theme.fontFamily.poppins};
+  font-weight: ${p => p.theme.fontWeights.regular};
+  font-size: ${p => p.theme.fontSizes.xs};
+  line-height: 1.43;
+`;
+
+export const NextButton = styled.button`
+  width: 300px;
+  height: 36px;
+  padding: 8px 10px;
+  font-family: ${p => p.theme.fontFamily.poppins}
+  font-weight: ${p => p.theme.fontWeights.medium};
+  font-size: ${p => p.theme.fontSizes.xs};
+  line-height: 1.43;
+  border-radius: ${p => p.theme.radii.normal};
+  border: ${p => p.theme.borders.none};
+  background-color: ${p => p.theme.colors.greenLite};
+
+  @media (min-width: 834px) and (max-width: 1439px) {
+    display: block;
+    width: 380px;
+    margin: 0 auto 20px;
+  }
+
+  @media (min-width: 1440px) {
+    width: 212px;
+  }
+`;
+
+export const BackButton = styled.button`
+  color: ${p => p.theme.colors.gray};
+  background-color: ${p => p.theme.colors.black};
+  width: 192px;
+  padding: 0;
+  border: ${p => p.theme.borders.none};
+  font-family: ${p => p.theme.fontFamily.poppins};
+  font-weight: ${p => p.theme.fontWeights.regular};
+  font-size: ${p => p.theme.fontSizes.xs};
+  line-height: 1.43;
+
+  @media (min-width: 1440px) {
+    margin-left: 10px;
+  }
+
+  @media (min-width: 834px) and (max-width: 1439px) {
+    margin: 0 auto;
+  }
 `;
