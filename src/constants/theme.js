@@ -1,5 +1,4 @@
 const breakpoints = ['320', '834', '1440'];
-// const breakpoints = ['320', '768', '1280'];
 
 export const theme = Object.freeze({
   // Кольори, приклад background-color: ${p => p.theme.colors.white};
