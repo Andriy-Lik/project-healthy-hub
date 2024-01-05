@@ -86,11 +86,11 @@ export const Text = styled.p`
   font-family: ${p => p.theme.fontFamily.poppins};
   font-weight: ${p => p.theme.fontWeights.regular};
   font-size: ${p => p.theme.fontSizes.l};
-  line-height: 1.455;
+  line-height: 1.45;
 
   @media (min-width: 320px) and (max-width: 833px) {
     font-size: ${p => p.theme.fontSizes.m};
-    line-height: 1.333;
+    line-height: 1.33;
   }
 
   @media (min-width: 834px) and (max-width: 1439px) {
@@ -132,12 +132,12 @@ export const Input = styled.input`
   color: ${p => p.theme.colors.gray};
   background-color: ${p => p.theme.colors.black2};
   border: ${p => p.theme.borders.normal} ${p => p.theme.colors.greenLite};
-  border-radius: 12px;
+  border-radius: ${p => p.theme.radii.normal};
 
   font-family: ${p => p.theme.fontFamily.poppins};
   font-weight: ${p => p.theme.fontWeights.regular};
   font-size: ${p => p.theme.fontSizes.xs};
-  line-height: 1.429;
+  line-height: 1.43;
 
   @media (min-width: 320px) and (max-width: 833px) {
     width: 300px;
@@ -154,12 +154,12 @@ export const FormButton = styled.button`
   padding: 8px;
   background-color: ${p => p.theme.colors.greenLite};
   text-align: center;
-  border-radius: 12px;
-  border: none;
+  border-radius: ${p => p.theme.radii.normal};
+  border: ${p => p.theme.borders.none};
   font-family: ${p => p.theme.fontFamily.poppins};
   font-size: ${p => p.theme.fontSizes.xs};
   font-weight: ${p => p.theme.fontWeights.medium};
-  line-height: 1.429;  
+  line-height: 1.43;  
 
   @media (min-width: 320px) and (max-width: 833px) {
     width: 300px;
@@ -177,7 +177,7 @@ export const ForgotPasswordLink = styled(Link)`
   font-family: ${p => p.theme.fontFamily.poppins};
   font-size: ${p => p.theme.fontSizes.xs};
   font-weight: ${p => p.theme.fontWeights.regular};
-  line-height: 1.429;
+  line-height: 1.43;
   
   
   @media (min-width: 320px) and (max-width: 833px) {
@@ -210,7 +210,7 @@ export const SignUpText = styled.p`
   font-family: ${p => p.theme.fontFamily.poppins};
   font-size: ${p => p.theme.fontSizes.xs};
   font-weight: ${p => p.theme.fontWeights.regular};
-  line-height: 1.429;
+  line-height: 1.43;
 
   @media (min-width: 320px) and (max-width: 833px) {
     margin-bottom: 16px;
@@ -224,12 +224,12 @@ export const SignUpText = styled.p`
 export const SignUpLink = styled(Link)`
   background-color:${p => p.theme.colors.black};
   color: ${p => p.theme.colors.white};
-  border: none;
+  border: ${p => p.theme.borders.none};
 
   font-family: ${p => p.theme.fontFamily.poppins};
   font-size: ${p => p.theme.fontSizes.xs};
   font-weight: ${p => p.theme.fontWeights.medium};
-  line-height: 1.429;
+  line-height: 1.43;
 
   @media (min-width: 834px) {
     margin: 0;
